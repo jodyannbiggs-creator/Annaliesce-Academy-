@@ -1,0 +1,36 @@
+THE ANNALIESCE ACADEMY: putting it on GitHub and Netlify
+
+YOUR SITE DEPLOYS FROM GITHUB. To update it, change the files in GitHub.
+Netlify then publishes by itself within a minute or two. You do not deploy
+from Netlify and there is no drag and drop there any more.
+
+WHAT THE TOP OF THE GITHUB REPOSITORY MUST LOOK LIKE
+  index.html, sw.js, manifest.webmanifest, netlify.toml
+  favicon.ico, favicon-32.png, apple-touch-icon.png
+  icon-192.png, icon-512.png, icon-maskable-512.png
+  LICENSE-... files and LICENSES-README.txt, DEPLOY.txt
+  a FOLDER called netlify, and inside it a folder called functions,
+  and inside that a file called sync.mjs
+
+  sync.mjs must NOT be loose at the top. If it is, in GitHub click the file,
+  click the pencil (Edit), click at the very start of the file name box at the
+  top and type   netlify/functions/   in front of   sync.mjs   so it reads
+  netlify/functions/sync.mjs   then choose Commit changes.
+
+UPLOADING FILES TO GITHUB
+  Add file > Upload files. Drag in the files (files with the same name are
+  replaced). Then choose Commit changes.
+
+CHECK SYNC
+  Open the site, enter the site password, then Parent Desk > Start syncing.
+  A sync code appears = it works. On each other device: Parent Desk >
+  Link this device to a sync code.
+
+SYNCED: XP, coins, streaks and rewards, flashcards, Dojo, trophies, avatar,
+weekly goal, check-ins, round history, Mum's recorded voice.
+NOT SYNCED (each device keeps its own): the PIN, journal entries, spelling
+notes, the chosen computer voice.
+Anyone with the sync code can read and change her progress. Keep it private.
+
+Progress from earlier versions is kept and carried forward. It is stored in the
+browser under the site's address, so keep using the same address.

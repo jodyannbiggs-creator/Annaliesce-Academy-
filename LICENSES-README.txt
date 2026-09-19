@@ -1,0 +1,6 @@
+Stroke-order animations on the Character lab page use:
+
+1. Hanzi Writer 3.7.3, MIT licence (LICENSE-HanziWriter-MIT.txt). https://hanziwriter.org
+2. Character stroke data from the hanzi-writer-data package, derived from the Make Me a Hanzi project, which is derived from Arphic fonts. Arphic Public License (LICENSE-stroke-data-Arphic.txt).
+
+The stroke data is used as published, without changes to its contents. Please keep these LICENSE files with the site.
