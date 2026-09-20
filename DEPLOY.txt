@@ -4,6 +4,15 @@ YOUR SITE DEPLOYS FROM GITHUB. To update it, change the files in GitHub.
 Netlify then publishes by itself within a minute or two. You do not deploy
 from Netlify and there is no drag and drop there any more.
 
+UPDATING TO THIS VERSION
+  Upload these FOUR files to the top level of your GitHub repository:
+     index.html          (the whole site: this is the important one)
+     share-image.png     (new: the picture shown when the link is sent)
+     manifest.webmanifest
+     LICENSES-README.txt
+  Uploading a file with the same name as one already there REPLACES it. See
+  READ-ME-FIRST.txt in UPLOAD-THESE-FILES.zip for the step by step.
+
 WHAT THE TOP OF THE GITHUB REPOSITORY MUST LOOK LIKE
   index.html, sw.js, manifest.webmanifest, netlify.toml
   favicon.ico, favicon-32.png, apple-touch-icon.png
@@ -21,6 +30,18 @@ UPLOADING FILES TO GITHUB
   Add file > Upload files. Drag in the files (files with the same name are
   replaced). Then choose Commit changes.
 
+SHARING (Parent Desk > "Share with family, teacher and friends")
+  Family device link: a private link for a grandparent's phone or tablet. They
+    open it once and that device stays connected. They never see the Parent Desk.
+  Teacher report link: a read-only progress report. It shows subjects, accuracy,
+    topics to work on, checkpoint scores, weekly practice and what the Academy
+    covers. Journal entries, check-in feelings and the PIN are never included.
+    "Stop sharing" switches the link off straight away.
+  Guest player: separate progress for a friend on Annaliesce's own device. Her
+    progress is not touched. The parent PIN is needed to switch back.
+  Everyone you share a link with also needs the Netlify site password.
+  Anyone holding a link can use it, so send links privately.
+
 CHECK SYNC
   Open the site, enter the site password, then Parent Desk > Start syncing.
   A sync code appears = it works. On each other device: Parent Desk >
@@ -32,5 +53,6 @@ NOT SYNCED (each device keeps its own): the PIN, journal entries, spelling
 notes, the chosen computer voice.
 Anyone with the sync code can read and change her progress. Keep it private.
 
+Only index.html changes between most updates: upload just that file.
 Progress from earlier versions is kept and carried forward. It is stored in the
 browser under the site's address, so keep using the same address.
