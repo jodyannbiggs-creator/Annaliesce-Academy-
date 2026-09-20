@@ -4,3 +4,5 @@ Stroke-order animations on the Character lab page use:
 2. Character stroke data from the hanzi-writer-data package, derived from the Make Me a Hanzi project, which is derived from Arphic fonts. Arphic Public License (LICENSE-stroke-data-Arphic.txt).
 
 The stroke data is used as published, without changes to its contents. Please keep these LICENSE files with the site.
+
+Map outlines (world, continents, UK nations): Natural Earth, public domain (naturalearthdata.com). Simplified and projected for this site.
