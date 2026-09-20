@@ -200,6 +200,19 @@ pre.code{background:#1f2933;color:#e6edf3;border-radius:10px;padding:12px;overfl
 .swatches{display:flex;gap:10px;align-items:center;justify-content:center;margin:10px 0;font-weight:800;font-size:1.4rem}
 .swatches i{display:inline-block;width:64px;height:64px;border-radius:14px;border:2px solid var(--line)}
 .hintbox{background:#FFF8E7;border:2px dashed var(--gold);border-radius:12px;padding:8px 12px;margin:10px 0}
+.worked{background:#FFF8E7;border:2px solid var(--gold);border-radius:14px;padding:10px 14px;margin:10px 0;text-align:left}
+.worked>b{display:block}
+.worked ol{margin:6px 0 6px 20px;padding:0}
+.worked li{margin:5px 0}
+.wk-you{margin:6px 0}
+.spk-word{font-size:2.6rem;font-weight:800;line-height:1.1;margin:6px 0}
+.spk-py{font-size:1.3rem;color:#5c6660;margin-bottom:2px}
+.spk-tips{background:#FFF8E7;border:2px dashed var(--gold);border-radius:12px;padding:8px 12px;margin:10px 0;text-align:left}
+.spk-tips ul{margin:4px 0 2px 18px;padding:0}
+.spk-tips li{margin:3px 0}
+.wk-why{margin:6px 0;background:#fff;border-left:4px solid var(--gold);padding:6px 10px;border-radius:8px}
+details.mdet{margin-top:10px}
+details.mdet>summary{cursor:pointer;font-weight:700;color:#5c6660;padding:6px 0}
 .tiers{display:flex;gap:14px;flex-wrap:wrap;font-weight:700;margin:6px 0}
 .streak{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
 .streak .big{font-size:2.2rem;font-weight:800;color:var(--dgold)}
@@ -352,7 +365,7 @@ textarea.slin{width:100%;font:inherit;padding:10px;border:2px solid var(--line);
 <div id="toast" role="status" aria-live="polite" hidden></div>
 <input type="file" id="impfile" accept="application/json,.json" hidden>
 <script>
-const BUILD_INFO={n:6,at:'20 Sep 2026, 17:45'};
+const BUILD_INFO={n:20,at:'20 Sep 2026, 21:22'};
 /* =====================================================================
    THE ANNALIESCE ACADEMY
    ---------------------------------------------------------------------
@@ -4301,7 +4314,7 @@ const MAX_GUESTS = 8;
 function addGuest(name){ const l=guestList(); if(l.length>=MAX_GUESTS) return null; const id='p'+Date.now().toString(36)+Math.floor(Math.random()*1296).toString(36); l.push({id, name:String(name||'Friend').trim().slice(0,20)||'Friend'}); saveGuests(l); return id; }
 function removeGuest(id){ saveGuests(guestList().filter(g=>g.id!==id)); try{ localStorage.removeItem(guestKey(id)); }catch(e){} }
 function peekProfile(id){ try{ const o=JSON.parse(localStorage.getItem(id==='anna'?STORE_KEY:guestKey(id))||'null')||{}; const xp=o.led?Object.values(o.led).reduce((s,l)=>s+(l.xp||0),0):(o.xp||0); return {xp, level:Math.floor(xp/400)+1, avatar:Object.assign({}, AV_DEFAULT, o.avatar||{})}; }catch(e){ return {xp:0, level:1, avatar:Object.assign({},AV_DEFAULT)}; } }
-const defaults = () => ({v:3, era:0, gp:{}, lz:{}, sl:{}, wr:{}, tl:{}, rv:0, xw:{}, xt:{}, chestDay:'', perfDay:'', year:CURRENT_YEAR_GROUP, led:{}, xp:0, coins:0, cleared:0, hints:0, stats:{}, seen:{}, dojo:{}, cards:{}, rounds:[], days:[], goalWeeks:[], checkins:[], reflections:[], trophies:{}, sr:{}, bestStreak:0, sprintBest:{}, theme:'blush', pet:'cat', wl:{}, wt:{}, talk:[], avatar:Object.assign({},AV_DEFAULT), owned:{}, spellMiss:[], note:NEW_NOTE, vnote:null, pin:'', goal:3, sound:true, mode:'full', archive:{}, at:0, pt:0, rep:null});
+const defaults = () => ({v:3, era:0, gp:{}, lz:{}, sl:{}, wr:{}, tl:{}, rv:0, xw:{}, xt:{}, lg:{}, chestDay:'', perfDay:'', year:CURRENT_YEAR_GROUP, led:{}, xp:0, coins:0, cleared:0, hints:0, stats:{}, seen:{}, dojo:{}, cards:{}, rounds:[], days:[], goalWeeks:[], checkins:[], reflections:[], trophies:{}, sr:{}, bestStreak:0, sprintBest:{}, theme:'blush', pet:'cat', wl:{}, wt:{}, talk:[], avatar:Object.assign({},AV_DEFAULT), owned:{}, spellMiss:[], note:NEW_NOTE, vnote:null, pin:'', goal:3, sound:true, mode:'full', archive:{}, at:0, pt:0, rep:null});
 function L(){ let l = S.led[DEVID]; if(!l || l.y!==S.year){ l = S.led[DEVID] = {xp:l?l.xp:0, ce:l?l.ce:0, cs:l?l.cs:0, cl:l?l.cl:0, h:l?l.h:0, ch:l?l.ch||0:0, cu:l?l.cu||0:0, st:{}, y:S.year, ver:l?l.ver:0}; } return l; }
 function derive(){
   let xp=0, ce=0, cs=0, cl=0, h=0, ch=0, cu=0; const st={};
@@ -4338,7 +4351,7 @@ function snapshot(){ const t=totals(), by={}; ALLSUBJ.forEach(s=>{ const x=subjT
 function rollover(){ if(S.year!==CURRENT_YEAR_GROUP){ S.archive[S.year]=snapshot(); S.year=CURRENT_YEAR_GROUP; S.seen={}; S.dojo={}; S.rounds=[]; S.spellMiss=[]; derive(); save(); } }
 
 /* ---- sync: merge two states without losing anything ---- */
-const SYNC_FIELDS = ['v','year','led','seen','dojo','rounds','days','goalWeeks','checkins','trophies','cards','sr','bestStreak','sprintBest','owned','avatar','mode','sound','theme','pet','note','goal','archive','at','pt','vnote','rep','wl','wt','era','gp','lz','sl','wr','tl','rv','xw','xt'];
+const SYNC_FIELDS = ['v','year','led','seen','dojo','rounds','days','goalWeeks','checkins','trophies','cards','sr','bestStreak','sprintBest','owned','avatar','mode','sound','theme','pet','note','goal','archive','at','pt','vnote','rep','wl','wt','era','gp','lz','sl','wr','tl','rv','xw','xt','lg'];
 function syncable(){ const o={}; SYNC_FIELDS.forEach(f=>{ o[f]=S[f]; }); return o; }
 function mergeInto(a, b){
   const ea=a.era||0, eb=b.era||0;
@@ -4367,6 +4380,7 @@ function mergeInto(a, b){
   m.tl = Object.assign({}, b.tl||{}); Object.keys(a.tl||{}).forEach(k=>{ if(!m.tl[k] || a.tl[k]>m.tl[k]) m.tl[k]=a.tl[k]; });
   m.rv = Math.max(a.rv||0, b.rv||0);
   m.xw = Object.assign({}, b.xw||{}); Object.keys(a.xw||{}).forEach(d=>{ const x=a.xw[d], y=m.xw[d]; if(!y || (x.c && !y.c)) m.xw[d]=x; });
+  m.lg = {}; new Set(Object.keys(a.lg||{}).concat(Object.keys(b.lg||{}))).forEach(k=>{ const x=(a.lg||{})[k]||{}, y=(b.lg||{})[k]||{}; m.lg[k]={lr:Math.max(x.lr||0,y.lr||0), ln:Math.max(x.ln||0,y.ln||0), sp:Math.max(x.sp||0,y.sp||0)}; });
   m.xt = Object.assign({}, b.xt||{}); Object.keys(a.xt||{}).forEach(k=>{ const x=a.xt[k], y=m.xt[k]; if(!y || x.m[0]>y.m[0]) m.xt[k]=x; });
   m.sl = Object.assign({}, b.sl||{}); Object.keys(a.sl||{}).forEach(id=>{ if(!m.sl[id] || (a.sl[id].w||0)>(m.sl[id].w||0)) m.sl[id]=a.sl[id]; });
   m.lz = {}; [b.lz||{}, a.lz||{}].forEach(src=>{ Object.keys(src).forEach(k=>{ m.lz[k]=m.lz[k]||{}; Object.keys(src[k]).forEach(t=>{ const x=src[k][t], y=m.lz[k][t]; if(!y || x.c>y.c) m.lz[k][t]=x; }); }); });
@@ -4428,7 +4442,7 @@ function buildReport(){
   const topics=[]; for(const k in S.stats) for(const tp in S.stats[k]){ const x=S.stats[k][tp]; if(x[0]) topics.push({k,t:tp,a:x[0],c:x[1]}); }
   const tests=S.rounds.filter(r=>r.kind==='test'||r.kind==='mock').slice(-12).map(r=>({d:r.d,kind:r.kind,s:r.s,n:r.n,c:r.c}));
   const weeks=[7,6,5,4,3,2,1,0].map(off=>{ const wt=weekTotals(off); return {w:weekRange(off)[0], days:wt.days, n:wt.n, c:wt.c}; });
-  return {v:1, name:'Annaliesce', year:S.year, at:Date.now(), level:level(), title:titleOf(), xp:S.xp, streak:calcStreak(), best:Math.max(S.bestStreak||0,calcStreak()), goal:S.goal, answered:t[0], correct:t[1], dojo:dojoCount(), hints:S.hints||0, subjects, topics, tests, weeks, extreme:{met:Object.keys(S.xw||{}).length, right:xwRight(), tests:Object.keys(S.xt||{}).length}, written:{n:Object.keys(S.wr||{}).length, good:wrGood(), avg:wrAvg()}, coverage:covPercent(), stories:{n:slDoneCount(), w:slWordsDone()}, lessons:{p:lzPassedCount(), t:lessonList().length, subj:ALLSUBJ.map(s=>({n:s.n, p:Object.keys((LESSONS[s.k]||{})).filter(t=>((S.lz[s.k]||{})[t]||{c:0}).c>=4).length, t:Object.keys(LESSONS[s.k]||{}).length}))}, branch:Object.fromEntries(Object.keys(SCI_TESTS).map(b=>[b,branchPasses(b)])), words:{learned:Object.keys(S.wl||{}).length, tests:Object.keys(S.wt||{}).sort().slice(-8).map(w=>({w,m:S.wt[w].m,s:S.wt[w].s}))}};
+  return {v:1, name:'Annaliesce', year:S.year, at:Date.now(), level:level(), title:titleOf(), xp:S.xp, streak:calcStreak(), best:Math.max(S.bestStreak||0,calcStreak()), goal:S.goal, answered:t[0], correct:t[1], dojo:dojoCount(), hints:S.hints||0, subjects, topics, tests, weeks, lg:JSON.parse(JSON.stringify(S.lg||{})), extreme:{met:Object.keys(S.xw||{}).length, right:xwRight(), tests:Object.keys(S.xt||{}).length}, written:{n:Object.keys(S.wr||{}).length, good:wrGood(), avg:wrAvg()}, coverage:covPercent(), stories:{n:slDoneCount(), w:slWordsDone()}, lessons:{p:lzPassedCount(), t:lessonList().length, subj:ALLSUBJ.map(s=>({n:s.n, p:Object.keys((LESSONS[s.k]||{})).filter(t=>((S.lz[s.k]||{})[t]||{c:0}).c>=4).length, t:Object.keys(LESSONS[s.k]||{}).length}))}, branch:Object.fromEntries(Object.keys(SCI_TESTS).map(b=>[b,branchPasses(b)])), words:{learned:Object.keys(S.wl||{}).length, tests:Object.keys(S.wt||{}).sort().slice(-8).map(w=>({w,m:S.wt[w].m,s:S.wt[w].s}))}};
 }
 async function reportKey(token){ return sha256('report:'+token); }
 async function pushReport(){
@@ -4475,6 +4489,7 @@ function recordAnswer(q, ok, kind){
   const l = L(), st = (l.st[q.k] = l.st[q.k] || {}), t = (st[q.topic] = st[q.topic] || [0,0]); t[0]++; if(ok) t[1]++;
   S.tl = S.tl || {}; S.tl[q.k+'|'+q.topic] = today();
   if(q.hinted) l.h++;
+  if(q.lsn){ lgBump(q.k,'ln'); if(ok) lgBump(q.k,'lr'); }
   if(q.type==='spell'){
     if(ok) S.spellMiss = S.spellMiss.filter(w=>w!==q.word);
     else if(!S.spellMiss.includes(q.word)) S.spellMiss.push(q.word);
@@ -4596,7 +4611,7 @@ function cardsFor(k, topic){
   if(k==='geography' && topic && topic.indexOf('Capitals: ')===0){ const id=capRegByLabel(topic.slice(10)); if(id) return capCards(id); }
   if(k==='geography' && topic && topic.indexOf('Flags: ')===0){ const id=capRegByLabel(topic.slice(7)); if(id) return flagCards(id); }
   const seen = new Set(), out = [];
-  (QBY[k]||[]).forEach(q => { if(q.nocard || q.nodojo || q.ctx) return; const cid=q.cid||q.id; if(seen.has(cid)) return; if(topic && q.topic!==topic) return; seen.add(cid); out.push(q); });
+  (QBY[k]||[]).forEach(q => { if(q.nocard || q.nodojo || q.ctx) return; if((k==='spanish'||k==='mandarin') && q.topic==='Key words') return; const cid=q.cid||q.id; if(seen.has(cid)) return; if(topic && q.topic!==topic) return; seen.add(cid); out.push(q); });
   return out;
 }
 const cardTier = q => { const c=S.cards[q.cid||q.id]; return c ? c.b : 0; };
@@ -4628,9 +4643,9 @@ function playSound(kind){ const c=audio(); if(!c) return; const t=c.currentTime;
   else if(kind==='fanfare'){ [523,659,784,1047].forEach((f,i)=>tone(c,f,t+i*.12,.3,'triangle',.13)); }
 }
 function playSeq(steps){ const c=audio(); if(!c){ toast('Turn the sound on to listen.'); return; } let t=c.currentTime+0.05; steps.forEach(s=>{ (s.f||[]).forEach(f=>tone(c,f,t,s.d,s.type||'sine',s.v||0.12)); t+=s.d+(s.gap==null?0.15:s.gap); }); }
-function speak(text, lang){ try{ if(!('speechSynthesis' in window)) return false; speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang=lang||'en-GB'; u.rate=.9; speechSynthesis.speak(u); return true; }catch(e){ return false; } }
+function speak(text, lang, rate){ try{ if(!('speechSynthesis' in window)) return false; speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang=lang||'en-GB'; u.rate=rate||.9; { const ev=(u.lang||'').toLowerCase().startsWith('en')?readerVoice():null; if(ev){ u.voice=ev; u.lang=ev.lang; u.pitch=vprefs().pitch; } } speechSynthesis.speak(u); return true; }catch(e){ return false; } }
 function hasVoice(lang){ try{ const v=speechSynthesis.getVoices(); if(!v.length) return true; return v.some(x=>x.lang.toLowerCase().startsWith(lang.slice(0,2).toLowerCase())); }catch(e){ return false; } }
-function sayLang(text, lang){ if(!('speechSynthesis' in window)){ toast('Audio is not available on this device.'); return; } if(!hasVoice(lang)){ toast('This device does not have a voice installed for this language.'); return; } speak(text, lang); }
+function sayLang(text, lang, rate){ if(!('speechSynthesis' in window)){ toast('Audio is not available on this device.'); return; } if(!hasVoice(lang)){ toast('This device does not have a voice installed for this language.'); return; } speak(text, lang, rate); }
 
 
 /* ---- Mum's voice: a recording, or a computer voice she can choose ---- */
@@ -4722,6 +4737,8 @@ const TROPHIES = [
  {id:'cov100',i:'🌟',n:'Whole Map',d:'Cover every Year 7 topic',t:()=>covPercent()>=100},
  {id:'rv5',i:'🔁',n:'Revision Hero',d:'Finish 5 revision rounds from the Coverage map',t:()=>(S.rv||0)>=5},
  {id:'exp10',i:'💡',n:'Deep Thinker',d:'Score 60% or more on 10 "Explain it in writing" tasks',t:()=>Object.entries(S.wr||{}).filter(([id,x])=>id.startsWith('a_')&&x.m/x.o>=0.6).length>=10},
+ {id:'ls50',i:'🎧',n:'Good Listener',d:'Get 50 Spanish or Mandarin listening questions right',t:()=>lgTotal('lr')>=50},
+ {id:'sp25',i:'🗣️',n:'Brave Speaker',d:'Say 25 Spanish or Mandarin words out loud',t:()=>lgTotal('sp')>=25},
  {id:'xw7',i:'🧗',n:'Word Climber',d:'Work out 7 extreme words',t:()=>xwRight()>=7},
  {id:'xw30',i:'🏔️',n:'Summit Scholar',d:'Work out 30 extreme words',t:()=>xwRight()>=30},
  {id:'xw60',i:'🦉',n:'Lexicon Legend',d:'Work out 60 extreme words',t:()=>xwRight()>=60},
@@ -4743,6 +4760,7 @@ const TROPHIES = [
 
 const branchPasses = b => (S.rounds||[]).filter(r=>r.kind==='test' && r.br===b && r.n>0 && r.c/r.n>=0.8).length;
 const TPROG = {
+ ls50:()=>[Math.min(50,lgTotal('lr')),50], sp25:()=>[Math.min(25,lgTotal('sp')),25],
  xw7:()=>[Math.min(7,xwRight()),7], xw30:()=>[Math.min(30,xwRight()),30], xw60:()=>[Math.min(60,xwRight()),60],
  fh30:()=>[Math.min(30,((S.stats.literature||{})['Future Hopes']||[0,0])[1]),30], clim1:()=>[Math.min(1,Object.values(S.sl||{}).filter(x=>x&&x.g==='Climate hopes').length),1],
  cov25:()=>[Math.min(25,covPercent()),25], cov50:()=>[Math.min(50,covPercent()),50], cov75:()=>[Math.min(75,covPercent()),75], cov100:()=>[Math.min(100,covPercent()),100],
@@ -4784,9 +4802,24 @@ function numOpts(ans, fmt){
 }
 const GENS = [];
 function gen(k, t, label, f){ GENS.push({k, t, label, f}); }
+/* A wrong option must never be the same NUMBER as the answer, written differently (4.8 and 4.80).
+   This runs on every generated question. Duplicates are replaced by a different value in the same format. */
+function nvOf(s){ const m=String(s).replace(/,/g,'').match(/^(\D*?)(−|-)?(\d+(?:\.\d+)?)(.*)$/); if(!m) return null; return {pre:m[1], neg:m[2]||'', n:(m[2]?-1:1)*parseFloat(m[3]), dec:(m[3].split('.')[1]||'').length, suf:m[4]}; }
+function dedupeNumeric(q){
+  const c=nvOf(q.correct); if(!c) return q; const parsed=q.wrong.map(nvOf);
+  if(parsed.some(p=>!p||p.pre!==c.pre||p.suf!==c.suf)) return q;
+  const same=(a,b)=>Math.abs(a-b)<1e-9*Math.max(1,Math.abs(a),Math.abs(b)), seen=[c.n], out=[];
+  q.wrong.forEach((w,i)=>{ const p=parsed[i]; if(seen.some(v=>same(v,p.n))) return; seen.push(p.n); out.push(w); });
+  if(out.length===q.wrong.length) return q;
+  const comma=String(q.correct).includes(','), minus=String(q.correct).includes('−')||String(q.wrong.join('')).includes('−');
+  const step=c.dec?Math.pow(10,-c.dec):Math.max(1,Math.pow(10,Math.max(0,String(Math.abs(Math.round(c.n))).length-2)));
+  const fmt=v=>{ let s=Math.abs(v).toFixed(c.dec); if(comma) s=Number(s).toLocaleString('en-GB',{minimumFractionDigits:c.dec,maximumFractionDigits:c.dec}); return c.pre+(v<0?(minus?'−':'-'):'')+s+c.suf; };
+  for(let k=1; out.length<q.wrong.length && k<60; k++){ for(const v of [c.n+k*step, c.n-k*step]){ if(out.length>=q.wrong.length) break; if(seen.some(x=>same(x,v))) continue; seen.push(v); out.push(fmt(v)); } }
+  q.wrong=out; return q;
+}
 function finalize(g, o){
   const q = Object.assign({k:g.k, topic:g.bt||g.t, gen:1}, o);
-  q.correct = String(q.correct); q.wrong = q.wrong.map(String);
+  q.correct = String(q.correct); q.wrong = q.wrong.map(String); dedupeNumeric(q); q.gt = g.t; q.gk = g.k;
   q.id = 'gen_'+g.k+'_'+hash(q.q+'|'+q.correct);
   return q;
 }
@@ -4800,18 +4833,22 @@ function genSet(g, n){
 /* ---- Maths ---- */
 gen('maths','Negative numbers','Negative numbers',()=>{
   const a=ri(-9,9), b=ri(-9,9), op=pickr(['+','\u2212','\u00d7']); let ans, exp, hint;
-  if(op==='+'){ ans=a+b; exp='Start at '+mn(a)+' on the number line and move '+mn(b)+'.'; hint='Picture a number line. Adding a negative moves you left.'; }
-  else if(op==='\u2212'){ ans=a-b; exp='Subtracting '+mn(b)+' is the same as adding '+mn(-b)+'.'; hint='Subtracting a negative is the same as adding.'; }
-  else { ans=a*b; exp='Same signs give a positive answer. Different signs give a negative answer.'; hint='Same signs: positive. Different signs: negative.'; }
+  if(op==='+'){ ans=a+b; exp=mn(a)+' + '+(b<0?'('+mn(b)+')':mn(b))+': start at '+mn(a)+' and move '+Math.abs(b)+' to the '+(b>=0?'right':'left')+'. You land on '+mn(ans)+'.'; hint='Picture a number line. Adding a negative moves you left.'; }
+  else if(op==='\u2212'){ ans=a-b; exp=b>=0 ? mn(a)+' \u2212 '+b+': start at '+mn(a)+' and move '+b+' to the left. You land on '+mn(ans)+'.' : 'Subtracting '+mn(b)+' is the same as adding '+(-b)+': '+mn(a)+' + '+(-b)+' = '+mn(ans)+'.'; hint='Subtracting a negative is the same as adding.'; }
+  else { ans=a*b; exp=(a===0||b===0) ? 'Anything multiplied by 0 is 0.' : 'Multiply the numbers without their signs: '+Math.abs(a)+' \u00d7 '+Math.abs(b)+' = '+Math.abs(ans)+'. '+((a<0)===(b<0)?'The signs are the same, so the answer is positive: ':'The signs are different, so the answer is negative: ')+mn(ans)+'.'; hint='Same signs: positive. Different signs: negative.'; }
   return {q:'What is '+mn(a)+' '+op+' '+(b<0?'('+mn(b)+')':mn(b))+'?', correct:mn(ans), wrong:numOpts(ans,mn), exp, hint};
 });
 gen('maths','Fractions of amounts','Fractions of amounts',()=>{
   const den=pickr([2,3,4,5,8,10]), num=ri(1,den-1), unit=ri(2,12), amt=den*unit, ans=unit*num;
   return {q:'What is '+num+'/'+den+' of '+amt+'?', correct:ans, wrong:numOpts(ans), exp:amt+' \u00f7 '+den+' = '+unit+', then \u00d7 '+num+' = '+ans+'.', hint:'Divide by the bottom number, then multiply by the top.'};
 });
+function pctExp(p,amt,ans){ const t=amt/10, s='10% of '+amt+' is '+amt+' \u00f7 10 = '+t+'. ';
+  const m={5:'5% is half of 10%: '+t+' \u00f7 2 = '+ans+'.',10:'So 10% of '+amt+' is '+ans+'.',15:'15% is 10% + 5%. 5% is half of 10%, which is '+t/2+'. '+t+' + '+t/2+' = '+ans+'.',20:'20% is 2 \u00d7 10%: 2 \u00d7 '+t+' = '+ans+'.',25:'25% is a quarter: '+amt+' \u00f7 4 = '+ans+'.',30:'30% is 3 \u00d7 10%: 3 \u00d7 '+t+' = '+ans+'.',40:'40% is 4 \u00d7 10%: 4 \u00d7 '+t+' = '+ans+'.',50:'50% is a half: '+amt+' \u00f7 2 = '+ans+'.',60:'60% is 6 \u00d7 10%: 6 \u00d7 '+t+' = '+ans+'.',75:'75% is three quarters: '+amt+' \u00f7 4 = '+amt/4+', then \u00d7 3 = '+ans+'.'};
+  if(p===10) return s.trim();
+  return (p===25||p===50||p===75) ? m[p] : s+m[p]; }
 gen('maths','Percentages of amounts','Percentages of amounts',()=>{
   const p=pickr([5,10,15,20,25,30,40,50,60,75]), amt=pickr([40,60,80,120,160,200,240,300,400]), ans=amt*p/100;
-  return {q:'What is '+p+'% of '+amt+'?', correct:ans, wrong:numOpts(ans), exp:'10% of '+amt+' is '+amt/10+'. Build '+p+'% from that.', hint:'Find 10% by dividing by 10, then build up.'};
+  return {q:'What is '+p+'% of '+amt+'?', correct:ans, wrong:numOpts(ans), exp:pctExp(p,amt,ans), hint:'Find 10% by dividing by 10, then build up.'};
 });
 gen('maths','Substitution','Substitution',()=>{
   const a=ri(2,9), b=ri(2,9), c1=ri(2,5), c2=ri(2,5), ans=c1*a+c2*b;
@@ -4842,20 +4879,20 @@ gen('maths','Sequences','Sequences',()=>{
   const c=a-d, form=d+'n'+(c===0?'':c>0?' + '+c:' \u2212 '+(-c));
   const wr=[d+'n'+(a>0?' + '+a:''), (d+1)+'n'+(c===0?'':c>0?' + '+c:' \u2212 '+(-c)), d+'n'+(c===0?' + 1':c>0?' \u2212 '+c:' + '+(-c))];
   const wrongs=uniq(wr.filter(x=>x!==form)); while(wrongs.length<3) wrongs.push((d+wrongs.length+2)+'n');
-  return {q:'What is the nth term of '+terms.join(', ')+', ...?', correct:form, wrong:wrongs.slice(0,3), exp:'The difference is '+d+', so start with '+d+'n. When n = 1, '+d+'n = '+d+', so adjust by '+mn(c)+'.', hint:'Difference \u00d7 n, then fix the number.'};
+  return {q:'What is the nth term of '+terms.join(', ')+', ...?', correct:form, wrong:wrongs.slice(0,3), exp:'The terms '+terms.join(', ')+' go up by '+d+' each time, so start with '+d+'n. When n = 1, '+d+'n = '+d+', so adjust by '+mn(c)+'. The nth term is '+form+'.', hint:'Difference \u00d7 n, then fix the number.'};
 });
 gen('maths','Times tables and BIDMAS','Times tables and BIDMAS',()=>{
   const kind=pickr(['x','div','bidmas']);
   if(kind==='x'){ const a=ri(3,12), b=ri(3,12), ans=a*b; return {q:'What is '+a+' \u00d7 '+b+'?', correct:ans, wrong:numOpts(ans), exp:a+' \u00d7 '+b+' = '+ans+'.', hint:'Use a times table you know well, then adjust.'}; }
   if(kind==='div'){ const a=ri(3,12), b=ri(3,12), ans=a; return {q:'What is '+a*b+' \u00f7 '+b+'?', correct:ans, wrong:numOpts(ans), exp:b+' \u00d7 '+a+' = '+a*b+'.', hint:'Think of the times table backwards.'}; }
   const a=ri(2,9), b=ri(2,9), c=ri(2,9), ans=a+b*c, w=uniq([(a+b)*c, ans+1, ans-1, ans+2, ans-2, ans+3].filter(v=>v!==ans)).slice(0,3);
-  return {q:'Work out '+a+' + '+b+' \u00d7 '+c, correct:ans, wrong:w, exp:'BIDMAS: multiply first. '+b+' \u00d7 '+c+' = '+b*c+', then add '+a+'.', hint:'BIDMAS: multiplication before addition.'};
+  return {q:'Work out '+a+' + '+b+' \u00d7 '+c, correct:ans, wrong:w, exp:'BIDMAS: multiply first. '+b+' \u00d7 '+c+' = '+b*c+', then add '+a+': '+a+' + '+b*c+' = '+ans+'.', hint:'BIDMAS: multiplication before addition.'};
 });
 gen('maths','Rounding','Rounding',()=>{
   const n=ri(1000,9999), x=(n/1000).toFixed(3), ans=(Math.round(n/100)/10).toFixed(1);
   const wr=uniq([(Math.floor(n/100)/10).toFixed(1), (Math.round(n/10)/100).toFixed(2), (Math.ceil(n/100)/10).toFixed(1), (Math.round(n/1000)).toFixed(0)+'.0']).filter(v=>v!==ans);
   while(wr.length<3) wr.push((parseFloat(ans)+0.1*(wr.length+2)).toFixed(1));
-  return {q:'Round '+x+' to 1 decimal place', correct:ans, wrong:wr.slice(0,3), exp:'Look at the second decimal place. 5 or more rounds up.', hint:'Look at the digit after the one you keep.'};
+  return {q:'Round '+x+' to 1 decimal place', correct:ans, wrong:wr.slice(0,3), exp:'Round '+x+' to 1 decimal place. The digit after the first decimal place is '+x.split('.')[1][1]+'. '+(Number(x.split('.')[1][1])>=5?'That is 5 or more, so round the first decimal place up: '+ans+'.':'That is less than 5, so the first decimal place stays the same: '+ans+'.'), hint:'Look at the digit after the one you keep.'};
 });
 gen('maths','Angles','Angles',()=>{
   if(Math.random()<0.5){ const a=ri(20,160), ans=180-a; return {q:'Angles on a straight line add to 180\u00b0. One angle is '+a+'\u00b0. What is the other?', correct:ans+'\u00b0', wrong:numOpts(ans,v=>v+'\u00b0'), exp:'180 \u2212 '+a+' = '+ans+'.', hint:'A straight line is 180\u00b0.'}; }
@@ -4932,25 +4969,25 @@ const genBT = (t) => GENS[GENS.length-1].bt = t;
 gen('maths','Coordinates','Coordinates',()=>{
   const v=ri(0,4), x=nz(-8,8), y=nz(-8,8);
   if(v===0){ const r=ri(1,8), u=ri(1,8), sx=pickr([1,-1]), sy=pickr([1,-1]), a=pt(sx*r,sy*u);
-    return {q:'A point is '+r+' '+(sx>0?'right':'left')+' and '+u+' '+(sy>0?'up':'down')+' from the origin. What are its coordinates?', correct:a, wrong:pick3(a,[pt(-sx*r,sy*u),pt(sx*r,-sy*u),pt(-sx*r,-sy*u)],k=>pt(r+k,u)), exp:'Right and up are positive. Left and down are negative. Write (x, y).', hint:'x is across, y is up or down.'}; }
-  if(v===1){ const a=pt(x,-y); return {q:'The point '+pt(x,y)+' is reflected in the x-axis. What are its new coordinates?', correct:a, wrong:pick3(a,[pt(-x,y),pt(-x,-y),pt(x,y),pt(y,x)],k=>pt(x+k,y)), exp:'Reflecting in the x-axis changes the sign of y.', hint:'The x-axis is the horizontal line. The point flips up or down.'}; }
-  if(v===2){ const a=pt(-x,y); return {q:'The point '+pt(x,y)+' is reflected in the y-axis. What are its new coordinates?', correct:a, wrong:pick3(a,[pt(x,-y),pt(-x,-y),pt(x,y),pt(y,x)],k=>pt(x,y+k)), exp:'Reflecting in the y-axis changes the sign of x.', hint:'The y-axis is the vertical line. The point flips left or right.'}; }
+    return {q:'A point is '+r+' '+(sx>0?'right':'left')+' and '+u+' '+(sy>0?'up':'down')+' from the origin. What are its coordinates?', correct:a, wrong:pick3(a,[pt(-sx*r,sy*u),pt(sx*r,-sy*u),pt(-sx*r,-sy*u)],k=>pt(r+k,u)), exp:'x: '+r+' '+(sx>0?'right':'left')+' means x = '+mn(sx*r)+'. y: '+u+' '+(sy>0?'up':'down')+' means y = '+mn(sy*u)+'. Write (x, y): '+a+'.', hint:'x is across, y is up or down.'}; }
+  if(v===1){ const a=pt(x,-y); return {q:'The point '+pt(x,y)+' is reflected in the x-axis. What are its new coordinates?', correct:a, wrong:pick3(a,[pt(-x,y),pt(-x,-y),pt(x,y),pt(y,x)],k=>pt(x+k,y)), exp:'Reflecting in the x-axis keeps x the same and changes the sign of y. '+pt(x,y)+' becomes '+a+'.', hint:'The x-axis is the horizontal line. The point flips up or down.'}; }
+  if(v===2){ const a=pt(-x,y); return {q:'The point '+pt(x,y)+' is reflected in the y-axis. What are its new coordinates?', correct:a, wrong:pick3(a,[pt(x,-y),pt(-x,-y),pt(x,y),pt(y,x)],k=>pt(x,y+k)), exp:'Reflecting in the y-axis keeps y the same and changes the sign of x. '+pt(x,y)+' becomes '+a+'.', hint:'The y-axis is the vertical line. The point flips left or right.'}; }
   if(v===3){ const x1=ri(-6,6), y1=ri(-6,6), x2=x1+2*nz(-4,4), y2=y1+2*nz(-4,4), mx=(x1+x2)/2, my=(y1+y2)/2, a=pt(mx,my);
-    return {q:'What is the midpoint of '+pt(x1,y1)+' and '+pt(x2,y2)+'?', correct:a, wrong:pick3(a,[pt(x1+x2,y1+y2),pt((x2-x1)/2,(y2-y1)/2),pt(mx+1,my),pt(mx,my-1)],k=>pt(mx+k,my+k)), exp:'Add the x values and halve. Add the y values and halve.', hint:'Find the mean of the x values and the mean of the y values.'}; }
+    return {q:'What is the midpoint of '+pt(x1,y1)+' and '+pt(x2,y2)+'?', correct:a, wrong:pick3(a,[pt(x1+x2,y1+y2),pt((x2-x1)/2,(y2-y1)/2),pt(mx+1,my),pt(mx,my-1)],k=>pt(mx+k,my+k)), exp:'Add the x values and halve: ('+mn(x1)+' + '+mn(x2)+') \u00f7 2 = '+mn(mx)+'. Add the y values and halve: ('+mn(y1)+' + '+mn(y2)+') \u00f7 2 = '+mn(my)+'. The midpoint is '+a+'.', hint:'Find the mean of the x values and the mean of the y values.'}; }
   const a = x>0&&y>0 ? 'Top right' : x<0&&y>0 ? 'Top left' : x<0&&y<0 ? 'Bottom left' : 'Bottom right';
-  return {q:'Which part of the grid is '+pt(x,y)+' in?', correct:a, wrong:['Top right','Top left','Bottom left','Bottom right'].filter(z=>z!==a), exp:'x is '+(x>0?'positive, so right':'negative, so left')+'. y is '+(y>0?'positive, so up':'negative, so down')+'.', hint:'Positive x is right. Positive y is up.'};
+  return {q:'Which part of the grid is '+pt(x,y)+' in?', correct:a, wrong:['Top right','Top left','Bottom left','Bottom right'].filter(z=>z!==a), exp:'x is '+(x>0?'positive, so right':'negative, so left')+'. y is '+(y>0?'positive, so up':'negative, so down')+'. So '+pt(x,y)+' is in the '+a.toLowerCase()+' part of the grid.', hint:'Positive x is right. Positive y is up.'};
 }); genBT('Coordinates');
 
 gen('maths','Transformations','Transformations',()=>{
   const v=ri(0,4), x=nz(-6,6), y=nz(-6,6);
   if(v===0){ const a=nz(-5,5), b=nz(-5,5), ans=pt(x+a,y+b);
-    return {q:'The point '+pt(x,y)+' is translated '+Math.abs(a)+' '+(a>0?'right':'left')+' and '+Math.abs(b)+' '+(b>0?'up':'down')+'. Where does it land?', correct:ans, wrong:pick3(ans,[pt(x-a,y+b),pt(x+a,y-b),pt(x-a,y-b),pt(x+b,y+a)],k=>pt(x+a+k,y+b)), exp:'Right and up add. Left and down subtract.', hint:'Change x for left or right, and y for up or down.'}; }
+    return {q:'The point '+pt(x,y)+' is translated '+Math.abs(a)+' '+(a>0?'right':'left')+' and '+Math.abs(b)+' '+(b>0?'up':'down')+'. Where does it land?', correct:ans, wrong:pick3(ans,[pt(x-a,y+b),pt(x+a,y-b),pt(x-a,y-b),pt(x+b,y+a)],k=>pt(x+a+k,y+b)), exp:'x: '+mn(x)+' '+(a>0?'+':'\u2212')+' '+Math.abs(a)+' = '+mn(x+a)+' ('+Math.abs(a)+' '+(a>0?'right':'left')+'). y: '+mn(y)+' '+(b>0?'+':'\u2212')+' '+Math.abs(b)+' = '+mn(y+b)+' ('+Math.abs(b)+' '+(b>0?'up':'down')+'). It lands on '+ans+'.', hint:'Change x for left or right, and y for up or down.'}; }
   if(v===1){ const rot=pickr([['90\u00b0 clockwise',pt(y,-x)],['90\u00b0 anticlockwise',pt(-y,x)],['180\u00b0',pt(-x,-y)]]);
-    return {q:'The point '+pt(x,y)+' is rotated '+rot[0]+' about the origin. Where does it land?', correct:rot[1], wrong:pick3(rot[1],[pt(y,-x),pt(-y,x),pt(-x,-y),pt(x,y)],k=>pt(x+k,y)), exp:'A 180\u00b0 turn changes both signs. A quarter turn swaps x and y and changes one sign.', hint:'Try turning your page. A half turn changes both signs.'}; }
+    return {q:'The point '+pt(x,y)+' is rotated '+rot[0]+' about the origin. Where does it land?', correct:rot[1], wrong:pick3(rot[1],[pt(y,-x),pt(-y,x),pt(-x,-y),pt(x,y)],k=>pt(x+k,y)), exp:(rot[0]==='180\u00b0'?'A 180\u00b0 turn changes both signs: ':rot[0].indexOf('anticlockwise')>=0?'A 90\u00b0 anticlockwise turn changes (x, y) into (\u2212y, x): ':'A 90\u00b0 clockwise turn changes (x, y) into (y, \u2212x): ')+pt(x,y)+' becomes '+rot[1]+'.', hint:'Try turning your page. A half turn changes both signs.'}; }
   if(v===2){ const k=ri(2,4), ans=pt(k*x,k*y);
-    return {q:'The point '+pt(x,y)+' is enlarged by scale factor '+k+' from the origin. Where does it land?', correct:ans, wrong:pick3(ans,[pt(x+k,y+k),pt(k*x,y),pt(x,k*y),pt(k*k*x,k*k*y)],j=>pt(k*x+j,k*y)), exp:'Multiply both coordinates by '+k+'.', hint:'Multiply every coordinate by the scale factor.'}; }
+    return {q:'The point '+pt(x,y)+' is enlarged by scale factor '+k+' from the origin. Where does it land?', correct:ans, wrong:pick3(ans,[pt(x+k,y+k),pt(k*x,y),pt(x,k*y),pt(k*k*x,k*k*y)],j=>pt(k*x+j,k*y)), exp:'Multiply both coordinates by '+k+': '+mn(x)+' \u00d7 '+k+' = '+mn(k*x)+' and '+mn(y)+' \u00d7 '+k+' = '+mn(k*y)+'. It lands on '+ans+'.', hint:'Multiply every coordinate by the scale factor.'}; }
   if(v===3){ const s=ri(2,9), k=ri(2,4), ans=s*k;
-    return {q:'A square has sides of '+s+' cm. It is enlarged by scale factor '+k+'. What is the new side length?', correct:ans+' cm', wrong:posOpts(ans,n=>n+' cm'), exp:s+' \u00d7 '+k+' = '+ans+' cm.', hint:'Lengths are multiplied by the scale factor.'}; }
+    return {q:'A square has sides of '+s+' cm. It is enlarged by scale factor '+k+'. What is the new side length?', correct:ans+' cm', wrong:posOpts(ans,n=>n+' cm'), exp:'Lengths are multiplied by the scale factor: '+s+' \u00d7 '+k+' = '+ans+' cm.', hint:'Lengths are multiplied by the scale factor.'}; }
   const s=ri(2,6), k=ri(2,3), ans=s*k*s*k;
   return {q:'A square has sides of '+s+' cm. It is enlarged by scale factor '+k+'. What is the area of the new square?', correct:ans+' cm\u00b2', wrong:posOpts(ans,n=>n+' cm\u00b2'), exp:'The new side is '+s*k+' cm. '+s*k+' \u00d7 '+s*k+' = '+ans+' cm\u00b2.', hint:'Find the new side first, then the area.'};
 }); genBT('Transformations');
@@ -4959,22 +4996,22 @@ gen('maths','Place value','Place value',()=>{
   const v=ri(0,3);
   if(v===0){ const dp=pickr([1,2]), m=ri(11,999), k=ri(1,3), mul=Math.random()<0.5, ans=mul?fmtScaled(m,dp-k):fmtScaled(m,dp+k), shown=fmtScaled(m,dp), f=10**k;
     const wrongs=pick3(ans,[mul?fmtScaled(m,dp+k):fmtScaled(m,dp-k),fmtScaled(m,dp-k+1),fmtScaled(m,dp+k+1),fmtScaled(m,dp-k-1)],j=>fmtScaled(m,dp+j+4));
-    return {q:'What is '+shown+' '+(mul?'\u00d7':'\u00f7')+' '+f.toLocaleString('en-GB')+'?', correct:ans, wrong:wrongs, exp:'Every digit moves '+k+' place'+(k>1?'s':'')+' '+(mul?'to the left':'to the right')+'.', hint:(mul?'Multiplying':'Dividing')+' by '+f+' moves the digits '+k+' place'+(k>1?'s':'')+'.'}; }
+    return {q:'What is '+shown+' '+(mul?'\u00d7':'\u00f7')+' '+f.toLocaleString('en-GB')+'?', correct:ans, wrong:wrongs, exp:shown+' '+(mul?'\u00d7':'\u00f7')+' '+f.toLocaleString('en-GB')+': every digit moves '+k+' place'+(k>1?'s':'')+' '+(mul?'to the left':'to the right')+'. The answer is '+ans+'.', hint:(mul?'Multiplying':'Dividing')+' by '+f+' moves the digits '+k+' place'+(k>1?'s':'')+'.'}; }
   if(v===1){ const n=ri(1200,98999), p=pickr([10,100,1000]), ans=Math.round(n/p)*p;
-    return {q:'Round '+n.toLocaleString('en-GB')+' to the nearest '+p.toLocaleString('en-GB')+'.', correct:ans.toLocaleString('en-GB'), wrong:pick3(ans.toLocaleString('en-GB'),[(ans+p).toLocaleString('en-GB'),(ans-p).toLocaleString('en-GB'),(Math.floor(n/p)*p).toLocaleString('en-GB'),(Math.ceil(n/p)*p).toLocaleString('en-GB')],j=>((ans+p*(j+1)).toLocaleString('en-GB'))), exp:'Look at the digit to the right. 5 or more rounds up.', hint:'Look at the digit just after the one you are rounding to.'}; }
-  if(v===2){ let n=ri(1000,9999); const s=String(n), pos=ri(0,3), d=Number(s[3-pos]); if(d===0){ n=n+ (10**pos); } const s2=String(n), d2=Number(s2[3-pos]), val=d2*10**pos;
-    return {q:'What is the value of the digit '+d2+' in '+n.toLocaleString('en-GB')+'?', correct:val.toLocaleString('en-GB'), wrong:pick3(val.toLocaleString('en-GB'),[String(d2),(val*10).toLocaleString('en-GB'),(val/10>=1?val/10:val*100).toLocaleString('en-GB'),(val*100).toLocaleString('en-GB')],j=>String(d2*(j+3))), exp:'The digit is in the '+['units','tens','hundreds','thousands'][pos]+' column.', hint:'Work out which column the digit is in.'}; }
+    return {q:'Round '+n.toLocaleString('en-GB')+' to the nearest '+p.toLocaleString('en-GB')+'.', correct:ans.toLocaleString('en-GB'), wrong:pick3(ans.toLocaleString('en-GB'),[(ans+p).toLocaleString('en-GB'),(ans-p).toLocaleString('en-GB'),(Math.floor(n/p)*p).toLocaleString('en-GB'),(Math.ceil(n/p)*p).toLocaleString('en-GB')],j=>((ans+p*(j+1)).toLocaleString('en-GB'))), exp:'Look at the digit to the right of the '+({10:'tens',100:'hundreds',1000:'thousands'})[p]+' place: it is '+Math.floor((n%p)/(p/10))+'. '+(Math.floor((n%p)/(p/10))>=5?'That is 5 or more, so round up: ':'That is less than 5, so round down: ')+ans.toLocaleString('en-GB')+'.', hint:'Look at the digit just after the one you are rounding to.'}; }
+  if(v===2){ let n, pos, d2, guard=0; do{ n=ri(1000,9999); pos=ri(0,3); d2=Number(String(n)[3-pos]); }while((d2===0 || String(n).split(String(d2)).length-1!==1) && ++guard<400); const val=d2*10**pos;
+    return {q:'What is the value of the digit '+d2+' in '+n.toLocaleString('en-GB')+'?', correct:val.toLocaleString('en-GB'), wrong:pick3(val.toLocaleString('en-GB'),[String(d2),(val*10).toLocaleString('en-GB'),(val/10>=1?val/10:val*100).toLocaleString('en-GB'),(val*100).toLocaleString('en-GB')],j=>String(d2*(j+3))), exp:'In '+n.toLocaleString('en-GB')+', the '+d2+' is in the '+['units','tens','hundreds','thousands'][pos]+' column, so its value is '+d2+' × '+(10**pos).toLocaleString('en-GB')+' = '+val.toLocaleString('en-GB')+'.', hint:'Find which column the '+d2+' is in: units, tens, hundreds or thousands.'}; }
   const set=shuffle([ri(1,999),ri(1,999),ri(1,999),ri(1,999)]); const uq=uniq(set); if(uq.length<4){ uq.push(1000+ri(1,9),2000+ri(1,9),3000+ri(1,9),4000+ri(1,9)); }
   const four=uq.slice(0,4), big=Math.max(...four), ans=fmtScaled(big,3);
-  return {q:'Which is the largest? '+four.map(z=>fmtScaled(z,3)).join(', '), correct:ans, wrong:four.filter(z=>z!==big).map(z=>fmtScaled(z,3)), exp:'Compare the digits from the left, starting with the tenths.', hint:'Line the decimals up and compare digit by digit from the left.'};
+  return {q:'Which is the largest? '+four.map(z=>fmtScaled(z,3)).join(', '), correct:ans, wrong:four.filter(z=>z!==big).map(z=>fmtScaled(z,3)), exp:'Write them with the same number of decimal places so they line up: '+four.map(z=>fmtScaled(z,3)).join(', ')+'. Compare the digits from the left, starting with the tenths. The largest is '+ans+'.', hint:'Line the decimals up and compare digit by digit from the left.'};
 }); genBT('Place value');
 
 gen('maths','Decimals','Decimals',()=>{
   const v=ri(0,3); let q, ai, dp, exp, hint;
-  if(v===0){ const a=ri(11,999), b=ri(11,999); ai=a+b; dp=2; q=fmtScaled(a,2)+' + '+fmtScaled(b,2); exp='Line up the decimal points and add.'; hint='Line up the decimal points.'; }
-  else if(v===1){ const a=ri(200,999), b=ri(11,a-1); ai=a-b; dp=2; q=fmtScaled(a,2)+' \u2212 '+fmtScaled(b,2); exp='Line up the decimal points and subtract.'; hint='Line up the decimal points.'; }
-  else if(v===2){ const a=ri(2,49), b=ri(2,9); ai=a*b; dp=2; q=fmtScaled(a,1)+' \u00d7 '+fmtScaled(b,1); exp='Multiply '+a+' \u00d7 '+b+' = '+a*b+', then put in 2 decimal places.'; hint='Multiply without the points, then count the decimal places.'; }
-  else { const r=ri(2,60), b=ri(2,9); ai=r; dp=1; q=fmtScaled(r*b,1)+' \u00f7 '+b; exp='Divide as normal and keep the decimal point in line.'; hint='Divide as usual. The decimal point stays in the same place.'; }
+  if(v===0){ const a=ri(11,999), b=ri(11,999); ai=a+b; dp=2; q=fmtScaled(a,2)+' + '+fmtScaled(b,2); exp='Line up the decimal points and add: '+fmtScaled(a,2)+' + '+fmtScaled(b,2)+' = '+fmtScaled(a+b,2)+'.'; hint='Line up the decimal points.'; }
+  else if(v===1){ const a=ri(200,999), b=ri(11,a-1); ai=a-b; dp=2; q=fmtScaled(a,2)+' \u2212 '+fmtScaled(b,2); exp='Line up the decimal points and subtract: '+fmtScaled(a,2)+' \u2212 '+fmtScaled(b,2)+' = '+fmtScaled(a-b,2)+'.'; hint='Line up the decimal points.'; }
+  else if(v===2){ const a=ri(2,49), b=ri(2,9); ai=a*b; dp=2; q=fmtScaled(a,1)+' \u00d7 '+fmtScaled(b,1); exp=fmtScaled(a,1)+' \u00d7 '+fmtScaled(b,1)+': ignore the decimal points: '+a+' \u00d7 '+b+' = '+a*b+'. Each number has 1 decimal place, so the answer has 2: '+fmtScaled(a*b,2)+'.'; hint='Multiply without the points, then count the decimal places.'; }
+  else { const r=ri(2,60), b=ri(2,9); ai=r; dp=1; q=fmtScaled(r*b,1)+' \u00f7 '+b; exp=fmtScaled(r*b,1)+' \u00f7 '+b+': ignore the decimal point: '+r*b+' \u00f7 '+b+' = '+r+'. The number being divided has 1 decimal place, so the answer has 1: '+fmtScaled(r,1)+'.'; hint='Divide as usual. The decimal point stays in the same place.'; }
   return {q:'What is '+q+'?', correct:fmtScaled(ai,dp), wrong:posOpts(ai,n=>fmtScaled(n,dp)), exp, hint};
 }); genBT('Decimals');
 
@@ -4983,11 +5020,11 @@ gen('maths','Fractions','Fractions',()=>{
   if(v===0){ const d=pickr([2,3,4,5]), n=ri(1,d-1), k=ri(2,5), ans=n*k;
     return {q:n+'/'+d+' = ?/'+(d*k), correct:ans, wrong:posOpts(ans), exp:'Multiply top and bottom by '+k+'. '+n+' \u00d7 '+k+' = '+ans+'.', hint:'What did the bottom number get multiplied by?'}; }
   if(v===1){ const g=ri(2,6), pair=pickr([[1,2],[1,3],[2,3],[3,4],[2,5],[3,5],[3,8],[5,6]]), n=pair[0]*g, d=pair[1]*g, ans=fr(n,d);
-    return {q:'Simplify '+n+'/'+d, correct:ans, wrong:pick3(ans,[fr(n,d)===n+'/'+d?'1/2':n/g+'/'+d,pair[0]+'/'+(pair[1]+1),(pair[0]+1)+'/'+pair[1],pair[1]+'/'+pair[0],n+'/'+(d-1)],j=>(pair[0]+j+1)+'/'+(pair[1]+j+2)), exp:'Divide top and bottom by '+g+'.', hint:'Find the biggest number that goes into both.'}; }
+    return {q:'Simplify '+n+'/'+d, correct:ans, wrong:pick3(ans,[fr(n,d)===n+'/'+d?'1/2':n/g+'/'+d,pair[0]+'/'+(pair[1]+1),(pair[0]+1)+'/'+pair[1],pair[1]+'/'+pair[0],n+'/'+(d-1)],j=>(pair[0]+j+1)+'/'+(pair[1]+j+2)), exp:'Divide top and bottom by '+g+': '+n+' \u00f7 '+g+' = '+n/g+' and '+d+' \u00f7 '+g+' = '+d/g+'. So '+n+'/'+d+' = '+ans+'.', hint:'Find the biggest number that goes into both.'}; }
   if(v===2){ const d1=pickr([2,3,4,6]), d2=pickr([2,3,4,6]), n1=ri(1,d1-1), n2=ri(1,d2-1), L=d1*d2/gcd(d1,d2), top=n1*(L/d1)+n2*(L/d2), ans=fr(top,L);
     return {q:'What is '+n1+'/'+d1+' + '+n2+'/'+d2+'?', correct:ans, wrong:pick3(ans,[fr(n1+n2,d1+d2),fr(top+1,L),fr(top,L+d1),fr(Math.abs(n1*(L/d1)-n2*(L/d2))||1,L)],j=>fr(top+j,L+2*j+1)), exp:'Use a common denominator of '+L+': '+n1*(L/d1)+'/'+L+' + '+n2*(L/d2)+'/'+L+' = '+top+'/'+L+(ans!==top+'/'+L?', which simplifies to '+ans:'')+'.', hint:'Make the bottom numbers the same first. Never add the bottoms.'}; }
   const d=pickr([4,5,8,10]), w=ri(1,4), n=ri(1,d-1), top=w*d+n;
-  return {q:'Write '+top+'/'+d+' as a mixed number.', correct:w+' '+fr(n,d).replace(/^(\d+)\/(\d+)$/,'$1/$2'), wrong:pick3(w+' '+fr(n,d),[(w+1)+' '+fr(n,d),w+' '+fr(d-n,d),(w-1>0?w-1:w+2)+' '+fr(n,d),n+' '+w+'/'+d],j=>(w+j+1)+' '+fr(n,d)), exp:top+' \u00f7 '+d+' = '+w+' remainder '+n+'.', hint:'Divide the top by the bottom. The remainder goes over the bottom.'};
+  return {q:'Write '+top+'/'+d+' as a mixed number.', correct:w+' '+fr(n,d).replace(/^(\d+)\/(\d+)$/,'$1/$2'), wrong:pick3(w+' '+fr(n,d),[(w+1)+' '+fr(n,d),w+' '+fr(d-n,d),(w-1>0?w-1:w+2)+' '+fr(n,d),n+' '+w+'/'+d],j=>(w+j+1)+' '+fr(n,d)), exp:top+' \u00f7 '+d+' = '+w+' remainder '+n+', so it is '+w+' whole'+(w>1?'s':'')+' and '+fr(n,d)+' left: '+w+' '+fr(n,d)+'.', hint:'Divide the top by the bottom. The remainder goes over the bottom.'};
 }); genBT('Fractions');
 
 gen('maths','Percentage change','Percentage change',()=>{
@@ -5022,19 +5059,19 @@ gen('maths','Powers and roots','Powers and roots',()=>{
 gen('maths','Units and measures','Units and measures',()=>{
   const v=ri(0,2);
   if(v===0){ const u=pickr([['km','m',1000],['kg','g',1000],['l','ml',1000],['m','cm',100],['cm','mm',10]]), x10=ri(11,99), ans=x10*u[2]/10;
-    return {q:'What is '+fmtScaled(x10,1)+' '+u[0]+' in '+u[1]+'?', correct:ans.toLocaleString('en-GB'), wrong:pick3(ans.toLocaleString('en-GB'),[(ans*10).toLocaleString('en-GB'),(ans/10).toLocaleString('en-GB'),(ans*100).toLocaleString('en-GB')],j=>String(ans+j)), exp:'1 '+u[0]+' = '+u[2]+' '+u[1]+', so multiply by '+u[2]+'.', hint:'Going from a big unit to a small unit means multiplying.'}; }
+    return {q:'What is '+fmtScaled(x10,1)+' '+u[0]+' in '+u[1]+'?', correct:ans.toLocaleString('en-GB'), wrong:pick3(ans.toLocaleString('en-GB'),[(ans*10).toLocaleString('en-GB'),(ans/10).toLocaleString('en-GB'),(ans*100).toLocaleString('en-GB')],j=>String(ans+j)), exp:'1 '+u[0]+' = '+u[2]+' '+u[1]+', so multiply by '+u[2]+': '+fmtScaled(x10,1)+' \u00d7 '+u[2]+' = '+ans.toLocaleString('en-GB')+' '+u[1]+'.', hint:'Going from a big unit to a small unit means multiplying.'}; }
   if(v===1){ const u=pickr([['g','kg',1000],['ml','l',1000],['cm','m',100],['m','km',1000],['mm','cm',10]]), a10=ri(11,99), amt=a10*u[2]/10;
-    return {q:'What is '+amt.toLocaleString('en-GB')+' '+u[0]+' in '+u[1]+'?', correct:fmtScaled(a10,1), wrong:pick3(fmtScaled(a10,1),[fmtScaled(a10,0),fmtScaled(a10,2),fmtScaled(a10,-1)],j=>fmtScaled(a10+j,1)), exp:u[u.length-1]+' '+u[0]+' makes 1 '+u[1]+', so divide by '+u[2]+'.', hint:'Going from a small unit to a big unit means dividing.'}; }
+    return {q:'What is '+amt.toLocaleString('en-GB')+' '+u[0]+' in '+u[1]+'?', correct:fmtScaled(a10,1), wrong:pick3(fmtScaled(a10,1),[fmtScaled(a10,0),fmtScaled(a10,2),fmtScaled(a10,-1)],j=>fmtScaled(a10+j,1)), exp:u[2]+' '+u[0]+' makes 1 '+u[1]+', so divide by '+u[2]+': '+amt.toLocaleString('en-GB')+' \u00f7 '+u[2]+' = '+fmtScaled(a10,1)+' '+u[1]+'.', hint:'Going from a small unit to a big unit means dividing.'}; }
   const h=ri(1,5), extra=pickr([[0.25,15],[0.5,30],[0.75,45]]), ans=h*60+extra[1];
-  return {q:'How many minutes are in '+(h+extra[0])+' hours?', correct:ans, wrong:posOpts(ans), exp:h+' \u00d7 60 = '+h*60+', plus '+extra[1]+' minutes = '+ans+'.', hint:'There are 60 minutes in an hour.'};
+  return {q:'How many minutes are in '+(h+extra[0])+' hours?', correct:ans, wrong:posOpts(ans), exp:(h+extra[0])+' hours is '+h+' hour'+(h>1?'s':'')+' and '+extra[1]+' minutes. '+h+' \u00d7 60 = '+h*60+', plus '+extra[1]+' = '+ans+' minutes.', hint:'There are 60 minutes in an hour.'};
 }); genBT('Units and measures');
 
 gen('maths','Probability','Probability',()=>{
   const v=ri(0,3);
-  if(v===0){ const r=ri(1,6), b=ri(1,6), ans=fr(r,r+b); return {q:'A bag has '+r+' red and '+b+' blue counters. What is the probability of picking a red counter?', correct:ans, wrong:pick3(ans,[fr(b,r+b),fr(r,b),fr(1,r+b),fr(r+1,r+b)],j=>fr(j,r+b+j)), exp:r+' red out of '+(r+b)+' counters'+(ans!==r+'/'+(r+b)?', which simplifies to '+ans:'')+'.', hint:'Wanted outcomes on top, all outcomes on the bottom.'}; }
+  if(v===0){ const r=ri(1,6), b=ri(1,6), ans=fr(r,r+b); return {q:'A bag has '+r+' red and '+b+' blue counters. What is the probability of picking a red counter?', correct:ans, wrong:pick3(ans,[fr(b,r+b),fr(r,b),fr(1,r+b),fr(r+1,r+b)],j=>fr(j,r+b+j)), exp:r+' red out of '+(r+b)+' counters, so the probability is '+r+'/'+(r+b)+(ans!==r+'/'+(r+b)?', which simplifies to '+ans:'')+'.', hint:'Wanted outcomes on top, all outcomes on the bottom.'}; }
   if(v===1){ const o=pickr([['an even number',3],['a number greater than 4',2],['a number less than 3',2],['a 5',1],['a number that is not 6',5]]), ans=fr(o[1],6);
-    return {q:'A fair six-sided dice is rolled. What is the probability of rolling '+o[0]+'?', correct:ans, wrong:pick3(ans,[fr(o[1]+1,6),fr(o[1],5),fr(6-o[1],6),fr(1,o[1]+2)],j=>fr(j,7)), exp:o[1]+' of the 6 faces work'+(ans!==o[1]+'/6'?', which simplifies to '+ans:'')+'.', hint:'List the faces that work, then put that number over 6.'}; }
-  if(v===2){ const n=pickr([4,5,8,10]), m=ri(1,n-1), ans=fr(m,n); return {q:'A spinner has '+n+' equal sections. '+m+' of them are green. What is the probability of landing on green?', correct:ans, wrong:pick3(ans,[fr(n-m,n),fr(m,n-m),fr(m+1,n),fr(1,n)],j=>fr(j,n+j)), exp:m+' out of '+n+(ans!==m+'/'+n?', which simplifies to '+ans:'')+'.', hint:'Green sections over all sections.'}; }
+    return {q:'A fair six-sided dice is rolled. What is the probability of rolling '+o[0]+'?', correct:ans, wrong:pick3(ans,[fr(o[1]+1,6),fr(o[1],5),fr(6-o[1],6),fr(1,o[1]+2)],j=>fr(j,7)), exp:o[1]+' of the 6 faces work, so the probability is '+o[1]+'/6'+(ans!==o[1]+'/6'?', which simplifies to '+ans:'')+'.', hint:'List the faces that work, then put that number over 6.'}; }
+  if(v===2){ const n=pickr([4,5,8,10]), m=ri(1,n-1), ans=fr(m,n); return {q:'A spinner has '+n+' equal sections. '+m+' of them are green. What is the probability of landing on green?', correct:ans, wrong:pick3(ans,[fr(n-m,n),fr(m,n-m),fr(m+1,n),fr(1,n)],j=>fr(j,n+j)), exp:m+' out of '+n+' sections are green, so the probability is '+m+'/'+n+(ans!==m+'/'+n?', which simplifies to '+ans:'')+'.', hint:'Green sections over all sections.'}; }
   const p=ri(1,9), ans=fmtScaled(10-p,1);
   return {q:'The probability of rain is '+fmtScaled(p,1)+'. What is the probability of no rain?', correct:ans, wrong:pick3(ans,[fmtScaled(p,1),fmtScaled(p+10,1),fmtScaled(p*10,1),fmtScaled(100-p,2)],j=>fmtScaled(10-p+j,2)), exp:'The probabilities add up to 1, so 1 \u2212 '+fmtScaled(p,1)+' = '+ans+'.', hint:'Probabilities add up to 1.'};
 }); genBT('Probability');
@@ -5042,14 +5079,14 @@ gen('maths','Probability','Probability',()=>{
 gen('maths','Simplifying and expanding','Simplifying and expanding',()=>{
   const term=(c,l,first)=> c===0 ? '' : (first ? (c<0?'\u2212':'')+(Math.abs(c)===1?'':Math.abs(c))+l : (c<0?' \u2212 ':' + ')+(Math.abs(c)===1?'':Math.abs(c))+l);
   if(Math.random()<0.5){ const a=ri(2,6), b=ri(1,6), c=ri(1,5); let d=ri(1,5); while(d===b) d=ri(1,6)+(d===b?1:0); const A=a+c, B=b-d;
-    const ans=term(A,'a',true)+term(B,'b',false); return {q:'Simplify '+a+'a + '+b+'b + '+c+'a \u2212 '+d+'b', correct:ans, wrong:pick3(ans,[term(A,'a',true)+term(b+d,'b',false),term(a*c,'a',true)+term(B,'b',false),term(A+B,'ab',true),term(A,'a',true)+term(-B,'b',false)],j=>term(A+j,'a',true)+term(B,'b',false)), exp:'Collect the a terms: '+a+'a + '+c+'a = '+A+'a. Collect the b terms: '+b+'b \u2212 '+d+'b = '+B+'b.', hint:'Only add and subtract terms with the same letter.'}; }
+    const ans=term(A,'a',true)+term(B,'b',false); return {q:'Simplify '+a+'a + '+b+'b + '+c+'a \u2212 '+d+'b', correct:ans, wrong:pick3(ans,[term(A,'a',true)+term(b+d,'b',false),term(a*c,'a',true)+term(B,'b',false),term(A+B,'ab',true),term(A,'a',true)+term(-B,'b',false)],j=>term(A+j,'a',true)+term(B,'b',false)), exp:'Collect the a terms: '+a+'a + '+c+'a = '+A+'a. Collect the b terms: '+b+'b \u2212 '+d+'b = '+mn(B)+'b. Put them together: '+ans+'.', hint:'Only add and subtract terms with the same letter.'}; }
   const k=ri(2,9), m=ri(1,9), plus=Math.random()<0.5, ans=k+'x'+(plus?' + ':' \u2212 ')+k*m;
-  return {q:'Expand '+k+'(x '+(plus?'+':'\u2212')+' '+m+')', correct:ans, wrong:pick3(ans,[k+'x'+(plus?' + ':' \u2212 ')+m,'x'+(plus?' + ':' \u2212 ')+k*m,k+'x'+(plus?' \u2212 ':' + ')+k*m,(k+1)+'x'+(plus?' + ':' \u2212 ')+k*m],j=>k+'x + '+(k*m+j)), exp:'Multiply both terms inside the bracket by '+k+'.', hint:'The number outside multiplies everything inside.'};
+  return {q:'Expand '+k+'(x '+(plus?'+':'\u2212')+' '+m+')', correct:ans, wrong:pick3(ans,[k+'x'+(plus?' + ':' \u2212 ')+m,'x'+(plus?' + ':' \u2212 ')+k*m,k+'x'+(plus?' \u2212 ':' + ')+k*m,(k+1)+'x'+(plus?' + ':' \u2212 ')+k*m],j=>k+'x + '+(k*m+j)), exp:'Multiply each term inside the bracket by '+k+': '+k+' \u00d7 x = '+k+'x and '+k+' \u00d7 '+m+' = '+k*m+'. So '+k+'(x '+(plus?'+':'\u2212')+' '+m+') = '+ans+'.', hint:'The number outside multiplies everything inside.'};
 }); genBT('Algebra');
 
 gen('maths','Ratio and proportion','Ratio and proportion',()=>{
   if(Math.random()<0.5){ const g=ri(2,7), pr=pickr([[1,2],[2,3],[3,4],[1,3],[2,5],[3,5],[1,4]]), a=pr[0]*g, b=pr[1]*g, ans=pr[0]+' : '+pr[1];
-    return {q:'Simplify the ratio '+a+' : '+b, correct:ans, wrong:pick3(ans,[pr[1]+' : '+pr[0],pr[0]+' : '+(pr[1]+1),(pr[0]+1)+' : '+pr[1],(pr[0]*2)+' : '+pr[1]],j=>(pr[0]+j)+' : '+(pr[1]+j+1)), exp:'Divide both numbers by '+g+'.', hint:'Divide both sides by the biggest number that goes into both.'}; }
+    return {q:'Simplify the ratio '+a+' : '+b, correct:ans, wrong:pick3(ans,[pr[1]+' : '+pr[0],pr[0]+' : '+(pr[1]+1),(pr[0]+1)+' : '+pr[1],(pr[0]*2)+' : '+pr[1]],j=>(pr[0]+j)+' : '+(pr[1]+j+1)), exp:'Divide both numbers by '+g+': '+a+' \u00f7 '+g+' = '+pr[0]+' and '+b+' \u00f7 '+g+' = '+pr[1]+'. So '+a+' : '+b+' = '+ans+'.', hint:'Divide both sides by the biggest number that goes into both.'}; }
   const p=pickr([2,3,4,5]), q2=p+pickr([2,3,4,5,6]), u=ri(2,9)*10, ans=u*q2, item=pickr(['flour','sugar','rice']);
   return {q:'A recipe for '+p+' people uses '+u*p+' g of '+item+'. How much is needed for '+q2+' people?', correct:ans+' g', wrong:posOpts(ans,n=>n+' g'), exp:u*p+' \u00f7 '+p+' = '+u+' g each. '+u+' \u00d7 '+q2+' = '+ans+' g.', hint:'Find the amount for one person first.'};
 }); genBT('Ratio');
@@ -5057,7 +5094,7 @@ gen('maths','Ratio and proportion','Ratio and proportion',()=>{
 gen('maths','Ordering and temperature','Ordering and temperature',()=>{
   const v=ri(0,2);
   if(v===0){ const s=uniq([ri(-9,9),ri(-9,9),ri(-9,9),ri(-9,9),ri(-9,9),ri(-9,9)]).slice(0,4); while(s.length<4){ const z=ri(-9,9); if(!s.includes(z)) s.push(z); } const small=Math.random()<0.5, ans=small?Math.min(...s):Math.max(...s);
-    return {q:'Which is the '+(small?'smallest':'largest')+'? '+s.map(mn).join(', '), correct:mn(ans), wrong:s.filter(z=>z!==ans).map(mn), exp:'On a number line, numbers further left are smaller.', hint:'Picture a number line. Negatives are to the left of zero.'}; }
+    return {q:'Which is the '+(small?'smallest':'largest')+'? '+s.map(mn).join(', '), correct:mn(ans), wrong:s.filter(z=>z!==ans).map(mn), exp:'Put them in order on a number line: '+s.slice().sort((x,y)=>x-y).map(mn).join(', ')+'. Numbers further left are smaller. The '+(small?'smallest':'largest')+' is '+mn(ans)+'.', hint:'Picture a number line. Negatives are to the left of zero.'}; }
   if(v===1){ const t=ri(-6,6), f=ri(2,9), ans=t-f; return {q:'The temperature is '+mn(t)+'\u00b0C and falls by '+f+'\u00b0C. What is it now?', correct:mn(ans)+'\u00b0C', wrong:numOpts(ans,n=>mn(n)+'\u00b0C'), exp:mn(t)+' \u2212 '+f+' = '+mn(ans)+'.', hint:'Falling means moving left on the number line.'}; }
   const t=ri(-9,-2), r=ri(t*-1+1,14), ans=t+r; return {q:'The temperature is '+mn(t)+'\u00b0C and rises by '+r+'\u00b0C. What is it now?', correct:mn(ans)+'\u00b0C', wrong:numOpts(ans,n=>mn(n)+'\u00b0C'), exp:mn(t)+' + '+r+' = '+mn(ans)+'.', hint:'Rising means moving right on the number line.'};
 }); genBT('Number');
@@ -5079,18 +5116,18 @@ gen('maths','Polygons and shapes','Polygons and shapes',()=>{
 gen('maths','Written methods','Written methods',()=>{
   const v=ri(0,2);
   if(v===0){ const b=ri(3,9); let a,qq,r; do{ a=ri(50,199); qq=Math.floor(a/b); r=a%b; }while(r===0); const ans=qq+' remainder '+r;
-    return {q:'What is '+a+' \u00f7 '+b+'? Give the remainder.', correct:ans, wrong:pick3(ans,[qq+' remainder '+(r+1),(qq+1)+' remainder '+r,qq+' remainder '+(b-r),r+' remainder '+qq],j=>(qq+j)+' remainder '+(r+j)), exp:b+' \u00d7 '+qq+' = '+b*qq+', and '+a+' \u2212 '+b*qq+' = '+r+'.', hint:'How many whole '+b+'s fit in '+a+'? What is left over?'}; }
-  if(v===1){ const a=ri(12,99), b=ri(3,9), ans=a*b; return {q:'What is '+a+' \u00d7 '+b+'?', correct:ans, wrong:posOpts(ans), exp:'Split it: '+Math.floor(a/10)*10+' \u00d7 '+b+' = '+Math.floor(a/10)*10*b+' and '+a%10+' \u00d7 '+b+' = '+(a%10)*b+'. Add them.', hint:'Split the bigger number into tens and units.'}; }
-  const a=pickr([1000,2000,500]), b=ri(101,a-11), ans=a-b; return {q:'What is '+a.toLocaleString('en-GB')+' \u2212 '+b+'?', correct:ans.toLocaleString('en-GB'), wrong:posOpts(ans,n=>n.toLocaleString('en-GB')), exp:'Count up from '+b+' to '+a.toLocaleString('en-GB')+'.', hint:'Count up from the smaller number.'};
+    return {q:'What is '+a+' \u00f7 '+b+'? Give the remainder.', correct:ans, wrong:pick3(ans,[qq+' remainder '+(r+1),(qq+1)+' remainder '+r,qq+' remainder '+(b-r),r+' remainder '+qq],j=>(qq+j)+' remainder '+(r+j)), exp:'How many whole '+b+'s fit in '+a+'? '+b+' \u00d7 '+qq+' = '+b*qq+', the biggest multiple that fits. What is left: '+a+' \u2212 '+b*qq+' = '+r+'. So '+a+' \u00f7 '+b+' = '+qq+' remainder '+r+'.', hint:'How many whole '+b+'s fit in '+a+'? What is left over?'}; }
+  if(v===1){ const a=ri(12,99), b=ri(3,9), ans=a*b; return {q:'What is '+a+' \u00d7 '+b+'?', correct:ans, wrong:posOpts(ans), exp:'Split it: '+Math.floor(a/10)*10+' \u00d7 '+b+' = '+Math.floor(a/10)*10*b+' and '+a%10+' \u00d7 '+b+' = '+(a%10)*b+'. Add them: '+Math.floor(a/10)*10*b+' + '+(a%10)*b+' = '+ans+'.', hint:'Split the bigger number into tens and units.'}; }
+  const a=pickr([1000,2000,500]), b=ri(101,a-11), ans=a-b; return {q:'What is '+a.toLocaleString('en-GB')+' \u2212 '+b+'?', correct:ans.toLocaleString('en-GB'), wrong:posOpts(ans,n=>n.toLocaleString('en-GB')), exp:'Count up from '+b+' to '+a.toLocaleString('en-GB')+': '+a.toLocaleString('en-GB')+' \u2212 '+b+' = '+ans.toLocaleString('en-GB')+'.', hint:'Count up from the smaller number.'};
 }); genBT('Operations');
 
 gen('maths','nth term problems','nth term problems',()=>{
   const v=ri(0,2), a=ri(2,9), c=ri(-3,8), form=a+'n'+(c===0?'':c>0?' + '+c:' \u2212 '+(-c));
   if(v===0){ const n=ri(6,15), ans=a*n+c; return {q:'What is the '+n+'th term of the sequence with nth term '+form+'?', correct:ans, wrong:numOpts(ans), exp:'Put n = '+n+': '+a+' \u00d7 '+n+(c===0?'':c>0?' + '+c:' \u2212 '+(-c))+' = '+ans+'.', hint:'Replace n with the term number.'}; }
   if(v===1){ const t=[a+c,2*a+c,3*a+c].join(', '); const alt=[a+c+1,2*a+c+1,3*a+c+1].join(', '), alt2=[a,2*a,3*a].join(', '), alt3=[a+c,a+c+2*a,a+c+4*a].join(', ');
-    return {q:'What are the first three terms of '+form+'?', correct:t, wrong:pick3(t,[alt,alt2,alt3,[a+c-1,2*a+c-1,3*a+c-1].join(', ')],j=>[a+c+j+1,2*a+c+j,3*a+c+j+2].join(', ')), exp:'Put n = 1, 2 and 3 in turn.', hint:'Substitute n = 1, then 2, then 3.'}; }
+    return {q:'What are the first three terms of '+form+'?', correct:t, wrong:pick3(t,[alt,alt2,alt3,[a+c-1,2*a+c-1,3*a+c-1].join(', ')],j=>[a+c+j+1,2*a+c+j,3*a+c+j+2].join(', ')), exp:'Put n = 1, 2 and 3 in turn: '+[1,2,3].map(n=>a+' \u00d7 '+n+(c===0?'':c>0?' + '+c:' \u2212 '+(-c))+' = '+(a*n+c)).join(', ')+'. The terms are '+t+'.', hint:'Substitute n = 1, then 2, then 3.'}; }
   const n=ri(4,12), val=a*n+c; if(val<=0) return {q:'What is the 5th term of '+a+'n + 1?', correct:a*5+1, wrong:numOpts(a*5+1), exp:'Put n = 5.', hint:'Replace n with 5.'};
-  return {q:'Which term of the sequence '+form+' equals '+val+'?', correct:'The '+n+'th', wrong:pick3('The '+n+'th',[ 'The '+(n+1)+'th','The '+(n-1)+'th','The '+(n+2)+'th','The '+(n*2)+'th'],j=>'The '+(n+j+3)+'th'), exp:'Solve '+form+' = '+val+' to get n = '+n+'.', hint:'Solve an equation: '+form+' = '+val+'.'};
+  return {q:'Which term of the sequence '+form+' equals '+val+'?', correct:'The '+n+'th', wrong:pick3('The '+n+'th',[ 'The '+(n+1)+'th','The '+(n-1)+'th','The '+(n+2)+'th','The '+(n*2)+'th'],j=>'The '+(n+j+3)+'th'), exp:'Solve '+form+' = '+val+': '+(c===0?'':(c>0?'subtract '+c:'add '+(-c))+' to get '+a+'n = '+(val-c)+', then ')+'divide by '+a+' to get n = '+n+'. So it is the '+n+'th term.', hint:'Solve an equation: '+form+' = '+val+'.'};
 }); genBT('Sequences');
 
 /* --- tag the original maths generators with their topic, and use the topic for stats --- */
@@ -5116,7 +5153,7 @@ const CONTS = ['Africa','Asia','Europe','North America','South America','Oceania
 const uniq4 = (correct, pool) => { const w=[]; shuffle(pool).forEach(x=>{ if(x!==correct && !w.includes(x) && w.length<3) w.push(x); }); return w; };
 gen('geography','Find the country','🗺️ Find the country',()=>{
   const c=pickr(GEOC), same=GEOC.filter(x=>x.cont===c.cont&&x.code!==c.code), pool=same.length>=3?same:GEOC;
-  return {q:'Which country is coloured pink on the map?', correct:c.name, wrong:uniq4(c.name,pool.map(x=>x.name)), map:{v:'world', z:zoomOf(c), hl:c.code}, exp:c.name+' is in '+c.cont+(c.cap?'. Its capital city is '+c.cap+'.':'.'), hint:'It is in '+c.cont+'. Look at its neighbours and its coastline.'};
+  return {q:'Which country is coloured pink on the map?', correct:c.name, wrong:uniq4(c.name,pool.map(x=>x.name)), map:{v:'world', z:zoomOf(c), hl:c.code}, exp:c.name+' is in '+contWord(c)+(c.cap?'. Its capital city is '+c.cap+'.':'.')+(TRANS_NOTE[c.code]?' '+TRANS_NOTE[c.code]:''), hint:'It is in '+contWord(c)+'. Look at its neighbours and its coastline.'};
 }); GENS[GENS.length-1].map=1; genBT('Countries and continents');
 gen('geography','Which continent?','🌍 Which continent?',()=>{
   const c=pickr(GEOC.filter(x=>!['RUS','TUR','KAZ','EGY'].includes(x.code)));
@@ -5217,7 +5254,7 @@ gen('english','Word classes','Grammar',()=>{
 const HOMOPHONES = [['I put the book over ___.','there',['their',"they're"]],['___ going to be late.',"They're",['Their','There']],['It is ___ turn to play.','their',['there',"they're"]],['I do not ___ the answer.','know',['no','now']],['There is ___ milk left.','no',['know','now']],['We went ___ the shops.','to',['too','two']],['It is ___ hot today.','too',['to','two']],['I have ___ sisters.','two',['to','too']],['The dog wagged ___ tail.','its',["it's","its'"]],['___ raining outside.',"It's",['Its',"Its'"]],['Have you lost ___ keys?','your',["you're",'you']],['___ my best friend.',"You're",['Your','You']],['She sat ___ the window.','by',['buy','bye']],['I want to ___ a new bag.','buy',['by','bye']],['The ___ was shining.','sun',['son','sum']],['We ___ a great film.','saw',['sore','sew']],['I can ___ the sea.','see',['sea','seen']],['Can you ___ the bell?','hear',['here','her']],['Come over ___.','here',['hear','her']],['I feel very ___ today.','weak',['week','wick']]];
 gen('english','Homophones','Spelling',()=>{
   const [sen,ans,w]=pickr(HOMOPHONES);
-  return {q:'Choose the correct word: '+sen, correct:ans, wrong:w, exp:'“'+ans+'” is the word that fits this sentence. Read the sentence aloud with each choice to check.', hint:'These words sound the same but have different meanings and spellings.'};
+  return {q:'Choose the correct word: '+sen, correct:ans, wrong:w, exp:homoExp(ans,w), hint:'These words sound the same but have different meanings and spellings.'};
 }); genBT('Spelling');
 
 /* =====================================================================
@@ -8007,7 +8044,7 @@ function xwMC(x, mode, rnd){ rnd=rnd||Math.random; if(mode==='s' && xwVariants(x
   else { q='How is “'+x.w+'” said? (The capitals show the stressed part.)'; correct=x.r; wrong=xshuf(xwVariants(x.r),rnd).slice(0,3); hint='Hear it, then say it out loud in syllables.'; }
   return {k:'english', topic:'Vocabulary', gen:1, id:'xw_'+mode+'_'+xh(x.w+'|'+correct), q, correct, wrong, exp:xwCap(x.w)+' ('+x.pos+') is said '+x.r+' and means '+x.m+'. Example: '+x.ex, hint, xw:x.w, src:['xw',x.w,mode]}; }
 function xwDaily(d){ d=d||today(); const x=xwOfDay(d), rnd=xrng(xh(d+'|'+x.w)), q=xwMC(x,'m',rnd); return {x, d, q, opts:xshuf([q.correct].concat(q.wrong),rnd)}; }
-function xwSay(text, slow){ try{ if(!('speechSynthesis' in window)){ toast('Sound is not available on this device. Use the letters to say it.'); return false; } speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text); u.lang='en-GB'; u.rate=slow?0.5:0.75; speechSynthesis.speak(u); return true; }catch(e){ return false; } }
+function xwSay(text, slow){ try{ if(!('speechSynthesis' in window)){ toast('Sound is not available on this device. Use the letters to say it.'); return false; } speechSynthesis.cancel(); const u=new SpeechSynthesisUtterance(text), p=vprefs(), v=readerVoice(); u.lang='en-GB'; if(v){ u.voice=v; u.lang=v.lang; } u.rate=(slow?0.5:0.75)*(p.rate/0.92); u.pitch=p.pitch; speechSynthesis.speak(u); return true; }catch(e){ return false; } }
 const xwRight = () => Object.values(S.xw||{}).filter(x=>x.c).length;
 const xwMetWords = () => { const seen=new Set(), out=[]; Object.keys(S.xw||{}).sort().reverse().forEach(d=>{ const x=XW_BY[S.xw[d].w]; if(x&&!seen.has(x.w)){ seen.add(x.w); out.push(Object.assign({d},x)); } }); return out; };
 const xwWeekWords = wk => weekDates(wk).filter(d=>d<=today()&&S.xw[d]&&XW_BY[S.xw[d].w]).map(d=>XW_BY[S.xw[d].w]);
@@ -8026,6 +8063,7 @@ function vXW(m){
    <p>A very hard word every day, such as <b>pusillanimous</b>. Guess what it means, hear how it is said, and try to use it. There are ${XW.length} extreme words. You have met <b>${met.length}</b> and worked out <b>${xwRight()}</b> of them.</p>
    <div class="card" style="margin:10px 0"><h3 style="margin-top:0">This week's test</h3><p class="muted" style="margin:0 0 6px">${wkw.length?`You have met ${wkw.length} extreme word${wkw.length===1?'':'s'} this week. The test asks what they mean and how they are said.`:'Meet an extreme word on the home page first, and then the test will use it.'}</p>${res?`<p><b>Best so far: ${res.m[0]} out of ${res.m[1]}</b></p>`:''}<button class="btn" data-act="xwtest" data-w="${wk}">🎯 Test me on this week's words</button> <button class="btn ghost" data-act="xwpractice">🧗 Practise my extreme words</button></div>
    ${past.length?`<h3>Test results</h3><div class="scroll"><table><tr><th>Week starting</th><th>Score</th></tr>${past.map(k=>`<tr><td>${new Date(k+'T12:00:00').toLocaleDateString('en-GB',{day:'numeric',month:'short'})}</td><td>${S.xt[k].m[0]} / ${S.xt[k].m[1]}</td></tr>`).join('')}</table></div>`:''}
+   <div class="card" style="margin:10px 0"><h3 style="margin-top:0">🎙️ Voice</h3><p class="muted" style="margin:0 0 6px">Do not like how the words sound? Pick a different voice. It is the same voice setting used for Mum's note, and it is saved on this device. Mum can also change the speed and pitch in the Parent Desk.</p>${(()=>{ const vs=englishVoices(), p=vprefs(), cur=readerVoice(); return vs.length?`<select id="vname" data-chg="vname" aria-label="Voice" style="font:inherit;padding:8px;border-radius:10px;max-width:100%"><option value="">Best available (${esc(cur?cur.name:'default')})</option>${vs.map(v=>`<option value="${esc(v.name)}" ${v.name===p.name?'selected':''}>${esc(v.name)} (${esc(v.lang)})</option>`).join('')}</select> <button class="btn small" data-act="xwvoicetry">▶ Try it</button>`:'<p class="muted">This device has not listed any English voices yet. Try again in a moment, or use another device.</p>'; })()}</div>
    <h3 style="margin-top:14px">My extreme words</h3>${met.length?met.map(x=>`<div class="vitem"><b>${esc(x.w)}</b> <span class="muted">(${esc(x.pos)}) ${esc(x.r)}</span> <button class="btn small ghost" data-act="xwsayw" data-w="${esc(x.w)}" aria-label="Hear ${esc(x.w)}">🔊</button><br>${esc(xwCap(x.m))}.<br><em>${esc(x.ex)}</em>${x.o?`<br><small class="muted">${esc(x.o)}</small>`:''}</div>`).join(''):'<p class="muted">You have not met any yet. Your first one is on the home page.</p>'}</section>`;
 }
 /* ---------- tests and practice ---------- */
@@ -8050,6 +8088,844 @@ const XWACTIONS = {
   xwtest:d=>startXWTest(d.w),
   xwpractice:()=>startXWPractice()
 };
+
+/* =====================================================================
+   FIXES from Jody's feedback (September 2026):
+   - countries that span two continents are explained, not just labelled
+   - every Spanish and Mandarin flashcard that has target-language text can be heard
+   - English voice: the best available voice is chosen, and it can be changed
+   ===================================================================== */
+const TRANS_NOTE = {
+ TUR:'Turkey spans two continents. Most of it, including its capital Ankara, is in Asia, and a small part is in Europe.',
+ RUS:'Russia spans two continents. Most of the land is in Asia, but most of its people, and its capital Moscow, are in Europe.',
+ KAZ:'Kazakhstan is mostly in Asia, and a small part west of the Ural River is in Europe.',
+ EGY:'Egypt is mostly in Africa, and the Sinai Peninsula is in Asia.',
+ AZE:'Azerbaijan is in the Caucasus, on the border between Europe and Asia.',
+ GEO:'Georgia is in the Caucasus, on the border between Europe and Asia.',
+ ARM:'Armenia is in the Caucasus, on the border between Europe and Asia.',
+ CYP:'Cyprus is an island that is geographically in Asia, but it is a member of the European Union.',
+ IDN:'Indonesia is mostly in Asia, and its part of New Guinea is counted as part of Oceania.'
+};
+const TRANS_CONT = { TUR:'Asia (with a small part in Europe)', RUS:'Europe and Asia', KAZ:'Asia (with a small part in Europe)', EGY:'Africa (with Sinai in Asia)' };
+const contWord = c => TRANS_CONT[c.code] || c.cont;
+CAPS.forEach(c=>{ if(TRANS_NOTE[c.code] && !String(c.hook||'').includes(TRANS_NOTE[c.code])) c.hook=(c.hook?String(c.hook).replace(/\s*$/,'')+' ':'')+TRANS_NOTE[c.code]; });
+/* ---------- flashcard sound for languages ---------- */
+const EN_STOP = /(?<![\p{L}])(the|is|are|means|mean|you|of|and|to|an|it|for|use|with|when|what|how)(?![\p{L}])/iu;
+/* Is the quoted text on the front the language being learned? "What does '…' mean?" yes. "How do you say '…'?" no, that quote is English. */
+const CARD_SRC_ENGLISH = /^(How do you (say|ask)|How would you say|Which (phrase|word) (means|is)|What is the (Spanish|Chinese|Mandarin)|Translate|Say )/i;
+function cardFrontSpeak(q){ const f=cardOf(q).f; if(q.vocab) return f.replace(/\(.*?\)/g,'').trim(); if(CARD_SRC_ENGLISH.test(f)) return ''; const m=f.match(/['‘“]([^'’”]+)['’”]/); if(!m) return ''; const t=m[1].replace(/\(.*?\)/g,'').trim(); return (/[\u4e00-\u9fff]/.test(t)||!EN_STOP.test(t))?t:''; }
+function cardBackSpeak(q){ const b=String(cardOf(q).b).split('\n')[0].replace(/\(.*?\)/g,'').trim(); return (b && !EN_STOP.test(b) && b.length<60)?b:''; }
+/* ---------- English voice: uses the SAME voice settings as Mum's note (Parent Desk), so one setting controls every English voice ---------- */
+function readerVoice(){ const p=vprefs(); return englishVoices().find(x=>x.name===p.name)||bestVoice(); }
+try{ if('speechSynthesis' in window) speechSynthesis.onvoiceschanged=()=>{ try{ if(typeof V!=='undefined' && V.name==='xwords') render(); }catch(e){} }; }catch(e){}
+const FIXACTIONS = {
+  xwvoicetry:()=>xwSay('ubiquitous. It means found everywhere.')
+};
+
+/* =====================================================================
+   WORKED SOLUTIONS (screen part). When an answer is wrong she sees:
+   what she chose, the steps for THAT question with her numbers, and a button
+   to try a similar one. The general method card for the topic folds away below.
+   ===================================================================== */
+function workSteps(exp){ return String(exp||'').split(/(?<=[.!?])\s+(?=[A-Za-z0-9(\u2212\-\u00bd\u201c"'\u2018])/).map(s=>s.trim()).filter(Boolean); }
+function workedBox(q){
+  const st=workSteps(q.exp); if(!st.length) return '';
+  const chosen=(q.chosen!=null&&q.opts&&q.opts[q.chosen]!=null)?q.opts[q.chosen]:(q.type==='typein'&&q.typed?q.typed:'');
+  const you=chosen!==''?`<p class="wk-you">You chose: <b>${esc(chosen)}</b></p>`:'';
+  const why=(typeof mistakeHint==='function')?mistakeHint(q):'';
+  const whyHTML=why?`<p class="wk-why">💭 <b>Why it may have gone wrong:</b> ${esc(why)}</p>`:'';
+  const process=st.length>=2;
+  const body=process?`<ol class="wk-steps">${st.map(s=>`<li>${esc(s)}</li>`).join('')}</ol>`:`<p style="margin:6px 0">${esc(st[0])}</p>`;
+  const sim=(q.gt&&q.gk)?`<div class="center"><button class="btn small gold" data-act="similar" data-g="${esc(q.gt)}" data-k="${esc(q.gk)}">🔁 Try a similar one</button></div>`:'';
+  return `<div class="worked"><b>${process?'🧮 How to work it out':'💡 Remember this'}</b>${you}${whyHTML}${body}${sim}</div>`;
+}
+const FIX2ACTIONS = {
+  similar:d=>{
+    const g=GENS.find(x=>x.t===d.g&&x.k===d.k); if(!g){ toast('No similar question is ready yet.'); return; }
+    const qs=genSet(g,3); if(!qs.length){ toast('No similar question is ready yet.'); return; }
+    R={kind:'practice', opts:{kind:'practice',keys:[g.k],topic:g.bt||g.t,n:qs.length}, subj:g.k, mode:S.mode, back:{name:'subject',k:g.k}, hints:0, tiers:[0,0,0,0,0],
+       qs:qs.map(q=>Object.assign({},q,{opts:shuffle([q.correct].concat(q.wrong)),done:false,ok:false})), i:0, xp:0, coins:0};
+    go('round');
+  }
+};
+
+/* =====================================================================
+   WHY MIGHT IT HAVE GONE WRONG?  Looks at the answer she actually picked and spots common slips.
+   It only speaks when her answer EXACTLY matches a known slip, so it never guesses.
+   ===================================================================== */
+const _ns = s => (String(s).replace(/(\d),(?=\d{3}(?!\d))/g,'$1').replace(/[\u2212\u2013]/g,'-').match(/-?\d+(?:\.\d+)?/g)||[]).map(Number);
+const _eq = (a,b) => Number.isFinite(a)&&Number.isFinite(b)&&Math.abs(a-b)<1e-9*Math.max(1,Math.abs(a),Math.abs(b));
+const _f = v => String(Math.round(v*1e6)/1e6).replace('-','\u2212');
+const _gcd = (a,b) => b?_gcd(b,a%b):Math.abs(a);
+const _pt = s => { const m=String(s).replace(/[\u2212\u2013]/g,'-').match(/^\(\s*(-?\d+),\s*(-?\d+)\s*\)$/); return m?[+m[1],+m[2]]:null; };
+const _fr = s => { const m=String(s).match(/^(-?\d+)\/(\d+)$/); return m?[+m[1],+m[2]]:null; };
+const _q = q => String(q.q).replace(/[\u2212\u2013]/g,'-');
+const MISTAKE_RULES = {
+ 'Rounding':(q,ch)=>{ const m=q.q.match(/Round (\d+\.\d+) to 1 decimal place/); if(!m) return ''; const x=parseFloat(m[1]), d=Number(m[1].split('.')[1][1]), c=_ns(ch)[0], fl=Math.floor(x*10+1e-9)/10, ce=Math.ceil(x*10-1e-9)/10;
+   if(/\.\d\d+$/.test(ch)) return 'You rounded to 2 decimal places. The question asks for 1 decimal place.';
+   if(_eq(c,fl)&&d>=5) return 'You rounded down. The digit after the first decimal place is '+d+', which is 5 or more, so round up.';
+   if(_eq(c,ce)&&d<5) return 'You rounded up. The digit after the first decimal place is '+d+', which is less than 5, so the first decimal place stays the same.'; return ''; },
+ 'Place value':(q,ch)=>{ let m=q.q.match(/Round ([\d,]+) to the nearest ([\d,]+)\./); if(m){ const n=+m[1].replace(/,/g,''), p=+m[2].replace(/,/g,''), d=Math.floor((n%p)/(p/10)), c=_ns(ch)[0], fl=Math.floor(n/p)*p, ce=Math.ceil(n/p)*p;
+     if(_eq(c,fl)&&d>=5) return 'You rounded down. The digit to the right of the rounding place is '+d+', which is 5 or more, so round up.';
+     if(_eq(c,ce)&&d<5) return 'You rounded up. The digit to the right of the rounding place is '+d+', which is less than 5, so round down.'; return ''; }
+   m=q.q.match(/value of the digit (\d) in/); if(m&&_eq(_ns(ch)[0],+m[1])) return 'That is the digit itself. The question asks for its value, which depends on the column it is in.'; return ''; },
+ 'Times tables and BIDMAS':(q,ch)=>{ const m=q.q.match(/Work out (\d+) \+ (\d+) \u00d7 (\d+)/); if(m&&_eq(_ns(ch)[0],(+m[1]+ +m[2])*m[3])) return 'You added first. BIDMAS says multiply before you add: work out '+m[2]+' \u00d7 '+m[3]+' first.'; return ''; },
+ 'Fractions':(q,ch)=>{ const f=_fr(ch); if(!f) return ''; let m=q.q.match(/^What is (\d+)\/(\d+) \+ (\d+)\/(\d+)\?$/); if(m){ const n=+m[1]+ +m[3], d=+m[2]+ +m[4]; if(f[0]*d===n*f[1]) return 'You added the tops and added the bottoms. Make the bottom numbers the same first, then add only the tops.'; }
+   m=q.q.match(/^Simplify (\d+)\/(\d+)$/); if(m&&_gcd(f[0],f[1])>1&&f[0]*(+m[2])===(+m[1])*f[1]) return 'That is equal to the right answer, but it can be simplified more. Divide the top and bottom again.'; return ''; },
+ 'Fractions of amounts':(q,ch)=>{ const m=q.q.match(/What is (\d+)\/(\d+) of (\d+)\?/); if(!m) return ''; const n=+m[1], d=+m[2], a=+m[3]; if(n>1&&_eq(_ns(ch)[0],a/d)) return 'You found 1/'+d+' of '+a+' ('+a+' \u00f7 '+d+' = '+a/d+'), but the question asks for '+n+'/'+d+'. Now multiply by '+n+'.'; return ''; },
+ 'Percentages of amounts':(q,ch)=>{ const m=q.q.match(/What is (\d+)% of (\d+)\?/); if(m&&+m[1]!==10&&_eq(_ns(ch)[0],m[2]/10)) return 'That is 10% of '+m[2]+'. The question asks for '+m[1]+'%, so build up from the 10%.'; return ''; },
+ 'Substitution':(q,ch)=>{ const m=q.q.match(/a = (\d+) and b = (\d+), what is (\d+)a \+ (\d+)b\?/); if(!m) return ''; const [a,b,c1,c2]=m.slice(1).map(Number), c=_ns(ch)[0];
+   if(_eq(c,Number(''+c1+a)+Number(''+c2+b))) return c1+'a means '+c1+' \u00d7 a. It does not mean the digits '+c1+' and '+a+' side by side.';
+   if(_eq(c,c1+a+c2+b)) return 'You added everything. '+c1+'a means '+c1+' \u00d7 '+a+', so multiply first and then add.'; return ''; },
+ 'Solving equations':(q,ch)=>{ const m=q.q.match(/Solve (\d+)x \+ (\d+) = (\d+)/); if(!m) return ''; const mm=+m[1], c=+m[2], r=+m[3], v=_ns(ch)[0];
+   if(_eq(v,(r+c)/mm)) return 'You added '+c+'. To undo + '+c+' you subtract '+c+' from both sides.';
+   if(_eq(v,r-c)) return 'Taking away '+c+' was right, but then you need to divide by '+mm+' to find x.'; return ''; },
+ 'Area and perimeter':(q,ch)=>{ const c=_ns(ch)[0]; let m=q.q.match(/rectangle is (\d+) cm by (\d+) cm\. What is its (area|perimeter)/);
+   if(m){ const l=+m[1], w=+m[2]; if(m[3]==='perimeter'){ if(_eq(c,l*w)) return 'You worked out the area ('+l+' \u00d7 '+w+'). The perimeter is the distance all the way around: add all four sides.'; if(_eq(c,l+w)) return 'You added only two sides. A rectangle has four sides: 2 \u00d7 ('+l+' + '+w+').'; } else if(_eq(c,2*(l+w))) return 'You worked out the perimeter. Area is the space inside: length \u00d7 width.'; return ''; }
+   m=q.q.match(/base of (\d+) cm and a height of (\d+) cm/); if(m&&_eq(c,m[1]*m[2])) return 'You forgot the half. The area of a triangle is \u00bd \u00d7 base \u00d7 height.'; return ''; },
+ 'Averages':(q,ch)=>{ const c=_ns(ch)[0], m=q.q.match(/What is the (mean|median|range) of ([\d, ]+)\?/); if(!m) return ''; const nums=m[2].split(',').map(Number), s=nums.slice().sort((a,b)=>a-b), sum=nums.reduce((a,b)=>a+b,0), med=s[Math.floor(s.length/2)], rng=s[s.length-1]-s[0], mean=sum/nums.length;
+   if(m[1]==='mean'){ if(_eq(c,sum)) return 'You found the total, but the mean also needs you to divide by how many numbers there are ('+nums.length+').'; if(_eq(c,med)) return 'That is the median, the middle value. The mean is the total \u00f7 how many numbers.'; if(_eq(c,rng)) return 'That is the range (biggest \u2212 smallest). The mean is the total \u00f7 how many numbers.'; }
+   if(m[1]==='median'){ if(_eq(c,nums[Math.floor(nums.length/2)])) return 'You took the middle number without putting them in order first. Order them from smallest to biggest, then find the middle.'; if(_eq(c,mean)) return 'That is the mean. The median is the middle value when they are in order.'; }
+   if(m[1]==='range'){ if(_eq(c,s[s.length-1])) return 'That is the biggest number. The range is biggest \u2212 smallest.'; if(_eq(c,med)) return 'That is the median. The range is biggest \u2212 smallest.'; } return ''; },
+ 'Angles':(q,ch)=>{ const c=_ns(ch)[0], m=q.q.match(/angles in a triangle are (\d+)\u00b0 and (\d+)\u00b0/i); if(!m) return ''; const a=+m[1], b=+m[2];
+   if(_eq(c,180-a)||_eq(c,180-b)) return 'You only took away one angle. Take away both: 180 \u2212 '+a+' \u2212 '+b+'.'; if(_eq(c,a+b)) return 'That is the two angles added together. The third angle is what is left of 180\u00b0.'; if(_eq(c,360-a-b)) return 'Angles in a triangle add to 180\u00b0, not 360\u00b0.'; return ''; },
+ 'Ratio sharing':(q,ch)=>{ const m=q.q.match(/Share \u00a3(\d+) in the ratio (\d+) : (\d+)\./); if(!m) return ''; const tot=+m[1], a=+m[2], b=+m[3], u=tot/(a+b), c=_ns(ch)[0];
+   if(a!==b&&_eq(c,Math.min(a,b)*u)) return 'That is the smaller share. The question asks for the larger share.'; if(_eq(c,u)) return 'That is the value of one part. Multiply it by the number of parts in the larger share ('+Math.max(a,b)+').'; return ''; },
+ 'Units and measures':(q,ch,co)=>{ const m=q.q.match(/What is ([\d,.]+) (\w+) in (\w+)\?/); if(!m) return ''; const x=parseFloat(m[1].replace(/,/g,'')), c=_ns(ch)[0], k=_ns(co)[0]; if(k&&!_eq(c,k)&&_eq(c,x*x/k)) return 'You went the wrong way. From a big unit to a small unit you multiply, and from a small unit to a big unit you divide.'; return ''; },
+ 'Coordinates':(q,ch)=>{ const p=_pt(ch); if(!p) return ''; const t=_q(q); let m=t.match(/point \((-?\d+), (-?\d+)\) is reflected in the (x|y)-axis/);
+   if(m){ const x=+m[1], y=+m[2], same=(a,b)=>p[0]===a&&p[1]===b; if(m[3]==='x'){ if(same(-x,y)) return 'That is a reflection in the y-axis. Reflecting in the x-axis keeps x the same and changes the sign of y.'; } else if(same(x,-y)) return 'That is a reflection in the x-axis. Reflecting in the y-axis keeps y the same and changes the sign of x.';
+     if(same(-x,-y)) return 'You changed both signs. A reflection in an axis changes only one coordinate.'; if(same(y,x)&&x!==y) return 'You swapped x and y. A reflection keeps the two coordinates in the same order.'; return ''; }
+   m=t.match(/midpoint of \((-?\d+), (-?\d+)\) and \((-?\d+), (-?\d+)\)/); if(m){ const [x1,y1,x2,y2]=m.slice(1).map(Number); if(p[0]===x1+x2&&p[1]===y1+y2) return 'You added the coordinates but did not halve. Halve the totals to find the middle.'; if(p[0]===(x2-x1)/2&&p[1]===(y2-y1)/2) return 'You halved the difference. The midpoint is the mean: add the two x values and halve, then add the two y values and halve.'; return ''; }
+   m=t.match(/A point is (\d+) (right|left) and (\d+) (up|down) from the origin/); if(m){ const sx=m[2]==='right'?1:-1, sy=m[4]==='up'?1:-1, r=+m[1], u=+m[3]; if(p[0]===-sx*r&&p[1]===sy*u) return 'Check the direction across: right means positive x, and left means negative x.'; if(p[0]===sx*r&&p[1]===-sy*u) return 'Check the direction up or down: up means positive y, and down means negative y.'; if(p[0]===sy*u&&p[1]===sx*r&&r!==u) return 'You swapped x and y. Write the across number first, then the up or down number.'; } return ''; },
+ 'Transformations':(q,ch)=>{ const p=_pt(ch); if(!p) return ''; const t=_q(q); let m=t.match(/point \((-?\d+), (-?\d+)\) is translated (\d+) (left|right) and (\d+) (up|down)/);
+   if(m){ const x=+m[1], y=+m[2], dx=(m[4]==='right'?1:-1)*m[3], dy=(m[6]==='up'?1:-1)*m[5]; if(p[0]===x-dx&&p[1]===y+dy) return 'You moved the wrong way across. Right adds to x, and left subtracts from x.'; if(p[0]===x+dx&&p[1]===y-dy) return 'You moved the wrong way up or down. Up adds to y, and down subtracts from y.'; if(p[0]===x+dy&&p[1]===y+dx&&dx!==dy) return 'You mixed up the two movements. Across changes x, and up or down changes y.'; return ''; }
+   m=t.match(/point \((-?\d+), (-?\d+)\) is enlarged by scale factor (\d+) from the origin/); if(m){ const x=+m[1], y=+m[2], k=+m[3]; if(p[0]===x+k&&p[1]===y+k) return 'Enlarging multiplies the coordinates by the scale factor. It does not add.'; if((p[0]===k*x&&p[1]===y)||(p[0]===x&&p[1]===k*y)) return 'You multiplied only one coordinate. Multiply both x and y by '+k+'.'; } return ''; },
+ 'Probability':(q,ch)=>{ const f=_fr(ch), m=q.q.match(/A bag has (\d+) red and (\d+) blue counters/); if(!m||!f) return ''; const r=+m[1], b=+m[2]; if(f[0]*b===r*f[1]) return 'That compares red with blue. Probability is red out of ALL the counters: '+r+' out of '+(r+b)+'.'; if(f[0]*(r+b)===b*f[1]) return 'That is the probability of picking blue, not red.'; return ''; },
+ 'Sequences':(q,ch)=>{ const m=q.q.match(/nth term of ([\d, ]+), \.\.\.\?/); if(!m) return ''; const t=m[1].split(',').map(Number), d=t[1]-t[0], mm=String(ch).match(/^(\d+)n \+ (\d+)$/); if(mm&&+mm[1]===d&&+mm[2]===t[0]&&t[0]!==t[0]-d) return 'You used the first term as the number to add. The number of n is the difference ('+d+'), and then you adjust: first term '+t[0]+' minus '+d+'.'; return ''; },
+ 'Written methods':(q,ch)=>{ const m=q.q.match(/What is (\d+) \u00f7 (\d+)\? Give the remainder/), r=String(ch).match(/^(\d+) remainder (\d+)$/); if(!m||!r) return ''; const a=+m[1], b=+m[2], qq=Math.floor(a/b), rem=a%b; if(+r[1]!==qq) return 'Check how many whole '+b+'s fit into '+a+': '+b+' \u00d7 '+qq+' = '+b*qq+'.'; if(+r[2]!==rem) return 'The remainder is what is left over: '+a+' \u2212 '+b*qq+' = '+rem+'.'; return ''; }
+
+};
+MISTAKE_RULES['Listen: which number?']=(q,ch)=>{ const c=_ns(ch)[0], n=_ns(q.correct)[0], sw=(n%10)*10+Math.floor(n/10);
+  if(n>=12&&n<=19&&c===(n-10)*10||n>=20&&n%10===0&&c===n/10+10) return q.k==='mandarin'?'Teens and tens can sound alike. Listen for whether “shí” (ten) comes first or last.':'Teens and tens can sound alike. Listen carefully to the ending of the word.';
+  if(n>=10&&c===sw&&sw!==n) return 'You may have swapped the tens and the units. Listen for which part comes first.'; return ''; };
+function genericMistake(q,ch,co){
+  const a=nvOf(ch), b=nvOf(co); if(!a||!b||a.pre!==b.pre||a.suf!==b.suf) return ''; const c=a.n, k=b.n;
+  if(k!==0&&_eq(c,-k)) return 'You have the right size but the wrong sign. Check whether the answer should be positive or negative.';
+  if(k!==0){ const r=c/k; for(const [f,txt] of [[10,'10 times too big'],[0.1,'10 times too small'],[100,'100 times too big'],[0.01,'100 times too small'],[1000,'1,000 times too big'],[0.001,'1,000 times too small']]) if(_eq(r,f)) return 'Your answer is '+txt+'. Check where the decimal point goes, or whether you should multiply or divide by 10, 100 or 1,000.';
+    if(_eq(r,2)) return 'Your answer is double the right one. Did you multiply by 2 when you should not have?'; if(_eq(r,0.5)) return 'Your answer is half of the right one. Did you forget to double?'; }
+  const m=_q(q).match(/^What is \(?(-?[\d.,]+)\)? ([+\-\u00d7\u00f7]) \(?(-?[\d.,]+)\)?\?$/);
+  if(m){ const x=parseFloat(m[1].replace(/,/g,'')), y=parseFloat(m[3].replace(/,/g,'')), op=m[2]==='-'?'\u2212':m[2];
+    for(const [v,val,sym] of [['added',x+y,'+'],['subtracted',x-y,'\u2212'],['multiplied',x*y,'\u00d7'],['divided',y?x/y:NaN,'\u00f7']]) if(sym!==op&&_eq(c,val)) return 'It looks like you '+v+' the two numbers ('+_f(x)+' '+sym+' '+_f(y)+' = '+_f(val)+'). Read the question again to check which operation it needs.'; }
+  if(Number.isInteger(c)&&Number.isInteger(k)&&Math.abs(c-k)===1) return 'You were only 1 away. Check your last step, and any adding or taking away.';
+  return '';
+}
+function mistakeHint(q){
+  try{ if(q.ok||q.chosen==null||!q.opts) return ''; const ch=q.opts[q.chosen], co=q.correct; if(ch==null||ch===co) return '';
+    const rule=q.gt&&MISTAKE_RULES[q.gt]; const h=rule?rule(q,ch,co):''; return h||(q.aural?'':genericMistake(q,ch,co))||''; }catch(e){ return ''; }
+}
+/* ---------- homophones: say what each word means ---------- */
+const HOMO_M = {
+ 'there':'in that place, as in “over there”','their':'belonging to them','they\u2019re':'short for “they are”',"they're":'short for “they are”',
+ 'know':'to understand or be sure of something','no':'the opposite of yes, or “not any”','now':'at this moment',
+ 'to':'towards, or part of a verb such as “to run”','too':'also, or more than you want','two':'the number 2',
+ 'its':'belonging to it',"it's":'short for “it is”',"its'":'not a real word','your':'belonging to you',"you're":'short for “you are”','you':'the person being spoken to',
+ 'by':'next to, or made by someone','buy':'to pay money for something','bye':'a short way of saying goodbye',
+ 'sun':'the star that gives us light and heat','son':'someone\u2019s boy child','saw':'the past of “see”, or a tool for cutting wood',
+ 'see':'to look at something with your eyes','sea':'the big area of salty water','seen':'a form of “see” used after “have” or “has”',
+ 'hear':'to notice sounds with your ears','here':'in this place','her':'belonging to a girl or woman',
+ 'weak':'not strong','week':'seven days','wick':'the string in the middle of a candle that burns','sew':'to join cloth with a needle and thread','sore':'painful','sum':'a total, or a maths calculation'
+};
+function homoExp(ans, wrongs){
+  const m=w=>HOMO_M[String(w).toLowerCase()]; if(!m(ans)||wrongs.some(w=>!m(w))) return '\u201c'+ans+'\u201d is the word that fits this sentence. Read the sentence aloud with each choice to check.';
+  return '\u201c'+ans+'\u201d means '+m(ans)+'. '+wrongs.map(w=>'\u201c'+w+'\u201d means '+m(w)+'.').join(' ')+' Only \u201c'+ans+'\u201d fits this sentence.';
+}
+
+/* =====================================================================
+   SPANISH AND MANDARIN: LISTENING LAB AND SPEAKING PRACTICE
+   Listening: hear it, then choose (meaning, word, number, tone). The sounds are the device's own voices.
+   Speaking: hear the model, record yourself, compare, rate yourself. The recording stays in memory on this
+   device only. It is never uploaded or saved, and it is deleted when she moves on.
+   ===================================================================== */
+const LANGV = {
+  spanish: VOCAB.spanish.split(';').map(s=>s.split('|')).map(a=>({w:a[0], m:a[1], say:a[0].replace(/\(.*?\)/g,'').trim()})),
+  mandarin: VOCAB.mandarin.split(';').map(s=>s.split('|')).map(a=>({w:a[0], py:a[1], m:a[2], say:a[0]}))
+};
+const LANG_CODE = {spanish:'es-ES', mandarin:'zh-CN'};
+const LANG_NAME = {spanish:'Spanish', mandarin:'Mandarin'};
+const lwLabel = (k,it) => k==='mandarin' ? it.w+' ('+it.py+')' : it.w;
+const _stripAcc = s => String(s).normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/[^a-z ]/g,'');
+function _lev(a,b){ const m=a.length,n=b.length; if(!m) return n; if(!n) return m; let prev=Array.from({length:n+1},(_,j)=>j); for(let i=1;i<=m;i++){ const cur=[i]; for(let j=1;j<=n;j++) cur[j]=Math.min(prev[j]+1,cur[j-1]+1,prev[j-1]+(a[i-1]===b[j-1]?0:1)); prev=cur; } return prev[n]; }
+const _firstWord = m => String(m).toLowerCase().replace(/[^a-z ]/g,' ').trim().split(/\s+/)[0];
+/* Spanish numbers 0 to 99 */
+const ES_U=['cero','uno','dos','tres','cuatro','cinco','seis','siete','ocho','nueve','diez','once','doce','trece','catorce','quince','dieciséis','diecisiete','dieciocho','diecinueve','veinte','veintiuno','veintidós','veintitrés','veinticuatro','veinticinco','veintiséis','veintisiete','veintiocho','veintinueve'];
+const ES_T={3:'treinta',4:'cuarenta',5:'cincuenta',6:'sesenta',7:'setenta',8:'ochenta',9:'noventa'};
+function esNum(n){ if(n<30) return ES_U[n]; const t=Math.floor(n/10), u=n%10; return ES_T[t]+(u?' y '+ES_U[u]:''); }
+/* counters (counts only: never recordings) */
+function lgBump(k,f,n){ S.lg=S.lg||{}; const o=(S.lg[k]=S.lg[k]||{lr:0,ln:0,sp:0}); o[f]=(o[f]||0)+(n==null?1:n); }
+const lgTotal = f => Object.values(S.lg||{}).reduce((a,o)=>a+((o&&o[f])||0),0);
+/* ---------- listening questions ---------- */
+function lsnMk(k,o){ const lang=LANG_CODE[k], q=Object.assign({aural:true,nodojo:true,nocard:true,lsn:1}, o); q.play=()=>sayLang(o.say,lang); q.slow=()=>sayLang(o.say,lang,0.55); return q; }
+function lsnMeaning(k){ const it=pickr(LANGV[k]), seen=new Set([it.m]), wr=[];
+  shuffle(LANGV[k]).forEach(x=>{ if(wr.length>=3) return; const fw=_firstWord(x.m); if(x.m===it.m||seen.has(x.m)||fw===_firstWord(it.m)) return; seen.add(x.m); wr.push(x.m); });
+  return lsnMk(k,{q:'Listen. What does it mean?', say:it.say, correct:it.m, wrong:wr, exp:'“'+lwLabel(k,it)+'” means “'+it.m+'”.', hint:'Play it again, slowly. Say it out loud, then think about what it means.'}); }
+function lsnNear(k,it,n){ const key=x=>_stripAcc(k==='mandarin'?x.py:x.w), t=key(it), pool=LANGV[k].filter(x=>x.w!==it.w&&x.m!==it.m), sorted=pool.slice().sort((a,b)=>_lev(key(a),t)-_lev(key(b),t)), out=shuffle(sorted.slice(0,5)).slice(0,2);
+  for(const x of shuffle(sorted.slice(5))){ if(out.length>=n) break; out.push(x); } return out.slice(0,n); }
+function lsnWord(k){ const it=pickr(LANGV[k]), near=lsnNear(k,it,3);
+  return lsnMk(k,{q:'Listen. Which word did you hear?', say:it.say, correct:lwLabel(k,it), wrong:near.map(x=>lwLabel(k,x)), exp:'You heard “'+lwLabel(k,it)+'”, which means “'+it.m+'”. The wrong choices sound a bit like it, so listen to each sound.', hint:'Play it slowly and listen to the first sound and the last sound.'}); }
+function lsnNumber(k){ const n=ri(1,99), swap=(n%10)*10+Math.floor(n/10), cand=[];
+  if(n>=12&&n<=19) cand.push((n-10)*10); if(n>=20&&n%10===0) cand.push(n/10+10);
+  if(n>=10&&swap!==n&&swap>=1&&swap<=99) cand.push(swap); cand.push(n+1,n-1,n+10,n-10);
+  const wr=[]; cand.forEach(x=>{ if(x>=1&&x<=99&&x!==n&&!wr.includes(x)&&wr.length<3) wr.push(x); }); let g=0; while(wr.length<3&&g++<300){ const x=ri(1,99); if(x!==n&&!wr.includes(x)) wr.push(x); }
+  const sp=k==='spanish', say=sp?esNum(n):zhNum(n), teen=(n>=12&&n<=19), tens=(n>=20&&n%10===0);
+  const tip = sp ? ((teen||(tens&&n>=30))?' Tip: 12 to 15 end in -ce, 16 to 19 start with dieci-, and 30, 40, 50 and so on end in -nta.':'') : ((teen||tens||n===11)?' Tip: 十四 (shí sì) puts ten first and means 14, but 四十 (sì shí) puts four first and means 40.':'');
+  return lsnMk(k,{q:'Listen. Which number did you hear?', say, correct:String(n), wrong:wr.map(String), exp:(sp?'“'+say+'”':say+' ('+pyNum(n)+')')+' is '+n+'.'+tip, hint:'Play it slowly. Listen for the tens part, then the units part.'}); }
+const TONE_SETS=[[['mā','妈','mother'],['má','麻','hemp'],['mǎ','马','horse'],['mà','骂','to scold']],
+ [['bā','八','eight'],['bá','拔','to pull up'],['bǎ','把','to hold'],['bà','爸','dad']],
+ [['shū','书','book'],['shú','熟','ripe'],['shǔ','鼠','mouse'],['shù','树','tree']],
+ [['yī','一','one'],['yí','姨','aunt'],['yǐ','椅','chair'],['yì','亿','a hundred million']],
+ [['wū','屋','room'],['wú','无','none'],['wǔ','五','five'],['wù','物','thing']]];
+const TONE_MAP={'ā':1,'ē':1,'ī':1,'ō':1,'ū':1,'ǖ':1,'á':2,'é':2,'í':2,'ó':2,'ú':2,'ǘ':2,'ǎ':3,'ě':3,'ǐ':3,'ǒ':3,'ǔ':3,'ǚ':3,'à':4,'è':4,'ì':4,'ò':4,'ù':4,'ǜ':4};
+const TONE_NAME=['','First tone (high and flat)','Second tone (rising, like a question)','Third tone (dips down, then up)','Fourth tone (sharp and falling)'];
+const pyTones = py => { const t=[]; for(const ch of String(py)) if(TONE_MAP[ch]) t.push(TONE_MAP[ch]); return t; };
+function lsnTone(k){ const set=pickr(TONE_SETS), i=ri(0,3), it=set[i], tone=i+1;
+  return lsnMk(k,{q:'Listen to the sound. Which tone is it?', say:it[1], correct:TONE_NAME[tone], wrong:[1,2,3,4].filter(x=>x!==tone).map(x=>TONE_NAME[x]), exp:it[1]+' is '+it[0]+' ('+it[2]+'), the '+TONE_NAME[tone].split(' (')[0].toLowerCase()+'. The four together: '+set.map(x=>x[0]+' '+x[1]+' ('+x[2]+')').join(', ')+'.', hint:'The first tone stays high and flat. The second rises. The third dips and rises. The fourth falls fast. Voices differ by device, so play it a few times.'}); }
+function _regAural(k,title,f,bt){ gen(k,title,title,f); genBT(bt); const g=GENS[GENS.length-1]; g.pic=1; g.aural=1; }
+_regAural('spanish','Listen: what does it mean?',()=>lsnMeaning('spanish'),'Vocabulary');
+_regAural('spanish','Listen: which word?',()=>lsnWord('spanish'),'Vocabulary');
+_regAural('spanish','Listen: which number?',()=>lsnNumber('spanish'),'Numbers');
+_regAural('mandarin','Listen: what does it mean?',()=>lsnMeaning('mandarin'),'Vocabulary');
+_regAural('mandarin','Listen: which word?',()=>lsnWord('mandarin'),'Vocabulary');
+_regAural('mandarin','Listen: which number?',()=>lsnNumber('mandarin'),'Numbers');
+_regAural('mandarin','Listen: which tone?',()=>lsnTone('mandarin'),'Pinyin');
+/* Music's listening game also needs sound, so it must never be printed as a worksheet */
+GENS.filter(g=>g.k==='music'&&g.t==='Listening lab').forEach(g=>{ g.pic=1; g.aural=1; });
+function startListen(k){
+  if(!('speechSynthesis' in window)){ toast('Audio is not available on this device.',5000); return; }
+  if(!hasVoice(LANG_CODE[k])){ toast('This device does not have a '+LANG_NAME[k]+' voice installed, so the listening lab cannot play sounds here.',6500); return; }
+  const M='Listen: what does it mean?', W='Listen: which word?', N='Listen: which number?', T='Listen: which tone?';
+  const plan = k==='spanish' ? [M,M,M,W,W,W,W,N,N,N] : [M,M,M,W,W,N,N,T,T,T], qs=[], seen=new Set();
+  plan.forEach(t=>{ const g=GENS.find(x=>x.k===k&&x.t===t); let q, guard=0; do{ q=genQuestion(g); }while(seen.has(q.say)&&guard++<40); seen.add(q.say); qs.push(q); });
+  R={kind:'practice', opts:{kind:'practice',keys:[k],topic:'Listening',n:qs.length,listen:true,k}, subj:k, mode:S.mode, back:{name:'subject',k}, hints:0, tiers:[0,0,0,0,0],
+     qs:shuffle(qs).map(q=>Object.assign({},q,{opts:shuffle([q.correct].concat(q.wrong)),done:false,ok:false})), i:0, xp:0, coins:0};
+  go('round');
+}
+/* ---------- sound tips for speaking ---------- */
+function esTips(w){ const s=String(w).toLowerCase(), t=[];
+  if(/(^|[^c])h/.test(s)) t.push('The letter h is silent in Spanish.');
+  if(/j/.test(s)) t.push('j sounds like a strong English h, as in “hot”.');
+  if(/ll/.test(s)) t.push('ll sounds like the y in “yes”.');
+  if(/ñ/.test(s)) t.push('ñ sounds like “ny” in “canyon”.');
+  if(/rr|(^|\s)r/.test(s)) t.push('A double rr, or an r at the start of a word, is rolled: tap your tongue quickly.');
+  if(/qu/.test(s)) t.push('qu sounds like k. The u is silent.');
+  if(/gu[ei]/.test(s)) t.push('gu before e or i is a hard g, and the u is silent.'); else if(/g[ei]/.test(s)) t.push('g before e or i sounds like the strong h in “hot”.');
+  if(/c[ei]/.test(s)) t.push('c before e or i sounds like “th” in Spain, or like “s” in Latin America.');
+  if(/z/.test(s)) t.push('z sounds like “th” in Spain, or like “s” in Latin America.');
+  if(/v/.test(s)) t.push('v sounds like b in Spanish.');
+  if(/ch/.test(s)) t.push('ch sounds like the ch in “church”.');
+  if(/[áéíóú]/.test(s)) t.push('The accent mark shows which part to say louder.');
+  return t.slice(0,3); }
+function zhTips(py){ const t=[], tones=pyTones(py), ord=['','1st','2nd','3rd','4th'];
+  if(tones.length) t.push('Tones: '+tones.map(x=>ord[x]).join(', ')+'. '+[...new Set(tones)].map(x=>TONE_NAME[x].toLowerCase()).join('; ')+'.');
+  for(let i=0;i<tones.length-1;i++) if(tones[i]===3&&tones[i+1]===3){ t.push('Two 3rd tones together: the first one changes to a 2nd tone, so “nǐ hǎo” is said like “ní hǎo”.'); break; }
+  const b=String(py).toLowerCase().replace(/[āáǎà]/g,'a').replace(/[ēéěè]/g,'e').replace(/[īíǐì]/g,'i').replace(/[ōóǒò]/g,'o').replace(/[ūúǔù]/g,'u').replace(/[ǖǘǚǜ]/g,'ü');
+  if(/zh/.test(b)) t.push('zh is like the j in “jump”, with your tongue curled back a little.');
+  if(/ch/.test(b)) t.push('ch is like the ch in “church”, with your tongue curled back and a puff of air.');
+  if(/sh/.test(b)) t.push('sh is like the sh in “shop”, with your tongue curled back a little.');
+  if(/x/.test(b)) t.push('x is a soft “sh” made with a smile, like the start of “she”.');
+  if(/q/.test(b)) t.push('q is like the ch in “cheese”, made with a smile and a puff of air.');
+  if(/j/.test(b)) t.push('j is like the j in “jeep”, made with a smile.');
+  if(/c(?!h)/.test(b)) t.push('c is like the ts in “cats”, with a puff of air.');
+  if(/z(?!h)/.test(b)) t.push('z is like the ds in “kids”.');
+  if(/ü/.test(b)) t.push('ü: say “ee” but round your lips as if saying “oo”.');
+  return t.slice(0,4); }
+const spkTips = (k,it) => k==='mandarin' ? zhTips(it.py) : esTips(it.w);
+/* ---------- speaking practice ---------- */
+let SPK = null;
+function spkFree(){ if(!SPK||!SPK.rec) return; const r=SPK.rec; try{ if(r.timer) clearTimeout(r.timer); if(r.mr){ r.mr.onstop=null; if(r.mr.state==='recording') r.mr.stop(); } if(r.stream) r.stream.getTracks().forEach(t=>t.stop()); if(r.url) URL.revokeObjectURL(r.url); }catch(e){} SPK.rec=null; }
+function spkLeave(){ if(SPK){ spkFree(); SPK=null; } }
+function startSpeak(k){ if(!LANGV[k]) return; spkLeave(); const pool=LANGV[k].filter(x=>x.say.length<=16); SPK={k, items:shuffle(pool).slice(0,8), i:0, said:0, xp:0, rec:null, fin:false}; go('speak'); }
+async function spkRecStart(){
+  if(!SPK||SPK.fin) return; spkFree();
+  if(!(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia&&window.MediaRecorder)){ SPK.rec={state:'nomic'}; render(); return; }
+  try{ const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+    if(!SPK||SPK.fin){ stream.getTracks().forEach(t=>t.stop()); return; }
+    const mime=['audio/webm;codecs=opus','audio/mp4','audio/webm'].find(t=>MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(t))||'';
+    const mr=new MediaRecorder(stream,mime?{mimeType:mime}:undefined), chunks=[], t0=Date.now();
+    mr.ondataavailable=e=>{ if(e.data&&e.data.size) chunks.push(e.data); };
+    mr.onstop=()=>{ stream.getTracks().forEach(t=>t.stop()); if(!SPK||!SPK.rec||SPK.rec.mr!==mr) return; clearTimeout(SPK.rec.timer); const blob=new Blob(chunks,{type:mr.mimeType||mime||'audio/webm'}); SPK.rec={state:'recorded',url:URL.createObjectURL(blob),secs:Math.max(1,Math.round((Date.now()-t0)/1000))}; if(V.name==='speak') render(); };
+    SPK.rec={state:'recording',mr,stream,timer:setTimeout(()=>{ if(SPK&&SPK.rec&&SPK.rec.mr===mr&&mr.state==='recording') mr.stop(); },6000)}; mr.start(); render();
+  }catch(e){ if(SPK){ SPK.rec={state:'nomic',blocked:true}; toast('The microphone is blocked. You can still say it out loud and rate yourself.',6000); render(); } }
+}
+function spkNext(){ spkFree(); if(!SPK) return; SPK.i++; if(SPK.i>=SPK.items.length){ SPK.fin=true; markDay(); checkTrophies(); save(); } render(); }
+function vSpeak(m){
+  if(!SPK){ m.innerHTML=`<section class="module" style="--c:var(--gold)"><h2>🗣️ Speaking practice</h2><p>Pick a language, then say eight words out loud.</p><div class="row"><button class="btn big" data-act="speakstart" data-k="spanish">🇪🇸 Spanish</button><button class="btn big" data-act="speakstart" data-k="mandarin">🏮 Mandarin</button></div><button class="btn ghost small" style="margin-top:12px" data-act="go" data-v="home">← Home</button></section>`; return; }
+  const k=SPK.k, s=subj(k), total=SPK.items.length;
+  if(SPK.fin){ m.innerHTML=`<section class="module" style="--c:${s.c}"><h2>🎉 Well spoken!</h2><p class="bigscore" style="text-align:center">${SPK.said} of ${total}</p><p class="center">You said ${SPK.said} ${LANG_NAME[k]} word${SPK.said===1?'':'s'} out loud and felt good about ${SPK.said===1?'it':'them'}. ${SPK.xp?`+${SPK.xp} XP.`:''}</p><div class="row" style="justify-content:center;margin-top:12px"><button class="btn big" data-act="speakstart" data-k="${k}">Eight more words</button><button class="btn ghost" data-act="subject" data-k="${k}">Back to ${esc(s.n)}</button></div></section>`; return; }
+  const it=SPK.items[SPK.i], r=SPK.rec, tips=spkTips(k,it), zh=(k==='mandarin');
+  let step='';
+  if(!r) step=`<p><b>Step 2.</b> Now say it yourself.</p><div class="row"><button class="btn big" data-act="spkrec">🎙️ Record myself</button><button class="btn ghost small" data-act="spksaid">I will just say it out loud</button></div>`;
+  else if(r.state==='recording') step=`<p><b>🔴 Recording…</b> Say the word now. It stops by itself after 6 seconds.</p><button class="btn danger" data-act="spkstop">⏹ Stop</button>`;
+  else if(r.state==='recorded') step=`<p><b>Compare.</b> Listen to yourself, then to the model. Do they sound alike?</p><audio controls src="${r.url}" style="width:100%"></audio><div class="row" style="margin-top:8px"><button class="btn gold small" data-act="spkhear">🔊 Hear the model</button><button class="btn ghost small" data-act="spkagain">🎙️ Record again</button></div>`;
+  else step=`<p><b>Compare.</b> ${r.state==='nomic'&&!r.blocked?'Recording is not available here. ':''}Say it out loud, then listen to the model again.</p><div class="row"><button class="btn gold small" data-act="spkhear">🔊 Hear the model</button></div>`;
+  const rate = (r&&(r.state==='recorded'||r.state==='said'||r.state==='nomic')) ? `<p style="margin-top:12px"><b>How did it sound?</b></p><div class="row"><button class="btn" data-act="spkgood">👍 That sounded right (+2 XP)</button><button class="btn ghost" data-act="spkagain">🔁 I will try that again</button></div>` : '';
+  m.innerHTML=`<section class="module" style="--c:${s.c}"><div class="qtag">🗣️ Speaking practice: ${esc(LANG_NAME[k])}. Word ${SPK.i+1} of ${total}. Said aloud so far: ${SPK.said}</div>
+   <div class="spk-word">${esc(it.w)}</div>${zh?`<div class="spk-py">${esc(it.py)}</div>`:''}<p class="muted" style="margin:2px 0 8px">Means: <b>${esc(it.m)}</b></p>
+   <p><b>Step 1.</b> Listen to how it sounds.</p><div class="row"><button class="btn gold" data-act="spkhear">🔊 Hear it</button><button class="btn ghost" data-act="spkhear" data-slow="1">🐢 Slowly</button></div>
+   ${tips.length?`<div class="spk-tips"><b>Sound tips</b><ul>${tips.map(x=>`<li>${esc(x)}</li>`).join('')}</ul></div>`:''}
+   ${step}${rate}
+   <p class="muted" style="margin-top:12px">🔒 Your recording stays on this device. It is never uploaded or saved, and it is deleted when you move on.</p>
+   <div class="row" style="margin-top:8px"><button class="btn ghost small" data-act="spkskip">Skip this word</button><button class="btn ghost small" data-act="subject" data-k="${k}">Stop practising</button></div></section>`;
+}
+const LANGACTIONS = {
+  listenlab:d=>startListen(d.k),
+  speakstart:d=>startSpeak(d.k),
+  playslow:()=>{ const q=R&&R.qs&&R.qs[R.i]; if(q&&q.slow) q.slow(); },
+  spkhear:d=>{ if(!SPK) return; const it=SPK.items[SPK.i]; sayLang(it.say,LANG_CODE[SPK.k],d&&d.slow?0.55:undefined); },
+  spkrec:()=>{ spkRecStart(); },
+  spkstop:()=>{ if(SPK&&SPK.rec&&SPK.rec.mr&&SPK.rec.mr.state==='recording') SPK.rec.mr.stop(); },
+  spksaid:()=>{ if(!SPK) return; spkFree(); SPK.rec={state:'said'}; render(); },
+  spkagain:()=>{ if(!SPK) return; spkFree(); render(); },
+  spkgood:()=>{ if(!SPK||SPK.fin) return; SPK.said++; SPK.xp+=2; lgBump(SPK.k,'sp'); award(2,0); spkNext(); },
+  spkskip:()=>{ spkNext(); }
+};
+try{ window.addEventListener('pagehide',()=>{ try{ spkFree(); }catch(e){} }); }catch(e){}
+
+/* =====================================================================
+   WORKED EXPLANATIONS for hand-written questions that stopped short or gave a rule without her numbers.
+   [subject, question, correct answer, new explanation]
+   ===================================================================== */
+const EXPFIX = [
+[
+"maths",
+"What is −5 + 8?",
+"3",
+"Start at −5 and move 8 to the right: −5 + 8 = 3."
+],
+[
+"maths",
+"What is −3 × −4?",
+"12",
+"Multiply the numbers without their signs: 3 × 4 = 12. Both numbers are negative, so the signs are the same and the answer is positive: 12."
+],
+[
+"maths",
+"What is the square root of 144?",
+"12",
+"The square root is the number that multiplies by itself to make 144. 12 × 12 = 144, so the square root is 12."
+],
+[
+"maths",
+"Simplify 3a + 5a − 2a",
+"6a",
+"Add and subtract the numbers in front of a: 3 + 5 − 2 = 6. So 3a + 5a − 2a = 6a."
+],
+[
+"maths",
+"Expand 3(x + 4)",
+"3x + 12",
+"Multiply each term inside the bracket by 3: 3 × x = 3x and 3 × 4 = 12. So 3(x + 4) = 3x + 12."
+],
+[
+"maths",
+"What is the next term in 2, 6, 18, 54, …?",
+"162",
+"6 ÷ 2 = 3, 18 ÷ 6 = 3 and 54 ÷ 18 = 3, so each term is multiplied by 3. The next term is 54 × 3 = 162."
+],
+[
+"maths",
+"A parallelogram has base 9 cm and perpendicular height 4 cm. What is its area?",
+"36 cm²",
+"Area = base × perpendicular height = 9 × 4 = 36 cm²."
+],
+[
+"maths",
+"What is the value of the 7 in 4,730?",
+"700",
+"In 4,730 the 7 is in the hundreds column, so its value is 7 × 100 = 700."
+],
+[
+"maths",
+"Write 3 thousands, 5 tens and 2 units as a number",
+"3,052",
+"3 thousands is 3,000. There are no hundreds, so that column is 0. 5 tens is 50. 2 units is 2. Put the digits in their columns: 3,052."
+],
+[
+"maths",
+"What is 12 × 15?",
+"180",
+"Split 12 into 10 and 2: 10 × 15 = 150 and 2 × 15 = 30. Add them: 150 + 30 = 180."
+],
+[
+"maths",
+"What is 144 ÷ 12?",
+"12",
+"Think of the times table backwards: 12 × ? = 144. 12 × 12 = 144, so 144 ÷ 12 = 12."
+],
+[
+"maths",
+"If x = 3, what is 4x + 2?",
+"14",
+"Replace x with 3: 4 × 3 + 2 = 12 + 2 = 14."
+],
+[
+"maths",
+"Solve x/4 = 6",
+"x = 24",
+"x ÷ 4 = 6. To undo the ÷ 4, multiply both sides by 4: x = 6 × 4 = 24."
+],
+[
+"maths",
+"Squash is mixed with water in the ratio 1 : 4. How much water goes with 50 ml of squash?",
+"200 ml",
+"The ratio 1 : 4 means 4 parts of water for every 1 part of squash. 1 part is 50 ml, so the water is 4 × 50 = 200 ml."
+],
+[
+"maths",
+"Which part of the grid is (−4, 2) in?",
+"Top left",
+"Negative x is left and positive y is up. So (−4, 2) is in the top left part of the grid."
+],
+[
+"maths",
+"Three corners of a rectangle are (1, 1), (5, 1) and (5, 4). What is the fourth?",
+"(1, 4)",
+"The missing corner is directly above (1, 1), so its x is 1, and level with (5, 4), so its y is 4. The fourth corner is (1, 4)."
+],
+[
+"maths",
+"The point (1, 1) is translated 3 right and 2 up. Where does it land?",
+"(4, 3)",
+"x: 1 + 3 = 4 (3 right). y: 1 + 2 = 3 (2 up). It lands on (4, 3)."
+],
+[
+"maths",
+"What is the next term? 5, 9, 13, 17, …",
+"21",
+"9 − 5 = 4, 13 − 9 = 4 and 17 − 13 = 4, so it goes up by 4 each time. The next term is 17 + 4 = 21."
+],
+[
+"maths",
+"What is the next term? 2, 4, 8, 16, …",
+"32",
+"4 ÷ 2 = 2, 8 ÷ 4 = 2 and 16 ÷ 8 = 2, so each term is doubled. The next term is 16 × 2 = 32."
+],
+[
+"maths",
+"What is the rule for 30, 27, 24, 21, …?",
+"Subtract 3",
+"30 − 27 = 3, 27 − 24 = 3 and 24 − 21 = 3, so the terms go down by 3 each time. The rule is subtract 3."
+],
+[
+"maths",
+"What are the first three terms of 2n + 5?",
+"7, 9, 11",
+"Put n = 1, 2 and 3 in turn. n = 1: 2 × 1 + 5 = 7. n = 2: 2 × 2 + 5 = 9. n = 3: 2 × 3 + 5 = 11."
+],
+[
+"maths",
+"What is 25% as a decimal?",
+"0.25",
+"25% means 25 out of 100. 25 ÷ 100 = 0.25."
+],
+[
+"maths",
+"What is 10% of £250?",
+"£25",
+"10% is one tenth. Divide by 10: £250 ÷ 10 = £25."
+],
+[
+"maths",
+"Share £20 between two people in the ratio 1 : 3. What is the bigger share?",
+"£15",
+"1 + 3 = 4 parts. £20 ÷ 4 = £5 a part. The bigger share is 3 parts: 3 × £5 = £15."
+],
+[
+"maths",
+"What is 3.45 × 10?",
+"34.5",
+"Multiplying by 10 moves every digit one place to the left: 3.45 × 10 = 34.5."
+],
+[
+"maths",
+"Round 4,672 to the nearest hundred.",
+"4,700",
+"Look at the tens digit: it is 7, which is 5 or more, so round the hundreds up. 4,672 rounds to 4,700."
+],
+[
+"maths",
+"Which is the largest? 0.6, 0.06, 0.66, 0.606",
+"0.66",
+"Give them all 3 decimal places: 0.600, 0.060, 0.660, 0.606. Compare from the left: the tenths are 6, 0, 6, 6. Then compare the hundredths of the three with 6 tenths: 0, 6, 0. The largest is 0.660, which is 0.66."
+],
+[
+"maths",
+"What is 250 ÷ 100?",
+"2.5",
+"Dividing by 100 moves every digit two places to the right: 250 ÷ 100 = 2.5."
+],
+[
+"maths",
+"Work out 1,000 − 387.",
+"613",
+"387 is 13 less than 400. 1,000 − 400 = 600, then add back the 13: 600 + 13 = 613."
+],
+[
+"maths",
+"What is 87 ÷ 4? Give the remainder.",
+"21 remainder 3",
+"4 × 21 = 84, which is the biggest multiple of 4 that fits into 87. 87 − 84 = 3. So 87 ÷ 4 = 21 remainder 3."
+],
+[
+"maths",
+"What is 6 × 47?",
+"282",
+"Split 47 into 40 and 7: 6 × 40 = 240 and 6 × 7 = 42. Add them: 240 + 42 = 282."
+],
+[
+"maths",
+"Which operation is the inverse of multiplication?",
+"Division",
+"Inverse operations undo each other. If you multiply by 3 and then divide by 3, you are back where you started. So the inverse of multiplication is division."
+],
+[
+"maths",
+"What is 5 + 3 × 2?",
+"11",
+"BIDMAS: multiply before you add. 3 × 2 = 6, then 5 + 6 = 11."
+],
+[
+"maths",
+"Which fraction is equivalent to 2/3?",
+"4/6",
+"Multiply the top and bottom by the same number. 2 × 2 = 4 and 3 × 2 = 6, so 2/3 = 4/6."
+],
+[
+"maths",
+"What is 3/4 + 1/4?",
+"1",
+"The bottom numbers are the same, so add the tops: 3 + 1 = 4. That gives 4/4, which is a whole, or 1."
+],
+[
+"maths",
+"Write 7/2 as a mixed number.",
+"3 1/2",
+"7 ÷ 2 = 3 remainder 1. So 7/2 is 3 wholes and 1/2 left over: 3 1/2."
+],
+[
+"maths",
+"Simplify 4a + 3a",
+"7a",
+"Add the numbers in front of a: 4 + 3 = 7. So 4a + 3a = 7a."
+],
+[
+"maths",
+"Expand 2(x + 5)",
+"2x + 10",
+"Multiply each term inside the bracket by 2: 2 × x = 2x and 2 × 5 = 10. So 2(x + 5) = 2x + 10."
+],
+[
+"maths",
+"What is the value of 3n when n = 5?",
+"15",
+"3n means 3 × n. Replace n with 5: 3 × 5 = 15."
+],
+[
+"maths",
+"Solve x + 9 = 15",
+"x = 6",
+"To undo the + 9, subtract 9 from both sides: x = 15 − 9 = 6."
+],
+[
+"maths",
+"The mean of 4 numbers is 6. What is their total?",
+"24",
+"The mean is the total divided by how many numbers there are. So the total is the mean × how many: 6 × 4 = 24."
+],
+[
+"maths",
+"What is the area of a triangle with base 6 cm and height 5 cm?",
+"15 cm²",
+"Area = ½ × base × height = ½ × 6 × 5 = 15 cm²."
+],
+[
+"maths",
+"What is 2.5 + 3.75?",
+"6.25",
+"Line up the decimal points and write 2.5 as 2.50: 2.50 + 3.75 = 6.25."
+],
+[
+"maths",
+"What is 0.4 × 0.3?",
+"0.12",
+"Ignore the decimal points: 4 × 3 = 12. Each number has 1 decimal place, so the answer has 2 decimal places: 0.12."
+],
+[
+"maths",
+"Which decimal is equal to 3/10?",
+"0.3",
+"3/10 means 3 tenths. The first decimal place is the tenths, so 3/10 = 0.3."
+],
+[
+"maths",
+"What is the highest common factor (HCF) of 12 and 18?",
+"6",
+"Factors of 12: 1, 2, 3, 4, 6, 12. Factors of 18: 1, 2, 3, 6, 9, 18. The biggest number in both lists is 6."
+],
+[
+"maths",
+"What is the lowest common multiple (LCM) of 4 and 6?",
+"12",
+"Multiples of 4: 4, 8, 12, 16. Multiples of 6: 6, 12, 18. The first number in both lists is 12."
+],
+[
+"maths",
+"What is 10⁴?",
+"10,000",
+"10⁴ = 10 × 10 × 10 × 10 = 10,000."
+],
+[
+"maths",
+"A bag has 3 red and 5 blue counters. What is the probability of picking red?",
+"3/8",
+"There are 3 + 5 = 8 counters in total and 3 of them are red. So the probability is 3/8."
+],
+[
+"maths",
+"A fair dice is rolled. What is the probability of a 6?",
+"1/6",
+"One face shows a 6 out of 6 faces. So the probability is 1/6."
+],
+[
+"maths",
+"The probability of rain is 0.3. What is the probability of no rain?",
+"0.7",
+"Probabilities add up to 1. So the probability of no rain is 1 − 0.3 = 0.7."
+],
+[
+"maths",
+"How many centimetres are in 1 metre?",
+"100",
+"Centi means one hundredth, so it takes 100 centimetres to make 1 metre."
+],
+[
+"maths",
+"How many grams are in 2 kilograms?",
+"2,000",
+"1 kg = 1,000 g, so 2 kg = 2 × 1,000 = 2,000 g."
+],
+[
+"maths",
+"3.5 km is how many metres?",
+"3,500",
+"1 km = 1,000 m, so 3.5 km = 3.5 × 1,000 = 3,500 m."
+],
+[
+"maths",
+"How many minutes are in 2 and a half hours?",
+"150",
+"2 hours = 2 × 60 = 120 minutes. Add the half hour, 30 minutes: 120 + 30 = 150."
+],
+[
+"maths",
+"The radius of a circle is 5 cm. What is its diameter?",
+"10 cm",
+"The diameter is twice the radius: 2 × 5 = 10 cm."
+],
+[
+"maths",
+"How many minutes are there in 2 and a half hours?",
+"150",
+"2 and a half hours is 2.5 hours. 2.5 × 60 = 150 minutes."
+],
+[
+"maths",
+"What is −6 − 2?",
+"−8",
+"Start at −6 and move 2 more to the left: −6 − 2 = −8."
+],
+[
+"maths",
+"What is −5 + 5?",
+"0",
+"Start at −5 and move 5 to the right. That takes you back to 0: −5 + 5 = 0."
+],
+[
+"maths",
+"What is −4 × 3?",
+"−12",
+"Multiply the numbers without their signs: 4 × 3 = 12. The signs are different, so the answer is negative: −12."
+],
+[
+"maths",
+"A circle has a diameter of 10 cm. What is its circumference? (Use π ≈ 3.14.)",
+"31.4 cm",
+"Circumference = π × diameter = 3.14 × 10 = 31.4 cm."
+],
+[
+"maths",
+"What is the gradient of y = 4x − 1?",
+"4",
+"In y = mx + c, the gradient m is the number in front of x. Here it is 4."
+],
+[
+"maths",
+"Which point lies on the line y = 2x?",
+"(3, 6)",
+"Put x = 3 into y = 2x: y = 2 × 3 = 6. So (3, 6) is on the line."
+],
+[
+"maths",
+"Where does y = x + 5 cross the y-axis?",
+"(0, 5)",
+"A line crosses the y-axis where x = 0. Put x = 0 into y = x + 5: y = 0 + 5 = 5. So it crosses at (0, 5)."
+],
+[
+"maths",
+"Find the mean of 4, 7, 7, 10 and 12",
+"8",
+"Add the numbers: 4 + 7 + 7 + 10 + 12 = 40. Divide by how many there are: 40 ÷ 5 = 8."
+],
+[
+"computing",
+"What is the binary number 101 in decimal?",
+"5",
+"The binary columns from the right are 1, 2, 4, 8. So 101 means 1 × 4 + 0 × 2 + 1 × 1 = 4 + 0 + 1 = 5."
+],
+[
+"computing",
+"What is binary 101 in decimal?",
+"5",
+"The binary columns from the right are 1, 2, 4, 8. So 101 means 1 × 4 + 0 × 2 + 1 × 1 = 4 + 0 + 1 = 5."
+],
+[
+"computing",
+"What is the decimal number 6 in binary?",
+"110",
+"Binary columns are 8, 4, 2, 1. 6 = 4 + 2, so put a 1 under the 4 and the 2, and a 0 under the 1: 110."
+],
+[
+"computing",
+"What is decimal 6 in binary?",
+"110",
+"Binary columns are 8, 4, 2, 1. 4 + 2 = 6, so put a 1 under the 4 and the 2, and a 0 under the 1: 110."
+],
+[
+"computing",
+"What is binary 1000 in decimal?",
+"8",
+"The binary columns from the right are 1, 2, 4, 8. The 1 is in the eights column and every other digit is 0, so 1000 = 8."
+],
+[
+"computing",
+"What is decimal 13 in binary?",
+"1101",
+"Binary columns are 8, 4, 2, 1. 13 = 8 + 4 + 1, so put a 1 under 8, 4 and 1 and a 0 under 2: 1101."
+],
+[
+"computing",
+"How many different values can 3 bits store?",
+"8",
+"Each bit can be 0 or 1, which is 2 choices. For 3 bits: 2 × 2 × 2 = 8 different values."
+],
+[
+"computing",
+"An AND gate has inputs 1 and 0. What is the output?",
+"0",
+"AND gives 1 only when both inputs are 1. The inputs are 1 and 0, so they are not both 1. The output is 0."
+],
+[
+"computing",
+"An OR gate has inputs 1 and 0. What is the output?",
+"1",
+"OR gives 1 when at least one input is 1. The inputs are 1 and 0, and one of them is a 1. The output is 1."
+],
+[
+"computing",
+"A NOT gate has the input 1. What is the output?",
+"0",
+"NOT flips the input. The input is 1, so the output is 0."
+],
+[
+"computing",
+"What does a NOT gate do to 0?",
+"Makes it 1",
+"NOT flips the input. The input is 0, so the output is 1."
+],
+[
+"computing",
+"What is the output of a NOT gate when the input is 0?",
+"1",
+"NOT flips the input. The input is 0, so the output is 1."
+],
+[
+"computing",
+"What is the output of an OR gate with inputs 0 and 0?",
+"0",
+"OR gives 1 when at least one input is 1. Both inputs are 0, so the output is 0."
+],
+[
+"computing",
+"What is the output of an AND gate with inputs 1 and 1?",
+"1",
+"AND gives 1 only when both inputs are 1. Both inputs are 1, so the output is 1."
+],
+[
+"computing",
+"Which formula adds up the cells A1 to A5?",
+"=SUM(A1:A5)",
+"=SUM adds up a range of cells. A1:A5 means from A1 down to A5, so this adds A1 + A2 + A3 + A4 + A5."
+],
+[
+"computing",
+"Which formula adds the values in cells A1 to A5?",
+"=SUM(A1:A5)",
+"SUM adds up a range. A1:A5 means from A1 down to A5, so it adds A1 + A2 + A3 + A4 + A5."
+],
+[
+"computing",
+"Which function finds the biggest value in a range?",
+"MAX",
+"=MAX(A1:A5) looks through the cells from A1 to A5 and gives the biggest number."
+],
+[
+"computing",
+"What does the AVERAGE function do?",
+"Finds the mean of the numbers",
+"AVERAGE adds up the numbers and divides by how many there are. Mean = total ÷ how many."
+],
+[
+"science",
+"A car travels 150 km in 3 hours. What is its average speed?",
+"50 km/h",
+"Speed = distance ÷ time. 150 km ÷ 3 hours = 50 km/h."
+],
+[
+"science",
+"A car travels 100 m in 10 s. What is its speed?",
+"10 m/s",
+"Speed = distance ÷ time. 100 m ÷ 10 s = 10 m/s."
+],
+[
+"geography",
+"A map has a scale of 1 : 50,000. What does 1 cm on the map show?",
+"500 m",
+"1 : 50,000 means 1 cm on the map is 50,000 cm in real life. There are 100 cm in a metre, so 50,000 ÷ 100 = 500 m."
+],
+[
+"geography",
+"A map has a scale of 1 : 25,000. What does 1 cm on the map represent?",
+"250 m",
+"1 : 25,000 means 1 cm on the map is 25,000 cm in real life. There are 100 cm in a metre, so 25,000 ÷ 100 = 250 m."
+],
+[
+"music",
+"What does the time signature 3/4 mean?",
+"3 crotchet beats in each bar",
+"The top number, 3, is how many beats are in each bar. The bottom number, 4, means each beat is a crotchet. So 3/4 means 3 crotchet beats in each bar."
+]
+];
+var EXPFIX_HITS = 0;
+(function(){ EXPFIX.forEach(function(r){ (QBY[r[0]]||[]).forEach(function(x){ if(!x.gen && x.q===r[1] && String(x.correct)===r[2]){ x.exp=r[3]; EXPFIX_HITS++; } }); }); })();
 
 /* Future Hopes guide: the class text at a glance. Built from FH_STORIES (banks12.js). */
 function vFH(m){
@@ -8076,11 +8952,11 @@ const OLABEL = {history:'⏳ Timeline puzzles', computing:'🧠 Algorithm puzzle
 const JLABEL = {pshe:'📓 Reflection journal', art:'🖌️ Technique journal', english:'✏️ Creative writing', re:'🤔 Dilemma cards', literature:'✏️ Write about what you read', spanish:'✍️ Free write in Spanish', mandarin:'✍️ Free write in Mandarin'};
 const JTITLE = {pshe:'Reflection journal', art:'Technique journal', english:'Creative writing sandbox', re:'Moral dilemma cards', literature:'Write about what you read', spanish:'Free write in Spanish', mandarin:'Free write in Mandarin'};
 
-function go(name, params){ if(V && V.tk && V.tk.timer) clearInterval(V.tk.timer); if(V.name==='parent' && name!=='parent') parentUnlocked=false; V=Object.assign({name}, params||{}); render(); window.scrollTo(0,0); }
+function go(name, params){ if(V && V.name==='speak' && name!=='speak') spkLeave(); if(V && V.tk && V.tk.timer) clearInterval(V.tk.timer); if(V.name==='parent' && name!=='parent') parentUnlocked=false; V=Object.assign({name}, params||{}); render(); window.scrollTo(0,0); }
 function render(){
   renderHeader();
   const m=$('#view'); m.innerHTML='';
-  const views={home:vHome,subject:vSubject,round:vRound,results:vResults,dojo:vDojo,oasis:vOasis,checkin:vCheckin,parent:vParent,thesaurus:vThesaurus,journal:vJournal,vault:vVault,notes:vNotes,verbs:vVerbs,chars:vChars,order:vOrder,match:vMatch,worksheet:vWorksheet,stroke:vStroke,report:vReport,words:vWords,upgrade:vUpgrade,talk:vTalk,periodic:vPeriodic,methods:vMethods,write:vWrite,players:vPlayers,caps:vCaps,capslearn:vCapLearn,atlas:vAtlas,lessons:vLessons,lesson:vLesson,storylab:vStoryLab,story:vStory,written:vWritten,wq:vWQ,coverage:vCoverage,fhguide:vFH,xwords:vXW,lab:vLab,puzzles:vPuzzles};
+  const views={home:vHome,subject:vSubject,round:vRound,results:vResults,dojo:vDojo,oasis:vOasis,checkin:vCheckin,parent:vParent,thesaurus:vThesaurus,journal:vJournal,vault:vVault,notes:vNotes,verbs:vVerbs,chars:vChars,order:vOrder,match:vMatch,worksheet:vWorksheet,stroke:vStroke,report:vReport,words:vWords,upgrade:vUpgrade,talk:vTalk,periodic:vPeriodic,methods:vMethods,write:vWrite,players:vPlayers,caps:vCaps,capslearn:vCapLearn,atlas:vAtlas,lessons:vLessons,lesson:vLesson,storylab:vStoryLab,story:vStory,written:vWritten,wq:vWQ,coverage:vCoverage,fhguide:vFH,xwords:vXW,speak:vSpeak,lab:vLab,puzzles:vPuzzles};
   (views[V.name]||vHome)(m);
   updatePill();
   if(V.name==='stroke') initWriter();
@@ -8176,6 +9052,7 @@ function vSubject(m){
   if(METHODS[k]) study.push(`<button class="btn gold" data-act="methods" data-k="${k}">🧠 Tips &amp; tricks</button>`);
   if(k==='english') study.push(`<button class="btn gold" data-act="go" data-v="write">📝 Writing checker</button>`);
   if(k==='spanish'||k==='mandarin') study.push(`<button class="btn gold" data-act="typestart" data-k="${k}">⌨️ Type it (no options)</button>`);
+  if(k==='spanish'||k==='mandarin') study.push(`<button class="btn gold" data-act="listenlab" data-k="${k}">🎧 Listening lab</button><button class="btn gold" data-act="speakstart" data-k="${k}">🗣️ Speaking practice</button>`);
   study.push(`<button class="btn gold" data-act="go" data-v="written" data-k="${k}">✍️ Written answers</button>`);
   if(LESSONS[k]) study.push(`<button class="btn gold" data-act="go" data-v="lessons" data-k="${k}">🎓 Fun lessons</button>`);
   if(k==='science') study.push(`<button class="btn gold" data-act="go" data-v="lab">🔬 Home lab: experiments</button>`);
@@ -8242,15 +9119,15 @@ function vRound(m){
   } else if(flash){
     const cd=cardOf(q), t=cardTier(q);
     body=`<div class="qtag">${esc(s.n)}: ${esc(q.topic)}. ${TIER_I[t]} ${TIER[t]}</div>${q.flag?`<div class="center" style="margin:6px 0">${flagImg(q.flag,q.flagOnly?160:90)}</div>`:''}${q.map&&!q.flagOnly?mapHTML(q.map):''}<div class="flashface">${esc(cd.f)}</div>
-     ${s.lang&&q.vocab?`<div class="center"><button class="btn gold" data-act="listen">🔊 Listen</button></div>`:''}
-     ${R.shown?`<div class="answer">${br(cd.b)}</div>
+     ${s.lang&&cardFrontSpeak(q)?`<div class="center"><button class="btn gold" data-act="listen">🔊 Listen</button></div>`:''}
+     ${R.shown?`<div class="answer">${br(cd.b)}</div>${s.lang&&!cardFrontSpeak(q)&&cardBackSpeak(q)?'<div class="center"><button class="btn gold small" data-act="listen">🔊 Listen to the answer</button></div>':''}
        <div class="row" style="justify-content:center"><button class="btn ghost" data-act="flashno">🔁 Not yet</button><button class="btn" data-act="flashyes">✅ Got it</button></div>
        <p class="muted center">Got it moves a card up: 🥉 Bronze (+2 XP), 🥈 Silver (+4 XP), 🥇 Gold (+6 XP). Not yet moves it down one step.</p>`
       :`<div class="center"><button class="btn big" data-act="flashshow">Show the answer</button></div>`}`;
   } else {
     const hint=!q.done && !noFeedback ? hintOf(q) : null;
     body=`<div class="qtag">${esc(s.n)}: ${esc(q.topic)}</div>${ctxHTML(q)}<div class="question">${esc(q.q)}</div>
-     ${q.play?`<div class="center"><button class="btn gold" data-act="playq">▶️ Play the sound</button></div>`:''}
+     ${q.play?`<div class="center"><button class="btn gold" data-act="playq">▶️ Play the sound</button>${q.slow?' <button class="btn ghost" data-act="playslow">🐢 Slowly</button>':''}</div>`:''}
      ${s.lang?`<div class="center"><button class="btn gold" data-act="listen">🔊 Listen</button></div>`:''}
      ${q.hinted&&hint?`<div class="hintbox">💡 ${esc(hint)}</div>`:''}
      ${hint&&!q.hinted?`<div class="center"><button class="btn ghost small" data-act="hint">💡 Hint (half XP for this one)</button></div>`:''}
@@ -8259,9 +9136,10 @@ function vRound(m){
   }
   let fb='';
   if(q.done && !noFeedback && !flash){
-    fb=`<div class="feedback ${q.ok?'ok':'no'}"><strong>${esc(q.msg||'')}</strong>${q.ok?'':`<br>The answer is: <b>${esc(q.correctLabel||q.correct)}</b>`}<br>${esc(q.exp)}${q.clearedNow?'<br><b>🥋 Cleared from your Dojo!</b>':''}</div>`;
+    const wb=(!q.ok && q.type!=='spell' && q.type!=='maptap')?workedBox(q):'';
+    fb=`<div class="feedback ${q.ok?'ok':'no'}"><strong>${esc(q.msg||'')}</strong>${q.ok?'':`<br>The answer is: <b>${esc(q.correctLabel||q.correct)}</b>`}${wb?'':`<br>${esc(q.exp)}`}${q.clearedNow?'<br><b>🥋 Cleared from your Dojo!</b>':''}</div>${wb}`;
   }
-  if(q.done && !noFeedback && !flash && !q.ok && q.type!=='spell' && q.type!=='typein' && q.type!=='maptap'){ const mc=methodFor(q); if(mc) fb+=methodHTML(mc)+`<div class="center"><button class="btn ghost small" data-act="methods" data-k="${q.k}">🧠 More tips for ${esc(s.n)}</button>${LESSONS[q.k]&&LESSONS[q.k][q.topic]?`<button class="btn small" data-act="lesson" data-k="${q.k}" data-t="${esc(q.topic)}">🎓 Full fun lesson</button>`:''}</div>`; }
+  if(q.done && !noFeedback && !flash && !q.ok && q.type!=='spell' && q.type!=='typein' && q.type!=='maptap'){ const mc=methodFor(q); if(mc) fb+='<details class="mdet"><summary>🧠 The method for this topic</summary>'+methodHTML(mc)+'</details>'+`<div class="center"><button class="btn ghost small" data-act="methods" data-k="${q.k}">🧠 More tips for ${esc(s.n)}</button>${LESSONS[q.k]&&LESSONS[q.k][q.topic]?`<button class="btn small" data-act="lesson" data-k="${q.k}" data-t="${esc(q.topic)}">🎓 Full fun lesson</button>`:''}</div>`; }
   const next = (q.done && !flash) ? `<div class="center"><button id="nextbtn" class="btn big" data-act="next">${R.i<n-1?'Next ➔':(noFeedback?'Finish':'Finish the round')}</button></div>` : '';
   m.innerHTML=`${top}<section class="module" style="--c:${s.c}">${body}${fb}${next}</section>`;
 }
@@ -8283,7 +9161,8 @@ function vResults(m){
     ? `<div class="missed"><b>${esc(q.show)}</b><br>Answer: <b>${esc(q.correct)}</b><br><small>You typed: ${esc(q.typed||'')}</small></div>`
     : q.type==='spell'
     ? `<div class="missed"><b>${esc(q.word)}</b><br><small>You typed: ${esc(q.typed||'')}</small></div>`
-    : `<div class="missed"><b>${esc(flash?cardOf(q).f:q.q)}</b><br>${(R.kind==='test'||R.kind==='mock'||R.kind==='wtest'||R.kind==='xtest')&&q.chosen!=null?`<small>You chose: ${esc(q.opts[q.chosen])}</small><br>`:''}Answer: <b>${esc(q.correctLabel||q.correct)}</b><br><small>${esc(q.exp)}</small></div>`).join('');
+    : flash ? `<div class="missed"><b>${esc(cardOf(q).f)}</b><br>Answer: <b>${esc(q.correctLabel||q.correct)}</b><br><small>${esc(q.exp)}</small></div>`
+    : `<div class="missed"><b>${esc(q.q)}</b><br>Answer: <b>${esc(q.correctLabel||q.correct)}</b>${workedBox(q)}</div>`).join('');
   const topics=[...new Set(missed.map(q=>subj(q.k).n+': '+q.topic))];
   const t=(sm.newT||[]), tiers=R.tiers||[0,0,0,0,0];
   const rows=[`<div><span>XP earned</span><b>+${R.xp||0}</b></div>`,`<div><span>Coins earned</span><b>+${R.coins||0}</b></div>`];
@@ -8299,7 +9178,7 @@ function vResults(m){
    <div class="bigscore">${R.kind==='sprint'?c:c+' / '+n}</div><p class="center" style="margin-left:auto;margin-right:auto">${msg}</p>
    <div class="bd">${rows.join('')}</div>
    <div class="row" style="justify-content:center;margin-top:12px"><button class="btn big" data-act="again">${R.kind==='sprint'?'Sprint again':'Another round'}</button><button class="btn ghost" data-act="back">Back</button>${dojoCount()?`<button class="btn ghost" data-act="go" data-v="dojo">🥋 Dojo (${dojoCount()})</button>`:''}</div></section>
-   ${missed.length?`<section class="card"><h3>${flash?'Cards to look at again':'Have another look at these'}</h3>${list}
+   ${missed.length?`<section class="card"><h3>${flash?'Cards to look at again':R.kind==='sprint'?'You missed '+missed.length+'. Here is how to do '+(missed.length===1?'it':'each one'):'Have another look at these'}</h3>${list}
      ${topics.length?`<p class="muted" style="margin-top:10px">Topics to revise: ${topics.map(esc).join(', ')}. Try the revision notes, or <a href="${OAK}" target="_blank" rel="noopener">Oak National Academy</a> or <a href="${BITE}" target="_blank" rel="noopener">BBC Bitesize</a>.</p>`:''}</section>`:''}`;
 }
 
@@ -8625,6 +9504,7 @@ function vReport(m){
    <div class="card" style="margin:0"><h3>Needs more practice</h3>${weak.length?`<ul style="margin-left:18px">${weak.map(x=>`<li>${esc(x.t)} (${esc(sn(x.k))}): ${Math.round(100*x.c/x.a)}%</li>`).join('')}</ul>`:'<p class="muted">Nothing flagged. Topics appear here at under 70% after 4 or more answers.</p>'}</div></div>
    <h3 style="margin-top:14px">Checkpoint tests and mock exams</h3>${r.tests.length?`<div class="scroll"><table><tr><th>Date</th><th>What</th><th>Score</th><th>%</th></tr>${r.tests.slice().reverse().map(t=>`<tr><td>${fmtDate(t.d)}</td><td>${t.kind==='mock'?'Term mock (all subjects)':esc(sn(t.s))}</td><td>${t.c} / ${t.n}</td><td>${pct(t.c,t.n)}%</td></tr>`).join('')}</table></div>`:'<p class="muted">None taken yet.</p>'}
    <h3 style="margin-top:14px">Practice over the last 8 weeks</h3><div class="scroll"><table><tr><th>Week starting</th><th>Days practised</th><th>Questions</th><th>Right</th></tr>${r.weeks.slice().reverse().map(w=>`<tr><td>${fmtDate(w.w)}</td><td>${w.days}</td><td>${w.n}</td><td>${w.n?pct(w.c,w.n)+'%':'-'}</td></tr>`).join('')}</table></div>
+   ${r.lg&&Object.keys(r.lg).length?`<h3 style="margin-top:14px">Languages</h3><p>${Object.keys(r.lg).map(k=>`${k==='mandarin'?'Mandarin':'Spanish'}: listening ${r.lg[k].lr||0} of ${r.lg[k].ln||0} right, ${r.lg[k].sp||0} word${(r.lg[k].sp||0)===1?'':'s'} said aloud`).join('. ')}.</p>`:''}
    ${r.extreme?`<h3 style="margin-top:14px">Extreme words</h3><p>${r.extreme.met} extreme words met, ${r.extreme.right} worked out, ${r.extreme.tests} weekly test${r.extreme.tests===1?'':'s'} finished.</p>`:''}
    ${r.written?`<h3 style="margin-top:14px">Written answers</h3><p>${r.written.n} written answers, ${r.written.good} scored 60% or more${r.written.avg!==null?', average '+r.written.avg+'%':''}. Topic coverage across the year: ${r.coverage}%.</p>`:''}
    ${r.stories?`<h3 style="margin-top:14px">Story Lab</h3><p>${r.stories.n} ${r.stories.n===1?'story':'stories'} finished, ${r.stories.w} words written. The stories themselves stay private on her device.</p>`:''}
@@ -8647,6 +9527,7 @@ function summaryText(){
   const wk=weakTopics(); if(wk.length) T.push('Topics to revisit: '+wk.map(x=>`${x.t} (${subj(x.k).n}, ${x.p}%)`).join('; ')+'.');
   if(last) T.push(`Latest check-in (week starting ${fmtDate(last.week)}): felt ${last.feel}/5${last.genius?', genius in '+subj(last.genius).n:''}${last.help?', wants help with '+subj(last.help).n:''}${last.note?'. Note: '+last.note:''}`);
   T.push(`Word of the day: ${Object.keys(S.wl).length} words learned. Latest weekly word test: ${(()=>{ const k=Object.keys(S.wt).sort().pop(); return k?`meanings ${S.wt[k].m[0]}/${S.wt[k].m[1]}, spelling ${S.wt[k].s[0]}/${S.wt[k].s[1]}`:'none yet'; })()}.`);
+  { const lg=S.lg||{}, parts=Object.keys(lg).map(k=>`${k==='mandarin'?'Mandarin':'Spanish'}: listening ${lg[k].lr||0} of ${lg[k].ln||0} right, ${lg[k].sp||0} word${(lg[k].sp||0)===1?'':'s'} said aloud`); if(parts.length) T.push('Languages: '+parts.join('; ')+'.'); }
   T.push(`Extreme words: ${Object.keys(S.xw||{}).length} met, ${xwRight()} worked out, ${Object.keys(S.xt||{}).length} weekly test${Object.keys(S.xt||{}).length===1?'':'s'} finished.`);
   T.push(`Written answers: ${Object.keys(S.wr||{}).length} answered, ${wrGood()} at 60% or more. Topic coverage: ${covPercent()}%.`);
   T.push(`Story Lab: ${slDoneCount()} ${slDoneCount()===1?'story':'stories'} finished, ${slWordsDone()} words. (The stories themselves stay private on her device.)`);
@@ -8958,7 +9839,7 @@ const ACTIONS = {
   sayvocab:d=>sayLang(d.t, d.lang),
   quit:()=>{ if(R && R.timer) clearInterval(R.timer); const b=R?R.back:{name:'home'}; R=null; go(b.name,b); },
   back:()=>{ const b=R?R.back:{name:'home'}; go(b.name,b); },
-  again:()=>{ if(R.kind==='sprint') startSprint(); else if(R.kind==='wtest') startWordTest(R.opts.week); else if(R.kind==='xtest') startXWTest(R.opts.week); else if(R.kind==='spell') startDictation(); else if(R.kind==='type') startTypeRound(R.subj); else if(R.kind==='sheet') go('worksheet',{k:R.subj, kind:R.sheetKind, fresh:true}); else if(R.kind==='maptap') startMapTap(R.reg); else if(R.kind==='written') go('written',{k:(R.back&&R.back.k)||''}); else startRound(R.opts); },
+  again:()=>{ if(R.opts&&R.opts.listen){ startListen(R.opts.k); return; } if(R.kind==='sprint') startSprint(); else if(R.kind==='wtest') startWordTest(R.opts.week); else if(R.kind==='xtest') startXWTest(R.opts.week); else if(R.kind==='spell') startDictation(); else if(R.kind==='type') startTypeRound(R.subj); else if(R.kind==='sheet') go('worksheet',{k:R.subj, kind:R.sheetKind, fresh:true}); else if(R.kind==='maptap') startMapTap(R.reg); else if(R.kind==='written') go('written',{k:(R.back&&R.back.k)||''}); else startRound(R.opts); },
   pick:d=>{
     const q=R.qs[R.i]; if(q.done) return;
     const i=+d.i; q.done=true; q.chosen=i; q.ok=q.opts[i]===q.correct;
@@ -8975,7 +9856,7 @@ const ACTIONS = {
   next:()=>{ if(R.qs[R.i].done) advance(); },
   listen:()=>{
     const q=R.qs[R.i], s=subj(q.k); let t='';
-    if(R.kind==='flash') t=cardOf(q).f; else { const m=q.q.match(/'([^']+)'/); t=m?m[1]:(q.done?q.correct:''); }
+    if(R.kind==='flash') t=cardFrontSpeak(q)||(R.shown?cardBackSpeak(q):''); else { const m=q.q.match(/'([^']+)'/); t=m?m[1]:(q.done?q.correct:''); }
     if(!t){ toast('Answer the question first, then you can hear it.'); return; }
     sayLang(t.replace(/\(.*?\)/g,'').trim(), s.lang);
   },
@@ -9278,7 +10159,7 @@ Object.assign(ACTIONS, LESSONACTIONS);
 ACTIONS.thgroup=d=>{ V.tg=d.g; render(); };
 ACTIONS.branchtest=d=>startRound({kind:'test', keys:['science'], topics:SCI_TESTS[d.b], branch:d.b, n:TEST_LEN, back:{name:'subject',k:'science'}});
 Object.assign(ACTIONS, SLACTIONS);
-Object.assign(ACTIONS, WQACTIONS, COVACTIONS, FHACTIONS, XWACTIONS);
+Object.assign(ACTIONS, WQACTIONS, COVACTIONS, FHACTIONS, XWACTIONS, FIXACTIONS, FIX2ACTIONS, LANGACTIONS);
 
 </script>
 </body>
