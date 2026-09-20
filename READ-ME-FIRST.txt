@@ -1,19 +1,21 @@
 HOW TO PUT THE NEW VERSION ON YOUR SITE (about 3 minutes)
 
-You only need to upload the 3 files that are in this folder:
-   1. index.html
-   2. manifest.webmanifest
-   3. LICENSES-README.txt
+You need to upload the 4 files that are in this folder:
+   1. index.html            (the whole site: the important one)
+   2. share-image.png       (NEW: the picture that shows when you send the link)
+   3. manifest.webmanifest
+   4. LICENSES-README.txt
 Nothing else needs to change. Her progress is kept.
 
 STEPS
- 1. Unzip this file so you can see the 3 files (GitHub cannot open a zip).
+ 1. Unzip this file so you can see the files (GitHub cannot open a zip).
  2. Go to github.com and open your repository, "Annaliesce-Academy-".
     You should see the file list, with index.html in it.
  3. Click  "Add file"  (near the top right of the file list), then  "Upload files".
- 4. Drag the 3 files into the box (or click "choose your files").
-    Because they have the SAME NAMES as the files already there, GitHub replaces
-    them. It does not ask. That is the automatic override you were asking about.
+ 4. Drag all 4 files into the box (or click "choose your files").
+    index.html, manifest.webmanifest and LICENSES-README.txt have the SAME NAMES as
+    files already there, so GitHub replaces them automatically. share-image.png is
+    new and simply gets added.
  5. Scroll down and click the green  "Commit changes"  button.
  6. Netlify notices by itself and updates the site in about a minute.
     To check: open Netlify, click your site, click "Deploys". The top one should say
@@ -21,9 +23,20 @@ STEPS
  7. Open the site and refresh the page. If she has the site saved on her tablet or
     phone like an app, close it fully and open it again while online.
 
+THE LINK PREVIEW PICTURE
+ - WhatsApp, iMessage and others remember old previews. To see the new picture,
+   send the link with something extra on the end, for example:
+       https://theannaliesceacademy.netlify.app/?v=2
+ - Check the file share-image.png is in the MAIN page of the repository, next to
+   index.html, not inside a folder.
+
 IMPORTANT
  - Upload into the MAIN page of the repository (where index.html already is),
    not inside a folder.
  - Do NOT delete anything. Do not touch the "netlify" folder.
  - If the site ever looks unchanged, hold Shift and press refresh, or open it in a
    private window.
+
+ABOUT HER AVATAR
+ - Each section now starts with 2 free looks (skin tones are always free).
+ - Anything she is already wearing stays hers.
