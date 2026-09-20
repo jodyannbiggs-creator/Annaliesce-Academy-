@@ -1,12 +1,35 @@
-HOW TO PUT THE NEW VERSION ON YOUR SITE (about 3 minutes)
+THE ANNALIESCE ACADEMY: NEW VERSION
+=====================================
+THIS VERSION: Academy version 6, built 20 Sep 2026, 17:45.
+After you upload, open the site and scroll to the very bottom of the HOME page.
+It should say:  "Academy version 6 . built 20 Sep 2026, 17:45".
+If it says something older, or nothing, the new upload has not reached the site yet
+(see "If the site ever looks unchanged" below).
 
-You need to upload the 4 files that are in this folder:
-   1. index.html            (the whole site: the important one)
-   2. share-image.png       (NEW: the picture that shows when you send the link)
-   3. manifest.webmanifest
-   4. LICENSES-README.txt
-Nothing else needs to change. Her progress is kept.
+NEW IN THIS VERSION
+ - EXTREME WORD CHALLENGE: a very hard word every day on the home page, such as
+   "pusillanimous". She guesses what it means from four choices, can hear it (normal or
+   slowly) and see how it is said, then sees the meaning and an example. At the weekend
+   there is a test on the week's extreme words, including "how is it said?" questions.
+   116 words, 5 new trophies, and a word book. Her extreme-word progress shows in your report.
+ - Written answers: 315 exam-style questions, at least two for every topic.
 
+WHAT IS IN THIS VERSION
+ - 155 lessons, each with teach, study, try it and a 5-question check, plus revision notes
+ - About 2,600 fixed questions, 33 reading passages and 124 endless practice games
+   (built from 865 checked facts), for all 14 subjects
+ - Written answers, and an "Explain it in writing" task for every lesson, marked by key
+   ideas, plus a written question of the day
+ - Coverage map (4 stars for every topic), revision-due reminders, and dinner-table
+   questions for you in the Parent Desk
+ - Story Lab: a guided creative writing tool (ideas, plan, draft, improve, publish),
+   including a Climate hopes story type
+ - Future Hopes class text guide, with a lesson, questions and games
+ - Geography: grid references (with a drawn map), 164 flags and the capital cities academy
+ - 93 trophies, with 53 badge pictures and 6 master badges
+ - Thesaurus (172 words), the everyday Word of the Day, avatar shop and parent report
+
+THE 4 FILES TO UPLOAD (this README is only for you)
 STEPS
  1. Unzip this file so you can see the files (GitHub cannot open a zip).
  2. Go to github.com and open your repository, "Annaliesce-Academy-".
