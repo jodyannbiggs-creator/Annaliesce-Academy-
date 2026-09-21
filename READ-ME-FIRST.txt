@@ -1,48 +1,120 @@
 THE ANNALIESCE ACADEMY: NEW VERSION
 =====================================
-THIS VERSION: Academy version 50, built 21 Sep 2026, 12:02.
+THIS VERSION: Academy version 54, built 21 Sep 2026, 16:30.
 After you upload, open the site and scroll to the very bottom of the HOME page.
-It should say:  "Academy version 50 . built 21 Sep 2026, 12:02".
+It should say:  "Academy version 54 . built 21 Sep 2026, 16:30".
 If it says something older, or nothing, the new upload has not reached the site yet
 (see "If the site ever looks unchanged" below).
 
-NEW IN THIS VERSION: SAY IT BETTER (A SPEAKING COACH WITH WORD-CHECKING)
- WHERE: English page > "Say it better: speaking coach".
- WHAT SHE DOES: pick a prompt (there are 24: about her, opinions, "explain it", stories, and 10 school-subject prompts), talk for 30 to 60 seconds, then get friendly coaching. There are NO marks.
- WHAT SHE GETS BACK (with word-checking on):
-   - What the computer heard, with the FILLER WORDS highlighted (um, uh, like, you know, I mean, sort of, basically...). "I like football" is not counted; only fillers are.
-   - Her pace (words a minute), her pauses, and how long she talked.
-   - Whether she built her talk well: a reason (because...), an example (for example...), things in order (first, next, finally), a sum-up.
-   - For subject prompts, which KEY IDEAS she covered (for example, sunlight, water and carbon dioxide for photosynthesis).
-   - WORD UPGRADES from the Thesaurus vault (if she says "nice" five times: try "lovely", "delightful").
-   - What she did well, up to 3 tips to say it even better, and a comparison with her last go at the same prompt.
-   - 10 XP for a talk of 20 seconds or more, +5 XP for improving. Trophies: Confident Speaker (5 talks) and Power Pauser (a talk of 30 seconds or more with hardly any filler words).
-   - She can LISTEN BACK to herself.
+NEW IN VERSION 54 (it also includes everything from versions 51, 52 and 53, listed further down)
 
- PRIVACY: PLEASE READ. To turn her voice into words, the BROWSER sends what she says to an outside speech service: Google in Chrome and on Android, Apple in Safari, Microsoft in Edge.
- That is why you decide, and why it is OFF until you switch it on:
-   - Parent Desk (your PIN) > "Say it better: word-checking" > On (check her words) or Off (recording only). It is remembered on THAT device only, so a new device always starts OFF.
-   - Before every talk, her screen says in plain words where her voice goes, and that the Academy does not save it.
-   - The Academy NEVER saves her voice or her words. They appear on the screen and are wiped when she leaves. The listen-back recording stays on the device and is deleted when she leaves.
-   - Only NUMBERS are saved and synced (how many talks, filler words a minute, words a minute). Your report shows the number of talks, nothing she said.
-   - With it OFF she can still record herself, listen back and tick a self-check list. Nothing leaves the device.
+LANGUAGE PRACTICE FOR SPANISH AND MANDARIN (the first part of queue item 10)
+Where: open Spanish or Mandarin, then tap "Language practice" (next to Listening lab and Speaking practice).
 
- PLEASE TEST IT ON HER DEVICE. I could not test the real Google/Apple speech recognition myself (it needs a real voice and their servers), so I tested everything else with a simulated one. Please try:
-   1. Use Chrome (laptop or Android) or Safari (iPhone or iPad), with internet. Chrome is the most reliable.
-   2. Parent Desk > Say it better: word-checking > On.
-   3. English page > Say it better > "Explain how photosynthesis works, to a friend" > "Start talking". Allow the microphone when asked.
-   4. Talk for about 30 seconds and say "um", "like" and "you know" a few times on purpose.
-   5. Tap "I am finished". Check: does what the computer heard look right? Are your filler words highlighted?
- THINGS TO KNOW:
-   - Chrome often leaves out "um" and "er" (it tidies them away). The results screen says so. She can listen back to check.
-   - Speech recognition can mishear, especially with background noise or a quiet voice. It never blames her: it says the computer found it hard to hear and suggests a quieter room.
-   - On some iPhones and iPads, recording and word-checking cannot run at the same time. If that happens it tells her and falls back to recording only.
-   - If there is no internet, it says so and she can still listen back.
+1. HOW HARD? Easy, Medium, Hard or Extremely hard. Each language keeps its own level.
+ - Easy: short sentences, three choices, the English meaning is shown.
+ - Medium: longer sentences, four choices, the meaning is shown.
+ - Hard: the meaning is hidden (a hint shows it for 1 XP), and when she translates she picks the Spanish or Mandarin herself.
+ - Extremely hard: long sentences, extra wrong words to avoid, Mandarin with NO pinyin, and vocabulary words are typed.
+   Mandarin shows pinyin under the characters at Easy, Medium and Hard.
+
+2. SOUND. Every question has a button to hear it, and there is a switch on the page to turn speaking off. It is remembered and shared between her devices.
+ - With speaking off (or on a device with no Spanish or Mandarin voice) "Tap what you hear" becomes "Tap the words": she sees the English and builds the sentence.
+ - On a "fill in the blank" question the sound button plays only AFTER she has answered, because saying the sentence would give the answer away.
+ - It is the device's own voice. Nothing is sent anywhere.
+
+3. THE GAMES (ten questions each, or a mix of all four)
+ - FILL IN THE BLANK: a sentence with a gap. She picks the word that fits (verb endings, tu or usted, agreement, joining words, measure words in Mandarin).
+ - TAP WHAT YOU HEAR: she hears the sentence and taps the words, in order, from a bank that also holds extra wrong words.
+   A wrong answer shows which words were in the wrong place, then the right sentence and what it means.
+ - TRANSLATE THE SENTENCE: Spanish or Mandarin to English at Easy and Medium; English to Spanish or Mandarin at Hard and Extremely hard.
+ - TRANSLATE THE WORD: the usual drill, using the 124 Spanish and 74 Mandarin words already in the Academy.
+
+4. HOW IT COUNTS
+ - Right answers earn XP like any other round. Wrong answers do NOT go into the Mistake Dojo (they cannot be replayed there), so the results screen says to have another go.
+ - Every sentence belongs to a real lesson topic (Greetings, Family, Formal and informal and so on), so her answers count on the Coverage map.
+ - The parent summary gets one new line: "Language practice: X of Y right".
+ - 40 sentences in each language, 10 at each level.
+
+PLEASE CHECK THE LANGUAGE. The 80 sentences were written by me. The pinyin spelling and tone marks were checked against a dictionary, but NOBODY WHO SPEAKS SPANISH OR MANDARIN HAS LOOKED AT THEM.
+If a teacher or a friend can read through them, the Mandarin "fill in the blank" answers are the ones most worth checking. Tell me anything that sounds odd and I will change it.
+NOT TESTED: the sound on a real device. I can only test with a pretend voice, so please try it on her device and tell me if anything sounds wrong.
+
+STILL TO COME from this idea (queue item 10): "Repeat after me" (she says the sentence and the app checks it; this needs the speech-recognition switch you already approved for Say it better), back-and-forth conversations, and recap sessions.
+
+TWO SMALL FIXES
+ - On a very small phone the box where she types an answer was wider than the screen and pushed its Check button off the edge. That affected spelling dictation and "Type it" rounds too. Fixed.
+ - After a round where nothing can go into the Dojo (this new practice and the Listening lab), the results no longer say the tricky ones "are now in your Dojo".
+
+NEW IN VERSION 53 (included)
+
+A. YOUR TEN NEW BADGE PICTURES ARE IN
+ - Seven trophies already existed and now show their pictures: Map Maker, Pathfinder, Trailblazer, Whole Map, Revision Hero, Climate Storyteller and Future Hopes Reader.
+ - THREE HAD NO TROPHY, SO I MADE THEM (the rules are mine, easy to change):
+   1. Explorer Extraordinaire: meet 100 different countries in the Capital cities and Flags flashcards. A country counts once its capital card or its flag card has reached Bronze.
+   2. The Scholar's Chronicle: all 4 coverage stars for Future Hopes (lesson passed, practised, secure, and a written answer).
+   3. The Cartographer's Masterpiece: the whole Year 7 coverage map at 100% AND nothing due for revision.
+      (Whole Map already means every star on every topic, so the Masterpiece needed something harder than that. Tell me if you meant something else.)
+ - That makes 105 trophies, 63 of them with pictures. A badge she has won turns to colour and can be tapped to see it big, as in version 52.
+
+B. WHAT I DID TO THE PICTURES
+ - FIVE of them (Map Maker, Revision Hero, Climate Storyteller, Future Hopes Reader, Explorer Extraordinaire) had a count painted into the picture, like "0 of 25".
+   On a badge she has WON that would look wrong, so I took that line out and filled the space in from the surface around it. Everything else in the pictures is exactly as you sent it. Your original files are untouched.
+ - The new pictures are 384 pixels wide (the older ones are 240), so they stay sharp when enlarged. That makes the page about 0.4 MB bigger (first visit only, then it is saved on the device).
+ - SLIPS INSIDE THE ARTWORK ITSELF that I cannot fix by editing: on the Whole Map badge "Quarter" is split as "Qua-rter"; on Trailblazer it says "75% o of"; on the Cartographer's Masterpiece the words "'Year 7'" are doubled and the title runs into the edge.
+   If you want them fixed, they need to be made again with the wording corrected. Send new ones and I will swap them in.
+
+C. A FIX: Whole Map (and Map Maker, Pathfinder, Trailblazer) could be given slightly EARLY, because the coverage percentage is rounded (99.84% counted as 100%). They now need the exact figure.
+
+D. STILL WAITING FOR ARTWORK (they show an emoji for now): 36 trophies.
+ - 11 subject Master badges (all subjects except Maths, History and Literature) and 10 subject Superstar badges.
+ - 15 newer trophies: Deep Thinker, Pianist, Shortcut Star, Confident Speaker, Power Pauser, Music Reader, Clear Thinker, Master Reasoner, Good Listener, Brave Speaker, Word Climber, Summit Scholar, Lexicon Legend, Extreme Tester and Flawless Climb.
+
+ALSO NEW SINCE VERSION 50 (versions 51 and 52)
+
+1. THE SILLY LINES SHOULD SOUND MORE ALIVE
+ WHAT YOU SEE ON SCREEN IS NOT CHANGED. Only what the voice is given.
+ - Words the computer voice said wrongly are now spelt for the voice: habibi, yalla, beta, delulu, solulu, "huge W" and Nobel.
+ - Spanish and Mandarin phrases (Muy bien, Casi perfecto, Bueno, Vamos, Hen hao and the rest) are said by a Spanish or Mandarin voice if the device has one.
+   If it has not, they are spelt so the English voice gets close.
+ - Every sentence now has its own speed and pitch. A perfect score is brighter and quicker. A low score is slower and gentler. A short shout like "Slay!" is lifted and stretched.
+   A question rises. The last sentence settles. Your own speed and pitch settings in the Parent Desk still count: this is added on top.
+ - Parent Desk > "Or choose a computer voice": voices marked with a star usually sound the most natural. THE VOICE ITSELF MATTERS MOST. Voices differ a lot between devices.
+   On an iPhone or iPad: Settings > Accessibility > Spoken Content > Voices, and download one marked Enhanced or Premium.
+   On a computer, Microsoft Edge usually has the most natural ones.
+ - "Best available" no longer picks the old novelty or robot voices when a better one is there.
+ - On the "Review and edit the lines" screen, a line that is said differently from how it is written now shows "Said as: ..." underneath.
+ - NOTHING NEW LEAVES THE DEVICE. These are the device's own voices, exactly as before. (A much more human, AI-made voice would be possible, but it would cost money and send the words to an outside company, so it is your decision. I have not built it.)
+ PLEASE LISTEN ON HER DEVICE. I have no way to hear sound, so the spellings and the delivery are reasoned, not heard. My guess for "beta" is "bay-ta".
+ You do NOT need to edit anything. Just tell me which word sounds wrong (for example "habibi sounds like ...") and I will fix it in the next version.
+
+2. SILLY LINES WHEN SHE ASKS FOR A HINT
+ - 16 lines for when she asks for a hint, and 8 for when two wrong answers are crossed out. Each shows in the hint box and is spoken.
+ - None of them mention the answer, and none say the question is easy. A hint still costs 1 XP.
+ - They follow the same Parent Desk setting (spoken, shown only, or off), and you can review them and switch any line off: Parent Desk > Silly congratulation lines > Review and edit the lines. There are two new groups at the end of the buttons.
+
+3. MORE CELEBRATION LINES
+ - 6 more each for the 60-second quick-fire, after a warm-up, after flashcards and for a new personal best, because those groups repeated the most.
+ - 235 lines now. The 187 you have already reviewed are exactly as they were, and any you switched off stay off.
+
+4. TAP A BADGE SHE HAS WON TO SEE IT BIG (Trophy room and Master badges)
+ - A badge she has NOT won is grey and cannot be tapped.
+ - When she wins it, it turns to colour. Then she can tap it and it opens big, so she can see all the detail. It also shows what it is for and the date she won it.
+ - Tap it again (anywhere on it) and it goes back to its normal size. The Close button, tapping outside it, and the Escape key do the same.
+ - The pictures are 200 to 256 pixels wide, so they open at about 300 pixels: bigger than the list, but not stretched until they go blurry.
+   Sharper badges would need bigger artwork (that goes with the badge art you are still to send, item W3).
+ - Trophies that only have an emoji are not tappable, because there is no artwork to show.
+
+NOT BUILT, BY YOUR CHOICE: sound effects (queue item 8). Item 8's silly spoken lines are done.
+
+THE "SPEEDY GONZALES, IS THAT YOU?" LINE STAYS, as you asked.
 
 IN EARLIER VERSIONS
- - Hot keys (keyboard shortcuts) in Computing: a lesson, 20 shortcuts, four games, and the Hot keys lab with a practice box and the "Press it!" challenge (Shortcut Star trophy).
- - HOW TO HEAR THE VOICES: sound switch (top right) ON, then Parent Desk > "Or choose a computer voice" to pick and try one, and Parent Desk > "Silly congratulation lines" > "Review and edit the lines" and tap the play button on any line. I could not listen to the voices myself.
- - Spoken silly congratulation lines at the end of every round (187 lines, reviewed and switched on or off by you).
+ - SAY IT BETTER (English page): a speaking coach with 24 prompts, filler-word highlighting, pace, structure, key ideas and word upgrades. No marks.
+   PRIVACY: word-checking sends her voice to Google, Apple or Microsoft (whichever browser she uses), so it is OFF until you switch it on in the Parent Desk, per device. The Academy never saves her voice or words; only numbers are saved.
+   With it off she can still record, listen back and self-check. The real speech recognition was only tested with a simulated one: please try it on her device.
+ - Hot keys (keyboard shortcuts) in Computing: a lesson, 20 shortcuts, four games, and the Hot keys lab with the "Press it!" challenge (Shortcut Star trophy).
+ - Spoken silly congratulation lines at the end of every round, reviewed and switched on or off by you.
  - Hints cost 1 XP and are about the question on screen, plus a second hint that crosses out two wrong answers.
  - "Want to practise first?" before tests; Music (piano, reading music, music words you can hear); Reasoning workshop; six-figure grid references;
    Spanish and Mandarin Listening lab and Speaking practice; "Why it may have gone wrong" and worked solutions in Maths; 88 questions with full working.
@@ -52,9 +124,10 @@ WHAT IS IN THIS VERSION
  - 156 lessons, each with teach, study, try it and a 5-question check, plus revision notes
  - About 2,600 fixed questions, 33 reading passages and 145 endless practice games
    (built from 865 checked facts), for all 14 subjects
- - 124 Spanish and 74 Mandarin words to hear and say; 317 written-answer questions, 22 reasoning questions,
+ - Spanish and Mandarin Language practice (4 levels, 4 games, 80 sentences); 124 Spanish and 74 Mandarin words to hear and say; 317 written-answer questions, 22 reasoning questions,
    7 piano tunes, 12 music words to hear, Story Lab, Future Hopes guide, grid references, 164 flags, the capital cities academy
- - 102 trophies, with 53 badge pictures and 6 master badges
+ - 105 trophies, with 63 badge pictures and 6 master badges
+ - 235 silly spoken lines (congratulations and hints)
  - Thesaurus (172 words), the everyday Word of the Day, avatar shop and parent report
 
 THE 4 FILES TO UPLOAD (this README is only for you)
