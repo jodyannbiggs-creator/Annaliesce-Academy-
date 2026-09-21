@@ -206,6 +206,11 @@ pre.code{background:#1f2933;color:#e6edf3;border-radius:10px;padding:12px;overfl
 .worked li{margin:5px 0}
 .wk-you{margin:6px 0}
 .cheer-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}.cheer-row.off .cheer-t{opacity:.45;text-decoration:line-through}.cheer-t{flex:1}.cheerline{font-size:1.15rem}
+.kc{display:inline-block;min-width:1.7em;padding:2px 9px;margin:0 2px;border:1px solid #b9a9b3;border-bottom-width:3px;border-radius:7px;background:#fff;font:inherit;font-weight:700;text-align:center;color:var(--ink,#3b2a33)}.kp{margin:0 2px;color:#8a7a84}
+.hkcard{display:flex;align-items:center;gap:12px;padding:8px 0;border-bottom:1px solid var(--line)}.hkkeys{flex:0 0 46%;text-align:right}.hkbox{padding:12px;margin:8px 0;border:2px dashed #b9a9b3;border-radius:12px;background:#fff}.hkpal{display:flex;flex-wrap:wrap;gap:6px;justify-content:center}.hkkey{min-width:2.4em}.hklog{min-height:2.6em;margin:8px 0}.hk-sum{display:flex;justify-content:center;gap:24px;margin:8px 0}.hk-sum div{display:flex;flex-direction:column}
+.sbnote{padding:10px 12px;margin:8px 0;border-radius:12px;background:#fff6dc;border:1px solid #ecd58f}.sbprompt{display:flex;flex-direction:column;align-items:flex-start;gap:2px;width:100%;text-align:left;margin:4px 0}.sbprompt small{opacity:.7}
+.sblive{min-height:5em;margin:10px auto;max-width:520px;padding:12px;border:2px dashed #b9a9b3;border-radius:12px;background:#fff;text-align:left;font-size:1.05rem}.sbdot{display:inline-block;width:.8em;height:.8em;border-radius:50%;background:#d0344c;margin-right:6px;animation:sbp 1s infinite}@keyframes sbp{50%{opacity:.25}}
+.sbchip{display:inline-block;padding:3px 10px;margin:2px 2px;border-radius:999px;background:#f3e6ef;font-weight:600}mark.sbf{background:#ffe08a;border-radius:4px;padding:0 3px}.sbtext{padding:10px 12px;border-radius:12px;background:#faf6f9;line-height:1.7}.sbl{list-style:none;margin:6px 0;padding:0}.sbl li{padding:5px 0}.sbself{display:flex;flex-direction:column;gap:6px;align-items:flex-start}
 .opt.crossed{opacity:.35;text-decoration:line-through}
 .pk{position:relative;height:190px;touch-action:none;user-select:none;-webkit-user-select:none;margin:6px 0}
 .pkw{position:absolute;top:0;height:100%;background:#fff;border:1px solid #444;border-radius:0 0 8px 8px;padding:0 0 8px;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;font:inherit;font-weight:800;color:#333;box-sizing:border-box;touch-action:none}
@@ -378,7 +383,7 @@ textarea.slin{width:100%;font:inherit;padding:10px;border:2px solid var(--line);
 <div id="toast" role="status" aria-live="polite" hidden></div>
 <input type="file" id="impfile" accept="application/json,.json" hidden>
 <script>
-const BUILD_INFO={n:38,at:'21 Sep 2026, 07:56'};
+const BUILD_INFO={n:50,at:'21 Sep 2026, 12:02'};
 /* =====================================================================
    THE ANNALIESCE ACADEMY
    ---------------------------------------------------------------------
@@ -3330,6 +3335,37 @@ addQs('geography',[
 ]);
 addNote('geography','Map skills','Four-figure grid reference: read the eastings (along the bottom) first and then the northings (up the side). The numbers belong to the bottom-left corner of the square. Along the corridor, then up the stairs. Six-figure references add tenths to pinpoint a place: the first three digits are the eastings (the two-digit line plus tenths along) and the last three are the northings (the two-digit line plus tenths up). Count the tenths from the bottom-left corner of the square. With 1 km squares, one tenth is 100 m.');
 
+/* Computing: Keyboard shortcuts (hot keys). Fixed questions and revision notes.
+   Written for Windows and Chromebook first (Ctrl), with the Mac (Command, written as ⌘) in every explanation. */
+newTopicQ('computing','Keyboard shortcuts',[],[
+["What is a keyboard shortcut (also called a hot key)?","Keys pressed together to do a job quickly","A button on the screen that opens a website","A password for the computer","A cable that joins the keyboard to the computer","A shortcut is a combination of keys, such as Ctrl + C, that does a job faster than using the mouse."],
+["Which shortcut copies the selected text or picture?","Ctrl + C","Ctrl + V","Ctrl + X","Ctrl + Z","C is for Copy. It makes a copy you can paste later, and the original stays where it is. On a Mac, use Command (⌘) + C."],
+["Which shortcut pastes what you have copied?","Ctrl + V","Ctrl + C","Ctrl + P","Ctrl + B","V pastes what you copied or cut, and it sits right next to C and X on the keyboard. On a Mac, use ⌘ + V."],
+["Which shortcut cuts the selected text (removes it so you can move it)?","Ctrl + X","Ctrl + C","Ctrl + S","Ctrl + A","X looks like a pair of scissors. It removes the text so you can paste it somewhere else. On a Mac, use ⌘ + X."],
+["You typed something by mistake. Which shortcut undoes it?","Ctrl + Z","Ctrl + Y","Ctrl + S","Ctrl + P","Z is the shortcut for Undo. On a Mac, use ⌘ + Z. Ctrl + Y is different: it redoes."],
+["Which shortcut redoes something you have just undone?","Ctrl + Y","Ctrl + Z","Ctrl + R","Ctrl + D","Ctrl + Y brings back what Undo took away. On a Mac, use ⌘ + Shift + Z."],
+["Which shortcut selects everything in a document or on a page?","Ctrl + A","Ctrl + E","Ctrl + S","Ctrl + L","A is for All. Ctrl + A selects everything at once, ready to copy or change. On a Mac, use ⌘ + A."],
+["Which shortcut saves your work?","Ctrl + S","Ctrl + P","Ctrl + D","Ctrl + F","S is for Save, so save often. It keeps your work safe if something goes wrong. On a Mac, use ⌘ + S."],
+["Which shortcut opens the print window?","Ctrl + P","Ctrl + S","Ctrl + N","Ctrl + B","P is for Print. It opens the print window so you can choose a printer. On a Mac, use ⌘ + P."],
+["Which shortcut lets you find a word on a page?","Ctrl + F","Ctrl + W","Ctrl + G","Ctrl + H","F is for Find. It opens a search box and marks the word wherever it appears. On a Mac, use ⌘ + F."],
+["Which shortcut makes the selected text bold?","Ctrl + B","Ctrl + I","Ctrl + U","Ctrl + T","B is for Bold. It is good for a heading or a key word. On a Mac, use ⌘ + B."],
+["Which shortcut makes the selected text italic?","Ctrl + I","Ctrl + B","Ctrl + U","Ctrl + L","I is for Italic, the slanted style used for titles and emphasis. On a Mac, use ⌘ + I."],
+["Which shortcut underlines the selected text?","Ctrl + U","Ctrl + B","Ctrl + I","Ctrl + Y","U is for Underline. It draws a line under the selected words. On a Mac, use ⌘ + U."],
+["Which shortcut opens a new tab in your web browser?","Ctrl + T","Ctrl + W","Ctrl + N","Ctrl + R","T is for Tab. A new tab lets you open another page without leaving this one. On a Mac, use ⌘ + T."],
+["Which shortcut closes the tab you are looking at?","Ctrl + W","Ctrl + T","Ctrl + X","Ctrl + Z","W closes the tab or window you are on, so it is the opposite of T for a new tab. On a Mac, use ⌘ + W."],
+["You closed a tab by accident. Which shortcut brings it back?","Ctrl + Shift + T","Ctrl + Z","Ctrl + T","Ctrl + Shift + W","Ctrl + Shift + T reopens the tab you just closed. On a Mac, use ⌘ + Shift + T."],
+["Which shortcut refreshes (reloads) a web page?","Ctrl + R","Ctrl + F","Ctrl + T","Ctrl + P","R is for Reload. It loads the page again, which helps if it looks stuck. The F5 key does the same job. On a Mac, use ⌘ + R."],
+["Which shortcut jumps straight to the address bar?","Ctrl + L","Ctrl + A","Ctrl + B","Ctrl + G","Ctrl + L selects the address at the top of the browser so you can type a new one. On a Mac, use ⌘ + L."],
+["Which shortcut switches between the apps you have open on a Windows computer?","Alt + Tab","Ctrl + Tab","Shift + Tab","Alt + F4","Hold Alt and tap Tab to move between open apps. On a Mac, use ⌘ + Tab."],
+["Which shortcut makes a web page bigger?","Ctrl and +","Ctrl and −","Ctrl and 0","Ctrl and Z","Ctrl and + zooms in, Ctrl and − zooms out, and Ctrl and 0 goes back to normal size. On a Mac, use ⌘."],
+["Which shortcut puts a web page back to its normal size after zooming?","Ctrl and 0","Ctrl and +","Ctrl and −","Ctrl and A","Ctrl and 0 resets the zoom, so the page goes back to its normal size after you have made it bigger or smaller. On a Mac, use ⌘ and 0."],
+["Which key do Macs use for shortcuts where Windows uses Ctrl?","Command (⌘)","Option (⌥)","Escape (Esc)","Caps Lock","On a Mac, Command (⌘) is the main shortcut key, so Ctrl + C becomes ⌘ + C."],
+["On a Mac, which shortcut copies?","⌘ + C","⌘ + V","Ctrl + C","Option + C","Macs use the Command key (⌘) where Windows and Chromebooks use Ctrl, so copy is ⌘ + C instead of Ctrl + C."],
+["Why are keyboard shortcuts useful?","They save time and effort","They make the computer run faster","They stop viruses","They use less electricity","Shortcuts let you do a job with a quick key press instead of hunting through menus. They do not change how fast the computer is."],
+["Which two shortcuts do you use to move a sentence from one place to another?","Ctrl + X, then Ctrl + V","Ctrl + C, then Ctrl + Z","Ctrl + Z, then Ctrl + V","Ctrl + A, then Ctrl + P","Cut it with Ctrl + X, click where it should go, then paste it with Ctrl + V."],
+["Which shortcut takes a screenshot of part of the screen on a Windows computer?","Windows key + Shift + S","Ctrl + S","Alt + Tab","Ctrl + P","On Windows, Windows key + Shift + S lets you drag around the part you want. On a Mac it is ⌘ + Shift + 4."]
+],"A keyboard shortcut is keys pressed together to do a job fast.|Hold Ctrl (⌘ on a Mac), then tap the letter.|C copy, X cut, V paste, Z undo, Y redo, A select all.|S save, P print, F find. B, I and U make text bold, italic and underlined.|Ctrl + T opens a tab, Ctrl + W closes it, Ctrl + Shift + T brings back a closed tab.|Alt + Tab switches between open apps. Ctrl and + zooms in.|Remember: hold Ctrl, tap a letter, and the letter is a clue (C for Copy, S for Save).");
+
 /* More reading passages: each text is followed by questions that can be answered from it. Format: [question, correct, wrong, wrong, wrong, explanation] */
 PASSAGES.push(
 {k:'science',topic:'Plants',title:'Why leaves change colour in autumn',text:"In summer, leaves are green because they are full of chlorophyll. This chemical absorbs sunlight so the plant can make food by photosynthesis. In autumn the days get shorter and colder, and the tree stops making chlorophyll. As the green fades, other colours that were hidden all summer, such as yellow and orange, show through. The tree then seals the leaf's stalk and lets the leaf fall, which helps it to save water and energy through the winter.",
@@ -4333,7 +4369,7 @@ const MAX_GUESTS = 8;
 function addGuest(name){ const l=guestList(); if(l.length>=MAX_GUESTS) return null; const id='p'+Date.now().toString(36)+Math.floor(Math.random()*1296).toString(36); l.push({id, name:String(name||'Friend').trim().slice(0,20)||'Friend'}); saveGuests(l); return id; }
 function removeGuest(id){ saveGuests(guestList().filter(g=>g.id!==id)); try{ localStorage.removeItem(guestKey(id)); }catch(e){} }
 function peekProfile(id){ try{ const o=JSON.parse(localStorage.getItem(id==='anna'?STORE_KEY:guestKey(id))||'null')||{}; const xp=o.led?Object.values(o.led).reduce((s,l)=>s+(l.xp||0),0):(o.xp||0); return {xp, level:Math.floor(xp/400)+1, avatar:Object.assign({}, AV_DEFAULT, o.avatar||{})}; }catch(e){ return {xp:0, level:1, avatar:Object.assign({},AV_DEFAULT)}; } }
-const defaults = () => ({v:3, era:0, gp:{}, lz:{}, sl:{}, wr:{}, tl:{}, rv:0, xw:{}, xt:{}, lg:{}, rs:{}, mu:{s:{},r:0,n:0}, cheer:{off:[],mode:'spoken',t:0}, chestDay:'', perfDay:'', year:CURRENT_YEAR_GROUP, led:{}, xp:0, coins:0, cleared:0, hints:0, stats:{}, seen:{}, dojo:{}, cards:{}, rounds:[], days:[], goalWeeks:[], checkins:[], reflections:[], trophies:{}, sr:{}, bestStreak:0, sprintBest:{}, theme:'blush', pet:'cat', wl:{}, wt:{}, talk:[], avatar:Object.assign({},AV_DEFAULT), owned:{}, spellMiss:[], note:NEW_NOTE, vnote:null, pin:'', goal:3, sound:true, mode:'full', archive:{}, at:0, pt:0, rep:null});
+const defaults = () => ({v:3, era:0, gp:{}, lz:{}, sl:{}, wr:{}, tl:{}, rv:0, xw:{}, xt:{}, lg:{}, rs:{}, mu:{s:{},r:0,n:0}, cheer:{off:[],mode:'spoken',t:0}, hk:{best:0,rounds:0}, sb:{n:0,clean:0,p:{}}, chestDay:'', perfDay:'', year:CURRENT_YEAR_GROUP, led:{}, xp:0, coins:0, cleared:0, hints:0, stats:{}, seen:{}, dojo:{}, cards:{}, rounds:[], days:[], goalWeeks:[], checkins:[], reflections:[], trophies:{}, sr:{}, bestStreak:0, sprintBest:{}, theme:'blush', pet:'cat', wl:{}, wt:{}, talk:[], avatar:Object.assign({},AV_DEFAULT), owned:{}, spellMiss:[], note:NEW_NOTE, vnote:null, pin:'', goal:3, sound:true, mode:'full', archive:{}, at:0, pt:0, rep:null});
 function L(){ let l = S.led[DEVID]; if(!l || l.y!==S.year){ l = S.led[DEVID] = {xp:l?l.xp:0, ce:l?l.ce:0, cs:l?l.cs:0, cl:l?l.cl:0, h:l?l.h:0, ch:l?l.ch||0:0, cu:l?l.cu||0:0, st:{}, y:S.year, ver:l?l.ver:0}; } return l; }
 function derive(){
   let xp=0, ce=0, cs=0, cl=0, h=0, ch=0, cu=0; const st={};
@@ -4370,7 +4406,7 @@ function snapshot(){ const t=totals(), by={}; ALLSUBJ.forEach(s=>{ const x=subjT
 function rollover(){ if(S.year!==CURRENT_YEAR_GROUP){ S.archive[S.year]=snapshot(); S.year=CURRENT_YEAR_GROUP; S.seen={}; S.dojo={}; S.rounds=[]; S.spellMiss=[]; derive(); save(); } }
 
 /* ---- sync: merge two states without losing anything ---- */
-const SYNC_FIELDS = ['v','year','led','seen','dojo','rounds','days','goalWeeks','checkins','trophies','cards','sr','bestStreak','sprintBest','owned','avatar','mode','sound','theme','pet','note','goal','archive','at','pt','vnote','rep','wl','wt','era','gp','lz','sl','wr','tl','rv','xw','xt','lg','rs','mu','cheer'];
+const SYNC_FIELDS = ['v','year','led','seen','dojo','rounds','days','goalWeeks','checkins','trophies','cards','sr','bestStreak','sprintBest','owned','avatar','mode','sound','theme','pet','note','goal','archive','at','pt','vnote','rep','wl','wt','era','gp','lz','sl','wr','tl','rv','xw','xt','lg','rs','mu','cheer','hk','sb'];
 function syncable(){ const o={}; SYNC_FIELDS.forEach(f=>{ o[f]=S[f]; }); return o; }
 function mergeInto(a, b){
   const ea=a.era||0, eb=b.era||0;
@@ -4403,6 +4439,8 @@ function mergeInto(a, b){
   m.rs = Object.assign({}, b.rs||{}); Object.keys(a.rs||{}).forEach(k=>{ const x=a.rs[k], y=m.rs[k]; m.rs[k]=y?{best:Math.max(x.best||0,y.best||0), tries:Math.max(x.tries||0,y.tries||0), d:((x.d||'')>(y.d||'')?x.d:y.d)}:x; });
   m.mu = {s:Object.assign({}, (b.mu||{}).s||{}), r:Math.max((a.mu||{}).r||0,(b.mu||{}).r||0), n:Math.max((a.mu||{}).n||0,(b.mu||{}).n||0)}; Object.keys((a.mu||{}).s||{}).forEach(k=>{ const x=a.mu.s[k], y=m.mu.s[k]; if(!y||(x.b||0)>(y.b||0)) m.mu.s[k]=x; });
   { const ca=a.cheer, cb=b.cheer; m.cheer=(ca&&(ca.t||0)>=((cb&&cb.t)||0))?ca:(cb||ca||{off:[],mode:'spoken',t:0}); }
+  m.hk = {best:Math.max((a.hk||{}).best||0,(b.hk||{}).best||0), rounds:Math.max((a.hk||{}).rounds||0,(b.hk||{}).rounds||0)};
+  m.sb = {n:Math.max((a.sb||{}).n||0,(b.sb||{}).n||0), clean:Math.max((a.sb||{}).clean||0,(b.sb||{}).clean||0), p:Object.assign({}, (b.sb||{}).p||{})}; Object.keys((a.sb||{}).p||{}).forEach(k=>{ const x=a.sb.p[k], y=m.sb.p[k]; if(!y||(x.t||0)>(y.t||0)) m.sb.p[k]=x; });
   m.xt = Object.assign({}, b.xt||{}); Object.keys(a.xt||{}).forEach(k=>{ const x=a.xt[k], y=m.xt[k]; if(!y || x.m[0]>y.m[0]) m.xt[k]=x; });
   m.sl = Object.assign({}, b.sl||{}); Object.keys(a.sl||{}).forEach(id=>{ if(!m.sl[id] || (a.sl[id].w||0)>(m.sl[id].w||0)) m.sl[id]=a.sl[id]; });
   m.lz = {}; [b.lz||{}, a.lz||{}].forEach(src=>{ Object.keys(src).forEach(k=>{ m.lz[k]=m.lz[k]||{}; Object.keys(src[k]).forEach(t=>{ const x=src[k][t], y=m.lz[k][t]; if(!y || x.c>y.c) m.lz[k][t]=x; }); }); });
@@ -4464,7 +4502,7 @@ function buildReport(){
   const topics=[]; for(const k in S.stats) for(const tp in S.stats[k]){ const x=S.stats[k][tp]; if(x[0]) topics.push({k,t:tp,a:x[0],c:x[1]}); }
   const tests=S.rounds.filter(r=>r.kind==='test'||r.kind==='mock').slice(-12).map(r=>({d:r.d,kind:r.kind,s:r.s,n:r.n,c:r.c}));
   const weeks=[7,6,5,4,3,2,1,0].map(off=>{ const wt=weekTotals(off); return {w:weekRange(off)[0], days:wt.days, n:wt.n, c:wt.c}; });
-  return {v:1, name:'Annaliesce', year:S.year, at:Date.now(), level:level(), title:titleOf(), xp:S.xp, streak:calcStreak(), best:Math.max(S.bestStreak||0,calcStreak()), goal:S.goal, answered:t[0], correct:t[1], dojo:dojoCount(), hints:S.hints||0, subjects, topics, tests, weeks, lg:JSON.parse(JSON.stringify(S.lg||{})), music:{songs:muSongs(), right:muRight(), n:(S.mu||{}).n||0}, rsn:{tried:Object.keys(S.rs||{}).length, three:rsnCount(3), four:rsnCount(4)}, extreme:{met:Object.keys(S.xw||{}).length, right:xwRight(), tests:Object.keys(S.xt||{}).length}, written:{n:Object.keys(S.wr||{}).length, good:wrGood(), avg:wrAvg()}, coverage:covPercent(), stories:{n:slDoneCount(), w:slWordsDone()}, lessons:{p:lzPassedCount(), t:lessonList().length, subj:ALLSUBJ.map(s=>({n:s.n, p:Object.keys((LESSONS[s.k]||{})).filter(t=>((S.lz[s.k]||{})[t]||{c:0}).c>=4).length, t:Object.keys(LESSONS[s.k]||{}).length}))}, branch:Object.fromEntries(Object.keys(SCI_TESTS).map(b=>[b,branchPasses(b)])), words:{learned:Object.keys(S.wl||{}).length, tests:Object.keys(S.wt||{}).sort().slice(-8).map(w=>({w,m:S.wt[w].m,s:S.wt[w].s}))}};
+  return {v:1, name:'Annaliesce', year:S.year, at:Date.now(), level:level(), title:titleOf(), xp:S.xp, streak:calcStreak(), best:Math.max(S.bestStreak||0,calcStreak()), goal:S.goal, answered:t[0], correct:t[1], dojo:dojoCount(), hints:S.hints||0, subjects, topics, tests, weeks, lg:JSON.parse(JSON.stringify(S.lg||{})), music:{songs:muSongs(), right:muRight(), n:(S.mu||{}).n||0}, hotkeys:{best:hkBest(), rounds:(S.hk||{}).rounds||0}, speaking:{talks:sbTalks(), smooth:(S.sb||{}).clean||0}, rsn:{tried:Object.keys(S.rs||{}).length, three:rsnCount(3), four:rsnCount(4)}, extreme:{met:Object.keys(S.xw||{}).length, right:xwRight(), tests:Object.keys(S.xt||{}).length}, written:{n:Object.keys(S.wr||{}).length, good:wrGood(), avg:wrAvg()}, coverage:covPercent(), stories:{n:slDoneCount(), w:slWordsDone()}, lessons:{p:lzPassedCount(), t:lessonList().length, subj:ALLSUBJ.map(s=>({n:s.n, p:Object.keys((LESSONS[s.k]||{})).filter(t=>((S.lz[s.k]||{})[t]||{c:0}).c>=4).length, t:Object.keys(LESSONS[s.k]||{}).length}))}, branch:Object.fromEntries(Object.keys(SCI_TESTS).map(b=>[b,branchPasses(b)])), words:{learned:Object.keys(S.wl||{}).length, tests:Object.keys(S.wt||{}).sort().slice(-8).map(w=>({w,m:S.wt[w].m,s:S.wt[w].s}))}};
 }
 async function reportKey(token){ return sha256('report:'+token); }
 async function pushReport(){
@@ -4761,6 +4799,9 @@ const TROPHIES = [
  {id:'rv5',i:'🔁',n:'Revision Hero',d:'Finish 5 revision rounds from the Coverage map',t:()=>(S.rv||0)>=5},
  {id:'exp10',i:'💡',n:'Deep Thinker',d:'Score 60% or more on 10 "Explain it in writing" tasks',t:()=>Object.entries(S.wr||{}).filter(([id,x])=>id.startsWith('a_')&&x.m/x.o>=0.6).length>=10},
  {id:'pn3',i:'🎹',n:'Pianist',d:'Play 3 tunes all the way through on the piano',t:()=>muSongs()>=3},
+ {id:'hk8',i:'⌨️',n:'Shortcut Star',d:'Score 8 or more out of 10 in the Hot keys challenge',t:()=>hkBest()>=8},
+ {id:'sb5',i:'🎤',n:'Confident Speaker',d:'Complete 5 Say it better talks',t:()=>sbTalks()>=5},
+ {id:'sbc',i:'🌊',n:'Power Pauser',d:'Give a talk of 30 seconds or more with hardly any filler words',t:()=>((S.sb||{}).clean||0)>=1},
  {id:'mu50',i:'🎼',n:'Music Reader',d:'Get 50 music reading and listening questions right',t:()=>muRight()>=50},
  {id:'rsn5',i:'🧠',n:'Clear Thinker',d:'Reach 3 stars or more on 5 reasoning questions',t:()=>rsnCount(3)>=5},
  {id:'rsn12',i:'🎓',n:'Master Reasoner',d:'Reach 4 stars or more on 12 reasoning questions',t:()=>rsnCount(4)>=12},
@@ -4787,7 +4828,7 @@ const TROPHIES = [
 
 const branchPasses = b => (S.rounds||[]).filter(r=>r.kind==='test' && r.br===b && r.n>0 && r.c/r.n>=0.8).length;
 const TPROG = {
- pn3:()=>[Math.min(3,muSongs()),3], mu50:()=>[Math.min(50,muRight()),50],
+ pn3:()=>[Math.min(3,muSongs()),3], hk8:()=>[Math.min(8,hkBest()),8], sb5:()=>[Math.min(5,sbTalks()),5], sbc:()=>[Math.min(1,(S.sb||{}).clean||0),1], mu50:()=>[Math.min(50,muRight()),50],
  rsn5:()=>[Math.min(5,rsnCount(3)),5], rsn12:()=>[Math.min(12,rsnCount(4)),12],
  ls50:()=>[Math.min(50,lgTotal('lr')),50], sp25:()=>[Math.min(25,lgTotal('sp')),25],
  xw7:()=>[Math.min(7,xwRight()),7], xw30:()=>[Math.min(30,xwRight()),30], xw60:()=>[Math.min(60,xwRight()),60],
@@ -7757,7 +7798,9 @@ mandarin|Slang|Write|Write the pinyin for a slang word meaning “come on!” an
 mandarin|Radicals|Explain|Explain what the radical 木 (tree) tells you about a character, and give an example.|木 means tree or wood@@tree~wood~mù~mu~木 ;; Characters with it often relate to trees or wood@@relat~about~mean~hint~clue~connected ;; An example such as 林 (forest) or 桌 (table)@@林~桌~forest~table~lin~zhuo~森
 mandarin|Strokes|Explain|Explain why stroke order matters when writing Chinese characters.|It makes characters look neat and balanced@@neat~balanced~look~appear~beautiful~correct ;; It helps you write faster and remember characters@@faster~quickly~remember~memor~easier ;; Dictionaries and teachers expect the correct order@@dictionar~teacher~standard~rule~expect~everyone
 mandarin|Reading comprehension|Explain|Explain how pinyin, characters and pictures can help you understand a short Chinese text.|Pinyin helps you say the words@@pinyin~say~sound~pronounc~read aloud ;; Characters you know give clues to the meaning@@charact~know~recogn~meaning~clue ;; Pictures give context@@picture~context~image~clue~illustrat
-mandarin|Vocabulary|Explain|Explain how to learn Chinese words using tones and characters together.|Say the word aloud with the correct tone@@tone~aloud~say~pronounc~speak ;; Write the character several times with the right strokes@@write~stroke~character~copy~practise ;; Use the word in a sentence to remember it@@sentence~use~context~remember~example`;
+mandarin|Vocabulary|Explain|Explain how to learn Chinese words using tones and characters together.|Say the word aloud with the correct tone@@tone~aloud~say~pronounc~speak ;; Write the character several times with the right strokes@@write~stroke~character~copy~practise ;; Use the word in a sentence to remember it@@sentence~use~context~remember~example
+computing|Keyboard shortcuts|Explain|Explain how to move a sentence from one place to another using keyboard shortcuts.|Select the sentence first@@select~highlight ;; Cut it with Ctrl + X so it is taken out@@cut~ctrl x~ctrl+x~ctrl + x~control x~command x~⌘ x~⌘+x ;; Click where the sentence should go@@click~cursor~place~position~where ;; Paste it with Ctrl + V@@paste~ctrl v~ctrl+v~ctrl + v~control v~command v~⌘ v~⌘+v
+computing|Keyboard shortcuts|Explain|Explain what a keyboard shortcut is and why it is useful.|A keyboard shortcut is a combination of keys pressed together@@combination~keys together~press~together~combo~two keys~more than one key ;; It does a job that would otherwise need the mouse or a menu@@mouse~menu~job~task~action~instead ;; It saves time and effort@@time~quick~fast~effort~easier~speed`;
 
 /* =====================================================================
    WRITTEN ANSWERS: exam-style questions she answers in her own words.
@@ -8920,7 +8963,7 @@ SPECIFIC_HINTS['Ratio and proportion']=q=>{ const t=_t(q); let m=t.match(/Simpli
 SPECIFIC_HINTS['Ordering and temperature']=q=>{ const t=_t(q); let m=t.match(/is (-?\d+)°C and (rises|falls) by (\d+)°C/); if(m) return 'Start at '+_f(+m[1])+'°C on the number line and move '+m[3]+' degrees '+(m[2]==='rises'?'up':'down')+'.'; m=t.match(/Which is the (smallest|largest)\? ([-\d, ]+)$/); return m?'Picture '+m[2]+' on a number line. '+(m[1]==='smallest'?'Which one is furthest to the left?':'Which one is furthest to the right?'):''; };
 SPECIFIC_HINTS['Mean puzzles']=q=>{ const m=_t(q).match(/mean of four numbers is (\d+)\./); return m?'The mean is the total ÷ 4, so the total of all four numbers is '+m[1]+' × 4. Then take away the three you already know.':''; };
 SPECIFIC_HINTS['Written methods']=q=>{ const t=_t(q); let m=t.match(/What is (\d+) ÷ (\d+)\? Give the remainder/); if(m) return 'How many whole '+m[2]+'s fit into '+m[1]+'? Try '+m[2]+' × 10 first, then more.'; m=t.match(/What is (\d+) × (\d+)\?/); if(m) return 'Split '+m[1]+' into tens and units. Multiply each by '+m[2]+', then add the two answers.'; m=t.match(/What is ([\d,]+) [−-] (\d+)\?/); return m?'Count up from '+m[2]+' to '+m[1]+'.':''; };
-SPECIFIC_HINTS['nth term problems']=q=>{ const t=_t(q); let m=t.match(/first three terms of (\d+)n/); if(m) return 'Put n = 1, then n = 2, then n = 3 into the rule, one at a time.'; m=t.match(/Which term of the sequence (\d+)n ([+-]) (\d+) equals (\d+)\?/); if(m) return 'Solve '+m[1]+'n '+m[2]+' '+m[3]+' = '+m[4]+': '+(m[2]==='+'?'take '+m[3]+' away':'add '+m[3])+' first, then divide by '+m[1]+'.'; m=t.match(/What is the (\d+)(?:th|st|nd|rd) term/); if(m) return 'Replace n with '+m[1]+' in the rule and work it out.'; m=t.match(/Which term of the sequence (\d+)n equals (\d+)\?/); return m?'Solve '+m[1]+'n = '+m[2]+': what do you divide '+m[2]+' by?':''; };
+SPECIFIC_HINTS['nth term problems']=q=>{ const t=_t(q); let m=t.match(/first three terms of ([^?]+)\?/); if(m) return 'Put n = 1, then n = 2, then n = 3 into '+m[1]+', one at a time.'; m=t.match(/Which term of the sequence (\d+)n ([+-]) (\d+) equals (\d+)\?/); if(m) return 'Solve '+m[1]+'n '+m[2]+' '+m[3]+' = '+m[4]+': '+(m[2]==='+'?'take '+m[3]+' away':'add '+m[3])+' first, then divide by '+m[1]+'.'; m=t.match(/What is the (\d+)(?:th|st|nd|rd) term/); if(m) return 'Replace n with '+m[1]+' in the rule and work it out.'; m=t.match(/Which term of the sequence (\d+)n equals (\d+)\?/); return m?'Solve '+m[1]+'n = '+m[2]+': what do you divide '+m[2]+' by?':''; };
 SPECIFIC_HINTS['Circles']=q=>{ const t=_t(q); let m=t.match(/diameter of (\d+) cm.*circumference/); if(m) return 'Circumference = π × diameter. Work out 3.14 × '+m[1]+'.'; m=t.match(/radius of (\d+) cm\. What is its (diameter|area|circumference)/); if(m) return m[2]==='diameter'?'The diameter is twice the radius, so double '+m[1]+'.':m[2]==='area'?'Area = π × r × r. Work out '+m[1]+' × '+m[1]+' first, then multiply by 3.14.':'Circumference = 2 × π × r. Work out 2 × 3.14 × '+m[1]+'.'; return ''; };
 SPECIFIC_HINTS['Straight-line graphs']=q=>{ const t=_t(q); let m; if(m=t.match(/gradient of the line (y = [^?]+)\?/)) return 'In '+m[1]+' (compare with y = mx + c) the gradient is the number in front of x.'; if(m=t.match(/y = (\d+)x [+-] (\d+), what is y when x = (\d+)/)) return 'Replace x with '+m[3]+', multiply by '+m[1]+' first, then '+(/\+/.test(t)?'add':'take away')+' '+m[2]+'.'; if(m=t.match(/(y = [^?]+) cross the y-axis/)) return 'For '+m[1]+': a line crosses the y-axis where x = 0. Put x = 0 into it.'; return ''; };
 SPECIFIC_HINTS['Sequences']=q=>{ const t=_t(q); let m=t.match(/next term\? ([\d, -]+), \.\.\./); if(m){ const a=m[1].split(',').map(Number); return 'Find the difference between the first two terms: '+a[1]+' − '+a[0]+'. Check it is the same all the way along.'; } m=t.match(/nth term of ([\d, -]+), \.\.\./); return m?'Look at '+m[1].trim()+': find the difference between the terms. That is the number in front of n.':''; };
@@ -10149,6 +10192,386 @@ const CHEERACTIONS = {
 };
 
 /* =====================================================================
+   COMPUTING: KEYBOARD SHORTCUTS (HOT KEYS)
+   - the shortcut table (Windows/Chromebook Ctrl, Mac Command)
+   - the lesson, four endless games, and the Hot keys lab (a practice box, then a "Press it!" challenge)
+   The platform (Ctrl or ⌘) is chosen on the lab page and remembered on this device; it starts from the device she is on.
+   ===================================================================== */
+/* [id, Windows or Chromebook, Mac, name, what it does, a situation, group, reserved (the browser or computer keeps it, so it cannot be practised on a web page)] */
+const HK = [
+ ['copy','Ctrl + C','⌘ + C','Copy','copy the selected text or picture','You want to take a copy of a sentence to use again later.','edit',0],
+ ['cut','Ctrl + X','⌘ + X','Cut','cut the selected text so you can move it','You want to take a sentence out of here so you can put it somewhere else.','edit',0],
+ ['paste','Ctrl + V','⌘ + V','Paste','paste what you copied or cut','You have copied a sentence and now want to put it in.','edit',0],
+ ['undo','Ctrl + Z','⌘ + Z','Undo','undo the last thing you did','You deleted a whole paragraph by mistake and want it back.','edit',0],
+ ['redo','Ctrl + Y','⌘ + Shift + Z','Redo','redo something you have just undone','You pressed undo too many times and want to put the last change back.','edit',0],
+ ['all','Ctrl + A','⌘ + A','Select all','select everything in the document or page','You want to change every word in the document at once.','edit',0],
+ ['save','Ctrl + S','⌘ + S','Save','save your work','You have written a lot and do not want to lose it.','file',0],
+ ['print','Ctrl + P','⌘ + P','Print','open the print window','You need a paper copy of your homework.','file',0],
+ ['find','Ctrl + F','⌘ + F','Find','search for a word on the page','You want to jump to one word in a very long page.','file',0],
+ ['new','Ctrl + N','⌘ + N','New window','open a new window','You want a fresh, empty window.','file',1],
+ ['bold','Ctrl + B','⌘ + B','Bold','make the selected text bold','You want a heading to stand out in thick, heavy letters.','text',0],
+ ['italic','Ctrl + I','⌘ + I','Italic','make the selected text italic','You are typing the title of a book and want it slanted.','text',0],
+ ['underline','Ctrl + U','⌘ + U','Underline','underline the selected text','You want a line drawn under a key word.','text',0],
+ ['tab','Ctrl + T','⌘ + T','New tab','open a new tab','You want to open another page next to this one in the same browser window.','web',1],
+ ['closetab','Ctrl + W','⌘ + W','Close tab','close the tab you are on','You have finished with a web page and want to shut just that page.','web',1],
+ ['reopen','Ctrl + Shift + T','⌘ + Shift + T','Reopen a closed tab','bring back the tab you just closed','You closed a tab by accident and want it back.','web',1],
+ ['refresh','Ctrl + R','⌘ + R','Refresh','load the page again','A web page looks stuck and you want to load it again.','web',1],
+ ['address','Ctrl + L','⌘ + L','Address bar','jump to the address bar','You want to jump up to the address bar without touching the mouse.','web',1],
+ ['switch','Alt + Tab','⌘ + Tab','Switch apps','switch between the apps you have open','You want to jump between a document and a web page you have open.','sys',1],
+ ['shot','Windows key + Shift + S','⌘ + Shift + 4','Screenshot','take a picture of part of the screen','You want to save a picture of part of what is on your screen.','sys',1]
+];
+const HKI = {}; HK.forEach(r=>HKI[r[0]]=r);
+const HKGROUPS = [['edit','✂️ Editing'],['file','📄 Files and finding'],['text','🔤 Text style'],['web','🌐 The web browser'],['sys','🖥️ Switching and screenshots']];
+const HKPLAT_KEY = 'annaliesce_hkplat';
+function hkPlat(){ try{ const v=localStorage.getItem(HKPLAT_KEY); if(v==='mac'||v==='win') return v; }catch(e){} return /Mac|iPhone|iPad|iPod/i.test((navigator.userAgent||'')+' '+(navigator.platform||''))?'mac':'win'; }
+const hkF = (r, p) => (p||hkPlat())==='mac' ? r[2] : r[1];
+const hkPlain = r => r[7]===0;
+const hkBest = () => (S.hk||{}).best||0;
+const hkMacNote = r => hkPlat()==='mac' ? (r[1]!==r[2]?' On Windows and Chromebooks, it is '+r[1]+'.':'') : (r[1]!==r[2]?' On a Mac, it is '+r[2]+'.':'');
+/* ---------- the lesson ---------- */
+LESSONS.computing['Keyboard shortcuts']={hook:'⌨️ Shortcuts are like magic spells: hold one key, tap another, and the computer does a whole job!',big:'A keyboard shortcut (or hot key) is keys pressed together to do a job quickly, such as Ctrl + C to copy. You hold the first key (Ctrl, Shift or Alt) and tap the second. On a Mac, the Command key (⌘) does the job of Ctrl.',steps:['Hold the helper key first: Ctrl on Windows and Chromebooks, Command (⌘) on a Mac','Tap the letter while you are still holding the helper key','Learn the big four: C to copy, X to cut, V to paste and Z to undo','Add A (select all), S (save), F (find) and P (print)','Use the letter as a clue: C is Copy, S is Save, F is Find, P is Print'],ex:'You select a sentence, press Ctrl + C, click somewhere else and press Ctrl + V. The sentence appears again in a second.',tq:'Which shortcut undoes your last action?',ta:'Ctrl + Z (or ⌘ + Z on a Mac).',fun:'Z, X, C and V sit side by side at the bottom left of the keyboard, so one hand can reach undo, cut, copy and paste while the other holds the mouse.'};
+METHODS.computing=METHODS.computing||{}; METHODS.computing['Keyboard shortcuts']={steps:['Hold Ctrl (or ⌘ on a Mac)','Tap the letter','Let go of both keys'],ex:'To move a sentence: select it, press Ctrl + X, click where it should go, then press Ctrl + V.',tip:'Use the first letter of the job as a clue: C for Copy, S for Save, F for Find, P for Print.',trap:'Mixing up Ctrl + Z (undo) with Ctrl + Y (redo), or using Copy when you meant Cut.'};
+/* ---------- four endless games ---------- */
+const hkWrongCombos = (r, n, p) => { const seen=new Set([hkF(r,p)]), out=[]; shuffle(HK.filter(x=>x[0]!==r[0]&&x[6]===r[6]).concat(shuffle(HK.filter(x=>x[0]!==r[0]&&x[6]!==r[6])))).forEach(x=>{ const f=hkF(x,p); if(out.length<n&&!seen.has(f)){ seen.add(f); out.push(f); } }); return out; };
+gen('computing','Hot keys: what does it do?','Keyboard shortcuts',()=>{ const r=pickr(HK), f=hkF(r), wrong=[]; shuffle(HK.filter(x=>x[0]!==r[0]&&x[6]===r[6]).concat(shuffle(HK.filter(x=>x[0]!==r[0]&&x[6]!==r[6])))).forEach(x=>{ if(wrong.length<3&&x[3]!==r[3]&&!wrong.includes(x[3])) wrong.push(x[3]); });
+  return {q:'What does '+f+' do?', correct:r[3], wrong, exp:f+' is the shortcut for '+r[3]+'. You use it to '+r[4]+'.'+hkMacNote(r), hint:'Think about the letter. It is often the first letter of the job.'}; }); genBT('Keyboard shortcuts');
+gen('computing','Hot keys: which keys?','Keyboard shortcuts',()=>{ const r=pickr(HK), f=hkF(r);
+  return {q:'Which shortcut will '+r[4]+'?', correct:f, wrong:hkWrongCombos(r,3), exp:f+' will '+r[4]+'.'+hkMacNote(r), hint:'The letter is a clue to the job.'}; }); genBT('Keyboard shortcuts');
+gen('computing','Hot keys: Windows or Mac?','Keyboard shortcuts',()=>{ const r=pickr(HK), p=Math.random()<0.5?'mac':'win', other=p==='mac'?'win':'mac', f=hkF(r,p);
+  const wrong=[hkF(r,other)].concat(hkWrongCombos(r,6,p).filter(x=>x!==hkF(r,other))).filter((v,i,a)=>a.indexOf(v)===i&&v!==f).slice(0,3);
+  return {q:'On '+(p==='mac'?'a Mac':'a Windows computer or Chromebook')+', which shortcut will '+r[4]+'?', correct:f, wrong, exp:'On '+(p==='mac'?'a Mac':'Windows and Chromebooks')+' it is '+f+'. On '+(p==='mac'?'Windows and Chromebooks':'a Mac')+' it is '+hkF(r,other)+'.', hint:p==='mac'?'Macs use the Command key (⌘) where Windows uses Ctrl.':'Windows and Chromebooks use Ctrl. Macs use the Command key (⌘).'}; }); genBT('Keyboard shortcuts');
+gen('computing','Hot keys: the right one for the job','Keyboard shortcuts',()=>{ const r=pickr(HK), f=hkF(r);
+  return {q:r[5]+' Which shortcut helps?', correct:f, wrong:hkWrongCombos(r,3), exp:f+' is the one: it will '+r[4]+'.'+hkMacNote(r), hint:'Work out the job first, then think of its letter.'}; }); genBT('Keyboard shortcuts');
+/* ---------- the Hot keys lab ---------- */
+const hkFresh = () => ({phase:'learn',tried:{},qs:[],i:0,tries:0,keys:[],ok:0,res:[],state:'',msg:'',note:'',xp:0,cheer:null});
+let HKV = hkFresh();
+const HKMOD = ['Control','Meta','Shift','Alt','AltGraph','OS'];
+const hkTok = s => s==='Ctrl'?'ctrl':s==='⌘'?'cmd':s==='Shift'?'shift':s==='Alt'?'alt':s.toLowerCase();
+const hkReq = r => hkF(r).split(' + ').map(hkTok).sort();
+const hkEq = (a,b) => a.length===b.length && a.every((x,i)=>x===b[i]);
+function hkEvSet(e){ const s=[]; if(e.ctrlKey) s.push('ctrl'); if(e.metaKey) s.push('cmd'); if(e.shiftKey) s.push('shift'); if(e.altKey) s.push('alt'); if(e.key&&!HKMOD.includes(e.key)) s.push(String(e.key).toLowerCase()); return s.sort(); }
+const hkCap = t => t==='ctrl'?'Ctrl':t==='cmd'?'⌘':t==='shift'?'Shift':t==='alt'?'Alt':t.length===1?t.toUpperCase():t;
+const hkCaps = s => String(s).split(' + ').map(x=>`<kbd class="kc">${esc(x)}</kbd>`).join('<span class="kp">+</span>');
+const hkTokCaps = ts => ts.length?ts.map(t=>`<kbd class="kc">${esc(hkCap(t))}</kbd>`).join('<span class="kp">+</span>'):'<span class="muted">(none yet)</span>';
+const hkShow = ts => ts.map(hkCap).join(' + ');
+const hkPool = () => HK.filter(hkPlain);
+function hkTry(e){
+  const set=hkEvSet(e), hit=HK.find(r=>hkEq(hkReq(r),set)), log=document.getElementById('hk-log'); if(!log) return;
+  if(hit){ HKV.tried[hit[0]]=1; log.innerHTML=`✅ ${hkCaps(hkF(hit))} <b>${esc(hit[3])}</b>: ${esc(hit[4])}.`; }
+  else { const alt=HK.find(r=>hkEq(hkReq(r).map(t=>t==='ctrl'?'cmd':t==='cmd'?'ctrl':t).sort(),set)); log.innerHTML=alt?`That is the other computer's keys. On this setting the ${esc(alt[3])} shortcut is ${hkCaps(hkF(alt))}.`:`You pressed ${hkCaps(hkShow(set)||'a key')}. That one is not in the lab. Try Ctrl + C, Ctrl + V or Ctrl + Z.`; }
+  const c=document.getElementById('hk-count'); if(c) c.textContent=Object.keys(HKV.tried).length+' of '+hkPool().length;
+}
+function hkAnswer(set){
+  if(HKV.state==='right'||HKV.state==='missed') return; const r=HKI[HKV.qs[HKV.i]], want=hkReq(r);
+  HKV.note='';
+  if(hkEq(set,want)){ const first=HKV.tries===0; HKV.state='right'; HKV.res.push(first?1:0); if(first){ HKV.ok++; award(3,1); HKV.xp+=3; } else { award(1,0); HKV.xp+=1; } recordActivity('computing','Keyboard shortcuts',1,first?1:0); playSound('correct'); HKV.msg=(first?'✅ Yes! ':'✅ Got it! ')+hkF(r)+' will '+r[4]+'.'; }
+  else { HKV.tries++; playSound('wrong'); if(HKV.tries>=2){ HKV.state='missed'; HKV.res.push(0); recordActivity('computing','Keyboard shortcuts',1,0); HKV.msg='The answer is '+hkF(r)+'. It will '+r[4]+'.'; } else { HKV.state='try'; HKV.msg='Not quite: that was '+hkShow(set)+'. Have another go. Clue: it uses '+want.length+' keys and starts with '+hkCap(want.find(t=>['ctrl','cmd','alt','shift'].includes(t))||want[0])+'.'; } }
+  render();
+}
+function hkKeydown(e){
+  if(typeof V==='undefined'||!V||V.name!=='hotkeys') return; const isMod=HKMOD.includes(e.key);
+  if(HKV.phase==='play'){
+    if(HKV.state==='right'||HKV.state==='missed'){ if(e.key==='Enter'){ e.preventDefault(); HKACTIONS.hknext(); } return; }
+    if(isMod) return; const mod=e.ctrlKey||e.metaKey||e.altKey;
+    if(!mod){ if(/^[a-z0-9]$/i.test(e.key)){ e.preventDefault(); HKV.note='Hold '+(hkPlat()==='mac'?'⌘':'Ctrl')+' down first, then tap the letter.'; render(); } return; }
+    e.preventDefault(); e.stopPropagation(); HKV.keys=hkEvSet(e); hkAnswer(HKV.keys); return;
+  }
+  const t=e.target; if(t&&t.id==='hk-box'&&!isMod&&(e.ctrlKey||e.metaKey||e.altKey)) hkTry(e);
+}
+document.addEventListener('keydown', hkKeydown, true);
+function hkFinish(){
+  const n=HKV.qs.length, c=HKV.ok; S.hk=S.hk||{best:0,rounds:0}; S.hk.rounds=(S.hk.rounds||0)+1; S.hk.best=Math.max(S.hk.best||0,c); HKV.phase='done';
+  HKV.cheer=cheerPick({b:cheerBandFor('practice',null,c,n,false),k:'computing'}); const ch=HKV.cheer; afterActivity(); render();
+  if(c===n&&n>=5) setTimeout(()=>celebrate('Perfect! '+c+' out of '+n+' in the hot keys challenge.','full',null,ch),450); else if(ch) setTimeout(()=>cheerSay(ch),450);
+}
+function vHotkeys(m){
+  const plat=hkPlat(), mod=plat==='mac'?'⌘':'Ctrl';
+  const togg=(v,l)=>`<button class="btn small ${plat===v?'':'ghost'}" data-act="hkplat" data-p="${v}" aria-pressed="${plat===v}">${plat===v?'✅ ':''}${l}</button>`;
+  const head=`<button class="btn ghost small" data-act="go" data-v="subject" data-k="computing">← Computing</button><h2 style="margin-top:10px">⌨️ Hot keys lab</h2>`;
+  if(HKV.phase==='play'){
+    const r=HKI[HKV.qs[HKV.i]], n=HKV.qs.length, done=HKV.state==='right'||HKV.state==='missed', last=HKV.i>=n-1;
+    const pal=['a','b','c','d','e','f','g','h','i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z'];
+    const key=t=>`<button class="btn small ${HKV.keys.includes(t)?'':'ghost'} hkkey" data-act="hkpick" data-t="${t}" aria-pressed="${HKV.keys.includes(t)}" ${done?'disabled':''}>${esc(hkCap(t))}</button>`;
+    m.innerHTML=`<section class="module" style="--c:#457B9D"><div class="round-top"><button class="btn ghost small" data-act="hkquit">✕ Stop</button><div class="bar"><div style="width:${(HKV.i/n)*100}%"></div></div><span>${HKV.i+1} of ${n}</span></div>
+     <div class="qtag">Computing: Press it!</div><div class="question">Press the keys to <b>${esc(r[4])}</b>.</div>
+     <p class="muted center" style="margin-top:0">Use your keyboard, or tap the keys below and then tap Check.</p>
+     <div class="hkbox center" aria-live="polite">Your keys: ${hkTokCaps(HKV.keys)}</div>
+     ${HKV.note?`<p class="center muted">${esc(HKV.note)}</p>`:''}
+     ${HKV.msg?`<div class="feedback ${HKV.state==='right'?'ok':HKV.state==='try'?'':'no'}">${esc(HKV.msg)}${done?`<br>${hkCaps(hkF(r))}<br><small>${esc(hkMacNote(r).trim())} ${esc(r[5])}</small>`:''}</div>`:''}
+     ${done?`<div class="center"><button class="btn big" data-act="hknext">${last?'See my score':'Next'}</button></div>`
+       :`<div class="row" style="justify-content:center;margin:8px 0"><button class="btn big" data-act="hkcheck">Check</button><button class="btn ghost" data-act="hkclear">Clear</button></div><div class="row" style="justify-content:center;margin:8px 0">${key(plat==='mac'?'cmd':'ctrl')}${key('shift')}${key('alt')}</div><div class="hkpal">${pal.map(key).join('')}</div>`}</section>`; return;
+  }
+  if(HKV.phase==='done'){
+    const n=HKV.qs.length, c=HKV.ok;
+    m.innerHTML=`<section class="module" style="--c:#457B9D">${head}<div class="card center"><div class="qtag">Hot keys challenge finished</div><div class="bigscore">${c} / ${n}</div>${HKV.cheer?`<p><b class="cheerline">${esc(HKV.cheer.t)}</b></p>`:''}<div class="hk-sum"><div><span>XP earned</span><b>+${HKV.xp}</b></div><div><span>Your best</span><b>${hkBest()} / ${n}</b></div></div>${S.trophies&&S.trophies.hk8?'<p>🏆 <b>Shortcut Star</b> earned!</p>':`<p class="muted">Score 8 or more to earn the Shortcut Star trophy.</p>`}
+     <div class="row" style="justify-content:center"><button class="btn big" data-act="hkstart">Play again</button><button class="btn ghost" data-act="hkquit">Back to the lab</button></div></div></section>`; return;
+  }
+  const groups=HKGROUPS.map(([g,label])=>`<h3 style="margin:14px 0 6px">${label}</h3>${HK.filter(r=>r[6]===g).map(r=>`<div class="hkcard"><div class="hkkeys">${hkCaps(hkF(r))}</div><div><b>${esc(r[3])}</b><br><span class="muted">${esc(r[4][0].toUpperCase()+r[4].slice(1))}.</span>${plat==='mac'?'':`<br><small class="muted">Mac: ${esc(r[2])}</small>`}</div></div>`).join('')}`).join('');
+  m.innerHTML=`<section class="module" style="--c:#457B9D">${head}
+   <p class="muted">A hot key (keyboard shortcut) is keys pressed together to do a job fast. Hold the first key, tap the last one. Which computer are you on?</p>
+   <div class="row" style="margin:6px 0">${togg('win','🪟 Windows or Chromebook (Ctrl)')}${togg('mac','🍎 Mac or iPad (⌘)')}</div>
+   <div class="card"><h3 style="margin-top:0">✋ Try them here</h3><p class="muted" style="margin:0 0 6px">Click in the box, then press ${hkCaps(mod+' + A')}, ${hkCaps(mod+' + C')}, ${hkCaps(mod+' + V')} and ${hkCaps(mod+' + Z')} to really use them. You need a keyboard for this bit. On a tablet, use the cards and the challenge below.</p>
+    <textarea id="hk-box" rows="3" spellcheck="false" aria-label="Practice box">Try the shortcuts on this sentence. Select it, copy it, and paste it again!</textarea>
+    <p id="hk-log" class="hklog" aria-live="polite">Press a shortcut in the box and I will tell you what it does.</p><p class="muted" style="margin:0">Tried so far: <b id="hk-count">${Object.keys(HKV.tried).length} of ${hkPool().length}</b></p></div>
+   <div class="card"><h3 style="margin-top:0">🎯 The “Press it!” challenge</h3><p class="muted" style="margin:0 0 8px">Ten jobs. Press the right keys for each one (or tap them on the screen). Score 8 or more for the <b>Shortcut Star</b> trophy. You get 3 XP for each one you get first time.</p><button class="btn big" data-act="hkstart">▶ Start the challenge</button>${(S.hk&&S.hk.rounds)?`<p class="muted" style="margin:8px 0 0">Your best: ${hkBest()} out of 10 in ${S.hk.rounds} round${S.hk.rounds===1?'':'s'}.</p>`:''}</div>
+   <h2 style="margin-top:16px">All the hot keys</h2>${groups}
+   <p class="muted">Some of these (like new tab and close tab) are kept by your computer, so they cannot be practised on a web page. Try them in your browser!</p></section>`;
+}
+const HKACTIONS = {
+  hkplat:d=>{ try{ localStorage.setItem(HKPLAT_KEY,d.p); }catch(e){} render(); },
+  hkstart:()=>{ HKV=Object.assign(hkFresh(),{tried:HKV.tried,phase:'play',qs:shuffle(hkPool()).slice(0,10).map(r=>r[0])}); render(); window.scrollTo(0,0); },
+  hkpick:d=>{ cheerKeep(()=>{ const i=HKV.keys.indexOf(d.t); if(i>=0) HKV.keys.splice(i,1); else if(HKV.keys.length<4) HKV.keys.push(d.t); HKV.keys.sort(); }); },
+  hkclear:()=>{ cheerKeep(()=>{ HKV.keys=[]; HKV.note=''; }); },
+  hkcheck:()=>{ if(!HKV.keys.length){ HKV.note='Tap the keys you would press first.'; render(); return; } hkAnswer(HKV.keys.slice().sort()); },
+  hknext:()=>{ if(HKV.state!=='right'&&HKV.state!=='missed') return; if(HKV.i>=HKV.qs.length-1){ hkFinish(); window.scrollTo(0,0); return; } HKV.i++; HKV.tries=0; HKV.keys=[]; HKV.state=''; HKV.msg=''; HKV.note=''; render(); window.scrollTo(0,0); },
+  hkquit:()=>{ HKV=Object.assign(hkFresh(),{tried:HKV.tried}); render(); window.scrollTo(0,0); }
+};
+
+/* =====================================================================
+   SAY IT BETTER: a speaking coach.
+   She talks for 30 to 60 seconds on a prompt. With the parent switch ON (per device, off by default) the browser's speech recognition
+   (Google in Chrome and on Android, Apple in Safari) turns her voice into words, and this file finds filler words, checks pace, structure,
+   key ideas and word choice, and suggests how to say it better. With the switch OFF she can still record herself and listen back (on the device).
+   PRIVACY: the recording (for listening back) and the words stay on the screen only. They are never saved or uploaded by the Academy and are wiped when she leaves.
+   Only numbers are saved (how many talks, filler words per minute, words per minute).
+   ===================================================================== */
+const SB_KEY = 'annaliesce_sbrec';
+const sbEnabled = () => { try{ return localStorage.getItem(SB_KEY)==='on'; }catch(e){ return false; } };
+const sbCanRecognise = () => !!(window.SpeechRecognition||window.webkitSpeechRecognition);
+const sbVendor = () => { const u=navigator.userAgent||''; return /Edg\//.test(u)?'Microsoft':/Chrome|CriOS|Android|Chromium/.test(u)?'Google':/Safari|iPhone|iPad|Macintosh/.test(u)?'Apple':'your browser\'s speech service'; };
+/* ---------- the prompts ---------- */
+const SB_CATS = [['me','🙋 About me'],['opinion','💬 What do you think?'],['explain','🧠 Explain it'],['story','📖 Tell a story'],['subjects','🎓 School subjects']];
+const SB_PROMPTS = [
+ {id:'me1',cat:'me',kind:'describe',secs:30,t:'Tell us about your favourite hobby and why you love it.',tip:'Say what it is, give a reason (because…) and an example (for example…).'},
+ {id:'me2',cat:'me',kind:'intro',secs:30,t:'Introduce yourself to a new class.',tip:'Say hello, tell them what you love doing, and finish with thank you.'},
+ {id:'me3',cat:'me',kind:'describe',secs:45,t:'Describe your perfect day, from morning to night.',tip:'Use time words: in the morning, then, after that, finally.',need:['sequence','reason']},
+ {id:'me4',cat:'me',kind:'describe',secs:30,t:'Describe a place that makes you feel happy.',tip:'Say where it is, what you can see and hear, and why it makes you happy.'},
+ {id:'op1',cat:'opinion',kind:'opinion',secs:45,t:'Should children have longer summer holidays? Say what you think and why.',tip:'Start with I think…, give a reason, add an example, then sum up.'},
+ {id:'op2',cat:'opinion',kind:'opinion',secs:45,t:'Is it better to read a book or watch the film of the story?',tip:'Pick a side, give two reasons, and give an example from a book or film you know.'},
+ {id:'op3',cat:'opinion',kind:'opinion',secs:45,t:'Should everybody learn to play a musical instrument?',tip:'Say what you think, then back it up with a reason and an example.'},
+ {id:'op4',cat:'opinion',kind:'opinion',secs:45,t:'What is the best invention ever made, and why?',tip:'Name it, say why it matters, and say what life would be like without it.'},
+ {id:'ex1',cat:'explain',kind:'explain',secs:45,t:'Explain how to make your favourite snack, step by step.',tip:'Use First, Next, Then, Finally so nobody gets lost.'},
+ {id:'ex2',cat:'explain',kind:'explain',secs:45,t:'Teach us a game or a trick so someone could copy you.',tip:'Say what you need, then the steps in order.'},
+ {id:'ex3',cat:'explain',kind:'explain',secs:30,t:'Explain why sleep is important for a growing brain.',tip:'Give two or three reasons and an example.'},
+ {id:'st1',cat:'story',kind:'story',secs:45,t:'Tell the story of a time you were brave.',tip:'Set the scene, say what happened in order, and how you felt.'},
+ {id:'st2',cat:'story',kind:'story',secs:45,t:'What is the funniest thing that has ever happened to you?',tip:'Build it up: one day, then, suddenly. Say how you felt.'},
+ {id:'st3',cat:'story',kind:'story',secs:60,t:'Make up a short story about a dragon who is afraid of fire.',tip:'A beginning, a problem, and an ending. Say how the dragon feels.'},
+ {id:'su1',cat:'subjects',k:'maths',kind:'explain',secs:30,t:'Explain how to find three quarters of 20, out loud.',tip:'Say what you do first, then next, and what the answer is.',ideas:[['divide by the bottom number',['divid','bottom','denominator','quarter of','split']],['multiply by the top number',['multipl','top','numerator','times']],['the answer is 15',['15','fifteen']]]},
+ {id:'su2',cat:'subjects',k:'science',kind:'explain',secs:45,t:'Explain how photosynthesis works, to a friend.',tip:'Say what goes in, where it happens, and what comes out.',ideas:[['sunlight',['sunlight','sun','light']],['water',['water']],['carbon dioxide',['carbon','co2']],['glucose (sugar or food)',['glucose','sugar','food']],['oxygen',['oxygen']],['leaves or chlorophyll',['chlorophyll','leaf','leaves','green']]]},
+ {id:'su3',cat:'subjects',k:'science',kind:'explain',secs:30,t:'Explain why we have day and night.',tip:'Say what moves and what stays still.',ideas:[['the Earth spins',['spin','rotat','turn']],['the Sun',['sun']],['it takes 24 hours',['24','twenty-four','twenty four','a day']],['one side faces the Sun and the other is dark',['face','facing','away','dark']]]},
+ {id:'su4',cat:'subjects',k:'science',kind:'explain',secs:45,t:'Explain the water cycle.',tip:'Follow one drop of water all the way round.',ideas:[['evaporation',['evaporat']],['condensation',['condens']],['precipitation (rain)',['precipit','rain','snow']],['collection (rivers and seas)',['collect','river','sea','ocean']]]},
+ {id:'su5',cat:'subjects',k:'history',kind:'explain',secs:45,t:'Explain why the Romans built roads.',tip:'Think about the army, trade and running an empire.',ideas:[['moving the army',['army','soldier','legion','march']],['trade',['trade','merchant','goods']],['controlling the empire',['empire','control','rule','messag']],['straight and strong',['straight','strong','stone']]]},
+ {id:'su6',cat:'subjects',k:'history',kind:'story',secs:60,t:'Tell the story of the Great Fire of London.',tip:'Where and when it started, why it spread, and what happened after.',ideas:[['it started in Pudding Lane in 1666',['pudding','1666','baker','bakery']],['the houses were made of wood',['wood','timber']],['the wind spread it',['wind','spread']],['London was rebuilt in stone or brick',['stone','brick','rebuil','wren']]]},
+ {id:'su7',cat:'subjects',k:'geography',kind:'explain',secs:45,t:'Explain how a river changes from its source to its mouth.',tip:'Start in the hills and follow the river to the sea.',ideas:[['it starts at the source in the hills',['source','mountain','hill']],['it erodes and makes valleys or waterfalls',['erosion','erod','valley','waterfall']],['it gets wider and meanders',['wider','wide','meander']],['it reaches the sea at the mouth',['mouth','sea','estuary','delta']]]},
+ {id:'su8',cat:'subjects',k:'computing',kind:'explain',secs:30,t:'Explain what an algorithm is, using making a sandwich as your example.',tip:'Say what it is, then use the sandwich to show it.',ideas:[['steps or instructions',['step','instruction']],['in the right order',['order','sequence','first']],['a decision (if…)',['decision','if','select']],['repeating (a loop)',['loop','repeat']]]},
+ {id:'su9',cat:'subjects',k:'pshe',kind:'opinion',secs:45,t:'Explain why it is important to be kind online.',tip:'Think about feelings, what stays online, and who to tell.',ideas:[['how it makes people feel',['feel','hurt','upset','sad']],['it can stay online for ever',['forever','for ever','permanent','screenshot','delete']],['tell a trusted adult or report it',['report','tell','adult','trusted']],['think before you post',['think','before','pause']]]},
+ {id:'su10',cat:'subjects',k:'music',kind:'describe',secs:30,t:'Describe a piece of music you love, using words like fast, slow, loud and soft.',tip:'Say how it sounds and how it makes you feel.',ideas:[['how fast or slow it is',['fast','slow','tempo']],['how loud or soft it is',['loud','soft','quiet']],['the instruments',['instrument','piano','guitar','drum','violin','voice','sing']],['how it makes you feel',['feel','mood','emotion','happy','calm']]]}
+];
+const SB_PBY = {}; SB_PROMPTS.forEach(p=>SB_PBY[p.id]=p);
+/* ---------- looking at the words ---------- */
+const sbNorm = t => String(t||'').toLowerCase().replace(/[’‘]/g,"'").replace(/[^a-z0-9'\- ]+/g,' ').replace(/\s+/g,' ').trim();
+const sbWords = t => { const n=sbNorm(t); return n?n.split(' '):[]; };
+const SB_HES = {um:'um',umm:'um',uhm:'um',uh:'uh',uhh:'uh',er:'er',err:'er',erm:'er',ah:'ah',hmm:'hmm',hm:'hmm',mm:'hmm'};
+const SB_YK_NOT_PREV = new Set(['do','did','if','as','how','what','when','whether','would','could','can','that','will','and','but','so','i','we','they','you']);
+const SB_YK_NOT_NEXT = new Set(['how','what','where','why','who','when','that','which','if','whether','about','my','your','his','her','their','our','them','him','me','us','more','many','much']);
+const SB_LK_PREV = new Set(['and','so','but','was','is',"it's",'its','just','then','like','um','uh','er','erm',"i'm",'im',"they're","he's","she's","that's",'were','be','been','are','am','it']);
+const SB_LK_NOT_NEXT = new Set(['a','an','the','to','this','that','these','those','me','you','him','her','us','them','my','your','his','our','their','being','when','how','what','it','playing','doing','going','having','eating','watching','reading','seeing','looking','hearing','learning','making']);
+const SB_KO_PREV = new Set(['this','that','what','a','an','the','another','some','any','every','one','each','which','different','same','these','those','other','whatever','of']);
+/* returns [{i, n (how many words), label}] for every filler found */
+function sbFillerHits(words){
+  const hits=[];
+  for(let i=0;i<words.length;i++){ const x=words[i], p=words[i-1]||'', n=words[i+1]||'', n2=words[i+2]||'';
+    if(SB_HES[x]){ hits.push({i,n:1,label:SB_HES[x]}); continue; }
+    if(x==='you'&&n==='know'&&!SB_YK_NOT_PREV.has(p)&&!SB_YK_NOT_NEXT.has(n2)){ hits.push({i,n:2,label:'you know'}); i++; continue; }
+    if(x==='i'&&n==='mean'&&!['do','did','what','would','should','could','can','if'].includes(p)&&!['to','that','by'].includes(n2)){ hits.push({i,n:2,label:'I mean'}); i++; continue; }
+    if((x==='sort'||x==='kind')&&n==='of'&&!SB_KO_PREV.has(p)){ hits.push({i,n:2,label:x+' of'}); i++; continue; }
+    if(x==='like'&&((p==='so'&&n!=='to')||(SB_LK_PREV.has(p)&&!SB_LK_NOT_NEXT.has(n)))){ hits.push({i,n:1,label:'like'}); continue; }
+    if(x==='basically'||x==='literally'||x==='honestly'||x==='obviously'||x==='actually'){ hits.push({i,n:1,label:x}); continue; }
+    if((x==='or'&&(n==='something'||n==='whatever'))||(x==='and'&&(n==='stuff'||n==='things'))){ hits.push({i,n:2,label:x+' '+n}); i++; continue; }
+  }
+  return hits;
+}
+function sbFillers(text){ const c={}; sbFillerHits(sbWords(text)).forEach(h=>c[h.label]=(c[h.label]||0)+1); const list=Object.entries(c).sort((a,b)=>b[1]-a[1]||(a[0]<b[0]?-1:1)); return {counts:c,list,total:list.reduce((s,x)=>s+x[1],0)}; }
+/* the transcript as safe HTML, with filler words marked */
+function sbMarked(text){ const raw=String(text||'').trim().split(/\s+/).filter(Boolean), norm=raw.map(w=>sbNorm(w)||'-'), hits=sbFillerHits(norm), on=new Set(); hits.forEach(h=>{ for(let k=0;k<h.n;k++) on.add(h.i+k); });
+  return raw.map((w,i)=>on.has(i)?`<mark class="sbf">${esc(w)}</mark>`:esc(w)).join(' '); }
+const SB_STOP = new Set('the and but for with from that this then than they them their there here what when where which while would could should have has had been were was are not you your his her its our out about into over just also very really some more much many like will can did does don\'t it\'s i\'m'.split(' '));
+const SB_VAGUE = ['good','nice','bad','big','small','happy','sad','funny','pretty','angry','tired','fast','slow','old','new','hard','easy','great'];
+const sbUpgrades = w => { const e=(typeof THESAURUS!=='undefined')?THESAURUS.find(t=>t[0]===w):null; return e?e[1].slice(2,5):[]; };
+const SB_MARKS = {
+ opinion:['i think','i believe','in my opinion','i feel','i agree','i disagree','personally','my view','i would say','i prefer'],
+ reason:['because','so that','therefore',"that's why",'that is why','as a result','since','which means','the reason'],
+ example:['for example','for instance','such as','an example','one example','like when'],
+ sequence:['first','firstly','to begin','next','then','after that','afterwards','finally','lastly','second','secondly','third','in the end','at the end','later','in the morning','in the afternoon','in the evening','at night'],
+ sum:['in conclusion','to sum up','to conclude','overall','in short','all in all',"that's why",'that is why','so in the end'],
+ feeling:['felt','feel','scared','nervous','excited','proud','happy','angry','worried','surprised','embarrassed','brave','afraid','frightened','delighted'],
+ time:['one day','suddenly','yesterday','last','when i was','once','later','the next day','at first','one morning','one night'],
+ greet:['hello','hi','my name is','i am called','good morning','good afternoon',"i'm"],
+ like:['i like','i love','i enjoy','my favourite','my favorite','i am interested',"i'm interested"],
+ thanks:['thank you','thanks','nice to meet','looking forward','pleased to meet']
+};
+const SB_NEED = {opinion:['opinion','reason','example','sum'],explain:['sequence','example'],story:['time','sequence','feeling'],describe:['reason','example'],intro:['greet','like','thanks']};
+const SB_NEEDTXT = {opinion:'say what you think (I think… or In my opinion…)',reason:'give a reason (because…)',example:'give an example (for example…)',sum:'finish by summing up (In conclusion… or That is why…)',sequence:'put things in order (First… Next… Finally…)',feeling:'say how you felt',time:'set the scene with time words (One day… Suddenly…)',greet:'say hello',like:'say what you love or enjoy',thanks:'finish with thank you'};
+const sbHasPhrase = (norm, ph) => (' '+norm+' ').includes(' '+ph+' ');
+const sbHasStem = (norm, s) => new RegExp('(^|[^a-z0-9])'+s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+(s.length<=3?'($|[^a-z0-9])':'')).test(norm);
+function sbAnalyse(p, text, secs, conf, pause){
+  const words=sbWords(text), norm=words.join(' '), n=words.length, mins=secs>0?secs/60:0, F=sbFillers(text);
+  const wpm=(secs>=10&&n>=8)?Math.round(n/mins):null;
+  const need=p.need||SB_NEED[p.kind]||[], have=need.filter(k=>SB_MARKS[k].some(ph=>sbHasPhrase(norm,ph))), miss=need.filter(k=>!have.includes(k));
+  const ideas=(p.ideas||[]).map(([label,stems])=>({label,hit:stems.some(s=>sbHasStem(norm,s))}));
+  const promptWords=new Set(sbWords(p.t)); const rep={}; words.forEach(w=>{ if(w.length>=4&&!SB_STOP.has(w)&&!promptWords.has(w)&&!(p.ideas||[]).some(([,st])=>st.some(s=>w.startsWith(s.trim())))) rep[w]=(rep[w]||0)+1; });
+  const repeats=Object.entries(rep).filter(([,c])=>c>=4).sort((a,b)=>b[1]-a[1]).slice(0,2);
+  const vc={}; words.forEach(w=>{ if(SB_VAGUE.includes(w)) vc[w]=(vc[w]||0)+1; }); const vague=Object.entries(vc).filter(([,c])=>c>=3).sort((a,b)=>b[1]-a[1]).slice(0,2).map(([w,c])=>({w,c,ups:sbUpgrades(w)}));
+  const ands=words.filter(w=>w==='and').length, andThen=(norm.match(/(^| )and then( |$)/g)||[]).length;
+  const uniq=n?new Set(words).size/n:0, fpm=mins?Math.round(10*F.total/mins)/10:0;
+  const a={words:n,secs,wpm,fillers:F,fpm,need,have,miss,ideas,repeats,vague,ands,andThen,andPer100:n?Math.round(1000*ands/n)/10:0,uniq,conf:conf==null?null:conf,pause:pause||null,tips:[],praise:[]};
+  sbCoach(p,a); return a;
+}
+function sbCoach(p,a){
+  const T=[], P=[], top=a.fillers.list[0], gotIdeas=a.ideas.filter(i=>i.hit), missIdeas=a.ideas.filter(i=>!i.hit);
+  if(a.words<12) T.push([9,'I could hear only a few words. Try to keep going for the whole time. Say one idea, then add a reason.']);
+  else if(a.secs<p.secs*0.6) T.push([5,`You spoke for ${Math.round(a.secs)} seconds. Try to keep going for ${p.secs}. Add a reason ("because…") or an example ("for example…").`]);
+  if(top&&(a.fillers.total>=3&&(a.fpm>=3||a.fillers.total/Math.max(a.words,1)>=0.04))) T.push([8,`You said “${top[0]}” ${top[1]} time${top[1]===1?'':'s'}${a.fillers.total>top[1]?` (${a.fillers.total} filler words in all)`:''}. Try a silent pause instead. A pause makes you sound calm and confident.`]);
+  if(missIdeas.length&&a.ideas.length) T.push([7,`Next time, try to include: ${missIdeas.slice(0,2).map(i=>i.label).join('; ')}.`]);
+  if(a.miss.length) T.push([6,`Try to ${SB_NEEDTXT[a.miss[0]]}${a.miss[1]?`, and ${SB_NEEDTXT[a.miss[1]]}`:''}.`]);
+  if(a.wpm&&a.wpm>185) T.push([6,`You spoke at about ${a.wpm} words a minute, which is quite fast. Slow down and take a breath at the end of each idea.`]);
+  else if(a.wpm&&a.wpm<85) T.push([4,`You spoke at about ${a.wpm} words a minute, which is quite slow. Try to say each idea in one smooth chunk, then pause.`]);
+  if(a.vague.length){ const v=a.vague[0]; T.push([4,`You said “${v.w}” ${v.c} times.${v.ups.length?` Try a stronger word, like ${v.ups.map(u=>'“'+u+'”').join(', ')}.`:' Try a more exact word.'}`]); }
+  if(a.repeats.length) T.push([3,`You said “${a.repeats[0][0]}” ${a.repeats[0][1]} times. Try a different word for some of them.`]);
+  if(a.andThen>=3||a.andPer100>=9) T.push([3,'You joined a lot of ideas with “and” or “and then”. Try finishing a sentence, pausing, then starting the next one.']);
+  if(a.pause&&a.pause.long>=3) T.push([2,'You had a few long pauses. It is fine to pause to think. A short pause is best. You could use your first idea as a starter.']);
+  if(a.conf!=null&&a.conf<0.7&&a.words>=15) T.push([2,'The computer found some of your words hard to hear. Try speaking a little slower and clearer, with the microphone close. Background noise can also do this.']);
+  if(a.words<12){ a.tips=[T[0][1]]; a.praise=[]; return; }
+  T.sort((x,y)=>y[0]-x[0]); a.tips=T.slice(0,3).map(x=>x[1]);
+  if(a.secs>=p.secs*0.9) P.push(`You kept going for the whole ${p.secs} seconds.`);
+  if(a.have.includes('reason')&&(p.kind!=='intro')) P.push('You gave a reason. That makes your talk convincing.');
+  if(a.have.includes('example')) P.push('You gave an example. That makes it clear.');
+  if(a.have.includes('sequence')&&(p.kind==='explain'||p.kind==='story')) P.push('You put things in order. Easy to follow!');
+  if(a.ideas.length&&gotIdeas.length>=Math.ceil(a.ideas.length*0.75)) P.push(`You covered ${gotIdeas.length} of ${a.ideas.length} key ideas.`);
+  else if(gotIdeas.length>=2) P.push(`You included ${gotIdeas.length} key ideas: ${gotIdeas.slice(0,2).map(i=>i.label).join('; ')}.`);
+  if(a.words>=25&&a.fillers.total<=1) P.push('Smooth talking! Hardly any filler words.');
+  if(a.wpm&&a.wpm>=105&&a.wpm<=165) P.push(`A comfortable pace: about ${a.wpm} words a minute.`);
+  if(a.words>=40&&a.uniq>=0.6) P.push('You used lots of different words.');
+  a.praise=P.slice(0,3);
+  if(!a.tips.length&&a.words>=12) a.tips=['That was really good! Try a harder prompt, or talk for longer, or beat your last score.'];
+}
+/* ---------- recording and recognition ---------- */
+let SBV = null;
+const sbFresh = p => ({phase:'ready',p,mode:'',stream:null,mr:null,mrDone:false,chunks:[],url:'',recog:null,recogDone:true,recogFail:false,prev:[],cur:{},confs:[],interim:'',t0:0,secs:0,timer:null,lvl:null,spoke:false,pause:{n:0,long:0,voiced:0},err:'',stopping:false,fin:false,quick:0,lastStart:0,a:null,last:null,self:[],xp:0,counted:false,improved:false});
+const sbModeNow = () => (sbEnabled()&&sbCanRecognise())?'words':'record';
+function sbText(v){ const cur=Object.keys(v.cur).map(Number).sort((a,b)=>a-b).map(i=>v.cur[i].t); return v.prev.concat(cur).concat(v.interim?[v.interim]:[]).join(' ').replace(/\s+/g,' ').trim(); }
+function sbLive(v){ const el=document.getElementById('sb-live'); if(el){ const t=sbText(v); el.textContent=t.length>320?'…'+t.slice(-320):(t||'Listening…'); } }
+function sbTick(v){ if(SBV!==v||v.phase!=='rec') return; const el=(Date.now()-v.t0)/1000, t=document.getElementById('sb-time'), b=document.getElementById('sb-bar'); const m=Math.floor(el/60), s=Math.floor(el%60); if(t) t.textContent=m+':'+String(s).padStart(2,'0'); if(b) b.style.width=Math.min(100,100*el/v.p.secs)+'%'; if(el>=120) sbStop(); }
+function sbRecorderStart(v){
+  if(!window.MediaRecorder) return;
+  try{ const mime=['audio/webm;codecs=opus','audio/mp4','audio/webm'].find(t=>MediaRecorder.isTypeSupported&&MediaRecorder.isTypeSupported(t))||''; const mr=new MediaRecorder(v.stream,mime?{mimeType:mime}:undefined);
+    mr.ondataavailable=e=>{ if(e.data&&e.data.size) v.chunks.push(e.data); };
+    mr.onstop=()=>{ v.mrDone=true; if(v.chunks.length&&SBV===v){ try{ v.url=URL.createObjectURL(new Blob(v.chunks,{type:mr.mimeType||mime||'audio/webm'})); }catch(e){} } sbMaybeFinish(v); };
+    v.mr=mr; mr.start(); }catch(e){ v.mr=null; }
+}
+function sbLevelStart(v){
+  const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return;
+  try{ const ctx=new AC(), src=ctx.createMediaStreamSource(v.stream), an=ctx.createAnalyser(); an.fftSize=1024; src.connect(an); const buf=new Float32Array(an.fftSize); let floor=1, run=0, last=Date.now();
+    v.lvl={ctx,timer:setInterval(()=>{ an.getFloatTimeDomainData(buf); let s=0; for(let i=0;i<buf.length;i++) s+=buf[i]*buf[i]; const rms=Math.sqrt(s/buf.length); floor=Math.min(floor,Math.max(rms,0.003)); const thr=Math.max(0.02,floor*4), now=Date.now(), dt=now-last; last=now;
+      if(rms>thr){ if(v.spoke&&run>=1200){ v.pause.n++; if(run>=3000) v.pause.long++; } v.spoke=true; run=0; v.pause.voiced+=dt; } else run+=dt; },100)}; }catch(e){ v.lvl=null; }
+}
+function sbRecogStart(v){
+  const R=window.SpeechRecognition||window.webkitSpeechRecognition; if(!R){ v.mode='record'; return; }
+  try{ const r=new R(); r.lang='en-GB'; r.continuous=true; r.interimResults=true; r.maxAlternatives=1; v.recog=r; v.recogDone=false; v.lastStart=Date.now();
+    r.onresult=e=>{ let interim=''; for(let i=e.resultIndex;i<e.results.length;i++){ const res=e.results[i], alt=res[0]; if(!alt) continue; if(res.isFinal){ v.cur[i]={t:alt.transcript.trim()}; if(alt.confidence>0) v.confs.push(alt.confidence); } else interim+=' '+alt.transcript; } v.interim=interim.trim(); sbLive(v); };
+    r.onerror=e=>{ const c=e&&e.error; if(c==='no-speech'||c==='aborted') return; v.err=c||'error'; if(['not-allowed','service-not-allowed','audio-capture','network','language-not-supported'].includes(c)) v.recogFail=true; };
+    r.onend=()=>{ Object.keys(v.cur).map(Number).sort((a,b)=>a-b).forEach(i=>v.prev.push(v.cur[i].t)); v.cur={}; v.recogDone=true;
+      if(SBV===v&&v.phase==='rec'&&!v.stopping&&!v.recogFail){ if(Date.now()-v.lastStart<600) v.quick++; else v.quick=0; if(v.quick>4){ v.recogFail=true; v.err=v.err||'restart'; return; } setTimeout(()=>{ if(SBV===v&&v.phase==='rec'&&!v.stopping){ try{ v.lastStart=Date.now(); v.recogDone=false; r.start(); }catch(e){ v.recogFail=true; } } },150); }
+      else sbMaybeFinish(v); };
+    r.start(); }catch(e){ v.recogFail=true; v.err='start'; v.recogDone=true; }
+}
+async function sbStart(){
+  const v=SBV; if(!v||v.phase!=='ready') return; v.phase='rec'; v.mode=sbModeNow(); v.t0=Date.now(); render();
+  try{ if(navigator.mediaDevices&&navigator.mediaDevices.getUserMedia){ v.stream=await navigator.mediaDevices.getUserMedia({audio:true}); if(SBV!==v){ v.stream.getTracks().forEach(t=>t.stop()); return; } sbRecorderStart(v); sbLevelStart(v); } else if(v.mode==='record'){ v.phase='ready'; v.err='nomic'; render(); return; } }
+  catch(e){ if(SBV===v){ v.phase='ready'; v.err='blocked'; render(); } return; }
+  v.t0=Date.now(); if(v.mode==='words') sbRecogStart(v); v.timer=setInterval(()=>sbTick(v),250);
+}
+function sbStop(){
+  const v=SBV; if(!v||v.phase!=='rec'||v.stopping) return; v.stopping=true; v.secs=(Date.now()-v.t0)/1000; clearInterval(v.timer); v.phase='wait'; render();
+  sbCloseLevel(v);
+  if(v.recog&&!v.recogDone){ try{ v.recog.stop(); }catch(e){ v.recogDone=true; } } else v.recogDone=true;
+  if(v.mr&&v.mr.state==='recording'){ try{ v.mr.stop(); }catch(e){ v.mrDone=true; } } else v.mrDone=true;
+  setTimeout(()=>sbFinish(v),1800); sbMaybeFinish(v);
+}
+function sbMaybeFinish(v){ if(v&&v.stopping&&v.mrDone&&v.recogDone) sbFinish(v); }
+function sbCloseLevel(v){ if(!v||!v.lvl) return; const l=v.lvl; v.lvl=null; clearInterval(l.timer); try{ const pr=l.ctx.close(); if(pr&&pr.catch) pr.catch(()=>{}); }catch(e){} }
+function sbRelease(v){ if(!v) return; clearInterval(v.timer); sbCloseLevel(v); if(v.recog){ try{ v.recog.onend=null; v.recog.onresult=null; v.recog.abort(); }catch(e){} } if(v.stream){ try{ v.stream.getTracks().forEach(t=>t.stop()); }catch(e){} } }
+function sbLeave(){ const v=SBV; if(v){ sbRelease(v); if(v.mr&&v.mr.state==='recording'){ try{ v.mr.onstop=null; v.mr.stop(); }catch(e){} } if(v.url){ try{ URL.revokeObjectURL(v.url); }catch(e){} } } SBV=null; }
+function sbFinish(v){
+  if(!v||v.fin||SBV!==v) return; v.fin=true; sbRelease(v); v.phase='result';
+  const p=v.p, secs=Math.max(1,Math.round(v.secs)), words=v.mode==='words'&&!(v.recogFail&&!sbText(v)), text=words?sbText(v):'';
+  const conf=v.confs.length?v.confs.reduce((x,y)=>x+y,0)/v.confs.length:null, pz=v.pause.voiced?v.pause:(v.pause.n?v.pause:null);
+  v.secs=secs; v.a=words?sbAnalyse(p,text,secs,conf,pz):null; v.text=text; v.counted=secs>=20&&(!v.a||v.a.words>=15);
+  if(v.counted){ S.sb=S.sb||{n:0,clean:0,p:{}}; S.sb.p=S.sb.p||{}; S.sb.n=(S.sb.n||0)+1; award(10,3); v.xp=10; const a=v.a;
+    if(a){ const hit=a.ideas.filter(i=>i.hit).length, prev=S.sb.p[p.id]; v.last=prev||null; if(secs>=30&&a.fillers.total<=1&&a.words>=40) S.sb.clean=(S.sb.clean||0)+1;
+      if(prev&&(a.fpm<=prev.f-1||hit>prev.i||a.words>=prev.w*1.2)){ v.improved=true; award(5,1); v.xp+=5; } S.sb.p[p.id]={f:a.fpm,w:a.words,i:hit,t:Date.now()}; }
+    recordActivity('english','Speaking',1,1); afterActivity(); playSound('correct'); }
+  render(); window.scrollTo(0,0);
+}
+/* ---------- her screens ---------- */
+const sbTime = s => { s=Math.round(s); return Math.floor(s/60)+':'+String(s%60).padStart(2,'0'); };
+const SB_ERR = {blocked:'The microphone is blocked. Ask a grown-up to allow it for this site, then try again.',nomic:'This device cannot record.',network:'The computer could not reach the speech service (no internet?). Your recording is still here to listen to.','not-allowed':'The speech service was blocked, so I could not check the words. You can still listen back to your recording.','service-not-allowed':'The speech service was blocked, so I could not check the words. You can still listen back to your recording.','audio-capture':'I could not hear the microphone for word-checking. You can still listen back to your recording.',restart:'Word-checking kept stopping on this device, so I could not check the words.',start:'Word-checking would not start on this device.'};
+function vSay(m){
+  const v=SBV, head=`<button class="btn ghost small" data-act="${v&&v.phase!=='ready'?'saymenu':'go'}" ${v&&v.phase!=='ready'?'':'data-v="subject" data-k="english"'}>← ${v&&v.phase!=='ready'?'All prompts':'English'}</button><h2 style="margin-top:10px">🎤 Say it better</h2>`;
+  const words=sbModeNow()==='words';
+  if(!v){ /* the list of prompts */
+    const banner=words?`<p class="sbnote">🔒 Word-checking is <b>on</b>. When you talk, this browser sends your voice to ${esc(sbVendor())} to turn it into words. The Academy does not save your voice or your words, only your scores.</p>`
+      :!sbCanRecognise()?`<p class="sbnote">This browser cannot check words, but you can still record yourself and listen back. (Chrome, Edge and Safari can check words.)</p>`
+      :`<p class="sbnote">Word-checking is <b>off</b>. Ask a grown-up to switch it on in the Parent Desk to find filler words. You can still record yourself and listen back.</p>`;
+    m.innerHTML=`<section class="module" style="--c:#C2549A">${head}<p class="muted">Talk for 30 to 60 seconds. Then get friendly tips on how to say it even better. There are no marks: this is practice!</p>${banner}${SB_CATS.map(([c,l])=>`<h3 style="margin:14px 0 6px">${l}</h3>${SB_PROMPTS.filter(p=>p.cat===c).map(p=>`<button class="btn ghost sbprompt" data-act="saypick" data-id="${p.id}"><span>${esc(p.t)}</span><small>${p.secs} seconds</small></button>`).join('')}`).join('')}</section>`; return; }
+  const p=v.p;
+  if(v.phase==='ready'){
+    m.innerHTML=`<section class="module" style="--c:#C2549A">${head}<div class="card"><div class="qtag">${esc(SB_CATS.find(x=>x[0]===p.cat)[1])} · ${p.secs} seconds</div><div class="question">${esc(p.t)}</div><p class="muted center" style="margin-top:0">💡 ${esc(p.tip)}</p>
+     ${v.err?`<p class="sbnote">${esc(SB_ERR[v.err]||'Something went wrong. Please try again.')}</p>`:''}
+     ${words?`<p class="sbnote">🔒 When you tap Start, this browser listens and sends what you say to <b>${esc(sbVendor())}</b> to turn it into words. The Academy does not save your voice or your words. Only your scores are saved.</p>`:`<p class="sbnote">📝 Word-checking is off, so I will just record you and time you. You can listen back afterwards.</p>`}
+     <div class="center"><button class="btn big" data-act="saystart">🎤 Start talking</button></div><p class="muted center">Take a breath and think for a few seconds first. There is no rush.</p></div></section>`; return; }
+  if(v.phase==='rec'){
+    m.innerHTML=`<section class="module" style="--c:#C2549A"><div class="card center"><div class="qtag"><span class="sbdot"></span> ${words?'Listening…':'Recording…'}</div><div class="bigscore" id="sb-time">0:00</div><div class="bar" style="margin:6px auto;max-width:360px"><div id="sb-bar" style="width:0%"></div></div><p class="muted">Aim for ${p.secs} seconds. You can keep going a bit longer.</p><div class="question">${esc(p.t)}</div>${words?`<div class="sblive" id="sb-live" aria-live="polite">Listening…</div>`:''}<div><button class="btn big" data-act="saystop">⏹ I am finished</button></div></div></section>`; return; }
+  if(v.phase==='wait'){ m.innerHTML=`<section class="module" style="--c:#C2549A"><div class="card center"><p>⏳ Working out how it went…</p></div></section>`; return; }
+  /* results */
+  const a=v.a, item=(ok,t)=>`<li class="${ok?'sbok':'sbtry'}">${ok?'✅':'🔸'} ${esc(t)}</li>`;
+  const chips=[`⏱️ ${sbTime(v.secs)}`]; if(a){ chips.push(`💬 ${a.words} words`); if(a.wpm) chips.push(`🏃 ${a.wpm} words a minute`); chips.push(`🧩 ${a.fillers.total} filler word${a.fillers.total===1?'':'s'}`); } if(v.pause.voiced||v.pause.n) chips.push(`⏸️ ${v.pause.n} pause${v.pause.n===1?'':'s'}`);
+  let body='';
+  if(a){
+    const hes=Object.keys(a.fillers.counts).some(k=>['um','uh','er','hmm','ah'].includes(k));
+    body=`<h3>What the computer heard</h3><p class="sbtext">${sbMarked(v.text)||'<span class="muted">(I could not hear any words)</span>'}</p><p class="muted" style="margin-top:0"><small>This can make mistakes. Filler words are highlighted.${hes||a.secs<20?'':' Some computers leave out “um” and “er”, so listen back to check.'}</small></p>`
+     +(a.fillers.total?`<h3>Filler words</h3><p>${a.fillers.list.map(([w,c])=>`<span class="sbchip">“${esc(w)}” × ${c}</span>`).join(' ')}</p>`:'')
+     +(a.praise.length?`<h3>👏 What you did well</h3><ul class="sbl">${a.praise.map(t=>item(true,t)).join('')}</ul>`:'')
+     +(a.tips.length?`<h3>✨ Say it even better</h3><ul class="sbl">${a.tips.map(t=>item(false,t)).join('')}</ul>`:'')
+     +(a.ideas.length?`<h3>🧠 Key ideas</h3><ul class="sbl">${a.ideas.map(i=>item(i.hit,i.label)).join('')}</ul>`:'')
+     +(a.need.length?`<h3>🧱 Building your talk</h3><ul class="sbl">${a.need.map(k=>item(a.have.includes(k),SB_NEEDTXT[k][0].toUpperCase()+SB_NEEDTXT[k].slice(1))).join('')}</ul>`:'')
+     +(a.vague.some(x=>x.ups.length)?`<h3>📖 Word upgrades</h3><p>${a.vague.filter(x=>x.ups.length).map(x=>`Instead of <b>${esc(x.w)}</b>: ${x.ups.map(u=>`<span class="sbchip">${esc(u)}</span>`).join(' ')}`).join('<br>')}</p><p class="muted"><small>There are lots more in the Thesaurus vault.</small></p>`:'')
+     +(v.last?`<p class="muted">Last time on this prompt: ${v.last.w} words and ${v.last.f} filler words a minute. ${v.improved?'You improved. Well done! 🌟':'Keep practising!'}</p>`:'');
+  } else {
+    body=`${v.err?`<p class="sbnote">${esc(SB_ERR[v.err]||'')}</p>`:''}<p>${v.mode==='words'?'I could not get any words this time, but you can listen back to your talk.':'Word-checking is off, so here is your recording. Listen back and see how you did.'}</p>`
+     +`<h3>Check it yourself</h3><div class="sbself">${['I spoke clearly','I paused instead of saying “um”','I gave a reason (because…)','I gave an example (for example…)','I finished with a sum-up'].map((t,i)=>`<button class="btn small ${v.self.includes(i)?'':'ghost'}" data-act="sayself" data-i="${i}" aria-pressed="${v.self.includes(i)}">${v.self.includes(i)?'✅ ':''}${esc(t)}</button>`).join('')}</div>`;
+  }
+  m.innerHTML=`<section class="module" style="--c:#C2549A">${head}<div class="card"><div class="qtag">${esc(p.t)}</div><p>${chips.map(c=>`<span class="sbchip">${c}</span>`).join(' ')}</p>
+   ${v.counted?`<p class="center"><b>Well done for speaking up! 🎤</b> +${v.xp} XP</p>`:`<p class="sbnote">That was a short one. Try to keep going for at least 20 seconds, then you earn XP.</p>`}
+   ${v.url?`<h3>🔊 Listen back</h3><audio controls src="${v.url}" style="width:100%"></audio><p class="muted"><small>This recording stays on this device and is deleted when you leave.</small></p>`:''}
+   ${body}<div class="row" style="justify-content:center;margin-top:14px"><button class="btn big" data-act="sayagain">Try again</button><button class="btn ghost" data-act="saymenu">Another prompt</button></div></div></section>`;
+}
+function sbCard(){
+  const on=sbEnabled(), can=sbCanRecognise(), vend=sbVendor(), opt=(v,l)=>`<button class="btn small ${(on?'on':'off')===v?'':'ghost'}" data-act="sbrecset" data-v="${v}" aria-pressed="${(on?'on':'off')===v}">${(on?'on':'off')===v?'✅ ':''}${l}</button>`;
+  return `<section class="card"><h3 style="margin-top:0">🎤 Say it better: word-checking</h3><p class="muted" style="margin:0 0 6px">Say it better is a speaking coach on the English page. With this switched <b>on</b>, this device's browser sends her voice to <b>${esc(vend)}</b>'s speech service to turn it into words, so the coach can find filler words and check what she said. The Academy never saves her voice or her words (they only appear on the screen). Only numbers are saved, such as how many talks and filler words a minute. With it <b>off</b>, she can still record herself and listen back, and nothing leaves the device. This setting is for this device only.${can?'':' <b>This browser does not support word-checking.</b>'}</p><div class="row">${opt('off','Off (recording only)')}${opt('on','On (check her words)')}</div></section>`;
+}
+const SBACTIONS = {
+  saypick:d=>{ sbLeave(); SBV=sbFresh(SB_PBY[d.id]); render(); window.scrollTo(0,0); },
+  saystart:()=>{ sbStart(); },
+  saystop:()=>{ sbStop(); },
+  sayagain:()=>{ const p=SBV&&SBV.p; sbLeave(); if(p){ SBV=sbFresh(p); render(); window.scrollTo(0,0); } },
+  saymenu:()=>{ sbLeave(); render(); window.scrollTo(0,0); },
+  sayself:d=>{ cheerKeep(()=>{ const s=SBV.self, i=+d.i, k=s.indexOf(i); if(k>=0) s.splice(k,1); else s.push(i); }); },
+  sbrecset:d=>{ try{ if(d.v==='on') localStorage.setItem(SB_KEY,'on'); else localStorage.removeItem(SB_KEY); }catch(e){} toast(d.v==='on'?'Word-checking is on for this device.':'Word-checking is off.',3500); render(); }
+};
+const sbTalks = () => (S.sb||{}).n||0;
+
+/* =====================================================================
    WORKED EXPLANATIONS for hand-written questions that stopped short or gave a rule without her numbers.
    [subject, question, correct answer, new explanation]
    ===================================================================== */
@@ -10710,11 +11133,11 @@ const OLABEL = {history:'⏳ Timeline puzzles', computing:'🧠 Algorithm puzzle
 const JLABEL = {pshe:'📓 Reflection journal', art:'🖌️ Technique journal', english:'✏️ Creative writing', re:'🤔 Dilemma cards', literature:'✏️ Write about what you read', spanish:'✍️ Free write in Spanish', mandarin:'✍️ Free write in Mandarin'};
 const JTITLE = {pshe:'Reflection journal', art:'Technique journal', english:'Creative writing sandbox', re:'Moral dilemma cards', literature:'Write about what you read', spanish:'Free write in Spanish', mandarin:'Free write in Mandarin'};
 
-function go(name, params){ if(V && V.name==='speak' && name!=='speak') spkLeave(); if(V && V.name==='piano' && name!=='piano') pnLeave(); if(name!=='rsn') RSNV=null; if(V && V.tk && V.tk.timer) clearInterval(V.tk.timer); if((V.name==='parent' && name!=='parent' && name!=='cheers') || (V.name==='cheers' && name!=='cheers' && name!=='parent')) parentUnlocked=false; V=Object.assign({name}, params||{}); render(); window.scrollTo(0,0); }
+function go(name, params){ if(V && V.name==='speak' && name!=='speak') spkLeave(); if(V && V.name==='piano' && name!=='piano') pnLeave(); if(name==='hotkeys' && (!V || V.name!=='hotkeys')) HKV=hkFresh(); if(V && V.name==='say' && name!=='say') sbLeave(); if(name==='say' && (!V || V.name!=='say')) SBV=null; if(name!=='rsn') RSNV=null; if(V && V.tk && V.tk.timer) clearInterval(V.tk.timer); if((V.name==='parent' && name!=='parent' && name!=='cheers') || (V.name==='cheers' && name!=='cheers' && name!=='parent')) parentUnlocked=false; V=Object.assign({name}, params||{}); render(); window.scrollTo(0,0); }
 function render(){
   renderHeader();
   const m=$('#view'); m.innerHTML='';
-  const views={home:vHome,subject:vSubject,round:vRound,results:vResults,dojo:vDojo,oasis:vOasis,checkin:vCheckin,parent:vParent,thesaurus:vThesaurus,journal:vJournal,vault:vVault,notes:vNotes,verbs:vVerbs,chars:vChars,order:vOrder,match:vMatch,worksheet:vWorksheet,stroke:vStroke,report:vReport,words:vWords,upgrade:vUpgrade,talk:vTalk,periodic:vPeriodic,methods:vMethods,write:vWrite,players:vPlayers,caps:vCaps,capslearn:vCapLearn,atlas:vAtlas,lessons:vLessons,lesson:vLesson,storylab:vStoryLab,story:vStory,written:vWritten,wq:vWQ,coverage:vCoverage,fhguide:vFH,xwords:vXW,speak:vSpeak,rsn:vRsn,piano:vPiano,terms:vTerms,cheers:vCheers,lab:vLab,puzzles:vPuzzles};
+  const views={home:vHome,subject:vSubject,round:vRound,results:vResults,dojo:vDojo,oasis:vOasis,checkin:vCheckin,parent:vParent,thesaurus:vThesaurus,journal:vJournal,vault:vVault,notes:vNotes,verbs:vVerbs,chars:vChars,order:vOrder,match:vMatch,worksheet:vWorksheet,stroke:vStroke,report:vReport,words:vWords,upgrade:vUpgrade,talk:vTalk,periodic:vPeriodic,methods:vMethods,write:vWrite,players:vPlayers,caps:vCaps,capslearn:vCapLearn,atlas:vAtlas,lessons:vLessons,lesson:vLesson,storylab:vStoryLab,story:vStory,written:vWritten,wq:vWQ,coverage:vCoverage,fhguide:vFH,xwords:vXW,speak:vSpeak,rsn:vRsn,piano:vPiano,terms:vTerms,cheers:vCheers,hotkeys:vHotkeys,say:vSay,lab:vLab,puzzles:vPuzzles};
   (views[V.name]||vHome)(m);
   updatePill();
   if(V.name==='stroke') initWriter();
@@ -10807,6 +11230,8 @@ function vSubject(m){
   if(k==='english'||k==='literature') study.push(`<button class="btn gold" data-act="go" data-v="rsn" data-k="${k}">🧠 Reasoning workshop</button>`);
   if(k==='english') study.push(`<button class="btn gold" data-act="dictation">🔊 Spelling dictation</button><button class="btn gold" data-act="go" data-v="thesaurus">📖 Thesaurus vault</button>`);
   if(k==='spanish') study.push(`<button class="btn gold" data-act="go" data-v="verbs">🗂️ Verb tables</button>`);
+  if(k==='english') study.push(`<button class="btn gold" data-act="go" data-v="say">🎤 Say it better: speaking coach</button>`);
+  if(k==='computing') study.push(`<button class="btn gold" data-act="go" data-v="hotkeys">⌨️ Hot keys lab: try them and play</button>`);
   if(k==='music') study.push(`<button class="btn gold" data-act="go" data-v="piano">🎹 Piano: play and read music</button><button class="btn gold" data-act="go" data-v="terms">🎼 Music words lab</button>`);
   if(k==='mandarin') study.push(`<button class="btn gold" data-act="go" data-v="chars">🖌️ Character lab</button>`);
   if(METHODS[k]) study.push(`<button class="btn gold" data-act="methods" data-k="${k}">🧠 Tips &amp; tricks</button>`);
@@ -11293,6 +11718,8 @@ function summaryText(){
   T.push(`Word of the day: ${Object.keys(S.wl).length} words learned. Latest weekly word test: ${(()=>{ const k=Object.keys(S.wt).sort().pop(); return k?`meanings ${S.wt[k].m[0]}/${S.wt[k].m[1]}, spelling ${S.wt[k].s[0]}/${S.wt[k].s[1]}`:'none yet'; })()}.`);
   { const lg=S.lg||{}, parts=Object.keys(lg).map(k=>`${k==='mandarin'?'Mandarin':'Spanish'}: listening ${lg[k].lr||0} of ${lg[k].ln||0} right, ${lg[k].sp||0} word${(lg[k].sp||0)===1?'':'s'} said aloud`); if(parts.length) T.push('Languages: '+parts.join('; ')+'.'); }
   if(Object.keys(S.rs||{}).length) T.push(`Reasoning workshop: ${Object.keys(S.rs).length} question${Object.keys(S.rs).length===1?'':'s'} tried, ${rsnCount(3)} at 3 stars or more.`);
+  if(sbTalks()) T.push(`Speaking coach: ${sbTalks()} talk${sbTalks()===1?'':'s'} completed, ${(S.sb||{}).clean||0} smooth (30 seconds or more with hardly any filler words).`);
+  if((S.hk||{}).rounds) T.push(`Computing: best score ${hkBest()} out of 10 in the keyboard shortcuts challenge (${S.hk.rounds} round${S.hk.rounds===1?'':'s'}).`);
   if(muSongs()||(S.mu||{}).n) T.push(`Music: ${muSongs()} tune${muSongs()===1?'':'s'} played on the piano, ${muRight()} of ${(S.mu||{}).n||0} reading and listening questions right.`);
   T.push(`Extreme words: ${Object.keys(S.xw||{}).length} met, ${xwRight()} worked out, ${Object.keys(S.xt||{}).length} weekly test${Object.keys(S.xt||{}).length===1?'':'s'} finished.`);
   T.push(`Written answers: ${Object.keys(S.wr||{}).length} answered, ${wrGood()} at 60% or more. Topic coverage: ${covPercent()}%.`);
@@ -11380,6 +11807,7 @@ function vParent(m){
    ${wordsCard()}
    ${shareCard()}
    ${voiceCard()}
+   ${sbCard()}
    ${cheerCard()}
    ${pfCard()}
    <section class="card no-print"><h3>Backups and progress codes</h3>
@@ -11925,7 +12353,7 @@ Object.assign(ACTIONS, LESSONACTIONS);
 ACTIONS.thgroup=d=>{ V.tg=d.g; render(); };
 ACTIONS.branchtest=d=>practiceGate({kind:'branch',k:'science',keys:['science'],topics:SCI_TESTS[d.b],back:{name:'subject',k:'science'},label:'branch test'}, ()=>startRound({kind:'test', keys:['science'], topics:SCI_TESTS[d.b], branch:d.b, n:TEST_LEN, back:{name:'subject',k:'science'}}));
 Object.assign(ACTIONS, SLACTIONS);
-Object.assign(ACTIONS, WQACTIONS, COVACTIONS, FHACTIONS, XWACTIONS, FIXACTIONS, FIX2ACTIONS, LANGACTIONS, RSNACTIONS, MUACTIONS, PFACTIONS, HINTACTIONS, CHEERACTIONS);
+Object.assign(ACTIONS, WQACTIONS, COVACTIONS, FHACTIONS, XWACTIONS, FIXACTIONS, FIX2ACTIONS, LANGACTIONS, RSNACTIONS, MUACTIONS, PFACTIONS, HINTACTIONS, CHEERACTIONS, HKACTIONS, SBACTIONS);
 
 </script>
 </body>

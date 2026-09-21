@@ -1,32 +1,60 @@
 THE ANNALIESCE ACADEMY: NEW VERSION
 =====================================
-THIS VERSION: Academy version 6, built 20 Sep 2026, 17:45.
+THIS VERSION: Academy version 50, built 21 Sep 2026, 12:02.
 After you upload, open the site and scroll to the very bottom of the HOME page.
-It should say:  "Academy version 6 . built 20 Sep 2026, 17:45".
+It should say:  "Academy version 50 . built 21 Sep 2026, 12:02".
 If it says something older, or nothing, the new upload has not reached the site yet
 (see "If the site ever looks unchanged" below).
 
-NEW IN THIS VERSION
- - EXTREME WORD CHALLENGE: a very hard word every day on the home page, such as
-   "pusillanimous". She guesses what it means from four choices, can hear it (normal or
-   slowly) and see how it is said, then sees the meaning and an example. At the weekend
-   there is a test on the week's extreme words, including "how is it said?" questions.
-   116 words, 5 new trophies, and a word book. Her extreme-word progress shows in your report.
- - Written answers: 315 exam-style questions, at least two for every topic.
+NEW IN THIS VERSION: SAY IT BETTER (A SPEAKING COACH WITH WORD-CHECKING)
+ WHERE: English page > "Say it better: speaking coach".
+ WHAT SHE DOES: pick a prompt (there are 24: about her, opinions, "explain it", stories, and 10 school-subject prompts), talk for 30 to 60 seconds, then get friendly coaching. There are NO marks.
+ WHAT SHE GETS BACK (with word-checking on):
+   - What the computer heard, with the FILLER WORDS highlighted (um, uh, like, you know, I mean, sort of, basically...). "I like football" is not counted; only fillers are.
+   - Her pace (words a minute), her pauses, and how long she talked.
+   - Whether she built her talk well: a reason (because...), an example (for example...), things in order (first, next, finally), a sum-up.
+   - For subject prompts, which KEY IDEAS she covered (for example, sunlight, water and carbon dioxide for photosynthesis).
+   - WORD UPGRADES from the Thesaurus vault (if she says "nice" five times: try "lovely", "delightful").
+   - What she did well, up to 3 tips to say it even better, and a comparison with her last go at the same prompt.
+   - 10 XP for a talk of 20 seconds or more, +5 XP for improving. Trophies: Confident Speaker (5 talks) and Power Pauser (a talk of 30 seconds or more with hardly any filler words).
+   - She can LISTEN BACK to herself.
+
+ PRIVACY: PLEASE READ. To turn her voice into words, the BROWSER sends what she says to an outside speech service: Google in Chrome and on Android, Apple in Safari, Microsoft in Edge.
+ That is why you decide, and why it is OFF until you switch it on:
+   - Parent Desk (your PIN) > "Say it better: word-checking" > On (check her words) or Off (recording only). It is remembered on THAT device only, so a new device always starts OFF.
+   - Before every talk, her screen says in plain words where her voice goes, and that the Academy does not save it.
+   - The Academy NEVER saves her voice or her words. They appear on the screen and are wiped when she leaves. The listen-back recording stays on the device and is deleted when she leaves.
+   - Only NUMBERS are saved and synced (how many talks, filler words a minute, words a minute). Your report shows the number of talks, nothing she said.
+   - With it OFF she can still record herself, listen back and tick a self-check list. Nothing leaves the device.
+
+ PLEASE TEST IT ON HER DEVICE. I could not test the real Google/Apple speech recognition myself (it needs a real voice and their servers), so I tested everything else with a simulated one. Please try:
+   1. Use Chrome (laptop or Android) or Safari (iPhone or iPad), with internet. Chrome is the most reliable.
+   2. Parent Desk > Say it better: word-checking > On.
+   3. English page > Say it better > "Explain how photosynthesis works, to a friend" > "Start talking". Allow the microphone when asked.
+   4. Talk for about 30 seconds and say "um", "like" and "you know" a few times on purpose.
+   5. Tap "I am finished". Check: does what the computer heard look right? Are your filler words highlighted?
+ THINGS TO KNOW:
+   - Chrome often leaves out "um" and "er" (it tidies them away). The results screen says so. She can listen back to check.
+   - Speech recognition can mishear, especially with background noise or a quiet voice. It never blames her: it says the computer found it hard to hear and suggests a quieter room.
+   - On some iPhones and iPads, recording and word-checking cannot run at the same time. If that happens it tells her and falls back to recording only.
+   - If there is no internet, it says so and she can still listen back.
+
+IN EARLIER VERSIONS
+ - Hot keys (keyboard shortcuts) in Computing: a lesson, 20 shortcuts, four games, and the Hot keys lab with a practice box and the "Press it!" challenge (Shortcut Star trophy).
+ - HOW TO HEAR THE VOICES: sound switch (top right) ON, then Parent Desk > "Or choose a computer voice" to pick and try one, and Parent Desk > "Silly congratulation lines" > "Review and edit the lines" and tap the play button on any line. I could not listen to the voices myself.
+ - Spoken silly congratulation lines at the end of every round (187 lines, reviewed and switched on or off by you).
+ - Hints cost 1 XP and are about the question on screen, plus a second hint that crosses out two wrong answers.
+ - "Want to practise first?" before tests; Music (piano, reading music, music words you can hear); Reasoning workshop; six-figure grid references;
+   Spanish and Mandarin Listening lab and Speaking practice; "Why it may have gone wrong" and worked solutions in Maths; 88 questions with full working.
+ - Maths answers checked by computer (about 10,600, 0 wrong); Extreme Word Challenge (116 words); all 164 capitals checked.
 
 WHAT IS IN THIS VERSION
- - 155 lessons, each with teach, study, try it and a 5-question check, plus revision notes
- - About 2,600 fixed questions, 33 reading passages and 124 endless practice games
+ - 156 lessons, each with teach, study, try it and a 5-question check, plus revision notes
+ - About 2,600 fixed questions, 33 reading passages and 145 endless practice games
    (built from 865 checked facts), for all 14 subjects
- - Written answers, and an "Explain it in writing" task for every lesson, marked by key
-   ideas, plus a written question of the day
- - Coverage map (4 stars for every topic), revision-due reminders, and dinner-table
-   questions for you in the Parent Desk
- - Story Lab: a guided creative writing tool (ideas, plan, draft, improve, publish),
-   including a Climate hopes story type
- - Future Hopes class text guide, with a lesson, questions and games
- - Geography: grid references (with a drawn map), 164 flags and the capital cities academy
- - 93 trophies, with 53 badge pictures and 6 master badges
+ - 124 Spanish and 74 Mandarin words to hear and say; 317 written-answer questions, 22 reasoning questions,
+   7 piano tunes, 12 music words to hear, Story Lab, Future Hopes guide, grid references, 164 flags, the capital cities academy
+ - 102 trophies, with 53 badge pictures and 6 master badges
  - Thesaurus (172 words), the everyday Word of the Day, avatar shop and parent report
 
 THE 4 FILES TO UPLOAD (this README is only for you)
