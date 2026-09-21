@@ -196,7 +196,7 @@ th{background:var(--soft);color:var(--dsage)}
 .passage{background:var(--soft);border-left:5px solid var(--sage);border-radius:10px;padding:12px 14px;margin:10px 0;white-space:pre-line}
 .passage b.pt{display:block;color:var(--dsage);margin-bottom:4px}
 pre.code{background:#1f2933;color:#e6edf3;border-radius:10px;padding:12px;overflow-x:auto;margin:10px 0;font:14px/1.5 ui-monospace,Consolas,monospace}
-.gridmap{display:block;width:100%;max-width:380px;margin:8px auto}.gridmap .gs{font-size:22px}.gkey{display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:center;font-size:.92rem;margin:2px 0 10px}
+.gridmap{display:block;width:100%;max-width:380px;margin:8px auto}.gridmap .gs{font-size:22px}.g6zoom{max-width:300px}.g6cap{font-size:.9rem;text-align:center;color:#5c6660;margin:2px 4px 8px}.gridmap .gs6{font-size:15px}.gkey{display:flex;flex-wrap:wrap;gap:4px 14px;justify-content:center;font-size:.92rem;margin:2px 0 10px}
 .swatches{display:flex;gap:10px;align-items:center;justify-content:center;margin:10px 0;font-weight:800;font-size:1.4rem}
 .swatches i{display:inline-block;width:64px;height:64px;border-radius:14px;border:2px solid var(--line)}
 .hintbox{background:#FFF8E7;border:2px dashed var(--gold);border-radius:12px;padding:8px 12px;margin:10px 0}
@@ -205,6 +205,19 @@ pre.code{background:#1f2933;color:#e6edf3;border-radius:10px;padding:12px;overfl
 .worked ol{margin:6px 0 6px 20px;padding:0}
 .worked li{margin:5px 0}
 .wk-you{margin:6px 0}
+.cheer-row{display:flex;align-items:center;gap:8px;padding:6px 0;border-bottom:1px solid var(--line)}.cheer-row.off .cheer-t{opacity:.45;text-decoration:line-through}.cheer-t{flex:1}.cheerline{font-size:1.15rem}
+.opt.crossed{opacity:.35;text-decoration:line-through}
+.pk{position:relative;height:190px;touch-action:none;user-select:none;-webkit-user-select:none;margin:6px 0}
+.pkw{position:absolute;top:0;height:100%;background:#fff;border:1px solid #444;border-radius:0 0 8px 8px;padding:0 0 8px;cursor:pointer;display:flex;align-items:flex-end;justify-content:center;font:inherit;font-weight:800;color:#333;box-sizing:border-box;touch-action:none}
+.pkw span{display:flex;flex-direction:column;align-items:center;line-height:1.1;pointer-events:none}.pkw small{font-size:.62rem;font-weight:600;color:#7a7a7a}
+.pkw.mc{background:#FFF8E1}.pkw.on{background:#FFE08A}.pkw.nxt{background:#BDF0CB;box-shadow:inset 0 0 0 4px #2E8B57}
+.pkb{position:absolute;top:0;height:62%;background:#222;border:1px solid #000;border-radius:0 0 6px 6px;padding:0;z-index:2;cursor:pointer;box-sizing:border-box;touch-action:none}
+.pkb.on{background:#6b8f3a}.pkb.nxt{background:#2E8B57;box-shadow:0 0 0 3px #BDF0CB}
+.staff{display:block;max-width:100%;height:auto;margin:6px auto}.pn-info{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin:6px 0}.pn-note{font-size:1.1rem}.pn-info .staff{max-width:180px;margin:0}
+.rsn-poem{white-space:pre-line;font-style:italic;background:#FFF8E7;border-left:4px solid var(--gold);padding:10px 14px;border-radius:8px;margin:4px 0;line-height:1.6}
+.rsn-star{color:#C9A227;letter-spacing:2px}
+.rsn-list{list-style:none;margin:8px 0;padding:0}
+.rsn-list li{margin:8px 0}
 .spk-word{font-size:2.6rem;font-weight:800;line-height:1.1;margin:6px 0}
 .spk-py{font-size:1.3rem;color:#5c6660;margin-bottom:2px}
 .spk-tips{background:#FFF8E7;border:2px dashed var(--gold);border-radius:12px;padding:8px 12px;margin:10px 0;text-align:left}
@@ -365,7 +378,7 @@ textarea.slin{width:100%;font:inherit;padding:10px;border:2px solid var(--line);
 <div id="toast" role="status" aria-live="polite" hidden></div>
 <input type="file" id="impfile" accept="application/json,.json" hidden>
 <script>
-const BUILD_INFO={n:20,at:'20 Sep 2026, 21:22'};
+const BUILD_INFO={n:38,at:'21 Sep 2026, 07:56'};
 /* =====================================================================
    THE ANNALIESCE ACADEMY
    ---------------------------------------------------------------------
@@ -3307,9 +3320,15 @@ addQs('geography',[
 ["Map skills","What are eastings?","The vertical grid lines, numbered from west to east","The horizontal grid lines, numbered from south to north","The lines of latitude","The contour lines","Eastings run up and down the map and give the number along the bottom."],
 ["Map skills","What are northings?","The horizontal grid lines, numbered from south to north","The vertical grid lines, numbered from west to east","The lines of longitude","The lines on a compass","Northings run across the map and give the number up the side."],
 ["Map skills","A church is in the square whose bottom-left corner is where easting 04 and northing 07 cross. What is its four-figure grid reference?","0407","0704","4070","0470","Eastings come first, so the reference is 04 then 07."],
-["Map skills","Which is the four-figure grid reference of the square with easting 12 and northing 03?","1203","0312","1230","1023","Write the easting first (12) and then the northing (03)."]
+["Map skills","Which is the four-figure grid reference of the square with easting 12 and northing 03?","1203","0312","1230","1023","Write the easting first (12) and then the northing (03)."],
+["Map skills","In the six-figure grid reference 362 627, what does the third digit, 2, tell you?","How many tenths along from grid line 36","How many tenths up from grid line 62","The number of the grid square","The height of the land in metres","The first three digits are the eastings: line 36, then 2 tenths along. The last three are the northings: line 62, then 7 tenths up."],
+["Map skills","A church is 4 tenths along from easting line 25 and 8 tenths up from northing line 71. What is its six-figure grid reference?","254 718","258 714","714 254","250 710","Eastings first: line 25 plus 4 tenths is 254. Then northings: line 71 plus 8 tenths is 718."],
+["Map skills","Which statement about a six-figure grid reference is correct?","The first three digits are the eastings and the last three are the northings","The first three digits are the northings and the last three are the eastings","It only tells you which whole square a feature is in","It gives the height of the land","Along the corridor (eastings) and then up the stairs (northings), just as with four figures, but with tenths added."],
+["Map skills","The grid reference 130 405: how many tenths along and how many tenths up?","0 tenths along and 5 tenths up","3 tenths along and 5 tenths up","0 tenths along and 4 tenths up","1 tenth along and 4 tenths up","130 is line 13 plus 0 tenths, and 405 is line 40 plus 5 tenths."],
+["Map skills","If each grid square is 1 km across, how far is one tenth of a square?","100 metres","10 metres","1,000 metres","10 kilometres","1 km is 1,000 m, and 1,000 ÷ 10 = 100 m."],
+["Map skills","Where do you start counting tenths from when you find a six-figure grid reference?","The left-hand line for the eastings, and the bottom line for the northings","The right-hand line for the eastings, and the top line for the northings","The top line for both","The centre of the square","You count from the bottom-left corner of the square, along and then up."]
 ]);
-addNote('geography','Map skills','Four-figure grid reference: read the eastings (along the bottom) first and then the northings (up the side). The numbers belong to the bottom-left corner of the square. Along the corridor, then up the stairs. Six-figure references add tenths to pinpoint a place.');
+addNote('geography','Map skills','Four-figure grid reference: read the eastings (along the bottom) first and then the northings (up the side). The numbers belong to the bottom-left corner of the square. Along the corridor, then up the stairs. Six-figure references add tenths to pinpoint a place: the first three digits are the eastings (the two-digit line plus tenths along) and the last three are the northings (the two-digit line plus tenths up). Count the tenths from the bottom-left corner of the square. With 1 km squares, one tenth is 100 m.');
 
 /* More reading passages: each text is followed by questions that can be answered from it. Format: [question, correct, wrong, wrong, wrong, explanation] */
 PASSAGES.push(
@@ -4314,7 +4333,7 @@ const MAX_GUESTS = 8;
 function addGuest(name){ const l=guestList(); if(l.length>=MAX_GUESTS) return null; const id='p'+Date.now().toString(36)+Math.floor(Math.random()*1296).toString(36); l.push({id, name:String(name||'Friend').trim().slice(0,20)||'Friend'}); saveGuests(l); return id; }
 function removeGuest(id){ saveGuests(guestList().filter(g=>g.id!==id)); try{ localStorage.removeItem(guestKey(id)); }catch(e){} }
 function peekProfile(id){ try{ const o=JSON.parse(localStorage.getItem(id==='anna'?STORE_KEY:guestKey(id))||'null')||{}; const xp=o.led?Object.values(o.led).reduce((s,l)=>s+(l.xp||0),0):(o.xp||0); return {xp, level:Math.floor(xp/400)+1, avatar:Object.assign({}, AV_DEFAULT, o.avatar||{})}; }catch(e){ return {xp:0, level:1, avatar:Object.assign({},AV_DEFAULT)}; } }
-const defaults = () => ({v:3, era:0, gp:{}, lz:{}, sl:{}, wr:{}, tl:{}, rv:0, xw:{}, xt:{}, lg:{}, chestDay:'', perfDay:'', year:CURRENT_YEAR_GROUP, led:{}, xp:0, coins:0, cleared:0, hints:0, stats:{}, seen:{}, dojo:{}, cards:{}, rounds:[], days:[], goalWeeks:[], checkins:[], reflections:[], trophies:{}, sr:{}, bestStreak:0, sprintBest:{}, theme:'blush', pet:'cat', wl:{}, wt:{}, talk:[], avatar:Object.assign({},AV_DEFAULT), owned:{}, spellMiss:[], note:NEW_NOTE, vnote:null, pin:'', goal:3, sound:true, mode:'full', archive:{}, at:0, pt:0, rep:null});
+const defaults = () => ({v:3, era:0, gp:{}, lz:{}, sl:{}, wr:{}, tl:{}, rv:0, xw:{}, xt:{}, lg:{}, rs:{}, mu:{s:{},r:0,n:0}, cheer:{off:[],mode:'spoken',t:0}, chestDay:'', perfDay:'', year:CURRENT_YEAR_GROUP, led:{}, xp:0, coins:0, cleared:0, hints:0, stats:{}, seen:{}, dojo:{}, cards:{}, rounds:[], days:[], goalWeeks:[], checkins:[], reflections:[], trophies:{}, sr:{}, bestStreak:0, sprintBest:{}, theme:'blush', pet:'cat', wl:{}, wt:{}, talk:[], avatar:Object.assign({},AV_DEFAULT), owned:{}, spellMiss:[], note:NEW_NOTE, vnote:null, pin:'', goal:3, sound:true, mode:'full', archive:{}, at:0, pt:0, rep:null});
 function L(){ let l = S.led[DEVID]; if(!l || l.y!==S.year){ l = S.led[DEVID] = {xp:l?l.xp:0, ce:l?l.ce:0, cs:l?l.cs:0, cl:l?l.cl:0, h:l?l.h:0, ch:l?l.ch||0:0, cu:l?l.cu||0:0, st:{}, y:S.year, ver:l?l.ver:0}; } return l; }
 function derive(){
   let xp=0, ce=0, cs=0, cl=0, h=0, ch=0, cu=0; const st={};
@@ -4351,7 +4370,7 @@ function snapshot(){ const t=totals(), by={}; ALLSUBJ.forEach(s=>{ const x=subjT
 function rollover(){ if(S.year!==CURRENT_YEAR_GROUP){ S.archive[S.year]=snapshot(); S.year=CURRENT_YEAR_GROUP; S.seen={}; S.dojo={}; S.rounds=[]; S.spellMiss=[]; derive(); save(); } }
 
 /* ---- sync: merge two states without losing anything ---- */
-const SYNC_FIELDS = ['v','year','led','seen','dojo','rounds','days','goalWeeks','checkins','trophies','cards','sr','bestStreak','sprintBest','owned','avatar','mode','sound','theme','pet','note','goal','archive','at','pt','vnote','rep','wl','wt','era','gp','lz','sl','wr','tl','rv','xw','xt','lg'];
+const SYNC_FIELDS = ['v','year','led','seen','dojo','rounds','days','goalWeeks','checkins','trophies','cards','sr','bestStreak','sprintBest','owned','avatar','mode','sound','theme','pet','note','goal','archive','at','pt','vnote','rep','wl','wt','era','gp','lz','sl','wr','tl','rv','xw','xt','lg','rs','mu','cheer'];
 function syncable(){ const o={}; SYNC_FIELDS.forEach(f=>{ o[f]=S[f]; }); return o; }
 function mergeInto(a, b){
   const ea=a.era||0, eb=b.era||0;
@@ -4381,6 +4400,9 @@ function mergeInto(a, b){
   m.rv = Math.max(a.rv||0, b.rv||0);
   m.xw = Object.assign({}, b.xw||{}); Object.keys(a.xw||{}).forEach(d=>{ const x=a.xw[d], y=m.xw[d]; if(!y || (x.c && !y.c)) m.xw[d]=x; });
   m.lg = {}; new Set(Object.keys(a.lg||{}).concat(Object.keys(b.lg||{}))).forEach(k=>{ const x=(a.lg||{})[k]||{}, y=(b.lg||{})[k]||{}; m.lg[k]={lr:Math.max(x.lr||0,y.lr||0), ln:Math.max(x.ln||0,y.ln||0), sp:Math.max(x.sp||0,y.sp||0)}; });
+  m.rs = Object.assign({}, b.rs||{}); Object.keys(a.rs||{}).forEach(k=>{ const x=a.rs[k], y=m.rs[k]; m.rs[k]=y?{best:Math.max(x.best||0,y.best||0), tries:Math.max(x.tries||0,y.tries||0), d:((x.d||'')>(y.d||'')?x.d:y.d)}:x; });
+  m.mu = {s:Object.assign({}, (b.mu||{}).s||{}), r:Math.max((a.mu||{}).r||0,(b.mu||{}).r||0), n:Math.max((a.mu||{}).n||0,(b.mu||{}).n||0)}; Object.keys((a.mu||{}).s||{}).forEach(k=>{ const x=a.mu.s[k], y=m.mu.s[k]; if(!y||(x.b||0)>(y.b||0)) m.mu.s[k]=x; });
+  { const ca=a.cheer, cb=b.cheer; m.cheer=(ca&&(ca.t||0)>=((cb&&cb.t)||0))?ca:(cb||ca||{off:[],mode:'spoken',t:0}); }
   m.xt = Object.assign({}, b.xt||{}); Object.keys(a.xt||{}).forEach(k=>{ const x=a.xt[k], y=m.xt[k]; if(!y || x.m[0]>y.m[0]) m.xt[k]=x; });
   m.sl = Object.assign({}, b.sl||{}); Object.keys(a.sl||{}).forEach(id=>{ if(!m.sl[id] || (a.sl[id].w||0)>(m.sl[id].w||0)) m.sl[id]=a.sl[id]; });
   m.lz = {}; [b.lz||{}, a.lz||{}].forEach(src=>{ Object.keys(src).forEach(k=>{ m.lz[k]=m.lz[k]||{}; Object.keys(src[k]).forEach(t=>{ const x=src[k][t], y=m.lz[k][t]; if(!y || x.c>y.c) m.lz[k][t]=x; }); }); });
@@ -4442,7 +4464,7 @@ function buildReport(){
   const topics=[]; for(const k in S.stats) for(const tp in S.stats[k]){ const x=S.stats[k][tp]; if(x[0]) topics.push({k,t:tp,a:x[0],c:x[1]}); }
   const tests=S.rounds.filter(r=>r.kind==='test'||r.kind==='mock').slice(-12).map(r=>({d:r.d,kind:r.kind,s:r.s,n:r.n,c:r.c}));
   const weeks=[7,6,5,4,3,2,1,0].map(off=>{ const wt=weekTotals(off); return {w:weekRange(off)[0], days:wt.days, n:wt.n, c:wt.c}; });
-  return {v:1, name:'Annaliesce', year:S.year, at:Date.now(), level:level(), title:titleOf(), xp:S.xp, streak:calcStreak(), best:Math.max(S.bestStreak||0,calcStreak()), goal:S.goal, answered:t[0], correct:t[1], dojo:dojoCount(), hints:S.hints||0, subjects, topics, tests, weeks, lg:JSON.parse(JSON.stringify(S.lg||{})), extreme:{met:Object.keys(S.xw||{}).length, right:xwRight(), tests:Object.keys(S.xt||{}).length}, written:{n:Object.keys(S.wr||{}).length, good:wrGood(), avg:wrAvg()}, coverage:covPercent(), stories:{n:slDoneCount(), w:slWordsDone()}, lessons:{p:lzPassedCount(), t:lessonList().length, subj:ALLSUBJ.map(s=>({n:s.n, p:Object.keys((LESSONS[s.k]||{})).filter(t=>((S.lz[s.k]||{})[t]||{c:0}).c>=4).length, t:Object.keys(LESSONS[s.k]||{}).length}))}, branch:Object.fromEntries(Object.keys(SCI_TESTS).map(b=>[b,branchPasses(b)])), words:{learned:Object.keys(S.wl||{}).length, tests:Object.keys(S.wt||{}).sort().slice(-8).map(w=>({w,m:S.wt[w].m,s:S.wt[w].s}))}};
+  return {v:1, name:'Annaliesce', year:S.year, at:Date.now(), level:level(), title:titleOf(), xp:S.xp, streak:calcStreak(), best:Math.max(S.bestStreak||0,calcStreak()), goal:S.goal, answered:t[0], correct:t[1], dojo:dojoCount(), hints:S.hints||0, subjects, topics, tests, weeks, lg:JSON.parse(JSON.stringify(S.lg||{})), music:{songs:muSongs(), right:muRight(), n:(S.mu||{}).n||0}, rsn:{tried:Object.keys(S.rs||{}).length, three:rsnCount(3), four:rsnCount(4)}, extreme:{met:Object.keys(S.xw||{}).length, right:xwRight(), tests:Object.keys(S.xt||{}).length}, written:{n:Object.keys(S.wr||{}).length, good:wrGood(), avg:wrAvg()}, coverage:covPercent(), stories:{n:slDoneCount(), w:slWordsDone()}, lessons:{p:lzPassedCount(), t:lessonList().length, subj:ALLSUBJ.map(s=>({n:s.n, p:Object.keys((LESSONS[s.k]||{})).filter(t=>((S.lz[s.k]||{})[t]||{c:0}).c>=4).length, t:Object.keys(LESSONS[s.k]||{}).length}))}, branch:Object.fromEntries(Object.keys(SCI_TESTS).map(b=>[b,branchPasses(b)])), words:{learned:Object.keys(S.wl||{}).length, tests:Object.keys(S.wt||{}).sort().slice(-8).map(w=>({w,m:S.wt[w].m,s:S.wt[w].s}))}};
 }
 async function reportKey(token){ return sha256('report:'+token); }
 async function pushReport(){
@@ -4483,13 +4505,14 @@ function spend(n){ L().cs += n; bump(); save(); }
 function weekBySubject(off=0){ const [a,b]=weekRange(off), by={}; S.rounds.filter(r=>r.d>=a&&r.d<=b&&r.kind!=='flash').forEach(r=>{ for(const k in (r.by||{})){ const x=(by[k]=by[k]||[0,0]); x[0]+=r.by[k][0]; x[1]+=r.by[k][1]; } }); return by; }
 function weekTotals(off=0){ const [a,b]=weekRange(off); const rs=S.rounds.filter(r=>r.d>=a&&r.d<=b); const q=rs.filter(r=>r.kind!=='flash'); return {rounds:rs.length, n:q.reduce((x,r)=>x+r.n,0), c:q.reduce((x,r)=>x+r.c,0), days:daysThisWeek(off)}; }
 function weakTopics(){ const out=[]; for(const k in S.stats) for(const t in S.stats[k]){ const [a,c]=S.stats[k][t]; if(a>=4 && c/a<0.7) out.push({k,t,a,c,p:Math.round(100*c/a)}); } return out.sort((x,y)=>x.p-y.p).slice(0,6); }
-function slimQ(q){ return {k:q.k, topic:q.topic, q:q.q, correct:q.correct, wrong:q.wrong, exp:q.exp, hint:q.hint, map:q.map, grid:q.grid, flag:q.flag, flagopts:q.flagopts, correctLabel:q.correctLabel, gen:1, id:q.id}; }
+function slimQ(q){ return {k:q.k, topic:q.topic, q:q.q, correct:q.correct, wrong:q.wrong, exp:q.exp, hint:q.hint, map:q.map, grid:q.grid, staff:q.staff, rhythm:q.rhythm, mus:q.mus, flag:q.flag, flagopts:q.flagopts, correctLabel:q.correctLabel, gen:1, id:q.id}; }
 function recordActivity(k, topic, attempts, correct){ const st=(L().st[k]=L().st[k]||{}); const t=(st[topic]=st[topic]||[0,0]); t[0]+=attempts; t[1]+=correct; bump(); }
 function recordAnswer(q, ok, kind){
   const l = L(), st = (l.st[q.k] = l.st[q.k] || {}), t = (st[q.topic] = st[q.topic] || [0,0]); t[0]++; if(ok) t[1]++;
   S.tl = S.tl || {}; S.tl[q.k+'|'+q.topic] = today();
   if(q.hinted) l.h++;
   if(q.lsn){ lgBump(q.k,'ln'); if(ok) lgBump(q.k,'lr'); }
+  if(q.mus) muBump(ok);
   if(q.type==='spell'){
     if(ok) S.spellMiss = S.spellMiss.filter(w=>w!==q.word);
     else if(!S.spellMiss.includes(q.word)) S.spellMiss.push(q.word);
@@ -4594,12 +4617,12 @@ function confetti(n){
   document.body.appendChild(box); setTimeout(()=>box.remove(), 6500);
 }
 function closeParty(){ const p=document.getElementById('party'); if(p) p.remove(); document.querySelectorAll('.cfbox').forEach(x=>x.remove()); }
-function celebrate(sub, level, img){
-  const msg=rand(level==='full' ? PRAISE_100 : PRAISE_90);
+function celebrate(sub, level, img, line){
+  const msg=(line&&line.t)||rand(level==='full' ? PRAISE_100 : PRAISE_90);
   closeParty(); const el=document.createElement('div'); el.id='party'; el.setAttribute('role','dialog'); el.setAttribute('aria-modal','true'); el.setAttribute('aria-label','Celebration');
   el.innerHTML=`<div class="pcard"><div class="pbig" aria-hidden="true">${img?`<img src="${img}" alt="" style="width:130px;height:130px;border-radius:50%">`:(level==='full'?'🏆':'🌟')}</div><h2>${esc(msg)}</h2><p style="margin:0 auto 12px">${esc(sub||'')}</p><button class="btn big" data-act="partyclose">Yay! 🎀</button></div>`;
   document.body.appendChild(el); confetti(level==='full'?46:24); playSound('party');
-  if(S.sound && 'speechSynthesis' in window) speakComputer(msg.replace(/[\u{1F000}-\u{1FAFF}\u{2600}-\u{27BF}\u{FE0F}\u{200D}]/gu,'').trim());
+  if(S.sound && 'speechSynthesis' in window && (!line || cheerMode()==='spoken')) speakComputer(cheerPlain(msg));
   const b=el.querySelector('button'); if(b) b.focus();
   return msg;
 }
@@ -4737,6 +4760,10 @@ const TROPHIES = [
  {id:'cov100',i:'🌟',n:'Whole Map',d:'Cover every Year 7 topic',t:()=>covPercent()>=100},
  {id:'rv5',i:'🔁',n:'Revision Hero',d:'Finish 5 revision rounds from the Coverage map',t:()=>(S.rv||0)>=5},
  {id:'exp10',i:'💡',n:'Deep Thinker',d:'Score 60% or more on 10 "Explain it in writing" tasks',t:()=>Object.entries(S.wr||{}).filter(([id,x])=>id.startsWith('a_')&&x.m/x.o>=0.6).length>=10},
+ {id:'pn3',i:'🎹',n:'Pianist',d:'Play 3 tunes all the way through on the piano',t:()=>muSongs()>=3},
+ {id:'mu50',i:'🎼',n:'Music Reader',d:'Get 50 music reading and listening questions right',t:()=>muRight()>=50},
+ {id:'rsn5',i:'🧠',n:'Clear Thinker',d:'Reach 3 stars or more on 5 reasoning questions',t:()=>rsnCount(3)>=5},
+ {id:'rsn12',i:'🎓',n:'Master Reasoner',d:'Reach 4 stars or more on 12 reasoning questions',t:()=>rsnCount(4)>=12},
  {id:'ls50',i:'🎧',n:'Good Listener',d:'Get 50 Spanish or Mandarin listening questions right',t:()=>lgTotal('lr')>=50},
  {id:'sp25',i:'🗣️',n:'Brave Speaker',d:'Say 25 Spanish or Mandarin words out loud',t:()=>lgTotal('sp')>=25},
  {id:'xw7',i:'🧗',n:'Word Climber',d:'Work out 7 extreme words',t:()=>xwRight()>=7},
@@ -4760,6 +4787,8 @@ const TROPHIES = [
 
 const branchPasses = b => (S.rounds||[]).filter(r=>r.kind==='test' && r.br===b && r.n>0 && r.c/r.n>=0.8).length;
 const TPROG = {
+ pn3:()=>[Math.min(3,muSongs()),3], mu50:()=>[Math.min(50,muRight()),50],
+ rsn5:()=>[Math.min(5,rsnCount(3)),5], rsn12:()=>[Math.min(12,rsnCount(4)),12],
  ls50:()=>[Math.min(50,lgTotal('lr')),50], sp25:()=>[Math.min(25,lgTotal('sp')),25],
  xw7:()=>[Math.min(7,xwRight()),7], xw30:()=>[Math.min(30,xwRight()),30], xw60:()=>[Math.min(60,xwRight()),60],
  fh30:()=>[Math.min(30,((S.stats.literature||{})['Future Hopes']||[0,0])[1]),30], clim1:()=>[Math.min(1,Object.values(S.sl||{}).filter(x=>x&&x.g==='Climate hopes').length),1],
@@ -7097,6 +7126,7 @@ function gridScene(){
 }
 const gridRef=(s,f)=>g2(s.e0+f.i)+g2(s.n0+f.j);
 function gridHTML(s){
+  if(s&&s.six) return grid6HTML(s);
   const C=40, L=34, T=8, W=L+8*C+8, H=T+8*C+26; let p='';
   for(let i=0;i<=8;i++){ const x=L+i*C; p+=`<line x1="${x}" y1="${T}" x2="${x}" y2="${T+8*C}"/><text x="${x}" y="${T+8*C+17}" text-anchor="middle">${g2(s.e0+i)}</text>`; }
   for(let j=0;j<=8;j++){ const y=T+(8-j)*C; p+=`<line x1="${L}" y1="${y}" x2="${L+8*C}" y2="${y}"/><text x="${L-6}" y="${y+4}" text-anchor="end">${g2(s.n0+j)}</text>`; }
@@ -8085,7 +8115,7 @@ const XWACTIONS = {
   xwsay:d=>xwSay(xwDaily().x.w, !!d.slow),
   xwsayw:d=>xwSay(d.w),
   xwpick:d=>{ const D=xwDaily(); if(S.xw[D.d]) return; const ok=D.opts[+d.i]===D.q.correct; S.xw[D.d]={w:D.x.w, c:ok?1:0, p:+d.i}; award(ok?15:5, ok?3:0); playSound(ok?'correct':'wrong'); save(); checkTrophies(); missionCheck(); render(); },
-  xwtest:d=>startXWTest(d.w),
+  xwtest:d=>practiceGate({kind:'xtest',k:'xtest',look:()=>go('xwords'),lookLabel:'Look at your extreme words first',label:'extreme word test'}, ()=>startXWTest(d.w)),
   xwpractice:()=>startXWPractice()
 };
 
@@ -8389,6 +8419,1734 @@ const LANGACTIONS = {
   spkskip:()=>{ spkNext(); }
 };
 try{ window.addEventListener('pagehide',()=>{ try{ spkFree(); }catch(e){} }); }catch(e){}
+
+/* =====================================================================
+   SIX-FIGURE GRID REFERENCES. A 5 km by 5 km map. Each square is divided into tenths.
+   Six figures: eastings first (two-digit line + tenths along), then northings (two-digit line + tenths up).
+   Every feature sits at the CENTRE of a tenth-cell, so the tenths digit is never ambiguous.
+   Easy: the target square is highlighted and zoomed with tenths lines. Medium: tick marks on the map edge only.
+   Hard: only the 1 km grid, so she must estimate.
+   ===================================================================== */
+const G6 = {N:5, C:64, L:34, T:8, Z:26, ZL:26, ZT:8};
+const g6ref = (s,f) => g2(s.e0+f.i)+f.te+' '+g2(s.n0+f.j)+f.tn;
+const g6dist = (a,b) => { const [ae,an]=a.split(' ').map(Number), [be,bn]=b.split(' ').map(Number); return Math.max(Math.abs(ae-be),Math.abs(an-bn)); };
+function grid6Scene(mode){
+  const N=G6.N, e0=ri(20,80), n0=ri(20,80), feats=shuffle(GRID_FEATS.slice()).slice(0,5), ti=ri(0,N-1), tj=ri(0,N-1), used=new Set([ti+','+tj]);
+  const far=(a,b)=>Math.abs(a.te-b.te)>=3||Math.abs(a.tn-b.tn)>=3, mkf=(k,i,j)=>({c:feats[k][0],name:feats[k][1],i,j,te:ri(1,8),tn:ri(1,8)});
+  const f=[mkf(0,ti,tj)], comp=mode==='easy'?ri(1,2):1;
+  for(let k=1;k<=comp;k++){ let g,guard=0; do{ g=mkf(k,ti,tj); }while(f.some(x=>!far(x,g))&&guard++<300); f.push(g); }
+  for(let k=comp+1;k<5;k++){ let i,j; do{ i=ri(0,N-1); j=ri(0,N-1); }while(used.has(i+','+j)); used.add(i+','+j); f.push(mkf(k,i,j)); }
+  return {six:1, mode, e0, n0, t:f[0].name, f:shuffle(f.slice())};
+}
+function grid6HTML(s){
+  const {N,C,L,T}=G6, W=L+N*C+8, H=T+N*C+26, t=s.f.find(x=>x.name===s.t)||s.f[0]; let p='', pre='', ticks='';
+  if(s.mode==='easy') pre=`<rect x="${L+t.i*C}" y="${T+(N-1-t.j)*C}" width="${C}" height="${C}" fill="#FFF0B3" stroke="#C9A227" stroke-width="2"/>`;
+  for(let i=0;i<=N;i++){ const x=L+i*C; p+=`<line x1="${x}" y1="${T}" x2="${x}" y2="${T+N*C}"/><text x="${x}" y="${T+N*C+17}" text-anchor="middle">${g2(s.e0+i)}</text>`; }
+  for(let j=0;j<=N;j++){ const y=T+(N-j)*C; p+=`<line x1="${L}" y1="${y}" x2="${L+N*C}" y2="${y}"/><text x="${L-6}" y="${y+4}" text-anchor="end">${g2(s.n0+j)}</text>`; }
+  if(s.mode==='medium') for(let k=0;k<=N*10;k++){ const len=(k%5===0)?8:4, x=L+k*C/10, y=T+N*C-k*C/10; ticks+=`<line class="g6tick" x1="${x}" y1="${T+N*C-len}" x2="${x}" y2="${T+N*C}"/><line class="g6tick" x1="${L}" y1="${y}" x2="${L+len}" y2="${y}"/>`; }
+  const sy=s.f.map(f=>{ const x=L+(f.i+(f.te+0.5)/10)*C, y=T+(N-(f.j+(f.tn+0.5)/10))*C; return `<text class="gs6" x="${x}" y="${y+5}" text-anchor="middle">${f.c}</text><circle class="g6dot" data-name="${esc(f.name)}" cx="${x}" cy="${y}" r="2.4" fill="#D00000" stroke="#fff" stroke-width=".8"/>`; }).join('');
+  let zoom='';
+  if(s.mode==='easy'){ const Z=G6.Z, zl=G6.ZL, zt=G6.ZT, ZW=zl+10*Z+8, ZH=zt+10*Z+22; let zp='';
+    for(let k=0;k<=10;k++){ const x=zl+k*Z, y=zt+(10-k)*Z; zp+=`<line class="g6fine" x1="${x}" y1="${zt}" x2="${x}" y2="${zt+10*Z}"/><text x="${x}" y="${zt+10*Z+14}" text-anchor="middle">${k}</text><line class="g6fine" x1="${zl}" y1="${y}" x2="${zl+10*Z}" y2="${y}"/><text x="${zl-5}" y="${y+4}" text-anchor="end">${k}</text>`; }
+    const zs=s.f.filter(f=>f.i===t.i&&f.j===t.j).map(f=>{ const x=zl+(f.te+0.5)*Z, y=zt+(10-(f.tn+0.5))*Z; return `<text class="gs6" x="${x}" y="${y+5}" text-anchor="middle">${f.c}</text><circle class="g6zdot" data-name="${esc(f.name)}" cx="${x}" cy="${y}" r="2.6" fill="#D00000" stroke="#fff" stroke-width=".8"/>`; }).join('');
+    zoom=`<svg class="gridmap g6zoom" viewBox="0 0 ${ZW} ${ZH}" role="img" aria-label="A zoomed-in view of the yellow square, divided into tenths."><rect x="${zl}" y="${zt}" width="${10*Z}" height="${10*Z}" fill="#FFF0B3"/><g stroke="#C9A227" stroke-width=".7" fill="#3b2b35" font-size="10" font-family="inherit">${zp}</g>${zs}</svg><p class="g6cap">Zoomed in on the yellow square. The numbers along the bottom count tenths along from line ${g2(s.e0+t.i)}. The numbers up the side count tenths up from line ${g2(s.n0+t.j)}. A feature's tenths digit is the number of the line just before it.</p>`; }
+  const note = s.mode==='easy' ? '' : `<p class="g6cap">Each square is 1 km across, so each tenth is 100 m.${s.mode==='medium'?' Use the tick marks along the bottom and the left edge.':' Imagine cutting each square into ten strips each way.'}</p>`;
+  return `<svg class="gridmap" viewBox="0 0 ${W} ${H}" role="img" aria-label="A map grid with five symbols. The key is listed under the map."><rect x="${L}" y="${T}" width="${N*C}" height="${N*C}" fill="#F3FAF1"/>${pre}<g stroke="#7FA37F" stroke-width="1" fill="#3b2b35" font-size="11" font-family="inherit">${p}</g><g stroke="#3b2b35" stroke-width=".9">${ticks}</g>${sy}</svg>${zoom}${note}<div class="gkey">${s.f.map(f=>`<span>${f.c} ${esc(gcap(f.name))}</span>`).join('')}</div>`;
+}
+function g6refOptions(s,f){
+  const e=s.e0+f.i, n=s.n0+f.j, te=f.te, tn=f.tn, ref=g6ref(s,f), sh=t=>t>=4?t-3:t+3, bad=new Set([ref]);
+  const ok=c=>!bad.has(c)&&g6dist(ref,c)>=2, out=[];
+  const pool=[g2(n)+tn+' '+g2(e)+te, g2(e)+tn+' '+g2(n)+te, g2(e)+'0 '+g2(n)+'0', g2(e)+sh(te)+' '+g2(n)+tn, g2(e)+te+' '+g2(n)+sh(tn), g2(e)+sh(te)+' '+g2(n)+sh(tn)];
+  pool.forEach((c,i)=>{ if(i<3&&ok(c)&&out.length<3){ out.push(c); bad.add(c); } });
+  shuffle(pool.slice(3)).forEach(c=>{ if(out.length<3&&ok(c)){ out.push(c); bad.add(c); } });
+  let g=0; while(out.length<3&&g++<300){ const c=g2(e+ri(-1,1))+ri(1,8)+' '+g2(n+ri(-1,1))+ri(1,8); if(ok(c)){ out.push(c); bad.add(c); } }
+  return out;
+}
+function g6make(mode){
+  const s=grid6Scene(mode), f=s.f.find(x=>x.name===s.t), ref=g6ref(s,f), e=s.e0+f.i, n=s.n0+f.j, eee=g2(e)+f.te, nnn=g2(n)+f.tn;
+  if(Math.random()<0.55){
+    return {q:'What is the six-figure grid reference of the '+f.name+'?', correct:ref, wrong:g6refOptions(s,f), grid:s,
+      exp:'Read the eastings first. The '+f.name+' is just past line '+g2(e)+', then '+f.te+' tenths of the way to line '+g2(e+1)+', so the eastings are '+eee+'. Now the northings. It is just past line '+g2(n)+', then '+f.tn+' tenths of the way up to line '+g2(n+1)+', so the northings are '+nnn+'. Put them together, along first and then up: '+ref+'.',
+      hint:'Along the corridor, then up the stairs. Count the tenths along from the left-hand line, then the tenths up from the bottom line.', src:['grid',6,f.name,ref]};
+  }
+  const same=s.f.filter(x=>x!==f&&x.i===f.i&&x.j===f.j), others=shuffle(s.f.filter(x=>x!==f&&!(x.i===f.i&&x.j===f.j))), wr=same.concat(others).slice(0,3).map(x=>gcap(x.name));
+  return {q:'Which symbol is at grid reference '+ref+'?', correct:gcap(f.name), wrong:wr, grid:s,
+    exp:'Split '+ref+' into the eastings '+eee+' and the northings '+nnn+'. Eastings '+eee+' is line '+g2(e)+' plus '+f.te+' tenths along. Northings '+nnn+' is line '+g2(n)+' plus '+f.tn+' tenths up. The '+f.name+' is at that spot.',
+    hint:'The first three digits are along the bottom, the last three are up the side. The third and sixth digits are tenths.', src:['grid',6,f.name,ref]};
+}
+[['easy','Six-figure references: easy'],['medium','Six-figure references: medium'],['hard','Six-figure references: hard']].forEach(([mode,title])=>{
+  gen('geography',title,'🧭 '+title,()=>g6make(mode)); genBT('Map skills'); GENS[GENS.length-1].pic=1;
+  MISTAKE_RULES[title]=(q,ch,co)=>{ const a=String(ch).match(/^(\d{2})(\d) (\d{2})(\d)$/), b=String(co).match(/^(\d{2})(\d) (\d{2})(\d)$/); if(!a||!b) return '';
+    if(a[1]===b[3]&&a[2]===b[4]&&a[3]===b[1]&&a[4]===b[2]) return 'You gave the northings first. Along the corridor first (eastings), then up the stairs (northings).';
+    const sq=a[1]===b[1]&&a[3]===b[3]; if(!sq) return '';
+    if(a[2]==='0'&&a[4]==='0') return 'That is the four-figure square with zeros for the tenths. Count the tenths along and up inside the square.';
+    if(a[2]===b[4]&&a[4]===b[2]) return 'You swapped the two tenths digits. The first tenths digit counts along, and the second counts up.';
+    if(a[2]!==b[2]&&a[4]===b[4]) return 'The square is right, but check the tenths along the bottom. Count them from the left-hand line of the square.';
+    if(a[2]===b[2]&&a[4]!==b[4]) return 'The square is right, but check the tenths up the side. Count them from the bottom line of the square.';
+    return 'The square is right, but both tenths need checking. Count along first, then up.'; };
+});
+
+/* =====================================================================
+   REASONING WORKSHOP (English and Literature). For open questions that have NO fixed answer.
+   She writes a point, evidence from the text, an explanation and a second point.
+   The checker looks at HOW the answer is built (not whether the idea is "right"), gives stars,
+   says what to do next, and lets her improve it. Her writing stays on this device (never synced or reported).
+   ===================================================================== */
+const RSN = [
+ {id:'r01',k:'english',src:'Mara climbed the last spiral',type:'inference',q:'How does Mara feel as she opens the door? Explain your view using evidence from the text.',
+  ideas:[['she is frightened',['frighten','afraid','scared','nervous','fear','anxious','worried','terrif']],['she feels she must help',['hope','determin','responsib','brave','courage','duty','keeper','decid','must','strong']],['the pressure of the storm',['storm','struggling','only hope','urgent','pressure','danger','desperate','rescue']],['her body shows how she feels',['damp','wiped','sweat','shak','tremb','hands']]]},
+ {id:'r02',k:'english',src:'Mara climbed the last spiral',type:'effect',q:'Why do you think the author says the sea “slammed” against the rocks?',
+  ideas:[['it sounds violent and powerful',['violent','powerful','angry','aggressive','crash','force','harsh','strong','rough','wild']],['it shows the danger',['danger','threat','deadly','risk','scary','frighten','harm']],['the word is like a person or a door',['personif','like a person','like a door','human','alive','verb','action word']],['it creates a stormy mood',['atmosphere','mood','tension','storm','feeling','noisy','loud','sound']]]},
+ {id:'r03',k:'english',src:'The lighthouse stood on the very edge',type:'inference',q:'What kind of place is this lighthouse, and how do you know? Use evidence from the text.',
+  ideas:[['old and neglected',['peeling','old','neglect','abandon','run-down','worn','decay','rotting','crumbl']],['lonely and empty',['empty','alone','echo','silent','deserted','isolated','lonely','quiet']],['eerie and scary',['creak','howl','frighten','eerie','spooky','tension','froze','mysterious','scary','ghost']],['exposed and dangerous',['edge','cliff','wind','wild','danger','exposed','storm','high']]]},
+ {id:'r04',k:'english',src:'The lighthouse stood on the very edge',type:'effect',q:'The author says each step “echoed like a drum”. What does this comparison make you imagine?',
+  ideas:[['a loud pounding sound',['loud','heartbeat','heart','beating','pounding','thud','bang','noise']],['emptiness',['empty','hollow','echo','alone','silent','vast','big']],['fear and tension',['tension','fear','nervous','scared','suspense','frighten','anxious','worried']],['a slow steady climb',['rhythm','steady','slow','climb','each step','repeat','one by one','effort']]]},
+ {id:'r05',k:'english',src:'Children between 11 and 13 need',type:'opinion',q:'Do you think this text is likely to persuade children to change their bedtime habits? Give reasons using evidence from the text.',
+  ideas:[['it uses experts and facts',['experts','scientists','facts','evidence','research','expert','proof','reliable','trust']],['it explains why sleep matters',['brain','memories','sorts','learned','grow','repair','body','health','learn']],['it gives clear advice',['suggest','devices','regular bedtime','advice','recommend','bedroom','routine','tips']],['it speaks to the reader',['children','you','age','reader','relevant','personal','relate','directly','talks to']]]},
+ {id:'r06',k:'english',src:'Children between 11 and 13 need',type:'inference',q:'Why might the writer mention that the bright screen “tells the brain it is still daytime”?',
+  ideas:[['it explains the cause',['because','cause','reason','explain','why','how it works']],['it links screens to sleep problems',['harder','fall asleep','awake','tired','stay awake','can\'t sleep','cannot sleep','sleepless']],['it persuades people to use screens less',['phone','tablet','devices','screens','turn off','stop using','less','persuade','convince']],['it makes the text more believable',['science','brain','fact','convincing','trust','believ','credible','reliable']]]},
+ {id:'r07',k:'literature',src:'He clasps the crag',type:'effect',q:'How does Tennyson make the eagle seem powerful? Use evidence from the poem.',
+  ideas:[['its strong grip',['clasps','crooked hands','grip','claws','talons','strong','grasp','hold']],['it is high up, close to the sun',['sun','high','above','mountain','crag','lonely lands','top','peak','lofty']],['it falls like a thunderbolt',['thunderbolt','falls','fast','speed','sudden','lightning','swoop','dive','quick']],['the world looks small below it',['sea','crawls','wrinkled','beneath','below','small','tiny','looks down','underneath']]]},
+ {id:'r08',k:'literature',src:'He clasps the crag',type:'inference',q:'What is the eagle like as a creature? Describe its character and explain how the poet shows it.',
+  ideas:[['proud and in charge',['proud','king','ruler','dominant','in charge','majestic','mighty','commanding','superior','noble']],['alone',['lonely','alone','solitary','isolated','by itself']],['patient and watchful',['watches','patient','waiting','alert','still','hunter','stalk','observ','calm']],['dangerous and deadly',['thunderbolt','deadly','danger','fierce','predator','kill','hunt','ferocious']]]},
+ {id:'r09',k:'literature',src:'Tyger Tyger, burning bright',type:'effect',q:'Why do you think Blake repeats “Tyger Tyger” at the start of the poem?',
+  ideas:[['it grabs attention and stresses the tiger',['emphasis','attention','stress','stands out','draws','grab','important','focus']],['it shows awe and wonder',['awe','wonder','amaz','impress','admire','astonish']],['it makes a rhythm or chant',['rhythm','chant','spell','beat','drum','repeat','sound','musical','hypnotic','incantation']],['the poet is speaking to the tiger',['speaking to','addressing','calling','talking to','apostrophe','direct','speaks to']]]},
+ {id:'r10',k:'literature',src:'Tyger Tyger, burning bright',type:'inference',q:'What feelings does the poet have about the tiger? Use evidence from the poem.',
+  ideas:[['awe and wonder',['awe','wonder','amaz','impress','admire','fascinat','marvel']],['fear',['fear','afraid','scary','frighten','terrif','fearful','dread','danger','intimidat']],['curiosity and questions',['question','curious','wonder','asks','who made','why','puzzl']],['respect for its maker',['creator','maker','god','immortal','who made','crafted','made','designed']]]},
+ {id:'r11',k:'literature',src:'I wandered lonely as a cloud',type:'effect',q:'How does Wordsworth make the daffodils seem alive?',
+  ideas:[['they dance and flutter',['dancing','fluttering','dance','flutter','move','moving','sway','swaying']],['they are like a crowd or an army',['crowd','host','army','people','many','lots','together','group','gather']],['they are golden and bright',['golden','gold','bright','colour','color','sunshine','glow','shin']],['they are part of a lively nature scene',['breeze','wind','lake','trees','nature','beside','scene','beautiful']]]},
+ {id:'r12',k:'literature',src:'I wandered lonely as a cloud',type:'inference',q:'How does the speaker feel at the start of the stanza, and how does the feeling change? Explain.',
+  ideas:[['lonely at the start',['lonely','alone','wandered','isolated','cloud','drifting','aimless']],['joy at the sight',['happy','joy','delight','cheerful','uplift','pleasure','excited','amaz','surpris','glad']],['the surprise of it',['all at once','suddenly','surprise','unexpected','sudden']],['the change of mood',['change','cheered','lifted','better','different','transform','shift']]]},
+ {id:'r13',k:'literature',src:'Who has seen the wind?',type:'inference',q:'Why do you think the poet asks “Who has seen the wind?” twice?',
+  ideas:[['it is like a riddle',['riddle','puzzle','mystery','question','curious','think','wonder']],['the wind is invisible',['invisible','cannot see','unseen','hidden','see it','can\'t see','not see']],['it makes a pattern',['repeat','pattern','structure','stanza','refrain','balance','rhythm','symmetry','echo']],['it involves the reader',['reader','you','engage','involve','answer','draws','interest']]]},
+ {id:'r14',k:'literature',src:'Who has seen the wind?',type:'effect',q:'How does the poet show the wind’s power without ever seeing it? Use evidence from the poem.',
+  ideas:[['the leaves tremble',['leaves','trembling','hang','shake','shiver','quiver']],['the trees bow',['bow','heads','trees','bend','respect','lower']],['we see what it does, not the wind',['effect','see what it does','sign','proof','evidence','movement','result']],['it can be gentle or strong',['gentle','strong','soft','light','powerful','passing','force']]]},
+ {id:'r15',k:'literature',src:'Shall I compare thee',type:'inference',q:'What does the speaker think is better about the person than a summer’s day?',
+  ideas:[['more lovely',['lovely','beautiful','beauty','prettier','attractive']],['gentler and steadier',['temperate','gentle','calm','mild','steady','consistent','moderate','even']],['summer has flaws',['rough','winds','short','lease','too short','ends','spoil','buds','flaw']],['it is a comparison',['compare','comparison','better than','more than','contrast','likens','likening','shows a comparison']]]},
+  {id:'r16',k:'literature',src:'Shall I compare thee',type:'effect',q:'Shakespeare says summer’s “lease” has “all too short a date”. What does this suggest about summer?',
+  ideas:[['it does not last',['short','brief','ends','does not last','temporary','quickly','over','fleeting','passes']],['it is like renting something',['lease','rent','contract','borrowed','time limit','legal','temporary','landlord']],['summer is imperfect',['disappoint','flaw','imperfect','not perfect','spoil','weakness','fault']],['the person is more lasting',['constant','lasting','forever','the person','better','permanent']]]},
+ {id:'r17',k:'literature',src:'\'Twas brillig',type:'opinion',q:'Can a poem with made-up words still make sense? Give your view and use evidence from the poem.',
+  ideas:[['the sounds create a feeling',['sound','sounds','atmosphere','mood','music','rhythm','feel','feeling']],['clues from grammar and context',['context','grammar','clues','sentence','verb','adjective','structure','position','word order']],['it uses imagination',['imagine','imagination','picture','fantasy','strange','nonsense','creative','invent']],['the words are invented',['made-up','made up','invented','nonsense','portmanteau','slithy','mimsy','borogoves','new words']]]},
+ {id:'r18',k:'literature',src:'\'Twas brillig',type:'effect',q:'What is the mood of this stanza, and how do the sounds help to create it?',
+  ideas:[['strange and mysterious',['strange','mysterious','odd','weird','eerie','fantasy','magical','unusual','uncanny']],['playful and silly',['playful','fun','silly','humour','humor','funny','light','whimsical','nonsense','jokey']],['sound and rhythm',['sound','rhythm','beat','musical','alliteration','rhyme','syllab','say aloud','aloud','tongue']],['movement in the words',['gyre','gimble','moving','spinning','twirl','dancing','wabe','movement','action']]]},
+ {id:'r19',k:'literature',src:'Faster than fairies',type:'effect',q:'How does Stevenson show the speed of the train?',
+  ideas:[['the comparison with fairies and witches',['faster than','fairies','witches','magic','comparison','supernatural','magical']],['a rush of things passing',['list','bridges','houses','hedges','ditches','rush','blur','flash','pass','quickly','whizz','whoosh']],['the rhythm and rhyme',['rhythm','beat','rhyme','rattle','chugging','sound','train wheels','rapid','pace']],['charging like troops in battle',['charging','troops','battle','army','military','fast','powerful','rushing','soldier']]]},
+ {id:'r20',k:'literature',src:'Faster than fairies',type:'inference',q:'What is the narrator’s attitude to travelling by train? Explain, using evidence from the poem.',
+  ideas:[['excitement',['excited','thrilled','exhilarat','enjoy','fun','love','wonder','amaz','delight']],['energy and movement',['energy','lively','power','movement','busy','action','dynamic']],['fascination with speed',['speed','fast','fascinat','impressed','captivated','quick']],['a child’s imagination',['child','young','imagination','playful','magical']]]},
+ {id:'r21',k:'literature',src:'“Hope” is the thing with feathers',type:'effect',q:'Why do you think Dickinson compares hope to “the thing with feathers”?',
+  ideas:[['a bird is light, gentle and free',['bird','light','gentle','free','fly','soar','wings','delicate','feather','fragile']],['it perches in the soul',['perches','soul','inside','within','rests','lives in','heart','settles']],['it sings and never stops',['sings','song','tune','never stops','constant','always','continues','persist','keeps going']],['it is a metaphor',['metaphor','compare','comparison','image','symbol','imagery']]]},
+ {id:'r22',k:'literature',src:'“Hope” is the thing with feathers',type:'inference',q:'What does “sings the tune without the words” suggest about hope?',
+  ideas:[['hope is felt, not spoken',['feeling','felt','not spoken','silent','without words','unspoken','instinct','inside','wordless']],['it is comforting and uplifting',['comfort','uplift','cheer','soothing','positive','encourag','support','reassur']],['it is hard to explain',['hard to describe','cannot explain','mystery','difficult','abstract','hard to put','can\'t explain']],['it is constant',['constant','always','never stops','continues','persist','keeps going','ongoing']]]}
+];
+RSN.forEach(p=>{ p.starters=RSN_STARTERS_FOR(p.type); });
+function RSN_STARTERS_FOR(t){ return t==='opinion'?['I think … because …','One reason is … The text says “…”','This matters because …','However, …']:t==='effect'?['The author uses … to show …','The word “…” makes me imagine …','This creates a feeling of …','This also suggests …']:['I think … because …','The text says “…”, which shows …','This suggests … because …','Another sign is …']; }
+const RSN_TIPS = {point:'Start with a clear point that answers the question. Try: “I think … because …”.',evidence:'Add a short quote from the text inside speech marks. Try: The text says “…”.',explain:'Explain what your evidence shows. Try: This shows … because … or This suggests …',idea:'Think about the text again. One idea to consider: ',extend:'Add a second point. Try: Another reason is … or This also shows …'};
+const RSN_STOP = new Set('the a an and or but of to in on at for with by is are was were be been it its this that these those he she they we you i my your his her their our as from so than then there here have has had do does did not no if when while which who what how why can could would should will just very also more most into up down out over about'.split(' '));
+const rsnNorm = s => String(s).toLowerCase().replace(/[\u2018\u2019`]/g,"'").replace(/[\u201c\u201d]/g,'"').replace(/[^a-z0-9'" ]+/g,' ').replace(/\s+/g,' ').trim();
+const rsnWords = s => rsnNorm(s).replace(/"/g,' ').split(' ').filter(Boolean);
+/* short stems (3 letters or fewer) must match a whole word, so "sea" never matches "season" */
+const rsnHas = (str,s) => new RegExp('(^|[^a-z])'+s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+(s.length<=3?'($|[^a-z])':'')).test(str);
+const rsnPassage = p => PASSAGES.find(x=>x.text.startsWith(p.src));
+const RSN_QRE = /["\u201c]([^"\u201c\u201d]{1,220})["\u201d]|\u2018([^\u2018\u2019]{1,220})\u2019/g;
+function rsnQuotes(t){ const out=[]; let m; RSN_QRE.lastIndex=0; while((m=RSN_QRE.exec(t))) out.push((m[1]||m[2]).trim()); return out; }
+const rsnOutside = t => String(t).replace(/["\u201c][^"\u201c\u201d]*["\u201d]/g,' ').replace(/\u2018[^\u2018\u2019]*\u2019/g,' ').replace(/\s+/g,' ').trim();
+const RSN_EXPLAIN = /\b(because|this shows|this suggests|this tells us|this tells the reader|this means|which means|which shows|which suggests|which makes|this makes|so the reader|therefore|as a result|this creates|this gives the impression|this implies|this reveals|this emphasises|this emphasizes|this highlights|this demonstrates|showing that|suggesting that|shows that|suggests that)\b/g;
+const RSN_EXTEND = /\b(also|another|in addition|furthermore|moreover|as well as|secondly|second|finally|on the other hand|however|not only)\b/;
+const RSN_CLAIM = /\b(i (think|believe|feel|would say|can tell|noticed|see|agree|disagree)|in my (opinion|view)|it (seems|appears)|the (poet|author|writer|narrator|speaker|text|poem|passage|extract)|this (poem|passage|text|extract))\b/;
+function rsnAnalyse(p, text){
+  text=String(text||'').trim(); const passage=rsnPassage(p), pw=rsnWords(passage.text), pStr=' '+pw.join(' ')+' ', qStr=' '+rsnWords(p.q).join(' ')+' ';
+  const words=rsnWords(text), out=rsnOutside(text), outN=rsnNorm(out), tips=[], msgs=[], st={point:0,evidence:0,explain:0,idea:0,extend:0};
+  /* evidence */
+  const good=[], longQ=[]; rsnQuotes(text).forEach(q=>{ const w=rsnWords(q); if(!w.length) return; const s=' '+w.join(' ')+' ', distinct=w.filter(x=>!RSN_STOP.has(x)&&x.length>=4); if(pStr.includes(s)&&(w.length>=2||distinct.length>=1)){ if(w.length>Math.max(18,pw.length*0.5)) longQ.push(q); else good.push(q); } });
+  let unmarked=null; { const aw=rsnWords(out); for(let i=0;i+4<=aw.length&&!unmarked;i++){ const g=aw.slice(i,i+4).join(' '); if(pStr.includes(' '+g+' ')&&!qStr.includes(' '+g+' ')) unmarked=g; } }
+  const copiedWords=good.reduce((a,q)=>a+rsnWords(q).length,0)+(unmarked?4:0), copyRatio=words.length?copiedWords/words.length:0;
+  const enough=words.length>=15;
+  /* point: the first sentence in her own words */
+  const sents=rsnSentences(out), first=sents[0]||'', fN=rsnNorm(first), fw=rsnWords(first), qKeys=rsnWords(p.q).filter(x=>!RSN_STOP.has(x)&&x.length>=4);
+  const ideaHit=p.ideas.map(([label,stems])=>({label,hit:stems.some(s=>rsnHas(outN,s))}));
+  if(fw.length>=5&&(RSN_CLAIM.test(fN)||qKeys.some(k=>fN.includes(k))||p.ideas.some(([l,stems])=>stems.some(s=>rsnHas(fN,s))))) st.point=1;
+  st.evidence=good.length>=1?1:0;
+  const ex=(outN.match(RSN_EXPLAIN)||[]).length; st.explain=(enough&&ex>=1)?1:0;
+  const groups=ideaHit.filter(x=>x.hit); st.idea=(enough&&groups.length>=1)?1:0;
+  const nq=good.map(rsnNorm), distinctQ=nq.filter((q,i)=>!nq.some((o,j)=>j!==i&&o.includes(q)&&(o!==q||j<i))).length;
+  st.extend=(enough&&(groups.length>=2||RSN_EXTEND.test(outN)||distinctQ>=2))?1:0;
+  const total=st.point+st.evidence+st.explain+st.idea+st.extend;
+  /* messages */
+  msgs.push({key:'point',ok:!!st.point,title:'A clear point',text:st.point?'You started with a clear point.':RSN_TIPS.point});
+  msgs.push({key:'evidence',ok:!!st.evidence,title:'Evidence from the text',text:st.evidence?'You used evidence from the text: “'+good[0]+'”.':(longQ.length?'Your quote is very long. Pick just the few words that matter most.':(unmarked?'You used words from the text, but they need speech marks. Put “ ” around the words you copy.':RSN_TIPS.evidence))});
+  msgs.push({key:'explain',ok:!!st.explain,title:'Explaining what it shows',text:st.explain?'You explained what your evidence shows.':(enough?RSN_TIPS.explain:'Write a little more, then explain what your evidence shows.')});
+  msgs.push({key:'idea',ok:!!st.idea,title:'A strong idea',text:st.idea?'A good idea about the text: '+groups.map(g=>g.label).join('; ')+'.':RSN_TIPS.idea+ideaHit[0].label+'.'});
+  msgs.push({key:'extend',ok:!!st.extend,title:'Going further',text:st.extend?'You went further with a second point.':RSN_TIPS.extend});
+  if(words.length<30) tips.push('Write a little more. Aim for about 40 to 100 words.'); else if(words.length>170) tips.push('Try to be more concise. Choose your best points.');
+  if(!/[.!?]/.test(text)) tips.push('End your sentences with full stops.');
+  { const q=(text.match(/["\u201c\u201d]/g)||[]).length; if(q%2===1) tips.push('Check that your speech marks come in pairs.'); }
+  if(copyRatio>0.5) tips.push('Much of your answer is copied from the text. Use your own words to explain.');
+  return {words:words.length,stars:st,total,msgs,tips,quotes:good,groups:groups.map(g=>g.label),copyRatio};
+}
+function rsnSentences(t){ return String(t).replace(/\s+/g,' ').split(/(?<=[.!?])\s+(?=["\u201c\u2018'A-Za-z0-9])/).map(s=>s.trim()).filter(Boolean); }
+const rsnLabel = n => n>=5?'Excellent reasoning!':n===4?'Strong reasoning!':n===3?'A good start!':n>=1?'Let us build this up together.':'Have a go, then check it.';
+const rsnStars = n => '★'.repeat(n)+'☆'.repeat(5-n);
+/* ---------- her drafts stay on this device ---------- */
+const RSND_STORE = () => 'annaliesce_rsn_'+PROFILE;
+function rsndAll(){ try{ return JSON.parse(localStorage.getItem(RSND_STORE())||'{}')||{}; }catch(e){ return {}; } }
+function rsndSet(id,d){ const a=rsndAll(); a[id]=Object.assign({},d,{at:Date.now()}); Object.keys(a).sort((x,y)=>a[y].at-a[x].at).slice(30).forEach(k=>delete a[k]); try{ localStorage.setItem(RSND_STORE(),JSON.stringify(a)); }catch(e){} }
+function rsndClear(id){ const a=rsndAll(); delete a[id]; try{ localStorage.setItem(RSND_STORE(),JSON.stringify(a)); }catch(e){} }
+const rsnBest = id => ((S.rs||{})[id]||{}).best||0;
+const rsnCount = min => Object.values(S.rs||{}).filter(x=>(x.best||0)>=min).length;
+const rsnJoin = st => st.mode==='free' ? String(st.f||'') : [st.p,st.e,st.x,st.l].map(x=>String(x||'').trim()).filter(Boolean).join(' ');
+let RSNV = null;
+function vRsn(m){
+  if(!RSNV){ const flt=V.k||''; const by={}; RSN.filter(p=>!flt||p.k===flt).forEach(p=>{ (by[p.src]=by[p.src]||[]).push(p); });
+    m.innerHTML=`<section class="module" style="--c:#2F6F8F"><button class="btn ghost small" data-act="go" data-v="${flt?'subject':'home'}" ${flt?`data-k="${flt}"`:''}>← Back</button><h2 style="margin-top:10px">🧠 Reasoning workshop</h2>
+     <p>For questions with <b>no single right answer</b>. You build an answer in four parts: <b>🎯 Point</b>, <b>📖 Evidence</b> (a quote in speech marks), <b>💡 Explain</b> what it shows, and <b>➕ Go further</b>. You get stars for how well it is built, and you can improve it.</p>
+     <p class="muted">The checker looks at how your answer is built. It cannot tell you whether your idea is “right”, because many ideas can be good, so it is worth asking a grown-up to read it too. What you write stays on this device.</p>
+     <div class="row" style="margin:8px 0"><button class="btn small ${flt===''?'':'ghost'}" data-act="go" data-v="rsn" data-k="">All</button><button class="btn small ${flt==='english'?'':'ghost'}" data-act="go" data-v="rsn" data-k="english">English</button><button class="btn small ${flt==='literature'?'':'ghost'}" data-act="go" data-v="rsn" data-k="literature">Literature</button></div>
+     ${Object.keys(by).map(src=>{ const ps=by[src], pa=rsnPassage(ps[0]); return `<div class="card" style="margin:8px 0"><b>${esc(pa.title)}</b>${ps.map(p=>`<div class="row" style="margin-top:8px;align-items:center"><span class="rsn-star" aria-label="${rsnBest(p.id)} of 5 stars">${rsnStars(rsnBest(p.id))}</span><button class="btn small" data-act="rsnopen" data-id="${p.id}">${esc(p.q.length>90?p.q.slice(0,88)+'…':p.q)}</button></div>`).join('')}</div>`; }).join('')}</section>`; return; }
+  const p=RSN.find(x=>x.id===RSNV.id), pa=rsnPassage(p), st=RSNV, s=subj(p.k), res=st.res, last=RSN.findIndex(x=>x.id===p.id)===RSN.length-1;
+  const G=[['p','1. 🎯 My point','I think … because …'],['e','2. 📖 My evidence','The text says “…”'],['x','3. 💡 What it shows','This shows … because …'],['l','4. ➕ Another point (optional)','Also … / Another reason is …']];
+  const GS={p:['I think … because …'],e:['The text says “…”','The poet writes “…”'],x:['This shows … because …','This suggests …','This makes the reader feel …'],l:['Another reason is …','This also shows …','However, …']};
+  const chips=(f,list)=>`<div class="chips">${(list||p.starters).map(t=>`<button class="btn ghost small" data-act="rsnstarter" data-f="${f}" data-t="${esc(t)}">${esc(t)}</button>`).join('')}</div>`;
+  const editor = st.mode==='free'
+    ? `<label class="q" for="rsn_f">Your answer</label><textarea class="rsnin" id="rsn_f" data-f="f" rows="8" maxlength="2500" spellcheck="true" placeholder="Write your point, your evidence from the text in speech marks, and what it shows…" style="width:100%;font:inherit;padding:10px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);line-height:1.5">${esc(st.f||'')}</textarea>${chips('f')}`
+    : G.map(([f,label,ph])=>`<label class="q" for="rsn_${f}">${label}</label><textarea class="rsnin" id="rsn_${f}" data-f="${f}" rows="${f==='p'?2:3}" maxlength="900" spellcheck="true" placeholder="${esc(ph)}" style="width:100%;font:inherit;padding:10px;border:2px solid var(--line);border-radius:12px;background:#fff;color:var(--ink);line-height:1.5">${esc(st[f]||'')}</textarea>${chips(f,GS[f])}`).join('');
+  const resHTML = !res?'':`<div class="worked" style="margin-top:12px"><b>${rsnLabel(res.total)} <span class="rsn-star" style="font-size:1.4rem">${rsnStars(res.total)}</span></b>${st.prev!=null&&res.total>st.prev?`<p class="wk-you">⬆️ You went from ${st.prev} star${st.prev===1?'':'s'} to ${res.total}. Improving it is exactly how writers get better.</p>`:''}
+     <ul class="rsn-list">${res.msgs.map(x=>`<li>${x.ok?'✅':'🔸'} <b>${esc(x.title)}.</b> ${esc(x.text)}</li>`).join('')}</ul>${res.tips.length?`<p class="wk-why">💭 ${res.tips.map(esc).join(' ')}</p>`:''}
+     <p class="muted" style="margin:6px 0">${res.words} words. This checks how your answer is built, not whether your idea is right, so ask a grown-up to read it too.</p>
+     <div class="row"><button class="btn" data-act="rsnimprove">✏️ Improve it</button>${last?'':'<button class="btn ghost" data-act="rsnnext">Next question →</button>'}<button class="btn ghost" data-act="rsnback">All questions</button></div></div>`;
+  m.innerHTML=`<section class="module" style="--c:${s.c}"><button class="btn ghost small" data-act="rsnback">← All questions</button>
+   <div class="row" style="margin-top:8px"><span class="tag none">${s.i} ${esc(s.n)}</span><span class="tag good">${p.type==='opinion'?'Give your view':p.type==='effect'?'Effect on the reader':'Read between the lines'}</span><span class="rsn-star" aria-label="${rsnBest(p.id)} of 5 stars best so far">${rsnStars(rsnBest(p.id))}</span></div>
+   <h3 style="margin:8px 0 4px">${esc(pa.title)}</h3><div class="rsn-poem">${esc(pa.text)}</div><div class="row" style="margin:6px 0"><button class="btn ghost small" data-act="rsnhear">🔊 Read it aloud</button></div>
+   <h2 class="wqq" style="margin:8px 0">${esc(p.q)}</h2>
+   <div class="row" style="margin-bottom:6px"><button class="btn small ${st.mode==='free'?'ghost':''}" data-act="rsnmode" data-m="guided">🧩 Guided (4 boxes)</button><button class="btn small ${st.mode==='free'?'':'ghost'}" data-act="rsnmode" data-m="free">📝 Free writing</button></div>
+   ${st.mode==='free'?'':'<p class="hook">Fill the boxes in order. The tap-to-add starters help you begin.</p>'}
+   ${editor}
+   <p class="muted" style="margin-top:6px">Tip: copy words from the text inside speech marks, like “…”. Then explain in your own words.</p>
+   <button class="btn big" data-act="rsncheck">Check my answer</button>${resHTML}</section>`;
+}
+document.addEventListener('input', e=>{ const t=e.target; if(!t||!t.classList||!t.classList.contains('rsnin')||!RSNV) return; RSNV[t.dataset.f]=t.value; const st=RSNV; clearTimeout(st.tm); st.tm=setTimeout(()=>rsndSet(st.id,{m:st.mode,p:st.p,e:st.e,x:st.x,l:st.l,f:st.f}),400); });
+const RSNACTIONS = {
+  rsnopen:d=>{ const p=RSN.find(x=>x.id===d.id); if(!p) return; const dr=rsndAll()[p.id]||{}; RSNV={id:p.id,mode:dr.m||'guided',p:dr.p||'',e:dr.e||'',x:dr.x||'',l:dr.l||'',f:dr.f||'',res:null,prev:null}; go('rsn',{k:V.k||''}); },
+  rsnback:()=>{ RSNV=null; render(); window.scrollTo(0,0); },
+  rsnmode:d=>{ if(!RSNV) return; const cur=rsnJoin(RSNV); if(d.m==='free'&&RSNV.mode!=='free') RSNV.f=RSNV.f||cur; if(d.m==='guided'&&RSNV.mode==='free'&&!RSNV.p&&!RSNV.e&&!RSNV.x&&!RSNV.l) RSNV.p=RSNV.f||''; RSNV.mode=d.m; RSNV.res=null; render(); },
+  rsnstarter:d=>{ if(!RSNV) return; const f=d.f||'f', cur=String(RSNV[f]||''); RSNV[f]=cur?(cur.replace(/\s+$/,'')+' '+d.t):d.t; rsndSet(RSNV.id,{m:RSNV.mode,p:RSNV.p,e:RSNV.e,x:RSNV.x,l:RSNV.l,f:RSNV.f}); render(); const el=document.getElementById('rsn_'+f); if(el){ el.focus(); el.selectionStart=el.selectionEnd=el.value.length; } },
+  rsncheck:()=>{ if(!RSNV) return; document.querySelectorAll('.rsnin').forEach(t=>{ RSNV[t.dataset.f]=t.value; }); const p=RSN.find(x=>x.id===RSNV.id), text=rsnJoin(RSNV);
+    if(rsnWords(text).length<5){ toast('Write your answer first, then check it.'); return; }
+    const res=rsnAnalyse(p,text); RSNV.res=res; S.rs=S.rs||{}; const cur=S.rs[p.id]||{best:0,tries:0}, delta=Math.max(0,res.total-cur.best), first4=(res.total>=4&&cur.best<4);
+    S.rs[p.id]={best:Math.max(cur.best,res.total), tries:(cur.tries||0)+1, d:today()}; rsndSet(p.id,{m:RSNV.mode,p:RSNV.p,e:RSNV.e,x:RSNV.x,l:RSNV.l,f:RSNV.f});
+    if(delta>0||first4) award(2*delta, first4?1:0); markDay(); checkTrophies(); save(); render(); },
+  rsnimprove:()=>{ if(!RSNV||!RSNV.res) return; RSNV.prev=RSNV.res.total; RSNV.res=null; render(); window.scrollTo(0,0); },
+  rsnnext:()=>{ if(!RSNV) return; const i=RSN.findIndex(x=>x.id===RSNV.id), nx=RSN[Math.min(RSN.length-1,i+1)]; ACTIONS.rsnopen({id:nx.id}); window.scrollTo(0,0); },
+  rsnhear:()=>{ if(!RSNV) return; const p=RSN.find(x=>x.id===RSNV.id); speak(rsnPassage(p).text.replace(/\n/g,'. '),'en-GB'); }
+};
+
+/* Music notation shapes (treble clef, sharp, flat, natural).
+   These outlines come from the Bravura music font: Copyright (c) 2015, Steinberg Media Technologies GmbH,
+   with Reserved Font Name "Bravura". Used under the SIL Open Font Licence 1.1 (full text in LICENSES-README.txt).
+   Coordinates are font units (1000 per em, y pointing up); one staff space is 250 units. */
+const BRV = {"gClef":{"d":"M376 415C374 427 376 428 382 434C398 449 419 470 438 491C522 583 572 702 572 815C572 902 548 988 507 1048C492 1070 466 1098 455 1098C441 1098 410 1072 390 1050C316 968 292 843 292 739C292 681 299 616 306 575C308 563 309 561 297 551C233 498 164 437 112 373C43 287 0 194 0 87C0 -87 119 -252 364 -252C387 -252 413 -250 433 -246C444 -244 446 -243 448 -255C460 -322 475 -409 475 -456C475 -604 375 -622 316 -622C262 -622 236 -606 236 -593C236 -586 245 -583 268 -576C299 -567 335 -540 335 -482C335 -427 300 -380 239 -380C172 -380 132 -433 132 -495C132 -560 171 -658 322 -658C389 -658 519 -628 519 -458C519 -401 501 -306 490 -244C488 -232 489 -233 503 -227C604 -187 671 -102 671 11C671 139 577 252 430 252C404 252 404 252 401 270ZM470 943C503 943 530 916 530 861C530 792 497 728 419 650C403 634 379 611 356 591C349 585 345 586 343 599C339 625 337 659 337 691C337 847 409 943 470 943ZM361 262C364 243 364 244 346 238C258 208 201 129 201 44C201 -46 248 -110 316 -133C324 -136 336 -139 343 -139C351 -139 355 -134 355 -128C355 -121 347 -118 340 -115C298 -97 268 -54 268 -8C268 49 307 92 368 109C384 113 386 112 388 101L438 -197C440 -208 439 -208 424 -211C408 -214 388 -216 368 -216C193 -216 80 -119 80 20C80 79 90 158 173 252C233 319 279 356 326 394C336 402 338 401 340 390ZM430 103C428 115 429 118 441 117C522 110 589 42 589 -46C589 -109 551 -160 495 -188C483 -194 481 -194 479 -182Z","adv":671},"sharp":{"d":"M237 118C244 121 249 129 249 135V206C249 211 246 214 242 214C240 214 239 214 237 213C237 213 217 205 212 204C205 204 198 209 198 217V339C198 345 192 350 184 350C174 350 168 345 168 339V209C167 199 164 186 155 180C143 173 109 159 92 155C83 155 80 167 80 175V295C80 301 73 306 66 306C56 306 50 301 50 295V160C50 146 44 136 38 133C32 130 12 122 12 122C5 120 0 112 0 106V35C0 29 3 26 8 26C9 26 11 27 12 27C12 27 27 33 34 37C35 37 36 38 37 38C44 38 50 28 50 20V-79C50 -90 45 -99 39 -102C33 -104 12 -113 12 -113C5 -115 0 -123 0 -129V-200C0 -206 3 -209 8 -209C9 -209 11 -208 12 -208C12 -208 26 -202 35 -199C36 -198 37 -198 38 -198C45 -198 50 -209 50 -214V-337C50 -343 56 -348 63 -348C73 -348 80 -343 80 -337V-198C80 -185 85 -178 90 -176L151 -151C152 -151 154 -150 155 -150C163 -150 168 -162 168 -168V-293C168 -299 174 -304 181 -304C192 -304 198 -299 198 -293V-151C198 -143 202 -131 209 -128C216 -125 237 -117 237 -117C244 -114 249 -106 249 -100V-29C249 -24 246 -21 242 -21C240 -21 239 -21 237 -22L211 -32C205 -32 198 -26 198 -14V79C198 86 203 105 211 108ZM168 -45C162 -65 115 -85 92 -85C86 -85 81 -83 80 -80C78 -76 77 -54 77 -30C77 1 78 36 80 44C82 61 128 82 153 82C160 82 166 80 168 76C170 71 172 46 172 19C172 -8 170 -36 168 -45Z","adv":249},"flat":{"d":"M12 -170C15 -174 18 -175 21 -175C24 -175 27 -173 27 -173C57 -156 81 -129 106 -112C195 -50 226 11 226 57C226 114 182 150 136 153C129 153 122 152 115 150C104 147 92 143 81 136C75 131 64 122 59 122C57 122 56 122 54 123C47 126 43 133 43 140C44 162 50 402 50 422C50 433 41 439 31 439C17 439 1 429 0 411C0 411 4 -160 12 -170ZM47 -81C47 -81 44 -21 44 19C44 35 45 47 46 51C50 63 76 85 90 93C99 98 108 100 116 100C126 100 135 96 141 89C151 78 157 61 157 42C157 24 152 3 140 -18C127 -42 98 -74 68 -93C64 -95 61 -96 58 -96C49 -96 47 -86 47 -81Z","adv":226},"natural":{"d":"M141 181C139 181 138 180 137 180C137 180 73 157 47 157C41 157 37 158 37 162V329C37 336 31 341 25 341H12C5 341 0 336 0 329V-186C0 -192 3 -195 8 -195C9 -195 11 -194 12 -194C12 -194 14 -194 15 -193C29 -187 85 -163 114 -163C124 -163 131 -166 131 -174V-323C131 -330 136 -335 143 -335H156C162 -335 168 -330 168 -323V179C168 184 164 187 160 187C159 187 157 187 156 186ZM37 39C37 53 98 79 122 79C128 79 131 78 131 74V-29C131 -47 74 -70 49 -70C42 -70 37 -68 37 -64Z","adv":168}};
+
+/* =====================================================================
+   MUSIC: TAPPABLE PIANO, READING MUSIC, AND THE MUSIC WORDS LAB
+   - Piano: tap keys (chords work), note names on/off, octave shifter, the stave shows what she played.
+   - Follow the lights: 6 traditional tunes. Note hunt: a note on the stave, find the key.
+   - Reading games: name the note, line or space, how many beats, complete the bar.
+   - Music words lab: HEAR what forte, allegro, staccato and the rest sound like.
+   All sounds are made in the browser (no downloads). Treble clef and accidentals: Bravura (OFL), see musicglyphs.js.
+   ===================================================================== */
+/* ---------- theory helpers ---------- */
+const MU_LET={C:0,D:1,E:2,F:3,G:4,A:5,B:6}, MU_SEMI={C:0,D:2,E:4,F:5,G:7,A:9,B:11}, MU_SHARP=['C','C♯','D','D♯','E','F','F♯','G','G♯','A','A♯','B'];
+function muParse(n){ const m=String(n).match(/^([A-G])([#b]?)(\d)$/); if(!m) return null; const semis=MU_SEMI[m[1]]+(m[2]==='#'?1:m[2]==='b'?-1:0); return {l:m[1],acc:m[2],o:+m[3],midi:12*(+m[3]+1)+semis,dn:+m[3]*7+MU_LET[m[1]]}; }
+const muFreq = midi => 440*Math.pow(2,(midi-69)/12);
+const muName = midi => MU_SHARP[((midi%12)+12)%12]+(Math.floor(midi/12)-1);
+const muPos = n => muParse(n).dn-30;            /* 0 = bottom line (E4), 2 = G line, 8 = top line (F5) */
+const muY = p => 90-p*5;
+/* ---------- sound engine (piano-like tone, held or timed) ---------- */
+let MU_TOASTED=false;
+function musCtx(){ const c=audio(); if(!c){ if(!MU_TOASTED){ MU_TOASTED=true; toast('Turn the sound on to hear the notes.'); } return null; } return c; }
+function musTone(c,f,t,d,vel){
+  const g=c.createGain(), peak=Math.max(0.03,0.34*vel); g.connect(c.destination);
+  g.gain.setValueAtTime(0.0001,t); g.gain.linearRampToValueAtTime(peak,t+0.01); g.gain.exponentialRampToValueAtTime(peak*0.45,t+Math.min(0.35,d||0.35));
+  const tail=d?d:3; if(!d) g.gain.exponentialRampToValueAtTime(peak*0.12,t+tail); else { g.gain.setValueAtTime(peak*0.45,t+Math.max(0.05,d-0.02)); g.gain.exponentialRampToValueAtTime(0.0001,t+d+0.12); }
+  const oscs=[[f,'triangle',1],[f*2,'sine',0.32],[f*3,'sine',0.1]].map(([fr,ty,a])=>{ const o=c.createOscillator(), og=c.createGain(); o.type=ty; o.frequency.setValueAtTime(fr,t); og.gain.setValueAtTime(a,t); o.connect(og); og.connect(g); o.start(t); o.stop(t+(d?d+0.16:tail+0.2)); return o; });
+  return {g, oscs, rel(now){ try{ g.gain.cancelScheduledValues(now); g.gain.setValueAtTime(Math.max(0.0001,g.gain.value||peak*0.3),now); g.gain.exponentialRampToValueAtTime(0.0001,now+0.18); oscs.forEach(o=>{ try{ o.stop(now+0.2); }catch(e){} }); }catch(e){} }};
+}
+function musPlay(midi,d,vel,when){ const c=musCtx(); if(!c) return null; return musTone(c,muFreq(midi),c.currentTime+0.02+(when||0),d,vel==null?0.8:vel); }
+/* a short demonstration phrase: notes = midi list, o = {bpm|bpmFrom/bpmTo, vel|velFrom/velTo, len (fraction of the beat)} */
+function musDemo(midis,o){ const c=musCtx(); if(!c) return 0; o=o||{}; let t=c.currentTime+0.05, total=0; const n=midis.length;
+  midis.forEach((m,i)=>{ const u=n>1?i/(n-1):0, bpm=o.bpmFrom!=null?o.bpmFrom+(o.bpmTo-o.bpmFrom)*u:(o.bpm||100), beat=60/bpm, vel=o.velFrom!=null?o.velFrom+(o.velTo-o.velFrom)*u:(o.vel==null?0.7:o.vel), len=(o.len||0.9)*beat; musTone(c,muFreq(m),t,len,vel); t+=beat; total+=beat; }); return total; }
+/* ---------- drawing: stave, notes, rhythm ---------- */
+function staffHTML(spec){
+  const notes=spec.notes||[], W=spec.w||Math.max(200,80+notes.length*46), k=10/250; let lines='', body='';
+  for(let i=0;i<5;i++){ const y=muY(i*2); lines+=`<line x1="4" y1="${y}" x2="${W-4}" y2="${y}"/>`; }
+  notes.forEach((n,i)=>{ const pn=muParse(n.n); if(!pn) return; const p=pn.dn-30, cx=82+i*46, cy=muY(p), d=n.d||'q', hollow=(d==='h'||d==='w'), up=p<4; let g='';
+    for(let q=-2;q>=p;q-=2) g+=`<line class="ledger" x1="${cx-10}" y1="${muY(q)}" x2="${cx+10}" y2="${muY(q)}"/>`;
+    for(let q=10;q<=p;q+=2) g+=`<line class="ledger" x1="${cx-10}" y1="${muY(q)}" x2="${cx+10}" y2="${muY(q)}"/>`;
+    if(pn.acc) g+=`<g class="acc" transform="translate(${cx-24} ${cy}) scale(${k} ${-k})" fill="#2b2b2b" stroke="none"><path d="${(pn.acc==='#'?BRV.sharp:BRV.flat).d}"/></g>`;
+    if(d!=='w') g+=up?`<line class="stem" x1="${cx+5.6}" y1="${cy-1}" x2="${cx+5.6}" y2="${cy-31}"/>`:`<line class="stem" x1="${cx-5.6}" y1="${cy+1}" x2="${cx-5.6}" y2="${cy+31}"/>`;
+    g+=`<ellipse class="nh" cx="${cx}" cy="${cy}" rx="${d==='w'?7:6.2}" ry="4.4" transform="rotate(-20 ${cx} ${cy})" fill="${hollow?'#fff':(n.hl?'#C1121F':'#2b2b2b')}" stroke="${n.hl?'#C1121F':'#2b2b2b'}" stroke-width="${hollow?1.8:1}"/>`;
+    if(spec.names) g+=`<text x="${cx}" y="126" text-anchor="middle" font-size="11" fill="#5c6660" stroke="none">${esc(muName(pn.midi).replace(/\d/,''))}</text>`;
+    body+=`<g class="nt" data-name="${esc(n.n)}" data-p="${p}" data-midi="${pn.midi}">${g}</g>`; });
+  return `<svg class="staff" viewBox="0 0 ${W} 130" role="img" aria-label="${esc(spec.label||'A stave with the treble clef and notes')}"><rect x="0" y="0" width="${W}" height="130" fill="#FFFDF6" rx="10"/><g stroke="#2b2b2b" stroke-width="1.1">${lines}</g><g class="clef" transform="translate(10 ${muY(2)}) scale(${k} ${-k})" fill="#2b2b2b"><path d="${BRV.gClef.d}"/></g><g stroke="#2b2b2b" stroke-width="1.5">${body}</g></svg>`;
+}
+const MU_ADV={w:64,h:46,q:34,e:20};
+function rhythmHTML(spec){
+  const LY=48; let x=spec.ts?58:22, out='';
+  const bars=spec.bars||[]; bars.forEach((bar,bi)=>{ let e=[];
+    bar.forEach(v=>{ const cx=x+14;
+      if(v==='w'||v==='h'||v==='q'){ out+=`<g class="rn" data-v="${v}"><ellipse cx="${cx}" cy="${LY}" rx="${v==='w'?7:6.2}" ry="4.4" transform="rotate(-20 ${cx} ${LY})" fill="${v==='q'?'#2b2b2b':'#fff'}" stroke="#2b2b2b" stroke-width="${v==='q'?1:1.8}"/>${v==='w'?'':`<line x1="${cx+5.6}" y1="${LY-1}" x2="${cx+5.6}" y2="${LY-32}" stroke="#2b2b2b" stroke-width="1.5"/>`}</g>`; }
+      else if(v==='e'){ e.push(cx); out+=`<g class="rn" data-v="e"><ellipse cx="${cx}" cy="${LY}" rx="6.2" ry="4.4" transform="rotate(-20 ${cx} ${LY})" fill="#2b2b2b"/><line x1="${cx+5.6}" y1="${LY-1}" x2="${cx+5.6}" y2="${LY-32}" stroke="#2b2b2b" stroke-width="1.5"/></g>`; if(e.length===2){ out+=`<line class="beam" x1="${e[0]+5.6}" y1="${LY-31}" x2="${e[1]+5.6}" y2="${LY-31}" stroke="#2b2b2b" stroke-width="4.5"/>`; e=[]; } }
+      x+=MU_ADV[v]; });
+    if(spec.miss&&bi===bars.length-1) { out+=`<rect class="missing" x="${x-2}" y="${LY-26}" width="44" height="52" rx="8" fill="#FFF0B3" stroke="#C9A227" stroke-width="2" stroke-dasharray="5 4"/><text x="${x+20}" y="${LY+8}" text-anchor="middle" font-size="26" font-weight="700" fill="#8a6d00">?</text>`; x+=48; }
+    out+=`<line class="bar" x1="${x}" y1="${LY-20}" x2="${x}" y2="${LY+20}" stroke="#2b2b2b" stroke-width="${bi===bars.length-1?2.5:1.4}"/>`; x+=16; });
+  const W=Math.max(200,x+8), ts=spec.ts?`<text x="18" y="${LY-4}" font-size="26" font-weight="700" text-anchor="middle" fill="#2b2b2b">${spec.ts[0]}</text><text x="18" y="${LY+20}" font-size="26" font-weight="700" text-anchor="middle" fill="#2b2b2b">${spec.ts[1]}</text>`:'';
+  return `<svg class="staff rhythm" viewBox="0 0 ${W} 96" role="img" aria-label="${esc(spec.label||'A bar of rhythm')}"><rect x="0" y="0" width="${W}" height="96" fill="#FFFDF6" rx="10"/><line x1="4" y1="${LY}" x2="${W-4}" y2="${LY}" stroke="#2b2b2b" stroke-width="1.2"/>${ts}${out}</svg>`;
+}
+/* ---------- tunes (traditional, all in the public domain) ---------- */
+const MU_SONGS=[
+ {id:'hcb',n:'Hot Cross Buns',s:'E D C E D C C C C C D D D D E D C'},
+ {id:'mary',n:'Mary Had a Little Lamb',s:'E D C D E E E D D D E G G E D C D E E E E D D E D C'},
+ {id:'twk',n:'Twinkle, Twinkle (first half)',s:'C C G G A A G F F E E D D C'},
+ {id:'row',n:'Row, Row, Row Your Boat',s:'C C C D E E D E F G C C C G G G E E E C C C G F E D C'},
+ {id:'fj',n:'Frère Jacques',s:'C D E C C D E C E F G E F G G A G F E C G A G F E C C G C C G C'},
+ {id:'ode',n:'Ode to Joy',s:'E E F G G F E D C C D E E D D E E F G G F E D C C D E D C C'},
+ {id:'jb',n:'Jingle Bells (chorus)',s:'E E E E E E E G C D E F F F F F E E E E D D E D G'}
+].map(x=>Object.assign(x,{notes:x.s.split(' ').map(l=>l+'4')}));
+/* ---------- the Music Words (heard, not just read) ---------- */
+const MU_PHRASE=[60,62,64,65,67,65,64,62];   /* C D E F G F E D */
+const MU_TERMS=[
+ {id:'piano',t:'piano (p)',sym:'p',cat:'volume',mean:'quietly, softly',from:'Italian for “soft”',demo:{vel:0.16,bpm:100}},
+ {id:'forte',t:'forte (f)',sym:'f',cat:'volume',mean:'loudly, strongly',from:'Italian for “strong”',demo:{vel:0.95,bpm:100}},
+ {id:'cresc',t:'crescendo (cresc.)',sym:'<',cat:'change',mean:'getting gradually louder',from:'Italian for “growing”',demo:{velFrom:0.12,velTo:0.95,bpm:100}},
+ {id:'dim',t:'diminuendo (dim.)',sym:'>',cat:'change',mean:'getting gradually quieter',from:'Italian for “diminishing”',demo:{velFrom:0.95,velTo:0.12,bpm:100}},
+ {id:'adagio',t:'adagio',sym:'♩=56',cat:'tempo',mean:'slowly, at ease',from:'Italian for “at ease”',demo:{bpm:56,vel:0.6}},
+ {id:'andante',t:'andante',sym:'♩=80',cat:'tempo',mean:'at a walking pace',from:'Italian for “walking”',demo:{bpm:80,vel:0.6}},
+ {id:'allegro',t:'allegro',sym:'♩=140',cat:'tempo',mean:'fast and lively',from:'Italian for “cheerful”',demo:{bpm:140,vel:0.6}},
+ {id:'presto',t:'presto',sym:'♩=184',cat:'tempo',mean:'very fast',from:'Italian for “quick”',demo:{bpm:184,vel:0.6}},
+ {id:'rit',t:'ritardando (rit.)',sym:'rit.',cat:'change',mean:'gradually getting slower',from:'Italian for “slowing down”',demo:{bpmFrom:150,bpmTo:52,vel:0.6}},
+ {id:'accel',t:'accelerando (accel.)',sym:'accel.',cat:'change',mean:'gradually getting faster',from:'Italian for “speeding up”',demo:{bpmFrom:52,bpmTo:170,vel:0.6}},
+ {id:'stac',t:'staccato',sym:'•',cat:'style',mean:'short and detached',from:'Italian for “detached”',demo:{bpm:100,vel:0.65,len:0.25}},
+ {id:'leg',t:'legato',sym:'⌒',cat:'style',mean:'smooth and connected',from:'Italian for “tied together”',demo:{bpm:100,vel:0.65,len:1.05}}
+];
+const MU_CLASH=[['allegro','presto'],['adagio','andante'],['piano','dim'],['forte','cresc'],['rit','adagio'],['accel','presto'],['accel','allegro']];   /* never offered together: too easy to confuse by ear */
+const muClash=(a,b)=>MU_CLASH.some(p=>(p[0]===a&&p[1]===b)||(p[0]===b&&p[1]===a));
+function musTermPlay(id){ const T=MU_TERMS.find(x=>x.id===id); if(!T) return 0; return musDemo(MU_PHRASE,T.demo); }
+/* ---------- counters (counts only) ---------- */
+function muBump(right){ S.mu=S.mu||{}; S.mu.n=(S.mu.n||0)+1; if(right) S.mu.r=(S.mu.r||0)+1; }
+const muSongs = () => Object.keys((S.mu||{}).s||{}).length;
+const muRight = () => (S.mu||{}).r||0;
+/* ---------- reading games (endless practice) ---------- */
+function _mus(k,title,f,bt){ gen(k,title,title,()=>Object.assign(f(),{mus:1})); genBT(bt); const g=GENS[GENS.length-1]; g.pic=1; if(title.indexOf('Listen')===0) g.aural=1; }
+const MU_LETTERS=['A','B','C','D','E','F','G'];
+function muLetterOpts(correct,neighbours,extra){ const out=[], add=x=>{ if(x!==correct&&!out.includes(x)&&out.length<3) out.push(x); }; neighbours.forEach(add); (extra||[]).forEach(add); shuffle(MU_LETTERS.slice()).forEach(add); return out; }
+const muLetterAt = (letter,delta) => MU_LETTERS[(MU_LETTERS.indexOf(letter)+delta+7)%7];
+const MU_ACC={C:['#'],D:['#','b'],E:['b'],F:['#'],G:['#','b'],A:['#','b'],B:['b']};   /* the usual spellings of the black keys */
+const muSym = a => a==='#'?'♯':a==='b'?'♭':'';
+function muNoteQ(lo,hi,acc){
+  const dn=ri(lo,hi), l=PN_LET[dn%7], o=Math.floor(dn/7), a=acc?pickr(MU_ACC[l]):'', n=l+a+o, pn=muParse(n), p=pn.dn-30, name=l+muSym(a);
+  let wrong=[];
+  if(acc){ const cand=[l,muLetterAt(l,1),muLetterAt(l,-1),muLetterAt(l,2),muLetterAt(l,-2)];
+    MU_ACC[muLetterAt(l,1)]&&MU_ACC[muLetterAt(l,1)].includes(a)&&cand.push(muLetterAt(l,1)+muSym(a));
+    shuffle(cand).forEach(x=>{ const pc=muParse(x[0]+(x[1]==='♯'?'#':x[1]==='♭'?'b':'')+'4').midi%12; if(x!==name&&!wrong.includes(x)&&pc!==pn.midi%12&&wrong.length<3) wrong.push(x); }); }
+  else wrong=muLetterOpts(l,[muLetterAt(l,1),muLetterAt(l,-1),muLetterAt(l,2)]);
+  const where=p%2===0?(p<0||p>8?'on a ledger line':'on line '+(p/2+1)+' (counting from the bottom)'):'in the space between lines '+((p+1)/2)+' and '+((p+3)/2);
+  return {q:'What is the name of this note?', correct:name, wrong, staff:{notes:[{n}],label:'A note on the treble clef stave'}, exp:'This is the treble clef. The bottom line is E and the lines go E, G, B, D, F. The spaces go F, A, C, E. This note is '+(p<0||p>8?'below or above the stave, ':'')+where+', so it is '+name+'.'+(a?' The '+(a==='#'?'sharp (♯) raises':'flat (♭) lowers')+' the note by a semitone, which is a black key on the piano.':''), hint:'Lines from the bottom: E G B D F (Every Good Boy Deserves Fun). Spaces: F A C E.'};
+}
+_mus('music','Name the note: easy',()=>muNoteQ(30,38,false),'Notation');
+_mus('music','Name the note: medium',()=>muNoteQ(28,40,false),'Notation');
+_mus('music','Name the note: sharps and flats',()=>muNoteQ(28,35,true),'Notation');
+_mus('music','Line or space?',()=>{ const p=ri(0,8), dn=p+30, l=['C','D','E','F','G','A','B'][dn%7], n=l+Math.floor(dn/7), line=p%2===0;
+  return {q:'Is this note on a line or in a space?', correct:line?'On a line':'In a space', wrong:[line?'In a space':'On a line'], staff:{notes:[{n}]}, exp:line?'The note head is sitting ON line '+(p/2+1)+' (counting from the bottom): the line goes through the middle of it.':'The note head is IN the space between lines '+((p+1)/2)+' and '+((p+3)/2)+': it does not touch a line.', hint:'If the line goes through the middle of the note, it is ON a line.'}; },'Notation');
+const MU_NOTE_NAMES={w:['A semibreve',4],h:['A minim',2],q:['A crotchet',1],ee:['Two quavers',1]};
+_mus('music','How many beats?',()=>{ const key=pickr(['w','h','q','ee']), [nm,beats]=MU_NOTE_NAMES[key], bar=key==='ee'?['e','e']:[key];
+  const bl=b=>b===1?'1 beat':b+' beats', all=[4,2,1,3].map(bl);
+  if(Math.random()<0.5) return {q:'How many beats is this worth?', correct:bl(beats), wrong:all.filter(x=>x!==bl(beats)), rhythm:{bars:[bar],label:nm.toLowerCase()+' on a line'}, exp:nm+' is worth '+bl(beats)+(key==='ee'?' altogether: each quaver is half a beat, so two quavers make 1 beat.':key==='q'?': it is the basic beat.':key==='h'?': it lasts as long as 2 crotchets.':': it lasts as long as 4 crotchets, a whole bar of 4/4.'), hint:'Crotchet 1, minim 2, semibreve 4. Two quavers make 1.'};
+  const names=Object.values(MU_NOTE_NAMES).map(x=>x[0]);
+  return {q:'What is this note called?', correct:nm, wrong:names.filter(x=>x!==nm), rhythm:{bars:[bar],label:'a note on a line'}, exp:'This is '+nm.toLowerCase()+'. '+(key==='w'?'An open note head with no stem is a semibreve (4 beats).':key==='h'?'An open note head with a stem is a minim (2 beats).':key==='q'?'A filled note head with a stem is a crotchet (1 beat).':'Two filled heads joined by a beam are quavers (half a beat each).'), hint:'Open or filled head? Is there a stem? Are two joined by a beam?'}; },'Notation');
+const MU_FILL=[['h','A minim (2 beats)',2],['q','A crotchet (1 beat)',1],['h.','A dotted minim (3 beats)',3],['w','A semibreve (4 beats)',4]];
+_mus('music','Complete the bar',()=>{ const rest=ri(1,3), parts=[]; let left=4-rest; while(left>0){ const ch=[]; if(left>=2) ch.push('h'); ch.push('q','ee'); const c=pickr(ch); parts.push(c); left-=(c==='h'?2:1); }
+  const bar=[]; parts.forEach(c=>{ if(c==='ee') bar.push('e','e'); else bar.push(c); }); const val=c=>c==='h'?2:1, sum=parts.reduce((a,c)=>a+val(c),0), ans=MU_FILL.find(x=>x[2]===rest);
+  const names=parts.map(c=>c==='h'?'a minim (2)':c==='q'?'a crotchet (1)':'two quavers (1)').join(' + ');
+  return {q:'Each bar in 4/4 needs 4 beats. Which note completes this bar?', correct:ans[1], wrong:MU_FILL.filter(x=>x!==ans).map(x=>x[1]), rhythm:{ts:[4,4],bars:[bar],miss:true,label:'A bar of 4/4 with one note missing'},
+    exp:'Every bar in 4/4 adds up to 4 beats. The notes shown are '+names+' = '+sum+' beats. That leaves 4 − '+sum+' = '+rest+' beat'+(rest===1?'':'s')+', so the missing note is '+ans[1].charAt(0).toLowerCase()+ans[1].slice(1)+'.', hint:'Add up the beats you can see, then take that away from 4.'}; },'Notation');
+_mus('music','Listen: which music word?',()=>{ const T=pickr(MU_TERMS), pool=shuffle(MU_TERMS.filter(x=>x.id!==T.id&&!muClash(x.id,T.id))), wrong=[];
+  pool.forEach(x=>{ if(wrong.length<3&&!wrong.some(y=>muClash(x.id,y.id))) wrong.push(x); });
+  pool.forEach(x=>{ if(wrong.length<3&&!wrong.includes(x)) wrong.push(x); });
+  return {q:'Listen to the music. Which music word does it show?', correct:T.t, wrong:wrong.map(x=>x.t), aural:true, nodojo:true, nocard:true, say:T.id, play:()=>musTermPlay(T.id), slow:null, exp:T.t+' means '+T.mean+' ('+T.from+'). Listen again: '+({volume:'the loudness stays the same all the way through',change:'the sound changes gradually as it goes',tempo:'the speed stays steady',style:'listen to how each note is shaped'})[T.cat]+'.', hint:'Is it loud or quiet? Fast or slow? Does it change as it goes? Are the notes short or smooth?'}; },'Dynamics and tempo');
+/* ---------- the piano ---------- */
+const PN = {oct:4, names:true, mode:'free', last:null, held:{}, song:null, hunt:null};
+const pnCount = () => (typeof window!=='undefined'&&window.innerWidth>=700)?15:8;
+const PN_WHITE=[0,2,4,5,7,9,11], PN_LET=['C','D','E','F','G','A','B'];
+function pnLayout(){ const n=pnCount(), start=12*(PN.oct+1), whites=[], blacks=[];
+  for(let i=0;i<n;i++) whites.push({m:start+PN_WHITE[i%7]+12*Math.floor(i/7), l:PN_LET[i%7], i});
+  for(let i=0;i<n-1;i++) if(['C','D','F','G','A'].includes(whites[i].l)) blacks.push({m:whites[i].m+1, i});
+  return {n,whites,blacks}; }
+const pnKeyEl = m => document.querySelector('.pk [data-m="'+m+'"]');
+function pnNextMidi(){ const S2=PN.song; return S2&&!S2.done?muParse(S2.tune.notes[S2.i]).midi:null; }
+function pnKeysHTML(){ const L=pnLayout(), w=100/L.n, next=pnNextMidi();
+  return `<div class="pk" id="pk" role="group" aria-label="Piano keyboard">${L.whites.map(k=>`<button type="button" class="pkw${k.m===60?' mc':''}${k.m===next?' nxt':''}" data-m="${k.m}" style="left:${k.i*w}%;width:${w}%" aria-label="${muName(k.m)}">${PN.names||k.l==='C'?`<span>${PN.names?k.l:''}${k.l==='C'?`<small>${PN.names?'':'C'}${Math.floor(k.m/12)-1}</small>`:''}</span>`:''}</button>`).join('')}${L.blacks.map(k=>`<button type="button" class="pkb${k.m===next?' nxt':''}" data-m="${k.m}" style="left:${(k.i+1)*w-w*0.3}%;width:${w*0.6}%" aria-label="${muName(k.m).replace('♯',' sharp')}"></button>`).join('')}</div>`; }
+function pnPanelHTML(){
+  const m=PN.last; let info='';
+  if(PN.mode==='hunt'&&PN.hunt&&!PN.hunt.done) info='';
+  else if(m!=null){ const nm=muName(m);
+    info=`<div class="pn-info"><div class="pn-note"><b>${esc(nm)}</b>${m===60?' <span class="tag good">Middle C</span>':''} <span class="muted">${muFreq(m).toFixed(1)} Hz</span></div>${staffHTML({notes:[{n:nm.replace('♯','#'),hl:1}],w:160,label:'The note you just played'})}</div>`; }
+  else info='<p class="muted">Tap a key. The note you play appears on the stave here.</p>';
+  let mode='';
+  if(PN.mode==='song'){ const S2=PN.song;
+    if(!S2) mode=`<h3>🎵 Follow the lights</h3><p class="muted">Pick a tune. The next key glows. Tap it to play the tune, one note at a time.</p><div class="row">${MU_SONGS.map(s=>{ const best=((S.mu||{}).s||{})[s.id]; return `<button class="btn small" data-act="pnsong" data-id="${s.id}">${esc(s.n)}${best?` ✅ ${best.b}%`:''}</button>`; }).join('')}</div>`;
+    else if(S2.done) mode=`<h3>🎉 ${esc(S2.tune.n)}</h3><p>You played all ${S2.tune.notes.length} notes. Accuracy: <b>${S2.acc}%</b>. ${S2.gain?`+${S2.gain} XP.`:''}</p><div class="row"><button class="btn" data-act="pnsong" data-id="${S2.tune.id}">Play it again</button><button class="btn ghost" data-act="pnmode" data-m="song" data-reset="1">Choose another tune</button></div>`;
+    else mode=`<h3>🎵 ${esc(S2.tune.n)}</h3><div class="wbar" role="progressbar" aria-valuemin="0" aria-valuemax="${S2.tune.notes.length}" aria-valuenow="${S2.i}"><div style="width:${Math.round(100*S2.i/S2.tune.notes.length)}%"></div></div><p>Note <b>${S2.i+1}</b> of ${S2.tune.notes.length}. Tap the glowing key.${S2.miss?` <span class="muted">Slips so far: ${S2.miss}.</span>`:''}</p>${S2.msg?`<p class="wk-why">💭 ${esc(S2.msg)}</p>`:''}<div class="row"><button class="btn ghost small" data-act="pnlisten">👂 Hear the tune first</button><button class="btn ghost small" data-act="pnmode" data-m="song" data-reset="1">Pick another tune</button></div>`; }
+  else if(PN.mode==='hunt'){ const H=PN.hunt;
+    if(!H) mode=`<h3>🔍 Note hunt</h3><p class="muted">A note appears on the stave. Find and tap that key. 10 notes each time.</p><div class="row"><button class="btn small" data-act="pnhunt" data-l="1">Level 1: middle octave (C4 to C5)</button><button class="btn small" data-act="pnhunt" data-l="2">Level 2: higher octave (C5 to C6)</button><button class="btn small" data-act="pnhunt" data-l="3">Level 3: sharps and flats</button></div>`;
+    else if(H.done) mode=`<h3>🎉 Note hunt: ${H.r} of ${H.n}</h3><p>${H.gain?`+${H.gain} XP. `:''}${H.r>=9?'Brilliant reading!':H.r>=6?'Good reading! Keep going.':'Keep practising: use E G B D F for the lines and F A C E for the spaces.'}</p><div class="row"><button class="btn" data-act="pnhunt" data-l="${H.l}">Again</button><button class="btn ghost" data-act="pnmode" data-m="hunt" data-reset="1">Change level</button></div>`;
+    else mode=`<h3>🔍 Note hunt, level ${H.l}: ${H.i+1} of ${H.n}</h3>${staffHTML({notes:[{n:H.target.name}],label:'Find this note on the piano'})}${H.msg?`<p class="wk-why">💭 ${esc(H.msg)}</p>`:'<p class="muted">Which key is this note? Tap it.</p>'}<div class="row"><button class="btn ghost small" data-act="pnmode" data-m="hunt" data-reset="1">Stop</button></div>`; }
+  return info+mode;
+}
+function vPiano(m){
+  m.innerHTML=`<section class="module" style="--c:#7A3E9D"><button class="btn ghost small" data-act="go" data-v="subject" data-k="music">← Music</button><h2 style="margin-top:10px">🎹 Piano</h2>
+   <div class="row" style="margin:6px 0"><button class="btn small ghost" data-act="pnoct" data-d="-1" aria-label="Lower octave">◀ Lower</button><span class="tag none">Octave ${PN.oct}</span><button class="btn small ghost" data-act="pnoct" data-d="1" aria-label="Higher octave">Higher ▶</button><button class="btn small ${PN.names?'':'ghost'}" data-act="pnnames">🔤 Note names ${PN.names?'on':'off'}</button></div>
+   ${pnKeysHTML()}<div class="row" style="margin:10px 0"><button class="btn small ${PN.mode==='free'?'':'ghost'}" data-act="pnmode" data-m="free">🎹 Free play</button><button class="btn small ${PN.mode==='song'?'':'ghost'}" data-act="pnmode" data-m="song">🎵 Follow the lights</button><button class="btn small ${PN.mode==='hunt'?'':'ghost'}" data-act="pnmode" data-m="hunt">🔍 Note hunt</button><button class="btn small ghost" data-act="go" data-v="terms">🎼 Music words lab</button></div>
+   <div id="pnpanel">${pnPanelHTML()}</div><p class="muted">Tip: you can press more than one key at once to play a chord. On a computer, the keys A S D F G H J K L work as the white keys and W E T Y U as the black ones. Sounds are made on your device.</p></section>`;
+  const pk=document.getElementById('pk');
+  pk.addEventListener('pointerdown',e=>{ const k=e.target.closest('[data-m]'); if(!k) return; e.preventDefault(); pnDown(+k.dataset.m,e.pointerId!=null?e.pointerId:'m'); });
+}
+['pointerup','pointercancel'].forEach(t=>document.addEventListener(t,e=>pnUp(e.pointerId!=null?e.pointerId:'m')));
+function pnRefresh(){ const el=document.getElementById('pnpanel'); if(el) el.innerHTML=pnPanelHTML(); document.querySelectorAll('.pk .nxt').forEach(k=>k.classList.remove('nxt')); const nx=pnNextMidi(); if(nx!=null){ const k=pnKeyEl(nx); if(k) k.classList.add('nxt'); } }
+function pnDown(m,pid){ if(!PN.held) PN.held={}; if(PN.held[pid]) pnUp(pid); const v=musPlay(m,null,0.8); PN.held[pid]={m,v}; const k=pnKeyEl(m); if(k) k.classList.add('on'); PN.last=m; pnJudge(m); pnRefresh(); }
+function pnUp(pid){ const h=PN.held&&PN.held[pid]; if(!h) return; delete PN.held[pid]; const c=AC; try{ if(h.v) h.v.rel(c?c.currentTime:0); }catch(e){} const k=pnKeyEl(h.m); if(k&&!Object.values(PN.held).some(x=>x.m===h.m)) k.classList.remove('on'); }
+function pnJudge(m){
+  if(PN.mode==='song'&&PN.song&&!PN.song.done){ const S2=PN.song, want=muParse(S2.tune.notes[S2.i]).midi;
+    if(m===want){ S2.i++; S2.msg=''; if(S2.i>=S2.tune.notes.length){ S2.done=true; const total=S2.tune.notes.length; S2.acc=Math.round(100*total/(total+S2.miss)); S.mu=S.mu||{}; S.mu.s=S.mu.s||{}; const prev=S.mu.s[S2.tune.id]; S2.gain=prev?2:8; S.mu.s[S2.tune.id]={b:Math.max(S2.acc,(prev&&prev.b)||0),d:today()}; award(S2.gain,prev?0:1); markDay(); checkTrophies(); save(); } }
+    else { S2.miss++; S2.msg='That was '+muName(m)+'. The glowing key is '+muName(want)+'.'; } }
+  else if(PN.mode==='hunt'&&PN.hunt&&!PN.hunt.done){ const H=PN.hunt, ok=(m===H.target.midi); muBump(ok); if(ok){ H.r++; H.msg=''; } else H.msg='You played '+muName(m)+'. The note on the stave was '+muName(H.target.midi).replace(/\d/,'')+' ('+H.target.hint+')';
+    H.i++; if(H.i>=H.n){ H.done=true; H.gain=H.r*2; if(H.gain) award(H.gain,H.r>=9?1:0); markDay(); checkTrophies(); save(); } else { H.target=pnHuntTarget(H.l); } } }
+function pnHuntTarget(level){
+  const lo=level===2?35:28, hi=level===2?42:(level===3?34:35), acc=level===3;   /* level 3 stops at B4 so every black key it asks for is on the keyboard */
+  const dn=ri(lo,hi), l=PN_LET[dn%7], o=Math.floor(dn/7), a=acc?pickr(MU_ACC[l]):'', name=l+a+o, pn=muParse(name), p=pn.dn-30;
+  const hint=acc?'a black key next to '+l+', '+(a==='#'?'just above':'just below')+' it':(p<0?'it sits below the stave, on a ledger line':p>8?'it sits above the stave':(p%2===0?'it is on line '+(p/2+1):'it is in a space'));
+  return {name,midi:pn.midi,hint}; }
+document.addEventListener('keydown',e=>{ if(V.name!=='piano'||e.repeat||e.ctrlKey||e.metaKey||e.altKey) return; const t=e.target; if(t&&(t.tagName==='INPUT'||t.tagName==='TEXTAREA')) return; const L=pnLayout(), W='asdfghjkl;\''.split(''), B={w:0,e:1,t:3,y:4,u:5,o:7,p:8}; let m=null; const wi=W.indexOf(e.key.toLowerCase()); if(wi>=0&&wi<L.whites.length) m=L.whites[wi].m; else if(e.key.toLowerCase() in B){ const bi=B[e.key.toLowerCase()], wk=L.whites[bi]; if(wk&&L.blacks.some(b=>b.m===wk.m+1)) m=wk.m+1; } if(m!=null){ e.preventDefault(); pnDown(m,'k'+m); } });
+document.addEventListener('keyup',e=>{ if(V.name!=='piano') return; const L=pnLayout(), W='asdfghjkl;\''.split(''), B={w:0,e:1,t:3,y:4,u:5,o:7,p:8}; let m=null; const wi=W.indexOf(e.key.toLowerCase()); if(wi>=0&&wi<L.whites.length) m=L.whites[wi].m; else if(e.key.toLowerCase() in B){ const wk=L.whites[B[e.key.toLowerCase()]]; if(wk) m=wk.m+1; } if(m!=null) pnUp('k'+m); });
+/* ---------- the Music Words lab ---------- */
+function vTerms(m){
+  const cats={volume:'🔊 How loud',tempo:'⏱️ How fast',change:'📈 Changing as it goes',style:'✨ How the notes are shaped'};
+  m.innerHTML=`<section class="module" style="--c:#7A3E9D"><button class="btn ghost small" data-act="go" data-v="subject" data-k="music">← Music</button><h2 style="margin-top:10px">🎼 Music words lab</h2><p>Music words are mostly Italian. Tap <b>▶ Hear it</b> to <b>hear</b> what each word sounds like, then test yourself with the “Listen: which music word?” game in Music.</p>
+   ${Object.keys(cats).map(c=>`<h3 style="margin-top:14px">${cats[c]}</h3>${MU_TERMS.filter(t=>t.cat===c).map(t=>`<div class="vitem"><div class="row" style="align-items:center"><button class="btn small gold" data-act="termplay" data-t="${t.id}" aria-label="Hear ${esc(t.t)}">▶ Hear it</button><b>${esc(t.t)}</b> <span class="tag none">${esc(t.sym)}</span></div><p style="margin:4px 0 0">Means: <b>${esc(t.mean)}</b>. <span class="muted">${esc(t.from)}.</span></p></div>`).join('')}`).join('')}
+   <div class="row" style="margin-top:14px"><button class="btn" data-act="go" data-v="piano">🎹 Piano</button><button class="btn ghost" data-act="go" data-v="subject" data-k="music">Back to Music</button></div></section>`; }
+function pnLeave(){ try{ Object.keys(PN.held||{}).forEach(pnUp); }catch(e){} PN.held={}; PN.song=null; PN.hunt=null; PN.mode='free'; }
+const MUACTIONS = {
+  pnoct:d=>{ if((PN.song&&!PN.song.done)||(PN.hunt&&!PN.hunt.done)){ toast('Finish or stop this first, then you can change octave.'); return; } PN.oct=Math.max(2,Math.min(6,PN.oct+(+d.d))); if(PN.song&&!PN.song.done) PN.oct=4; render(); },
+  pnnames:()=>{ PN.names=!PN.names; render(); },
+  pnmode:d=>{ PN.mode=d.m; if(d.reset){ PN.song=null; PN.hunt=null; } if(d.m==='free'){ PN.song=null; PN.hunt=null; } render(); },
+  pnsong:d=>{ const tune=MU_SONGS.find(x=>x.id===d.id); if(!tune) return; PN.mode='song'; PN.oct=4; PN.song={tune,i:0,miss:0,msg:'',done:false}; render(); },
+  pnlisten:()=>{ if(!PN.song) return; const c=musCtx(); if(!c) return; let t=0; PN.song.tune.notes.forEach(n=>{ musPlay(muParse(n).midi,0.35,0.6,t); t+=0.45; }); },
+  pnhunt:d=>{ const l=+d.l; PN.mode='hunt'; PN.oct=(l===2)?5:4; PN.hunt={l,i:0,n:10,r:0,msg:'',done:false,target:pnHuntTarget(l)}; render(); },
+  termplay:d=>{ musTermPlay(d.t); }
+};
+
+/* =====================================================================
+   PRACTISE FIRST. Before a test (which gives no feedback until the end), ask if she wants to practise.
+   Warm-up = 5 practice questions (hints and answers as she goes), then a big "Now start the test" button.
+   Word tests: look at the words first. Quiet for 30 minutes after she has practised.
+   Setting (per device): tests (default) | all (tests and question rounds) | never.
+   ===================================================================== */
+const PF_KEY = 'annaliesce_pf';
+const pfMode = () => { try{ const v=localStorage.getItem(PF_KEY); return (v==='all'||v==='never')?v:'tests'; }catch(e){ return 'tests'; } };
+const pfSet = m => { try{ if(m==='tests') localStorage.removeItem(PF_KEY); else localStorage.setItem(PF_KEY,m); }catch(e){} };
+const PF_RECENT = {}, PF_QUIET = 30*60*1000; let PF_NEXT = null;
+const pfRecent = k => !!(PF_RECENT[k] && Date.now()-PF_RECENT[k] < PF_QUIET);
+function practiceGate(info, start){
+  const mode=pfMode(), key=info.k||info.kind;
+  if(mode==='never' || (info.kind==='round' && mode!=='all') || pfRecent(key)){ start(); return; }
+  const isWord=!!info.look, isRound=info.kind==='round', hasNotes=!!(info.k && NOTES[info.k]);
+  const lines = isWord ? [`<li>📖 <b>${esc(info.lookLabel)}</b>: hear them and read their meanings again.</li>`]
+    : isRound ? [hasNotes?'<li>📖 <b>Read the notes</b>: a quick reminder before you start.</li>':'']
+    : [`<li>🎯 <b>Warm up</b>: 5 practice questions. You get hints and the answer after each one.</li>`, hasNotes?'<li>📖 <b>Read the notes</b>: a quick reminder.</li>':''];
+  const body=`<p>${isRound?'Would you like a quick reminder first?':'A test does not tell you the answers until the end, so a little practice first can help.'}</p><ul style="margin:6px 0 4px 18px">${lines.join('')}</ul>`;
+  const btns=[];
+  if(!isWord&&!isRound) btns.push({label:'🎯 Warm up (5 questions)',fn:()=>{ PF_RECENT[key]=Date.now(); PF_NEXT=start;
+      startRound({kind:'practice', keys:info.keys||[info.k], topics:info.topics, n:5, back:info.back||{name:'home'}, warm:true, warmLabel:info.label}); }});
+  if(isWord) btns.push({label:'📖 '+info.lookLabel,fn:()=>{ PF_RECENT[key]=Date.now(); info.look(); }});
+  if(hasNotes) btns.push({label:'📖 Read the notes',cls:'ghost',fn:()=>{ PF_RECENT[key]=Date.now(); go('notes',{k:info.k}); }});
+  btns.push({label:isRound?'Start the questions':'Start the '+info.label+' now',cls:'ghost',fn:()=>{ start(); }});
+  btns.push({label:'Do not ask again',cls:'ghost small',fn:()=>{ pfSet('never'); toast('OK. You can turn this back on in the Parent Desk.',4500); start(); }});
+  modal(isRound?'Want a quick reminder first?':'Want to practise first?', body, btns);
+}
+function pfCard(){
+  const m=pfMode(), opt=(v,label)=>`<button class="btn small ${m===v?'':'ghost'}" data-act="pfset" data-m="${v}" aria-pressed="${m===v}">${m===v?'✅ ':''}${label}</button>`;
+  return `<section class="card"><h3 style="margin-top:0">🎯 “Want to practise first?”</h3><p class="muted" style="margin:0 0 6px">Before a test (the checkpoint test, the term mock exam, the Science branch tests and the weekly word tests) the app can offer a 5-question warm-up or a look at the notes or words first. This setting is saved on this device.</p><div class="row">${opt('tests','Before tests (recommended)')}${opt('all','Before tests and question rounds')}${opt('never','Never ask')}</div></section>`;
+}
+const PFACTIONS = {
+  pfthen:()=>{ const f=PF_NEXT; PF_NEXT=null; if(f) f(); },
+  pfset:d=>{ pfSet(d.m); toast(d.m==='never'?'The prompt is off.':d.m==='all'?'It will ask before tests and question rounds.':'It will ask before tests.',3500); render(); }
+};
+
+/* =====================================================================
+   HINTS. A hint costs 1 XP (never below the start of her level, so it can never drop her a level),
+   and the question still pays in full if she gets it right.
+   Hint 1 is specific to the question on screen and never gives the answer:
+     - maths games: a first step using HER numbers
+     - hand-written questions: the question's own explanation with the answer blanked out
+   Hint 2 (another 1 XP): cross out two wrong answers.
+   ===================================================================== */
+const _t = q => _q(q);                         /* question text with plain minus signs */
+const _N = q => _ns(_q(q));                    /* the numbers in the question */
+const SPECIFIC_HINTS = {};
+const _dg = s => String(parseInt(String(s).replace('.',''),10));
+const negHint = q => { const m=_t(q).match(/^What is (-?\d+) ([+\-×÷]) \(?(-?\d+)\)?\?$/); if(!m) return ''; const a=+m[1], op=m[2], b=+m[3];
+  if(op==='+') return 'Start at '+_f(a)+' on the number line and move '+Math.abs(b)+' to the '+(b>=0?'right':'left')+'.';
+  if(op==='-') return b>=0?'Start at '+_f(a)+' on the number line and move '+b+' to the left.':'Subtracting a negative is the same as adding. What is '+_f(a)+' + '+(-b)+'?';
+  if(op==='×') return 'Multiply the numbers without their signs first: '+Math.abs(a)+' × '+Math.abs(b)+'. Then decide the sign: the same signs give positive, different signs give negative.';
+  return 'Divide the numbers without their signs first: '+Math.abs(a)+' ÷ '+Math.abs(b)+'. Then decide the sign: the same signs give positive, different signs give negative.'; };
+SPECIFIC_HINTS['Negative numbers']=negHint;
+SPECIFIC_HINTS['Negative number sums']=q=>{ const m=_t(q).match(/The temperature is (-?\d+)°C and it (rises|falls) by (\d+) degrees/); return m?'Start at '+_f(+m[1])+'°C on the number line and move '+m[3]+' degrees '+(m[2]==='rises'?'up':'down')+'.':negHint(q); };
+SPECIFIC_HINTS['Fractions of amounts']=q=>{ const m=_t(q).match(/What is (\d+)\/(\d+) of (\d+)\?/); return m?'First divide '+m[3]+' by '+m[2]+' to find one part.'+(+m[1]>1?' Then multiply by '+m[1]+'.':''):''; };
+SPECIFIC_HINTS['Percentages of amounts']=q=>{ const m=_t(q).match(/What is (\d+)% of (\d+)\?/); if(!m) return ''; const p=+m[1], a=+m[2]; return p===50?'50% is a half. Divide '+a+' by 2.':p===25?'25% is a quarter. Divide '+a+' by 4.':p===75?'75% is three quarters. Divide '+a+' by 4, then multiply by 3.':'Start with 10%: divide '+a+' by 10. Then build up to '+p+'%.'; };
+SPECIFIC_HINTS['Substitution']=q=>{ const m=_t(q).match(/a = (\d+) and b = (\d+), what is (\d+)a \+ (\d+)b\?/); return m?'Replace a with '+m[1]+' and b with '+m[2]+'. '+m[3]+'a means '+m[3]+' × a, so work out '+m[3]+' × '+m[1]+' first.':''; };
+SPECIFIC_HINTS['Solving equations']=q=>{ const m=_t(q).match(/Solve (\d+)x \+ (\d+) = (\d+)/); return m?'Take '+m[2]+' away from '+m[3]+' first. Then divide by '+m[1]+'.':''; };
+SPECIFIC_HINTS['Area and perimeter']=q=>{ const t=_t(q); let m=t.match(/rectangle is (\d+) cm by (\d+) cm\. What is its (area|perimeter)/); if(m) return m[3]==='area'?'Area = length × width. Work out '+m[1]+' × '+m[2]+'.':'The perimeter is all the way round. Add '+m[1]+' + '+m[2]+', then double it.'; m=t.match(/base of (\d+) cm and a height of (\d+) cm/); return m?'The area of a triangle is ½ × base × height. Start with '+m[1]+' × '+m[2]+', then halve it.':''; };
+SPECIFIC_HINTS['Averages']=q=>{ const m=_t(q).match(/What is the (mean|median|range) of ([\d, ]+)\?/); if(!m) return ''; const a=m[2].split(',').map(x=>x.trim()), n=a.length; return m[1]==='mean'?'Add up '+a.join(' + ')+', then divide by '+n+'.':m[1]==='median'?'Put '+a.join(', ')+' in order from smallest to biggest first. Then pick the middle one.':'Find the biggest and the smallest of '+a.join(', ')+'. Then take the smallest away from the biggest.'; };
+SPECIFIC_HINTS['Times tables and BIDMAS']=q=>{ const t=_t(q); let m=t.match(/Work out (\d+) \+ (\d+) × (\d+)/); if(m) return 'BIDMAS: multiply before you add. Work out '+m[2]+' × '+m[3]+' first.'; m=t.match(/(?:Work out|What is) (\d+) × (\d+)\??$/); if(m) return 'Use the '+Math.min(+m[1],+m[2])+' times table: count up in '+Math.min(+m[1],+m[2])+'s, '+Math.max(+m[1],+m[2])+' times.'; m=t.match(/What is (\d+) ÷ (\d+)\?/); return m?'Think backwards: what number times '+m[2]+' makes '+m[1]+'?':''; };
+SPECIFIC_HINTS['Rounding']=q=>{ const t=_t(q); let m=t.match(/Round (\d+\.\d+) to 1 decimal place/); if(m) return 'Look at the digit after the first decimal place in '+m[1]+'. Is it 5 or more?'; m=t.match(/Round (\d+\.\d+) to 2 decimal places/); if(m) return 'Look at the third decimal place in '+m[1]+'. Is it 5 or more?'; m=t.match(/Round ([\d,]+) to the nearest ([\d,]+)/); return m?'Look at the digit to the right of the '+m[2]+'s place in '+m[1]+'. Is it 5 or more?':''; };
+SPECIFIC_HINTS['Angles']=q=>{ const t=_t(q); let m=t.match(/One angle is (\d+)°/); if(m) return 'Angles on a straight line add to 180°. Take '+m[1]+' away from 180.'; m=t.match(/are (\d+)° and (\d+)°/); return m?'Angles in a triangle add to 180°. Add the two you know first: '+m[1]+' + '+m[2]+'.':''; };
+SPECIFIC_HINTS['Ratio sharing']=q=>{ const m=_t(q).match(/Share £(\d+) in the ratio (\d+) : (\d+)\./); return m?'Add the parts of the ratio first: '+m[2]+' + '+m[3]+'. Then divide £'+m[1]+' by that total to find one part.':''; };
+SPECIFIC_HINTS['Coordinates']=q=>{ const t=_t(q); let m; if(m=t.match(/point \((-?\d+), (-?\d+)\) is reflected in the x-axis/)) return 'Reflecting ('+_f(+m[1])+', '+_f(+m[2])+') in the x-axis keeps x the same and changes the sign of y.'; if(m=t.match(/point \((-?\d+), (-?\d+)\) is reflected in the y-axis/)) return 'Reflecting ('+_f(+m[1])+', '+_f(+m[2])+') in the y-axis keeps y the same and changes the sign of x.'; if(m=t.match(/midpoint of \((-?\d+), (-?\d+)\) and \((-?\d+), (-?\d+)\)/)) return 'Add the two x values ('+_f(+m[1])+' and '+_f(+m[3])+') and halve. Then add the two y values ('+_f(+m[2])+' and '+_f(+m[4])+') and halve.'; if(m=t.match(/is (\d+) (right|left) and (\d+) (up|down) from the origin/)) return m[1]+' '+m[2]+' means x is '+(m[2]==='right'?'positive':'negative')+'. '+m[3]+' '+m[4]+' means y is '+(m[4]==='up'?'positive':'negative')+'. Write the across number first.'; if(m=t.match(/Which part of the grid is \((-?\d+), (-?\d+)\)/)) return 'For ('+_f(+m[1])+', '+_f(+m[2])+'): is x positive or negative? Is y positive or negative? Right and up are positive.'; return ''; };
+SPECIFIC_HINTS['Transformations']=q=>{ const t=_t(q); let m; if(m=t.match(/point \((-?\d+), (-?\d+)\) is translated (\d+) (left|right) and (\d+) (up|down)/)) return 'For x: '+m[3]+' '+m[4]+' means '+(m[4]==='right'?'add':'take away')+' '+m[3]+'. For y: '+m[5]+' '+m[6]+' means '+(m[6]==='up'?'add':'take away')+' '+m[5]+'.'; if(/translated/.test(t)) return 'Right adds to x and left takes away from x. Up adds to y and down takes away from y.'; if(m=t.match(/point \((-?\d+), (-?\d+)\) is rotated (.+?) about the origin/)) return /180/.test(m[3])?'A 180° turn changes both signs: (x, y) becomes (−x, −y).':/anticlockwise/.test(m[3])?'A 90° anticlockwise turn changes (x, y) into (−y, x).':'A 90° clockwise turn changes (x, y) into (y, −x).'; if(m=t.match(/point \((-?\d+), (-?\d+)\) is enlarged by scale factor (\d+)/)) return 'Multiply both coordinates by the scale factor: '+_f(+m[1])+' × '+m[3]+' and '+_f(+m[2])+' × '+m[3]+'.'; if(m=t.match(/scale factor (\d+)/)) return 'Lengths are multiplied by the scale factor '+m[1]+'. Do that first.'; return ''; };
+SPECIFIC_HINTS['Decimals']=q=>{ const t=_t(q); let m=t.match(/What is (\d+(?:\.\d+)?) × (\d+(?:\.\d+)?)\?/); if(m) return 'Ignore the decimal points and work out '+_dg(m[1])+' × '+_dg(m[2])+'. Then count the decimal places.'; m=t.match(/What is (\d+(?:\.\d+)?) ÷ (\d+(?:\.\d+)?)\?/); if(m) return 'Ignore the decimal point and work out '+_dg(m[1])+' ÷ '+m[2]+'. Then put the decimal point back.'; m=t.match(/What is (\d+(?:\.\d+)?) ([+\-]) (\d+(?:\.\d+)?)\?/); return m?'Line up the decimal points in '+m[1]+' and '+m[3]+', then '+(m[2]==='+'?'add':'subtract')+' the hundredths first.':''; };
+SPECIFIC_HINTS['Units and measures']=q=>{ const t=_t(q); let m=t.match(/What is ([\d,.]+) (\w+) in (\w+)\?/); if(m) return 'You have '+m[1]+' '+m[2]+'. Going from a bigger unit to a smaller one means multiplying, and smaller to bigger means dividing. Is '+m[2]+' bigger or smaller than '+m[3]+'?'; m=t.match(/How many minutes are in ([\d.]+) hours\?/); return m?'There are 60 minutes in 1 hour. Split '+m[1]+' hours into whole hours and part of an hour.':''; };
+SPECIFIC_HINTS['Place value']=q=>{ const t=_t(q).replace(/(\d),(?=\d{3}\b)/g,'$1'); let m=t.match(/What is (\d+(?:\.\d+)?) × (10+)\?/); if(m) return 'Multiplying by '+m[2]+' moves every digit '+(m[2].length-1)+' place'+(m[2].length>2?'s':'')+' to the left.'; m=t.match(/What is (\d+(?:\.\d+)?) ÷ (10+)\?/); if(m) return 'Dividing by '+m[2]+' moves every digit '+(m[2].length-1)+' place'+(m[2].length>2?'s':'')+' to the right.'; m=t.match(/Round ([\d,]+) to the nearest ([\d,]+)/); if(m) return 'Look at the digit to the right of the '+m[2]+'s place in '+m[1]+'. Is it 5 or more?'; m=t.match(/value of the digit (\d) in ([\d,.]+)\?/); if(m) return 'Which column is the '+m[1]+' in '+m[2]+': units, tens, hundreds or thousands? Multiply the digit by that column\'s value.'; m=t.match(/Which is the (?:largest|smallest)\? (.+)$/); return m?'Line up '+m[1]+' by their decimal points and compare the tenths first.':''; };
+SPECIFIC_HINTS['Percentage change']=q=>{ const t=_t(q); let m=t.match(/What percentage is (\d+) of (\d+)\?/); if(m) return 'Write it as a fraction: '+m[1]+' out of '+m[2]+'. Then find the equivalent fraction out of 100.'; m=t.match(/Write (\d+)\/(\d+) as a percentage/); if(m) return 'Divide '+m[1]+' by '+m[2]+', then multiply by 100.'; m=t.match(/Increase £(\d+) by (\d+)%/); if(m) return 'Find '+m[2]+'% of £'+m[1]+' first, then add it on.'; m=t.match(/A £(\d+) coat has (\d+)% off/); return m?'Find '+m[2]+'% of £'+m[1]+' first, then take it off.':''; };
+SPECIFIC_HINTS['Powers and roots']=q=>{ const t=_t(q); let m=t.match(/What is (\d+)³\?/); if(m) return m[1]+'³ means '+m[1]+' × '+m[1]+' × '+m[1]+'. Start with '+m[1]+' × '+m[1]+'.'; m=t.match(/What is (\d+)²\?/); if(m) return m[1]+'² means '+m[1]+' × '+m[1]+'.'; m=t.match(/What is √(\d+)\?/); if(m) return 'Which number multiplied by itself makes '+m[1]+'?'; m=t.match(/What is (\d+)\^(\d+)\?/); return m?'Multiply '+m[1]+' by itself '+m[2]+' times.':''; };
+SPECIFIC_HINTS['Ratio and proportion']=q=>{ const t=_t(q); let m=t.match(/Simplify the ratio (\d+) : (\d+)/); if(m) return 'Find a number that divides exactly into both '+m[1]+' and '+m[2]+', then divide both by it.'; m=t.match(/recipe for (\d+) people uses (\d+) g of (\w+)\. How much is needed for (\d+) people/); return m?'Find how much one person needs first: divide '+m[2]+' by '+m[1]+'. Then multiply by '+m[4]+'.':''; };
+SPECIFIC_HINTS['Ordering and temperature']=q=>{ const t=_t(q); let m=t.match(/is (-?\d+)°C and (rises|falls) by (\d+)°C/); if(m) return 'Start at '+_f(+m[1])+'°C on the number line and move '+m[3]+' degrees '+(m[2]==='rises'?'up':'down')+'.'; m=t.match(/Which is the (smallest|largest)\? ([-\d, ]+)$/); return m?'Picture '+m[2]+' on a number line. '+(m[1]==='smallest'?'Which one is furthest to the left?':'Which one is furthest to the right?'):''; };
+SPECIFIC_HINTS['Mean puzzles']=q=>{ const m=_t(q).match(/mean of four numbers is (\d+)\./); return m?'The mean is the total ÷ 4, so the total of all four numbers is '+m[1]+' × 4. Then take away the three you already know.':''; };
+SPECIFIC_HINTS['Written methods']=q=>{ const t=_t(q); let m=t.match(/What is (\d+) ÷ (\d+)\? Give the remainder/); if(m) return 'How many whole '+m[2]+'s fit into '+m[1]+'? Try '+m[2]+' × 10 first, then more.'; m=t.match(/What is (\d+) × (\d+)\?/); if(m) return 'Split '+m[1]+' into tens and units. Multiply each by '+m[2]+', then add the two answers.'; m=t.match(/What is ([\d,]+) [−-] (\d+)\?/); return m?'Count up from '+m[2]+' to '+m[1]+'.':''; };
+SPECIFIC_HINTS['nth term problems']=q=>{ const t=_t(q); let m=t.match(/first three terms of (\d+)n/); if(m) return 'Put n = 1, then n = 2, then n = 3 into the rule, one at a time.'; m=t.match(/Which term of the sequence (\d+)n ([+-]) (\d+) equals (\d+)\?/); if(m) return 'Solve '+m[1]+'n '+m[2]+' '+m[3]+' = '+m[4]+': '+(m[2]==='+'?'take '+m[3]+' away':'add '+m[3])+' first, then divide by '+m[1]+'.'; m=t.match(/What is the (\d+)(?:th|st|nd|rd) term/); if(m) return 'Replace n with '+m[1]+' in the rule and work it out.'; m=t.match(/Which term of the sequence (\d+)n equals (\d+)\?/); return m?'Solve '+m[1]+'n = '+m[2]+': what do you divide '+m[2]+' by?':''; };
+SPECIFIC_HINTS['Circles']=q=>{ const t=_t(q); let m=t.match(/diameter of (\d+) cm.*circumference/); if(m) return 'Circumference = π × diameter. Work out 3.14 × '+m[1]+'.'; m=t.match(/radius of (\d+) cm\. What is its (diameter|area|circumference)/); if(m) return m[2]==='diameter'?'The diameter is twice the radius, so double '+m[1]+'.':m[2]==='area'?'Area = π × r × r. Work out '+m[1]+' × '+m[1]+' first, then multiply by 3.14.':'Circumference = 2 × π × r. Work out 2 × 3.14 × '+m[1]+'.'; return ''; };
+SPECIFIC_HINTS['Straight-line graphs']=q=>{ const t=_t(q); let m; if(m=t.match(/gradient of the line (y = [^?]+)\?/)) return 'In '+m[1]+' (compare with y = mx + c) the gradient is the number in front of x.'; if(m=t.match(/y = (\d+)x [+-] (\d+), what is y when x = (\d+)/)) return 'Replace x with '+m[3]+', multiply by '+m[1]+' first, then '+(/\+/.test(t)?'add':'take away')+' '+m[2]+'.'; if(m=t.match(/(y = [^?]+) cross the y-axis/)) return 'For '+m[1]+': a line crosses the y-axis where x = 0. Put x = 0 into it.'; return ''; };
+SPECIFIC_HINTS['Sequences']=q=>{ const t=_t(q); let m=t.match(/next term\? ([\d, -]+), \.\.\./); if(m){ const a=m[1].split(',').map(Number); return 'Find the difference between the first two terms: '+a[1]+' − '+a[0]+'. Check it is the same all the way along.'; } m=t.match(/nth term of ([\d, -]+), \.\.\./); return m?'Look at '+m[1].trim()+': find the difference between the terms. That is the number in front of n.':''; };
+SPECIFIC_HINTS['Simplifying and expanding']=q=>{ const t=_t(q); let m=t.match(/Simplify (\d+)a \+ (\d+)b \+ (\d+)a/); if(m) return 'Collect the a terms first: '+m[1]+'a and '+m[3]+'a. Then collect the b terms.'; m=t.match(/Expand (\d+)\(x/); return m?'Multiply each term inside the bracket by '+m[1]+'.':''; };
+SPECIFIC_HINTS['Probability']=q=>{ const t=_t(q); let m=t.match(/A bag has (\d+) red and (\d+) blue counters/); if(m) return 'Probability = the number you want ÷ the total. There are '+m[1]+' red and '+m[2]+' blue counters: how many altogether?'; if(/dice|die/.test(t)){ let m2; if(/even number/.test(t)) return 'List the faces of the dice that are even numbers, then count them out of 6 faces. Simplify if you can.'; if(m2=t.match(/rolling a (\d)\?/)) return 'How many faces show a '+m2[1]+'? Put that over 6 faces.'; if(m2=t.match(/not (\d)\?/)) return 'How many faces are NOT '+m2[1]+'? Put that over 6 faces. (Or work out 1 − the probability of '+m2[1]+'.)'; if(m2=t.match(/(greater|less) than (\d)\?/)) return 'List the faces that are '+m2[1]+' than '+m2[2]+', then count them out of 6 faces. Simplify if you can.'; return 'Count how many faces give what you want, out of 6 faces. Simplify if you can.'; } m=t.match(/spinner has (\d+) equal sections/); if(m) return 'Probability = the sections you want ÷ all '+m[1]+' sections. Simplify if you can.'; m=t.match(/probability of rain is ([\d.]+)/); return m?'Probabilities add up to 1. Take '+m[1]+' away from 1.':''; };
+SPECIFIC_HINTS['Fractions']=q=>{ const t=_t(q); let m=t.match(/What is (\d+)\/(\d+) \+ (\d+)\/(\d+)\?/); if(m) return 'Are the bottom numbers ('+m[2]+' and '+m[4]+') the same? Make them the same first, then add only the tops.'; m=t.match(/(\d+)\/(\d+) = \?\/(\d+)/); if(m) return 'What do you multiply '+m[2]+' by to get '+m[3]+'? Do the same to the top.'; m=t.match(/Simplify (\d+)\/(\d+)/); if(m) return 'Find a number that goes into both '+m[1]+' and '+m[2]+'.'; m=t.match(/Write (\d+)\/(\d+) as a mixed number/); return m?'How many whole times does '+m[2]+' go into '+m[1]+'? What is left over?':''; };
+SPECIFIC_HINTS['Factors and primes']=q=>{ const t=_t(q); let m=t.match(/highest common factor \(HCF\) of (\d+) and (\d+)/); if(m) return 'List the factors of '+m[1]+' and of '+m[2]+'. Which is the biggest number in both lists?'; m=t.match(/lowest common multiple \(LCM\) of (\d+) and (\d+)/); if(m) return 'List the multiples of '+m[1]+' and of '+m[2]+'. Which is the first number in both lists?'; if(/prime number/.test(t)) return 'A prime number has only two factors: 1 and itself. Try dividing each option by 2, 3 and 5.'; m=t.match(/a factor of (\d+)/); if(m) return 'Try dividing '+m[1]+' by each option. Which one goes in exactly?'; m=t.match(/a multiple of (\d+)/); return m?'Which option is in the '+m[1]+' times table?':''; };
+SPECIFIC_HINTS['Polygons and shapes']=q=>{ const t=_t(q); let m=t.match(/interior angles of a (\w+) add up to/); if(m) return 'Split the shape into triangles: it makes (number of sides − 2) triangles, and each has 180°.'; m=t.match(/parallel sides of (\d+) cm and (\d+) cm, and a height of (\d+) cm/); if(m) return 'Area = ½ × (the two parallel sides added) × height. Add '+m[1]+' + '+m[2]+' first.'; m=t.match(/parallelogram has a base of (\d+) cm and a perpendicular height of (\d+) cm/); return m?'Area = base × perpendicular height. Work out '+m[1]+' × '+m[2]+'.':''; };
+/* ---------- hand-written questions: the question's own explanation, with the answer blanked out ---------- */
+const _rx = s => s.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+const HSTOP=/^(what|with|that|this|from|when|they|have|their|there|which|about|more|less|than|only|into|each|your|does|been|were|will|then|them|these|those|also|some|very|such|other|because|between|through|would|could|should|while|where)$/i;
+const hContent = ans => ans.split(/\s+/).map(w=>w.replace(/[^A-Za-z0-9\-']/g,'')).filter(c=>c.length>=4&&!HSTOP.test(c));
+function hintFromExp(q){
+  const e=String(q.exp||'').replace(/\s+/g,' ').trim(), ans=String(q.correctLabel||q.correct||'').trim(); if(e.length<20||!ans) return '';
+  let out=e; const rep=(re)=>{ out=out.replace(re,'…'); };
+  rep(new RegExp((/^\d/.test(ans)?'(?<![\\d.])':'')+_rx(ans)+(/\d$/.test(ans)?'(?![\\d])':''),'gi'));
+  const nums=(ans.replace(/,/g,'').match(/-?\d+(?:\.\d+)?/g)||[]);
+  if(nums.length===1){ const re=new RegExp('(?<![\\d.])'+_rx(nums[0].replace(/^-/,''))+'(?!\\d)','g'), ms=[...out.matchAll(re)]; if(ms.length){ const idx=new Set([ms.length-1]); ms.forEach((m,i)=>{ if(/=\s*[£$]?[-−]?$/.test(out.slice(Math.max(0,m.index-4),m.index))) idx.add(i); }); let k=0; out=out.replace(re,m=>idx.has(k++)?'…':m); } }
+  const cw=hContent(ans); if(ans.split(/\s+/).length<=8) cw.forEach(c=>rep(new RegExp('\\b'+_rx(c.slice(0,Math.max(4,c.length-2)))+'\\w*','gi')));
+  const sents=out.split(/(?<=[.!?])\s+/).filter(Boolean); let h=sents[0]||''; if(sents[1]&&(h+' '+sents[1]).length<=200) h+=' '+sents[1]; if(h.length>220) h=h.slice(0,217).replace(/\s+\S*$/,'')+'…';
+  const real=h.replace(/…/g,'').replace(/[^A-Za-z0-9 ]/g,' ').split(/\s+/).filter(x=>x.length>1); if(real.length<4) return '';
+  const hl=h.toLowerCase(), left=cw.filter(c=>hl.includes(c.slice(0,Math.max(4,c.length-2)).toLowerCase())); if(cw.length>=3&&left.length/cw.length>=0.5) return '';   /* still mirrors the answer: too revealing */
+  return 'Think about this: '+h;
+}
+function hintFirstLetter(q){ const a=String(q.correctLabel||q.correct||'').trim(); if(a.length<=3||/^-?[\d£$.,%\s]+$/.test(a)||/^(yes|no|true|false)\b/i.test(a)) return ''; const n=a.split(/\s+/).length; return n>6?'':'The answer starts with “'+a.charAt(0).toUpperCase()+'”'+(n>1?' and has '+n+' words':'')+'.'; }
+function hintText(q){
+  if(q.gen){ const f=SPECIFIC_HINTS[q.gt]; const h=f?f(q):''; if(h) return h; if(q.hint) return q.hint; return hintOfBase(q); }
+  if(q.gloss||q.vocab) return hintOfBase(q);
+  return hintFromExp(q)||hintFirstLetter(q)||hintOfBase(q);
+}
+/* ---------- cost and the second hint ---------- */
+function hintCharge(){ const room=Math.max(0,(S.xp||0)-(level()-1)*400), c=Math.min(1,room); if(c>0){ award(-c,0); toast('💡 −1 XP for the hint',1600); } return c; }
+const canElim = q => !!(q.opts&&q.opts.length>=3&&!q.done);
+const HINTACTIONS = {
+  hint:()=>{ const q=R.qs[R.i]; if(q.done||q.hinted) return; q.hinted=true; hintCharge(); render(); },
+  hint2:()=>{ const q=R.qs[R.i]; if(q.done||!q.hinted||q.hint2||!canElim(q)) return; q.hint2=true; const wrong=q.opts.map((o,i)=>i).filter(i=>q.opts[i]!==q.correct); q.elim=shuffle(wrong).slice(0,2); hintCharge(); render(); }
+};
+
+/* the original name, kept so anything that asks for a hint the old way still works */
+function hintOf(q){ return hintText(q); }
+
+/* =====================================================================
+   SILLY CONGRATULATION LINES, spoken (in the voice chosen in the Parent Desk) at the end of every round.
+   A bigger set than needed, so Jody can review them and switch off any she does not like.
+   Line ids are permanent: only ever ADD lines at the end of a group, never renumber (switched-off lines are remembered by id).
+   Bands: perfect (100 percent), high (90 to 99), good (70 to 89), mid (50 to 69), low (under 50; always kind, always ends on let us try again),
+   plus best (new personal best), sprint, warm (after a warm-up) and flash (after flashcards).
+   ===================================================================== */
+const CHEER_LINES = [
+[
+"perfect.*.0",
+"perfect",
+"*",
+"Full marks! You ate that and left no crumbs! 🍽️"
+],
+[
+"perfect.*.1",
+"perfect",
+"*",
+"One hundred percent! No cap, you are goated! 🐐"
+],
+[
+"perfect.*.2",
+"perfect",
+"*",
+"A perfect score! Your aura just went up a million points! ✨"
+],
+[
+"perfect.*.3",
+"perfect",
+"*",
+"Slay! Every single one right! 👑"
+],
+[
+"perfect.*.4",
+"perfect",
+"*",
+"That is a huge W, beta! 🏆"
+],
+[
+"perfect.*.5",
+"perfect",
+"*",
+"Perfect! The rizz of a genius, honestly! 😎"
+],
+[
+"perfect.*.6",
+"perfect",
+"*",
+"Not one mistake! Main character energy! 🌟"
+],
+[
+"perfect.*.7",
+"perfect",
+"*",
+"Flawless! Somebody call the newspapers! 📰"
+],
+[
+"perfect.*.8",
+"perfect",
+"*",
+"Locked in and it shows! A perfect score! 🔒🧠"
+],
+[
+"perfect.*.9",
+"perfect",
+"*",
+"You did that with your eyes closed, didn't you? Perfect! 🤩"
+],
+[
+"perfect.*.10",
+"perfect",
+"*",
+"Absolutely legendary, beta! Full marks! 💯"
+],
+[
+"perfect.*.11",
+"perfect",
+"*",
+"Big brain time! Every answer right! 🧠"
+],
+[
+"perfect.*.12",
+"perfect",
+"*",
+"Wow! A perfect round! Give yourself a high five! ✋"
+],
+[
+"perfect.*.13",
+"perfect",
+"*",
+"The vibes are immaculate. A perfect score! ✨"
+],
+[
+"perfect.*.14",
+"perfect",
+"*",
+"Full marks! Even the teacher is clapping right now! 👏"
+],
+[
+"perfect.maths.0",
+"perfect",
+"maths",
+"Maths? Solved it! The numbers are terrified! ➕"
+],
+[
+"perfect.maths.1",
+"perfect",
+"maths",
+"Every sum right! Your brain is a calculator! 🧮"
+],
+[
+"perfect.english.0",
+"perfect",
+"english",
+"You ate those words up! English is your superpower! 📖"
+],
+[
+"perfect.english.1",
+"perfect",
+"english",
+"Shakespeare would give you a standing ovation! 🎭"
+],
+[
+"perfect.literature.0",
+"perfect",
+"literature",
+"You understood every word like a true poet! 🪶"
+],
+[
+"perfect.literature.1",
+"perfect",
+"literature",
+"Main character energy! You read the whole story right! 📚"
+],
+[
+"perfect.science.0",
+"perfect",
+"science",
+"Absolute genius! Your brain is more powerful than a Bunsen burner! 🔬"
+],
+[
+"perfect.science.1",
+"perfect",
+"science",
+"Science! You have cracked it! Nobel Prize, please! 🧪"
+],
+[
+"perfect.history.0",
+"perfect",
+"history",
+"You remembered it all! History would be jealous! 🏰"
+],
+[
+"perfect.history.1",
+"perfect",
+"history",
+"Time travel skills unlocked! Every date right! ⏳"
+],
+[
+"perfect.geography.0",
+"perfect",
+"geography",
+"You know the whole world! No map needed! 🌍"
+],
+[
+"perfect.geography.1",
+"perfect",
+"geography",
+"Geography? Nailed it from pole to pole! 🧭"
+],
+[
+"perfect.computing.0",
+"perfect",
+"computing",
+"Code cracked! Zero bugs! 💻"
+],
+[
+"perfect.computing.1",
+"perfect",
+"computing",
+"You just compiled a giant W! 🖥️"
+],
+[
+"perfect.spanish.0",
+"perfect",
+"spanish",
+"Muy bien! Your Spanish is on fire! 🔥"
+],
+[
+"perfect.spanish.1",
+"perfect",
+"spanish",
+"Fantastico! Every word right! 🇪🇸"
+],
+[
+"perfect.mandarin.0",
+"perfect",
+"mandarin",
+"Hen hao! That means very good, and that was very good! 🏮"
+],
+[
+"perfect.mandarin.1",
+"perfect",
+"mandarin",
+"Wow! Your Mandarin is amazing! 🐉"
+],
+[
+"perfect.re.0",
+"perfect",
+"re",
+"Wise words and wise answers! Perfect! 🕊️"
+],
+[
+"perfect.re.1",
+"perfect",
+"re",
+"Deep thinker! Every answer right! 🌍"
+],
+[
+"perfect.pshe.0",
+"perfect",
+"pshe",
+"Kind, clever and correct! Perfect! 💖"
+],
+[
+"perfect.pshe.1",
+"perfect",
+"pshe",
+"You know how to look after yourself and others! 🌈"
+],
+[
+"perfect.dt.0",
+"perfect",
+"dt",
+"Designed to perfection! Every answer right! 🛠️"
+],
+[
+"perfect.dt.1",
+"perfect",
+"dt",
+"You built that score like a pro! 🏗️"
+],
+[
+"perfect.art.0",
+"perfect",
+"art",
+"A masterpiece! Put it in the gallery! 🎨"
+],
+[
+"perfect.art.1",
+"perfect",
+"art",
+"Picasso is shaking! Every answer right! 🖼️"
+],
+[
+"perfect.music.0",
+"perfect",
+"music",
+"Music to my ears! Every note right! 🎵"
+],
+[
+"perfect.music.1",
+"perfect",
+"music",
+"A number one hit! Perfect score! 🎶"
+],
+[
+"high.*.0",
+"high",
+"*",
+"So close to perfect, beta! You are a star! ⭐"
+],
+[
+"high.*.1",
+"high",
+"*",
+"Almost flawless! Your aura is glowing! ✨"
+],
+[
+"high.*.2",
+"high",
+"*",
+"That is a serious W! Nearly perfect! 🏅"
+],
+[
+"high.*.3",
+"high",
+"*",
+"Brilliant effort, beta! 💖"
+],
+[
+"high.*.4",
+"high",
+"*",
+"Big brain energy! Just one tiny wobble! 🧠"
+],
+[
+"high.*.5",
+"high",
+"*",
+"No cap, that was seriously good! 🔥"
+],
+[
+"high.*.6",
+"high",
+"*",
+"You are basically a genius. Just one to fix! 🌟"
+],
+[
+"high.*.7",
+"high",
+"*",
+"Slay! Nearly perfect! 💅"
+],
+[
+"high.*.8",
+"high",
+"*",
+"Wonderful work, beta! 🌸"
+],
+[
+"high.*.9",
+"high",
+"*",
+"It is giving genius! Nearly perfect! 🌟"
+],
+[
+"high.maths.0",
+"high",
+"maths",
+"Nearly all right! Those numbers did not stand a chance! 🔢"
+],
+[
+"high.english.0",
+"high",
+"english",
+"Nearly perfect! Your words are on fire! ✍️"
+],
+[
+"high.literature.0",
+"high",
+"literature",
+"Nearly perfect! The author would be proud! ✒️"
+],
+[
+"high.science.0",
+"high",
+"science",
+"Almost perfect! Your experiment was a big success! ⚗️"
+],
+[
+"high.history.0",
+"high",
+"history",
+"Nearly perfect! The past is in safe hands! 👑"
+],
+[
+"high.geography.0",
+"high",
+"geography",
+"Nearly perfect! You know your way around! 🗺️"
+],
+[
+"high.computing.0",
+"high",
+"computing",
+"Almost bug free! Just one to debug! 🐛"
+],
+[
+"high.spanish.0",
+"high",
+"spanish",
+"Casi perfecto! Nearly perfect, amiga! 🌟"
+],
+[
+"high.mandarin.0",
+"high",
+"mandarin",
+"Almost perfect! Nearly a dragon master! 🐲"
+],
+[
+"high.re.0",
+"high",
+"re",
+"Nearly perfect! Great understanding! 🌟"
+],
+[
+"high.pshe.0",
+"high",
+"pshe",
+"Nearly perfect! Great thinking! 🧡"
+],
+[
+"high.dt.0",
+"high",
+"dt",
+"Almost perfect! Just one tiny tweak needed! 🔧"
+],
+[
+"high.art.0",
+"high",
+"art",
+"Nearly a masterpiece! Beautiful work! 🖌️"
+],
+[
+"high.music.0",
+"high",
+"music",
+"Almost a perfect note! Encore! 🎼"
+],
+[
+"good.*.0",
+"good",
+"*",
+"Solid work! You are getting there, beta! 💪"
+],
+[
+"good.*.1",
+"good",
+"*",
+"Nice one! That is a proper good score! 👍"
+],
+[
+"good.*.2",
+"good",
+"*",
+"The vibes are good! Keep it up! ✨"
+],
+[
+"good.*.3",
+"good",
+"*",
+"You are on your way to being a legend! 🚀"
+],
+[
+"good.*.4",
+"good",
+"*",
+"Great effort! Your brain is buzzing! 🐝"
+],
+[
+"good.*.5",
+"good",
+"*",
+"That is a win in my book! 🏆"
+],
+[
+"good.*.6",
+"good",
+"*",
+"Good job! A few more and you will be unstoppable! 💫"
+],
+[
+"good.*.7",
+"good",
+"*",
+"Not bad at all, habibi! Not bad at all! 😄"
+],
+[
+"good.*.8",
+"good",
+"*",
+"Lock in a little more and it is perfect! 🔒"
+],
+[
+"good.*.9",
+"good",
+"*",
+"Mint! That is a really good go! 🙌"
+],
+[
+"good.maths.0",
+"good",
+"maths",
+"The sums are adding up nicely! ➕"
+],
+[
+"good.english.0",
+"good",
+"english",
+"Good going! Your English is looking sharp! ✏️"
+],
+[
+"good.literature.0",
+"good",
+"literature",
+"Good reading! You are getting the plot! 📖"
+],
+[
+"good.science.0",
+"good",
+"science",
+"Good science! The atoms are proud! ⚛️"
+],
+[
+"good.history.0",
+"good",
+"history",
+"Good remembering! The past is coming alive! 🏛️"
+],
+[
+"good.geography.0",
+"good",
+"geography",
+"Good work! You are getting around the world! ✈️"
+],
+[
+"good.computing.0",
+"good",
+"computing",
+"The code is running well! Keep going! ⌨️"
+],
+[
+"good.spanish.0",
+"good",
+"spanish",
+"Bueno! Good work, amiga! 🎉"
+],
+[
+"good.mandarin.0",
+"good",
+"mandarin",
+"Hao! Good going with the Mandarin! 🏮"
+],
+[
+"good.re.0",
+"good",
+"re",
+"Good thinking about big ideas! 💭"
+],
+[
+"good.pshe.0",
+"good",
+"pshe",
+"Good work! You know your stuff! 🌻"
+],
+[
+"good.dt.0",
+"good",
+"dt",
+"Good design thinking! It is coming together! 📐"
+],
+[
+"good.art.0",
+"good",
+"art",
+"Lovely work! It is looking good! 🎨"
+],
+[
+"good.music.0",
+"good",
+"music",
+"Good tune! Keep the rhythm going! 🥁"
+],
+[
+"mid.*.0",
+"mid",
+"*",
+"Good try, habibi! Let us look at the tricky ones together! 🤗"
+],
+[
+"mid.*.1",
+"mid",
+"*",
+"Halfway to brilliant! Let us tidy up the tricky bits! 🧩"
+],
+[
+"mid.*.2",
+"mid",
+"*",
+"Not bad! The Dojo will sort those out! 🥋"
+],
+[
+"mid.*.3",
+"mid",
+"*",
+"You are in the game! A bit more practice and boom! 💥"
+],
+[
+"mid.*.4",
+"mid",
+"*",
+"Progress, not perfection, beta! Keep going! 🌱"
+],
+[
+"mid.*.5",
+"mid",
+"*",
+"That is a solid start! Let us fix the wobbly ones! 🛠️"
+],
+[
+"mid.*.6",
+"mid",
+"*",
+"Your brain is warming up! Go again! 🔥"
+],
+[
+"mid.*.7",
+"mid",
+"*",
+"Decent! And now you know what to practise! 🎯"
+],
+[
+"mid.*.8",
+"mid",
+"*",
+"Yalla, let us go again! You will smash it! 💪"
+],
+[
+"mid.*.9",
+"mid",
+"*",
+"Not your best yet, but it is a start! Let us level up! 🎮"
+],
+[
+"mid.maths.0",
+"mid",
+"maths",
+"Some sums were sneaky, habibi! We will catch them next time! 🕵️"
+],
+[
+"mid.english.0",
+"mid",
+"english",
+"A few tricky words tripped you up, habibi. Let us fix them! 🔤"
+],
+[
+"mid.literature.0",
+"mid",
+"literature",
+"The plot got twisty, habibi! Let us read it again! 🔄"
+],
+[
+"mid.science.0",
+"mid",
+"science",
+"The experiment needs another go, habibi! Let us see what happened! 🧪"
+],
+[
+"mid.history.0",
+"mid",
+"history",
+"Some of the past got muddled, habibi! Let us untangle it! 🗝️"
+],
+[
+"mid.geography.0",
+"mid",
+"geography",
+"You got a bit lost, habibi! Let us find our way together! 🧭"
+],
+[
+"mid.computing.0",
+"mid",
+"computing",
+"A few bugs in there, habibi! Let us debug them together! 🐞"
+],
+[
+"mid.spanish.0",
+"mid",
+"spanish",
+"Poco a poco, habibi! Little by little! 🐢"
+],
+[
+"mid.mandarin.0",
+"mid",
+"mandarin",
+"Those tones can be tricky, habibi! We will get them! 🎵"
+],
+[
+"mid.re.0",
+"mid",
+"re",
+"Some big ideas were tricky, habibi! Let us think again! 💭"
+],
+[
+"mid.pshe.0",
+"mid",
+"pshe",
+"Some tricky ones there, habibi! Let us chat about them! 💬"
+],
+[
+"mid.dt.0",
+"mid",
+"dt",
+"The design needs a small tweak, habibi! Let us fix it! ✏️"
+],
+[
+"mid.art.0",
+"mid",
+"art",
+"A few splodges, habibi! Let us tidy them up together! 🖍️"
+],
+[
+"mid.music.0",
+"mid",
+"music",
+"A few wrong notes, habibi! Let us tune them up! 🎹"
+],
+[
+"low.*.0",
+"low",
+"*",
+"Habibi, what went wrong? Come, let us look at it together! 🥹"
+],
+[
+"low.*.1",
+"low",
+"*",
+"Ooh, that was a tricky one! Let us fix it together! 🤝"
+],
+[
+"low.*.2",
+"low",
+"*",
+"It happens to everyone, beta. Let us try again! 💛"
+],
+[
+"low.*.3",
+"low",
+"*",
+"Habibi, do not worry! Every mistake is your brain growing! 🌱"
+],
+[
+"low.*.4",
+"low",
+"*",
+"That quiz was sneaky! Shall we outsmart it next time? 🕵️"
+],
+[
+"low.*.5",
+"low",
+"*",
+"Delulu is the solulu! Believe, and go again! 🌈"
+],
+[
+"low.*.6",
+"low",
+"*",
+"Not your day, but the next round is yours! 🍀"
+],
+[
+"low.*.7",
+"low",
+"*",
+"Plot twist: the Dojo is about to make you unstoppable! 🥋"
+],
+[
+"low.*.8",
+"low",
+"*",
+"Yalla, habibi! Small steps, big brain! 🐢"
+],
+[
+"low.*.9",
+"low",
+"*",
+"No stress! Even legends started somewhere! 🌟"
+],
+[
+"low.*.10",
+"low",
+"*",
+"Hmm, what happened there, habibi? Tell me, we will fix it! 💬"
+],
+[
+"low.*.11",
+"low",
+"*",
+"That is okay, beta! We learn more from mistakes! 📚"
+],
+[
+"low.*.12",
+"low",
+"*",
+"Take a breath. Then we go again, together! 🌬️"
+],
+[
+"low.*.13",
+"low",
+"*",
+"Your brain is just loading. Buffering, please wait! ⏳"
+],
+[
+"low.maths.0",
+"low",
+"maths",
+"Habibi, what went wrong with the numbers? Let us work it out together! 🧮"
+],
+[
+"low.maths.1",
+"low",
+"maths",
+"Numbers can be tricky! Let us take them one step at a time! 🪜"
+],
+[
+"low.english.0",
+"low",
+"english",
+"Habibi, what went wrong with the words? Let us read it again together! 📚"
+],
+[
+"low.english.1",
+"low",
+"english",
+"Words can be sneaky! We will get them next time! 🕵️"
+],
+[
+"low.literature.0",
+"low",
+"literature",
+"Habibi, what went wrong in the story? Let us go back to the page together! 📖"
+],
+[
+"low.literature.1",
+"low",
+"literature",
+"Even great writers struggle with stories! Let us try again! 🌟"
+],
+[
+"low.science.0",
+"low",
+"science",
+"That reaction did not go as planned, beta! Let us try again! 🔥"
+],
+[
+"low.science.1",
+"low",
+"science",
+"Habibi, what went wrong in the lab? Let us investigate together! 🔬"
+],
+[
+"low.history.0",
+"low",
+"history",
+"Habibi, what went wrong in the past? Let us go back in time together! ⏳"
+],
+[
+"low.history.1",
+"low",
+"history",
+"History is a lot to remember! We will take it slowly! 🐢"
+],
+[
+"low.geography.0",
+"low",
+"geography",
+"Habibi, what went wrong? Let us look at the map together! 🗺️"
+],
+[
+"low.geography.1",
+"low",
+"geography",
+"Even explorers get lost sometimes! Let us try again! 🌏"
+],
+[
+"low.computing.0",
+"low",
+"computing",
+"Habibi, what went wrong? Let us debug it together! 🛠️"
+],
+[
+"low.computing.1",
+"low",
+"computing",
+"Error, but every error is a clue! Let us try again! 🕵️"
+],
+[
+"low.spanish.0",
+"low",
+"spanish",
+"Habibi, what went wrong? No pasa nada! Let us try again! 💛"
+],
+[
+"low.spanish.1",
+"low",
+"spanish",
+"Spanish is a journey! Vamos, let us go again! 🚀"
+],
+[
+"low.mandarin.0",
+"low",
+"mandarin",
+"Habibi, what went wrong? Mandarin is hard, so let us go slowly! 🐢"
+],
+[
+"low.mandarin.1",
+"low",
+"mandarin",
+"Every character takes practice! Let us try again together! ✍️"
+],
+[
+"low.re.0",
+"low",
+"re",
+"Habibi, what went wrong? These are big ideas, so let us talk them through! 🕊️"
+],
+[
+"low.re.1",
+"low",
+"re",
+"Big questions take time! Let us try again together! 🌱"
+],
+[
+"low.pshe.0",
+"low",
+"pshe",
+"Habibi, what went wrong? Let us think about it together! 🤝"
+],
+[
+"low.pshe.1",
+"low",
+"pshe",
+"These are big topics! Let us go through them slowly! 🌱"
+],
+[
+"low.dt.0",
+"low",
+"dt",
+"Habibi, what went wrong with the design? Back to the drawing board, together! 📐"
+],
+[
+"low.dt.1",
+"low",
+"dt",
+"Every great design starts with a few mistakes! Try again! 🔩"
+],
+[
+"low.art.0",
+"low",
+"art",
+"Habibi, what went wrong? Even great artists start with rough sketches, so let us try again! ✏️"
+],
+[
+"low.art.1",
+"low",
+"art",
+"Let us add some new colours and try again! 🌈"
+],
+[
+"low.music.0",
+"low",
+"music",
+"Habibi, what went wrong? Let us listen again together! 🎧"
+],
+[
+"low.music.1",
+"low",
+"music",
+"Every musician plays a wrong note sometimes! Go again! 🎸"
+],
+[
+"best.*.0",
+"best",
+"*",
+"A new personal best! You broke your own record! 🥇"
+],
+[
+"best.*.1",
+"best",
+"*",
+"New record! Slay! 👑"
+],
+[
+"best.*.2",
+"best",
+"*",
+"Personal best! Your aura just levelled up! ✨"
+],
+[
+"best.*.3",
+"best",
+"*",
+"You beat yourself! That is the best kind of win! 🏆"
+],
+[
+"best.*.4",
+"best",
+"*",
+"Record smashed! No cap, that is incredible! 💥"
+],
+[
+"best.*.5",
+"best",
+"*",
+"A brand new personal best, beta! Look at you go! 🚀"
+],
+[
+"sprint.*.0",
+"sprint",
+"*",
+"Sixty seconds of pure speed! Lightning brain! ⚡"
+],
+[
+"sprint.*.1",
+"sprint",
+"*",
+"Fast fingers, big brain! ⚡"
+],
+[
+"sprint.*.2",
+"sprint",
+"*",
+"You raced the clock and lived to tell the tale! ⏱️"
+],
+[
+"sprint.*.3",
+"sprint",
+"*",
+"That was quick! Even the clock is out of breath! 😅"
+],
+[
+"sprint.*.4",
+"sprint",
+"*",
+"Speedy Gonzales, is that you? 🐭"
+],
+[
+"sprint.*.5",
+"sprint",
+"*",
+"Tick tock, you rock! ⏱️"
+],
+[
+"sprint.*.6",
+"sprint",
+"*",
+"You sprinted through that! Go again and beat your score! 🏃‍♀️"
+],
+[
+"sprint.*.7",
+"sprint",
+"*",
+"Sixty seconds, no problem! You were locked in! 🔒"
+],
+[
+"warm.*.0",
+"warm",
+"*",
+"Warm-up done! Now you are ready for the real thing! 🔥"
+],
+[
+"warm.*.1",
+"warm",
+"*",
+"Nicely warmed up! Time to lock in! 🔒"
+],
+[
+"warm.*.2",
+"warm",
+"*",
+"That is the brain stretched. Let us go for the test! 💪"
+],
+[
+"warm.*.3",
+"warm",
+"*",
+"Warm-up complete! You have got this, beta! 🌟"
+],
+[
+"warm.*.4",
+"warm",
+"*",
+"Great warm-up! The test will not know what hit it! 😎"
+],
+[
+"warm.*.5",
+"warm",
+"*",
+"Brain switched on! Off we go! 🧠"
+],
+[
+"warm.*.6",
+"warm",
+"*",
+"Stretched and ready! Bring on the test! 🏃‍♀️"
+],
+[
+"warm.*.7",
+"warm",
+"*",
+"Warm-up done! Take a breath. You are ready! 🌬️"
+],
+[
+"flash.*.0",
+"flash",
+"*",
+"Flashcards flipped! Your memory is levelling up! 🃏"
+],
+[
+"flash.*.1",
+"flash",
+"*",
+"Card after card, you kept going! Love that! 💛"
+],
+[
+"flash.*.2",
+"flash",
+"*",
+"Flash! Your brain just got a little bit faster! ⚡"
+],
+[
+"flash.*.3",
+"flash",
+"*",
+"Cards done! Every one you learn is a memory win! 🧠"
+],
+[
+"flash.*.4",
+"flash",
+"*",
+"You flipped through them like a pro! 🃏"
+],
+[
+"flash.*.5",
+"flash",
+"*",
+"Those cards never stood a chance! 😄"
+],
+[
+"flash.*.6",
+"flash",
+"*",
+"Study session complete! Big brain in the making! 🧠"
+],
+[
+"flash.*.7",
+"flash",
+"*",
+"Nice work with the flashcards, beta! 🌸"
+]
+].map(r=>({id:r[0],b:r[1],k:r[2],t:r[3]}));
+
+/* =====================================================================
+   SILLY CONGRATULATION LINES: choosing, saying, and Jody's review screen.
+   Mode (saved with her progress so it follows her between devices): spoken (default) | text (shown, not spoken) | off (the original short lines only).
+   Lines that Jody switches off are remembered by id and never chosen. The voice is the one chosen in the Parent Desk.
+   ===================================================================== */
+const CHEER_BANDS = [['perfect','🏆 Perfect (100%)'],['high','🌟 90 to 99%'],['good','👍 70 to 89%'],['mid','🧩 50 to 69%'],['low','🤗 Under 50% (kind, and always ends on “let us try again”)'],['best','🥇 A new personal best'],['sprint','⏱️ The 60-second quick-fire'],['warm','🔥 After a warm-up'],['flash','🃏 After flashcards']];
+const CHEER_RECENT_KEY = 'annaliesce_cheer_recent';
+function cheerSt(){ const c=S.cheer=(S.cheer&&typeof S.cheer==='object')?S.cheer:{}; if(!Array.isArray(c.off)) c.off=[]; if(c.mode!=='text'&&c.mode!=='off') c.mode='spoken'; if(typeof c.t!=='number') c.t=0; return c; }
+const cheerMode = () => cheerSt().mode;
+const cheerOn = l => !cheerSt().off.includes(l.id);
+function cheerPlain(t){ try{ return String(t).replace(/[\p{Extended_Pictographic}\p{Regional_Indicator}\u200d\ufe0f]/gu,'').replace(/\s+/g,' ').trim(); }catch(e){ return String(t).replace(/[\u{1F000}-\u{1FAFF}\u{2190}-\u{21FF}\u{2300}-\u{23FF}\u{2600}-\u{27BF}\u{2B00}-\u{2BFF}\u{FE0F}\u{200D}]/gu,'').replace(/\s+/g,' ').trim(); } }
+function cheerBandFor(kind, opts, c, n, newBest){
+  if(kind==='sprint') return newBest?'best':'sprint';
+  if(kind==='flash') return 'flash';
+  if(opts&&opts.warm) return 'warm';
+  const p=n?Math.round(100*c/n):0; return p===100?'perfect':p>=90?'high':p>=70?'good':p>=50?'mid':'low';
+}
+const cheerRecent = () => { try{ return JSON.parse(localStorage.getItem(CHEER_RECENT_KEY)||'[]')||[]; }catch(e){ return []; } };
+const cheerRemember = id => { try{ const r=cheerRecent().filter(x=>x!==id); r.push(id); localStorage.setItem(CHEER_RECENT_KEY,JSON.stringify(r.slice(-12))); }catch(e){} };
+function cheerPick(ctx){
+  if(cheerMode()==='off') return null;
+  const pool=CHEER_LINES.filter(l=>l.b===ctx.b&&cheerOn(l)), subj=pool.filter(l=>l.k===ctx.k), gen=pool.filter(l=>l.k==='*');
+  let cands=(subj.length&&(!gen.length||Math.random()<0.55))?subj:gen; if(!cands.length) cands=subj.length?subj:gen; if(!cands.length) return null;
+  const rec=cheerRecent(), fresh=cands.filter(l=>!rec.includes(l.id)), pick=(fresh.length?fresh:cands)[Math.floor(Math.random()*(fresh.length?fresh.length:cands.length))];
+  cheerRemember(pick.id); return pick;
+}
+const cheerFor = (rd, c, n, newBest) => cheerPick({b:cheerBandFor(rd.kind, rd.opts, c, n, newBest), k:rd.subj});
+const cheerSpeaks = () => cheerMode()==='spoken' && !!S.sound && ('speechSynthesis' in window);
+function cheerSay(line){ if(!line||!cheerSpeaks()) return; speakComputer(cheerPlain(line.t)); }
+/* ---------- Jody's review screen (Parent Desk only) ---------- */
+let CHV = {b:'perfect'};
+const cheerKeep = f => { const y=window.scrollY; f(); render(); window.scrollTo(0,y); };
+function cheerCard(){ const st=cheerSt(), total=CHEER_LINES.length, on=CHEER_LINES.filter(cheerOn).length, m=st.mode==='spoken'?'Spoken and shown':st.mode==='text'?'Shown on screen only':'Off (the original short lines only)';
+  return `<section class="card"><h3 style="margin-top:0">🎤 Silly congratulation lines</h3><p class="muted" style="margin:0 0 6px">At the end of every round she gets a silly, kind line (and hears it, in the voice chosen above). There are ${total} lines, by score and by subject. Look through them, hear any one, and switch off the ones you do not like.</p><p style="margin:0 0 8px"><b>${on} of ${total} lines on.</b> Mode: ${m}.</p><button class="btn" data-act="go" data-v="cheers">Review and edit the lines</button></section>`; }
+function vCheers(m){
+  if(!parentUnlocked){ go('home'); return; }
+  const st=cheerSt(), b=CHV.b, lines=CHEER_LINES.filter(l=>l.b===b), on=lines.filter(cheerOn).length, groups=[]; ['*'].concat(ALLSUBJ.map(s=>s.k)).forEach(k=>{ const g=lines.filter(l=>l.k===k); if(g.length) groups.push([k,g]); });
+  const mode=(v,label)=>`<button class="btn small ${st.mode===v?'':'ghost'}" data-act="cheermode" data-m="${v}" aria-pressed="${st.mode===v}">${st.mode===v?'✅ ':''}${label}</button>`;
+  m.innerHTML=`<section class="module" style="--c:#C2549A"><button class="btn ghost small" data-act="go" data-v="parent">← Parent Desk</button><h2 style="margin-top:10px">🎤 Silly congratulation lines</h2>
+   <p class="muted">Tap ▶ to hear a line in the voice set in the Parent Desk. Switch a line <b>Off</b> and it is never used. Changes are saved with her progress.</p>
+   <div class="row" style="margin:8px 0">${mode('spoken','🔊 Spoken and shown')}${mode('text','📝 Shown only')}${mode('off','🚫 Off')}</div>
+   <div class="row" style="margin:8px 0">${CHEER_BANDS.map(([v,l])=>`<button class="btn small ${b===v?'':'ghost'}" data-act="cheerband" data-b="${v}">${l.split(' (')[0].split(' “')[0]}</button>`).join('')}</div>
+   <h3>${esc(CHEER_BANDS.find(x=>x[0]===b)[1])}</h3><p class="muted" style="margin:0 0 6px">${on} of ${lines.length} lines on in this group.</p>
+   <div class="row" style="margin-bottom:8px"><button class="btn small ghost" data-act="cheergroup" data-on="1">Turn all of these on</button><button class="btn small ghost" data-act="cheergroup" data-on="0">Turn all of these off</button></div>
+   ${groups.map(([k,g])=>`<h4 style="margin:12px 0 4px">${k==='*'?'Any subject':esc(subj(k).i+' '+subj(k).n)}</h4>${g.map(l=>`<div class="cheer-row${cheerOn(l)?'':' off'}"><button class="btn small ghost" data-act="cheerplay" data-id="${l.id}" aria-label="Hear this line">▶</button><span class="cheer-t">${esc(l.t)}</span><button class="btn small ${cheerOn(l)?'':'ghost'}" data-act="cheertoggle" data-id="${l.id}" aria-pressed="${cheerOn(l)}">${cheerOn(l)?'✅ On':'⛔ Off'}</button></div>`).join('')}`).join('')}</section>`;
+}
+const CHEERACTIONS = {
+  cheermode:d=>{ cheerKeep(()=>{ const c=cheerSt(); c.mode=d.m; c.t=Date.now(); save(); }); },
+  cheerband:d=>{ CHV.b=d.b; render(); window.scrollTo(0,0); },
+  cheertoggle:d=>{ cheerKeep(()=>{ const c=cheerSt(), i=c.off.indexOf(d.id); if(i>=0) c.off.splice(i,1); else c.off.push(d.id); c.t=Date.now(); save(); }); },
+  cheergroup:d=>{ cheerKeep(()=>{ const c=cheerSt(), ids=CHEER_LINES.filter(l=>l.b===CHV.b).map(l=>l.id); c.off=c.off.filter(x=>!ids.includes(x)); if(d.on!=='1') c.off=c.off.concat(ids); c.t=Date.now(); save(); }); },
+  cheerplay:d=>{ const l=CHEER_LINES.find(x=>x.id===d.id); if(!l) return; if(!S.sound){ toast('Turn the sound on to hear it.'); return; } if(!('speechSynthesis' in window)){ toast('Audio is not available on this device.'); return; } speakComputer(cheerPlain(l.t)); }
+};
 
 /* =====================================================================
    WORKED EXPLANATIONS for hand-written questions that stopped short or gave a rule without her numbers.
@@ -8952,11 +10710,11 @@ const OLABEL = {history:'⏳ Timeline puzzles', computing:'🧠 Algorithm puzzle
 const JLABEL = {pshe:'📓 Reflection journal', art:'🖌️ Technique journal', english:'✏️ Creative writing', re:'🤔 Dilemma cards', literature:'✏️ Write about what you read', spanish:'✍️ Free write in Spanish', mandarin:'✍️ Free write in Mandarin'};
 const JTITLE = {pshe:'Reflection journal', art:'Technique journal', english:'Creative writing sandbox', re:'Moral dilemma cards', literature:'Write about what you read', spanish:'Free write in Spanish', mandarin:'Free write in Mandarin'};
 
-function go(name, params){ if(V && V.name==='speak' && name!=='speak') spkLeave(); if(V && V.tk && V.tk.timer) clearInterval(V.tk.timer); if(V.name==='parent' && name!=='parent') parentUnlocked=false; V=Object.assign({name}, params||{}); render(); window.scrollTo(0,0); }
+function go(name, params){ if(V && V.name==='speak' && name!=='speak') spkLeave(); if(V && V.name==='piano' && name!=='piano') pnLeave(); if(name!=='rsn') RSNV=null; if(V && V.tk && V.tk.timer) clearInterval(V.tk.timer); if((V.name==='parent' && name!=='parent' && name!=='cheers') || (V.name==='cheers' && name!=='cheers' && name!=='parent')) parentUnlocked=false; V=Object.assign({name}, params||{}); render(); window.scrollTo(0,0); }
 function render(){
   renderHeader();
   const m=$('#view'); m.innerHTML='';
-  const views={home:vHome,subject:vSubject,round:vRound,results:vResults,dojo:vDojo,oasis:vOasis,checkin:vCheckin,parent:vParent,thesaurus:vThesaurus,journal:vJournal,vault:vVault,notes:vNotes,verbs:vVerbs,chars:vChars,order:vOrder,match:vMatch,worksheet:vWorksheet,stroke:vStroke,report:vReport,words:vWords,upgrade:vUpgrade,talk:vTalk,periodic:vPeriodic,methods:vMethods,write:vWrite,players:vPlayers,caps:vCaps,capslearn:vCapLearn,atlas:vAtlas,lessons:vLessons,lesson:vLesson,storylab:vStoryLab,story:vStory,written:vWritten,wq:vWQ,coverage:vCoverage,fhguide:vFH,xwords:vXW,speak:vSpeak,lab:vLab,puzzles:vPuzzles};
+  const views={home:vHome,subject:vSubject,round:vRound,results:vResults,dojo:vDojo,oasis:vOasis,checkin:vCheckin,parent:vParent,thesaurus:vThesaurus,journal:vJournal,vault:vVault,notes:vNotes,verbs:vVerbs,chars:vChars,order:vOrder,match:vMatch,worksheet:vWorksheet,stroke:vStroke,report:vReport,words:vWords,upgrade:vUpgrade,talk:vTalk,periodic:vPeriodic,methods:vMethods,write:vWrite,players:vPlayers,caps:vCaps,capslearn:vCapLearn,atlas:vAtlas,lessons:vLessons,lesson:vLesson,storylab:vStoryLab,story:vStory,written:vWritten,wq:vWQ,coverage:vCoverage,fhguide:vFH,xwords:vXW,speak:vSpeak,rsn:vRsn,piano:vPiano,terms:vTerms,cheers:vCheers,lab:vLab,puzzles:vPuzzles};
   (views[V.name]||vHome)(m);
   updatePill();
   if(V.name==='stroke') initWriter();
@@ -9046,8 +10804,10 @@ function vSubject(m){
   if(k==='literature') study.push(`<button class="btn gold" data-act="go" data-v="write">📝 Writing checker</button>`);
   if(k==='literature') study.push(`<button class="btn gold" data-act="go" data-v="fhguide">📗 Class text: Future Hopes guide</button>`);
   if(k==='literature') study.push(`<button class="btn gold" data-act="worksheet" data-k="literature" data-kind="study">📚 Class text: Food of the Future study log</button>`);
+  if(k==='english'||k==='literature') study.push(`<button class="btn gold" data-act="go" data-v="rsn" data-k="${k}">🧠 Reasoning workshop</button>`);
   if(k==='english') study.push(`<button class="btn gold" data-act="dictation">🔊 Spelling dictation</button><button class="btn gold" data-act="go" data-v="thesaurus">📖 Thesaurus vault</button>`);
   if(k==='spanish') study.push(`<button class="btn gold" data-act="go" data-v="verbs">🗂️ Verb tables</button>`);
+  if(k==='music') study.push(`<button class="btn gold" data-act="go" data-v="piano">🎹 Piano: play and read music</button><button class="btn gold" data-act="go" data-v="terms">🎼 Music words lab</button>`);
   if(k==='mandarin') study.push(`<button class="btn gold" data-act="go" data-v="chars">🖌️ Character lab</button>`);
   if(METHODS[k]) study.push(`<button class="btn gold" data-act="methods" data-k="${k}">🧠 Tips &amp; tricks</button>`);
   if(k==='english') study.push(`<button class="btn gold" data-act="go" data-v="write">📝 Writing checker</button>`);
@@ -9088,13 +10848,15 @@ function vSubject(m){
 function ctxHTML(q){
   if(q.flag) return `<div class="center" style="margin:6px 0">${flagImg(q.flag,150)}</div>`;
   if(q.grid) return gridHTML(q.grid);
+  if(q.staff) return staffHTML(q.staff);
+  if(q.rhythm) return rhythmHTML(q.rhythm);
   if(q.map) return mapHTML(q.map);
   if(!q.ctx) return '';
   if(q.ctx.indexOf('~sw:')===0){ const p=q.ctx.slice(4).split(','); return `<div class="swatches" role="img" aria-label="Two paint colours mixed"><i style="background:${esc(p[0])}"></i>+<i style="background:${esc(p[1])}"></i></div>`; }
   if(q.code) return `<pre class="code">${esc(q.ctx)}</pre>`;
   return `<div class="passage${q.poem?' poem':''}">${q.ctxTitle?`<b class="pt">${esc(q.ctxTitle)}</b>`:''}${esc(q.ctx)}</div>`;
 }
-function hintOf(q){
+function hintOfBase(q){
   if(q.hint) return q.hint;
   if(q.gloss) return 'It starts with "'+q.correct[0]+'" and has '+q.correct.length+' letters.';
   if(q.vocab) return 'It starts with "'+q.correct[0]+'".';
@@ -9125,14 +10887,14 @@ function vRound(m){
        <p class="muted center">Got it moves a card up: 🥉 Bronze (+2 XP), 🥈 Silver (+4 XP), 🥇 Gold (+6 XP). Not yet moves it down one step.</p>`
       :`<div class="center"><button class="btn big" data-act="flashshow">Show the answer</button></div>`}`;
   } else {
-    const hint=!q.done && !noFeedback ? hintOf(q) : null;
+    const hint=!q.done && !noFeedback ? hintText(q) : (q.hinted&&q.done?hintText(q):null);
     body=`<div class="qtag">${esc(s.n)}: ${esc(q.topic)}</div>${ctxHTML(q)}<div class="question">${esc(q.q)}</div>
      ${q.play?`<div class="center"><button class="btn gold" data-act="playq">▶️ Play the sound</button>${q.slow?' <button class="btn ghost" data-act="playslow">🐢 Slowly</button>':''}</div>`:''}
      ${s.lang?`<div class="center"><button class="btn gold" data-act="listen">🔊 Listen</button></div>`:''}
-     ${q.hinted&&hint?`<div class="hintbox">💡 ${esc(hint)}</div>`:''}
-     ${hint&&!q.hinted?`<div class="center"><button class="btn ghost small" data-act="hint">💡 Hint (half XP for this one)</button></div>`:''}
-     <div class="options">`+q.opts.map((o,i)=>{ let cls='opt'; if(q.done){ if(noFeedback){ if(i===q.chosen) cls+=' chosen'; } else if(o===q.correct) cls+=' right'; else if(i===q.chosen) cls+=' wrong'; }
-       return `<button class="${cls}" data-act="pick" data-i="${i}" ${q.flagopts?`aria-label="Flag ${'ABCD'[i]}"`:''} ${q.done?'disabled':''}><span class="ltr">${'ABCD'[i]}</span>${q.flagopts?flagImg(o,84):`<span>${esc(o)}</span>`}</button>`; }).join('')+`</div>`;
+     ${q.hinted&&hint&&!q.done?`<div class="hintbox">💡 ${esc(hint)}${q.hint2?'<br><small>Two wrong answers are crossed out.</small>':''}</div>`:''}
+     ${hint&&!q.hinted?`<div class="center"><button class="btn ghost small" data-act="hint">💡 Hint (−1 XP)</button></div>`:''}${q.hinted&&!q.hint2&&canElim(q)&&!noFeedback?`<div class="center"><button class="btn ghost small" data-act="hint2">✂️ Cross out two wrong answers (−1 XP)</button></div>`:''}
+     <div class="options">`+q.opts.map((o,i)=>{ let cls='opt'+(q.elim&&q.elim.includes(i)&&!q.done?' crossed':''); if(q.done){ if(noFeedback){ if(i===q.chosen) cls+=' chosen'; } else if(o===q.correct) cls+=' right'; else if(i===q.chosen) cls+=' wrong'; }
+       return `<button class="${cls}" data-act="pick" data-i="${i}" ${q.flagopts?`aria-label="Flag ${'ABCD'[i]}"`:''} ${(q.done||(q.elim&&q.elim.includes(i)))?'disabled':''}><span class="ltr">${'ABCD'[i]}</span>${q.flagopts?flagImg(o,84):`<span>${esc(o)}</span>`}</button>`; }).join('')+`</div>`;
   }
   let fb='';
   if(q.done && !noFeedback && !flash){
@@ -9175,9 +10937,9 @@ function vResults(m){
   (sm.rewards||[]).forEach(r=>rows.push(`<div><span>${r.i} Streak reward unlocked</span><b>${esc(r.n)}</b></div>`));
   t.forEach(x=>rows.push(`<div><span>🏆 New trophy</span><b>${esc(x.n)}</b></div>`));
   m.innerHTML=`<section class="module" style="--c:var(--gold)"><div class="qtag">${heads[R.kind]||'Round finished'}</div>
-   <div class="bigscore">${R.kind==='sprint'?c:c+' / '+n}</div><p class="center" style="margin-left:auto;margin-right:auto">${msg}</p>
+   <div class="bigscore">${R.kind==='sprint'?c:c+' / '+n}</div><p class="center" style="margin-left:auto;margin-right:auto">${R.cheer?`<b class="cheerline">${esc(R.cheer.t)}</b>${(p>=70&&!flash&&R.kind!=='sprint')?'':'<br>'+msg}`:msg}</p>
    <div class="bd">${rows.join('')}</div>
-   <div class="row" style="justify-content:center;margin-top:12px"><button class="btn big" data-act="again">${R.kind==='sprint'?'Sprint again':'Another round'}</button><button class="btn ghost" data-act="back">Back</button>${dojoCount()?`<button class="btn ghost" data-act="go" data-v="dojo">🥋 Dojo (${dojoCount()})</button>`:''}</div></section>
+   <div class="row" style="justify-content:center;margin-top:12px">${(R.opts&&R.opts.warm&&PF_NEXT)?`<button class="btn big" data-act="pfthen">▶ Now start the ${esc(R.opts.warmLabel||'test')}</button>`:''}<button class="btn ${(R.opts&&R.opts.warm&&PF_NEXT)?'ghost':'big'}" data-act="again">${R.kind==='sprint'?'Sprint again':'Another round'}</button><button class="btn ghost" data-act="back">Back</button>${dojoCount()?`<button class="btn ghost" data-act="go" data-v="dojo">🥋 Dojo (${dojoCount()})</button>`:''}</div></section>
    ${missed.length?`<section class="card"><h3>${flash?'Cards to look at again':R.kind==='sprint'?'You missed '+missed.length+'. Here is how to do '+(missed.length===1?'it':'each one'):'Have another look at these'}</h3>${list}
      ${topics.length?`<p class="muted" style="margin-top:10px">Topics to revise: ${topics.map(esc).join(', ')}. Try the revision notes, or <a href="${OAK}" target="_blank" rel="noopener">Oak National Academy</a> or <a href="${BITE}" target="_blank" rel="noopener">BBC Bitesize</a>.</p>`:''}</section>`:''}`;
 }
@@ -9504,6 +11266,8 @@ function vReport(m){
    <div class="card" style="margin:0"><h3>Needs more practice</h3>${weak.length?`<ul style="margin-left:18px">${weak.map(x=>`<li>${esc(x.t)} (${esc(sn(x.k))}): ${Math.round(100*x.c/x.a)}%</li>`).join('')}</ul>`:'<p class="muted">Nothing flagged. Topics appear here at under 70% after 4 or more answers.</p>'}</div></div>
    <h3 style="margin-top:14px">Checkpoint tests and mock exams</h3>${r.tests.length?`<div class="scroll"><table><tr><th>Date</th><th>What</th><th>Score</th><th>%</th></tr>${r.tests.slice().reverse().map(t=>`<tr><td>${fmtDate(t.d)}</td><td>${t.kind==='mock'?'Term mock (all subjects)':esc(sn(t.s))}</td><td>${t.c} / ${t.n}</td><td>${pct(t.c,t.n)}%</td></tr>`).join('')}</table></div>`:'<p class="muted">None taken yet.</p>'}
    <h3 style="margin-top:14px">Practice over the last 8 weeks</h3><div class="scroll"><table><tr><th>Week starting</th><th>Days practised</th><th>Questions</th><th>Right</th></tr>${r.weeks.slice().reverse().map(w=>`<tr><td>${fmtDate(w.w)}</td><td>${w.days}</td><td>${w.n}</td><td>${w.n?pct(w.c,w.n)+'%':'-'}</td></tr>`).join('')}</table></div>
+   ${r.music&&(r.music.songs||r.music.n)?`<h3 style="margin-top:14px">Music</h3><p>${r.music.songs} tune${r.music.songs===1?'':'s'} played on the piano, ${r.music.right} of ${r.music.n} reading and listening questions right.</p>`:''}
+   ${r.rsn&&r.rsn.tried?`<h3 style="margin-top:14px">Reasoning workshop</h3><p>${r.rsn.tried} question${r.rsn.tried===1?'':'s'} tried, ${r.rsn.three} at 3 stars or more, ${r.rsn.four} at 4 stars or more. (Her writing is not shown here.)</p>`:''}
    ${r.lg&&Object.keys(r.lg).length?`<h3 style="margin-top:14px">Languages</h3><p>${Object.keys(r.lg).map(k=>`${k==='mandarin'?'Mandarin':'Spanish'}: listening ${r.lg[k].lr||0} of ${r.lg[k].ln||0} right, ${r.lg[k].sp||0} word${(r.lg[k].sp||0)===1?'':'s'} said aloud`).join('. ')}.</p>`:''}
    ${r.extreme?`<h3 style="margin-top:14px">Extreme words</h3><p>${r.extreme.met} extreme words met, ${r.extreme.right} worked out, ${r.extreme.tests} weekly test${r.extreme.tests===1?'':'s'} finished.</p>`:''}
    ${r.written?`<h3 style="margin-top:14px">Written answers</h3><p>${r.written.n} written answers, ${r.written.good} scored 60% or more${r.written.avg!==null?', average '+r.written.avg+'%':''}. Topic coverage across the year: ${r.coverage}%.</p>`:''}
@@ -9528,6 +11292,8 @@ function summaryText(){
   if(last) T.push(`Latest check-in (week starting ${fmtDate(last.week)}): felt ${last.feel}/5${last.genius?', genius in '+subj(last.genius).n:''}${last.help?', wants help with '+subj(last.help).n:''}${last.note?'. Note: '+last.note:''}`);
   T.push(`Word of the day: ${Object.keys(S.wl).length} words learned. Latest weekly word test: ${(()=>{ const k=Object.keys(S.wt).sort().pop(); return k?`meanings ${S.wt[k].m[0]}/${S.wt[k].m[1]}, spelling ${S.wt[k].s[0]}/${S.wt[k].s[1]}`:'none yet'; })()}.`);
   { const lg=S.lg||{}, parts=Object.keys(lg).map(k=>`${k==='mandarin'?'Mandarin':'Spanish'}: listening ${lg[k].lr||0} of ${lg[k].ln||0} right, ${lg[k].sp||0} word${(lg[k].sp||0)===1?'':'s'} said aloud`); if(parts.length) T.push('Languages: '+parts.join('; ')+'.'); }
+  if(Object.keys(S.rs||{}).length) T.push(`Reasoning workshop: ${Object.keys(S.rs).length} question${Object.keys(S.rs).length===1?'':'s'} tried, ${rsnCount(3)} at 3 stars or more.`);
+  if(muSongs()||(S.mu||{}).n) T.push(`Music: ${muSongs()} tune${muSongs()===1?'':'s'} played on the piano, ${muRight()} of ${(S.mu||{}).n||0} reading and listening questions right.`);
   T.push(`Extreme words: ${Object.keys(S.xw||{}).length} met, ${xwRight()} worked out, ${Object.keys(S.xt||{}).length} weekly test${Object.keys(S.xt||{}).length===1?'':'s'} finished.`);
   T.push(`Written answers: ${Object.keys(S.wr||{}).length} answered, ${wrGood()} at 60% or more. Topic coverage: ${covPercent()}%.`);
   T.push(`Story Lab: ${slDoneCount()} ${slDoneCount()===1?'story':'stories'} finished, ${slWordsDone()} words. (The stories themselves stay private on her device.)`);
@@ -9614,6 +11380,8 @@ function vParent(m){
    ${wordsCard()}
    ${shareCard()}
    ${voiceCard()}
+   ${cheerCard()}
+   ${pfCard()}
    <section class="card no-print"><h3>Backups and progress codes</h3>
     <p>A backup file or a progress code is a copy of everything on this device. Pasting a progress code from another device merges it in safely, so nothing is lost.</p>
     <div class="row" style="margin-top:10px"><button class="btn small" data-act="pexport">Export backup file</button><button class="btn small ghost" data-act="pimport">Import backup file</button><button class="btn small" data-act="pcode">Copy progress code</button><button class="btn small ghost" data-act="pcodein">Paste a progress code</button><button class="btn small danger" data-act="preset">Reset all progress</button></div></section>`;
@@ -9719,12 +11487,13 @@ function finishRound(){
     wtSum={m:[mc.filter(q=>q.ok).length, mc.length], s:[sp.filter(q=>q.ok).length, sp.length]};
     S.wt[wk] = (!prev || score(wtSum)>=score(prev)) ? Object.assign({}, wtSum, {t:Date.now()}) : Object.assign({}, prev, {t:Date.now()}); }
   const a=afterActivity();
-  R.summary={n, c, goalHit:a.goalHit, newT:a.newT, rewards:a.rewards, newBest, wt:wtSum, lz:lzSum, br:brSum}; go('results');
+  R.summary={n, c, goalHit:a.goalHit, newT:a.newT, rewards:a.rewards, newBest, wt:wtSum, lz:lzSum, br:brSum}; R.cheer=cheerFor(R,c,n,newBest); const ch=R.cheer; go('results');
   const plain = k==='flash' || k==='sprint', full = !plain && n>=5 && c===n, high = !plain && n>=5 && !full && c/n>=0.9, sname = (typeof subj==='function' && subj(R.subj)) ? subj(R.subj).n : '';
   const label = k==='test' ? (sname?sname+' test':'test') : k==='mock' ? 'mock exam' : k==='wtest' ? 'weekly word test' : k==='xtest' ? 'extreme word test' : k==='sheet' ? 'worksheet' : k==='written' ? 'written practice' : 'round';
-  if(full) setTimeout(()=>celebrate('100%! '+c+' out of '+n+' in your '+label+'.','full'), 450);
-  else if(high) setTimeout(()=>celebrate(Math.round(100*c/n)+'% in your '+label+'. So nearly perfect!','high'), 450);
-  else if(k==='sprint' && newBest) setTimeout(()=>celebrate('A new personal best in the sprint: '+c+'!','high'), 450);
+  if(full) setTimeout(()=>celebrate('100%! '+c+' out of '+n+' in your '+label+'.','full',null,ch), 450);
+  else if(high) setTimeout(()=>celebrate(Math.round(100*c/n)+'% in your '+label+'. So nearly perfect!','high',null,ch), 450);
+  else if(k==='sprint' && newBest) setTimeout(()=>celebrate('A new personal best in the sprint: '+c+'!','high',null,ch), 450);
+  else if(ch) setTimeout(()=>cheerSay(ch), 450);
   if(full && S.perfDay!==today()){ S.perfDay=today(); addChest(1); toast('🎁 A perfect score earns a Sparkle chest!',5000); }
   missionCheck();
 }
@@ -9820,17 +11589,15 @@ const ACTIONS = {
   howto:()=>modal('How XP, coins and streaks work', howtoHTML(), [{label:'Got it'}]),
   speaknote:speakNote,
   surprise:()=>startRound({kind:'practice', keys:SUBJECTS.map(s=>s.k), n:ROUND_QUICK, back:{name:'home'}}),
-  mock:()=>startRound({kind:'mock', keys:SUBJECTS.map(s=>s.k), n:MOCK_LEN, back:{name:'home'}}),
-  start:d=>startRound({kind:'practice', keys:[d.k], n:roundLen(), back:{name:'subject',k:d.k}}),
+  mock:()=>practiceGate({kind:'mock',k:'mixed',keys:SUBJECTS.map(s=>s.k),back:{name:'home'},label:'mock exam'}, ()=>startRound({kind:'mock', keys:SUBJECTS.map(s=>s.k), n:MOCK_LEN, back:{name:'home'}})),
+  start:d=>practiceGate({kind:'round',k:d.k,label:'questions'}, ()=>startRound({kind:'practice', keys:[d.k], n:roundLen(), back:{name:'subject',k:d.k}})),
   topic:d=>{ const n=NOTES[d.k] && NOTES[d.k][d.t]; if(!n){ ACTIONS.topicgo(d); return; }
     modal('Revise: '+d.t, notesHTML(n), [{label:'Close',cls:'ghost'},{label:'Start the questions',fn:()=>{ ACTIONS.topicgo(d); }}]); },
   topicgo:d=>startRound({kind:'practice', keys:[d.k], topic:d.t, n:roundLen(), back:{name:'subject',k:d.k}}),
   genall:d=>startRound({kind:'practice', keys:[d.k], gen:'all', n:roundLen(), back:{name:'subject',k:d.k}}),
   gen:d=>{ const ids=String(d.g).split(',').map(Number), g=GENS[ids[0]]; startRound({kind:'practice', keys:[g.k], gen:ids.length>1?ids:ids[0], n:roundLen(), back:{name:'subject',k:g.k}}); },
   flash:d=>startRound({kind:'flash', keys:[d.k], topic:d.t||undefined, n:roundLen(), back:{name:'subject',k:d.k}}),
-  test:d=>{ const go1=()=>startRound({kind:'test', keys:[d.k], n:TEST_LEN, back:{name:'subject',k:d.k}});
-    if(!NOTES[d.k]){ go1(); return; }
-    modal('Before the test', '<p>Would you like to look at the revision notes first?</p>', [{label:'Start the test',cls:'ghost',fn:go1},{label:'Read the notes first',fn:()=>{ go('notes',{k:d.k}); }}]); },
+  test:d=>practiceGate({kind:'test',k:d.k,keys:[d.k],back:{name:'subject',k:d.k},label:'test'}, ()=>startRound({kind:'test', keys:[d.k], n:TEST_LEN, back:{name:'subject',k:d.k}})),
   dojostart:()=>startRound({kind:'dojo', n:roundLen(), back:{name:'dojo'}}),
   dictation:startDictation,
   sprint:startSprint,
@@ -9847,12 +11614,11 @@ const ACTIONS = {
     if(q.hinted) R.hints++;
     recordAnswer(q,q.ok,R.kind);
     if(R.kind!=='test' && R.kind!=='mock' && R.kind!=='wtest' && R.kind!=='xtest'){
-      if(q.ok){ award(q.hinted?XP_CORRECT/2:XP_CORRECT,COINS_CORRECT); playSound('correct'); } else playSound('wrong');
+      if(q.ok){ award(XP_CORRECT,COINS_CORRECT); playSound('correct'); } else playSound('wrong');
       if(q.clearedNow){ award(15,5); checkTrophies(); }
     }
     render();
   },
-  hint:()=>{ const q=R.qs[R.i]; if(q.done||q.hinted) return; q.hinted=true; render(); },
   next:()=>{ if(R.qs[R.i].done) advance(); },
   listen:()=>{
     const q=R.qs[R.i], s=subj(q.k); let t='';
@@ -9983,7 +11749,7 @@ const ACTIONS = {
   /* word of the day, upgrades, talk, periodic table, celebration */
   partyclose:()=>closeParty(),
   words:()=>go('words'),
-  wtest:d=>startWordTest(d.w),
+  wtest:d=>practiceGate({kind:'wtest',k:'wtest',look:()=>go('words'),lookLabel:'Look at this week\'s words first',label:'word test'}, ()=>startWordTest(d.w)),
   wreview:()=>startRound({kind:'flash', keys:['english'], topic:'Word of the day', n:roundLen(), back:{name:'words'}}),
   wordsay:()=>{ const w=wordOf(today()); if('speechSynthesis' in window) speakComputer(w.word+'. '+w.meaning+'. '+w.example); else toast('Audio is not available on this device.'); },
   wordlearn:()=>{ const d=today(); if(S.wl[d]) return; S.wl[d]=1; award(5,1); save(); checkTrophies(); missionCheck(); const w=wordOf(d); render();
@@ -10157,9 +11923,9 @@ Object.assign(ACTIONS, WSACTIONS);
 Object.assign(ACTIONS, CAPACTIONS);
 Object.assign(ACTIONS, LESSONACTIONS);
 ACTIONS.thgroup=d=>{ V.tg=d.g; render(); };
-ACTIONS.branchtest=d=>startRound({kind:'test', keys:['science'], topics:SCI_TESTS[d.b], branch:d.b, n:TEST_LEN, back:{name:'subject',k:'science'}});
+ACTIONS.branchtest=d=>practiceGate({kind:'branch',k:'science',keys:['science'],topics:SCI_TESTS[d.b],back:{name:'subject',k:'science'},label:'branch test'}, ()=>startRound({kind:'test', keys:['science'], topics:SCI_TESTS[d.b], branch:d.b, n:TEST_LEN, back:{name:'subject',k:'science'}}));
 Object.assign(ACTIONS, SLACTIONS);
-Object.assign(ACTIONS, WQACTIONS, COVACTIONS, FHACTIONS, XWACTIONS, FIXACTIONS, FIX2ACTIONS, LANGACTIONS);
+Object.assign(ACTIONS, WQACTIONS, COVACTIONS, FHACTIONS, XWACTIONS, FIXACTIONS, FIX2ACTIONS, LANGACTIONS, RSNACTIONS, MUACTIONS, PFACTIONS, HINTACTIONS, CHEERACTIONS);
 
 </script>
 </body>
