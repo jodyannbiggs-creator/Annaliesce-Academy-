@@ -406,7 +406,7 @@ textarea.slin{width:100%;font:inherit;padding:10px;border:2px solid var(--line);
 <div id="toast" role="status" aria-live="polite" hidden></div>
 <input type="file" id="impfile" accept="application/json,.json" hidden>
 <script>
-const BUILD_INFO={n:54,at:'21 Sep 2026, 16:30'};
+const BUILD_INFO={n:55,at:'21 Sep 2026, 17:03'};
 /* =====================================================================
    THE ANNALIESCE ACADEMY
    ---------------------------------------------------------------------
@@ -4563,7 +4563,7 @@ function switchProfile(p){
 /* ---- stats ---- */
 function subjTotals(k){ let a=0,c=0; const t=S.stats[k]||{}; for(const p in t){ a+=t[p][0]; c+=t[p][1]; } return [a,c]; }
 function totals(){ let a=0,c=0; ALLSUBJ.forEach(s=>{ const x=subjTotals(s.k); a+=x[0]; c+=x[1]; }); return [a,c]; }
-const dojoIds = () => Object.keys(S.dojo).filter(id => !S.dojo[id].x && (QIDX[id] || S.dojo[id].q));
+const dojoIds = () => Object.keys(S.dojo).filter(id => !S.dojo[id].x && (QIDX[id] || (S.dojo[id].q && (!S.dojo[id].q.lgpref || lgpAlive(S.dojo[id].q.lgpref)))));
 const dojoQ = id => QIDX[id] || (S.dojo[id] && S.dojo[id].q);
 const dojoCount = () => dojoIds().length;
 const level = () => Math.floor(S.xp/400)+1;
@@ -4586,7 +4586,7 @@ function spend(n){ L().cs += n; bump(); save(); }
 function weekBySubject(off=0){ const [a,b]=weekRange(off), by={}; S.rounds.filter(r=>r.d>=a&&r.d<=b&&r.kind!=='flash').forEach(r=>{ for(const k in (r.by||{})){ const x=(by[k]=by[k]||[0,0]); x[0]+=r.by[k][0]; x[1]+=r.by[k][1]; } }); return by; }
 function weekTotals(off=0){ const [a,b]=weekRange(off); const rs=S.rounds.filter(r=>r.d>=a&&r.d<=b); const q=rs.filter(r=>r.kind!=='flash'); return {rounds:rs.length, n:q.reduce((x,r)=>x+r.n,0), c:q.reduce((x,r)=>x+r.c,0), days:daysThisWeek(off)}; }
 function weakTopics(){ const out=[]; for(const k in S.stats) for(const t in S.stats[k]){ const [a,c]=S.stats[k][t]; if(a>=4 && c/a<0.7) out.push({k,t,a,c,p:Math.round(100*c/a)}); } return out.sort((x,y)=>x.p-y.p).slice(0,6); }
-function slimQ(q){ return {k:q.k, topic:q.topic, q:q.q, correct:q.correct, wrong:q.wrong, exp:q.exp, hint:q.hint, map:q.map, grid:q.grid, staff:q.staff, rhythm:q.rhythm, mus:q.mus, flag:q.flag, flagopts:q.flagopts, correctLabel:q.correctLabel, gen:1, id:q.id}; }
+function slimQ(q){ return {k:q.k, topic:q.topic, q:q.dq||q.q, lgpref:q.lgpref, correct:q.correct, wrong:q.wrong, exp:q.exp, hint:q.hint, map:q.map, grid:q.grid, staff:q.staff, rhythm:q.rhythm, mus:q.mus, flag:q.flag, flagopts:q.flagopts, correctLabel:q.correctLabel, gen:1, id:q.id}; }
 function recordActivity(k, topic, attempts, correct){ const st=(L().st[k]=L().st[k]||{}); const t=(st[topic]=st[topic]||[0,0]); t[0]+=attempts; t[1]+=correct; bump(); }
 function recordAnswer(q, ok, kind){
   const l = L(), st = (l.st[q.k] = l.st[q.k] || {}), t = (st[q.topic] = st[q.topic] || [0,0]); t[0]++; if(ok) t[1]++;
@@ -8632,7 +8632,7 @@ const lgpLv = k => { const v=+((lgpS().lv||{})[k]); return v>=1&&v<=4 ? v : 1; }
 const lgpSpeakOn = k => lgpS().sp!==0 && ('speechSynthesis' in window) && hasVoice(LANG_CODE[k]);
 const lgpSet = fn => { const o=lgpS(); fn(o); o.t=Date.now(); save(); render(); };
 const lgpTotals = () => { const t={n:0,r:0}; Object.values(S.lg||{}).forEach(o=>['fb','tp','tr','tw'].forEach(g=>{ t.n+=(o&&o[g+'n'])||0; t.r+=(o&&o[g+'r'])||0; })); return t; };
-const lgpBase = (it, kind, lv) => ({k:it.k, topic:it.topic, lgp:kind, lvl:lv, nodojo:true, nocard:true, gen:1, id:'lgp_'+kind+'_'+it.id, done:false, ok:false});
+const lgpBase = (it, kind, lv) => ({k:it.k, topic:it.topic, lgp:kind, lvl:lv, nocard:true, gen:1, id:'lgp_'+kind+'_'+it.id, lgpref:{k:it.k, kd:kind, lv, sid:it.id}, done:false, ok:false});
 /* sound: 'now' = the button plays at once; 'after' = it would give the answer away, so it plays once she has answered */
 function lgpPlay(q, k, say, when){
   if(!lgpSpeakOn(k)) return; const lang=LANG_CODE[k];
@@ -8677,12 +8677,12 @@ function lgpTap(it, lv, all){
   const bank=shuffle(toks.concat(shuffle(pool).slice(0,nd))).map((x,i)=>Object.assign({id:i},x));
   const q=Object.assign(lgpBase(it,'tp',lv),{type:'build', bank, ans:toks.map(x=>x.t), built:[], py,
     q: hear ? 'Tap the words you hear, in the right order.' : 'Tap the words to say this in '+LANG_NAME[k]+':', prompt: hear ? '' : '“'+it.en+'”',
-    correct: k==='spanish' ? it.text : it.text+' ('+it.py+')', exp:lgpExp(it)});
+    correct: k==='spanish' ? it.text : it.text+' ('+it.py+')', exp:lgpExp(it), dq:'Tap the words: “'+it.en+'”'});
   if(hear) lgpPlay(q,k,it.say,'now'); return q;
 }
-function lgpWord(k, lv, used){
-  const list=LANGV[k].filter(x=>!used.has(x.w)), it=pickr(list.length?list:LANGV[k]); used.add(it.w);
-  const lang=LANG_CODE[k], q={k, topic:'Vocabulary', lgp:'tw', lvl:lv, nodojo:true, nocard:true, gen:1, id:'lgp_tw_'+hash(it.w), done:false, ok:false};
+function lgpWord(k, lv, used, force){
+  const list=LANGV[k].filter(x=>!used.has(x.w)), it=force||pickr(list.length?list:LANGV[k]); used.add(it.w);
+  const lang=LANG_CODE[k], q={k, topic:'Vocabulary', lgp:'tw', lvl:lv, nocard:true, gen:1, id:'lgp_tw_'+hash(it.w), lgpref:{k, kd:'tw', lv, w:it.w}, done:false, ok:false};
   if(lv<=2){
     const wr=[], seen=new Set([it.m]); shuffle(LANGV[k].slice()).forEach(x=>{ if(wr.length>=(lv===1?2:3)) return; const fw=_firstWord(x.m); if(seen.has(x.m)||fw===_firstWord(it.m)) return; seen.add(x.m); wr.push(x.m); });
     Object.assign(q,{q:it.w, lines:(k==='mandarin'?[{t:it.py,c:'py'}]:[]).concat([{t:'What does this word mean?'}]), correct:it.m, wrong:wr, exp:'“'+lwLabel(k,it)+'” means “'+it.m+'”.', hint:'Say it out loud, then think about what it means.'});
@@ -8692,11 +8692,19 @@ function lgpWord(k, lv, used){
     lgpPlay(q,k,it.say,'after');
   } else {
     const noArt=it.say.replace(/^(el|la|los|las|un|una)\s+/i,'');
-    Object.assign(q,{type:'typein', zh:k==='mandarin', prompt: k==='mandarin' ? 'Type the pinyin for this word (tone marks are optional):' : 'Type this in Spanish (accents are optional):', show:it.m,
+    Object.assign(q,{dq:'Type the '+(k==='mandarin'?'pinyin':'Spanish')+' for “'+it.m+'”', type:'typein', zh:k==='mandarin', prompt: k==='mandarin' ? 'Type the pinyin for this word (tone marks are optional):' : 'Type this in Spanish (accents are optional):', show:it.m,
       correct: k==='mandarin'?it.py:it.say, accept: k==='mandarin'?[it.py]:[it.say,noArt], exp:'“'+it.m+'” in '+LANG_NAME[k]+' is “'+lwLabel(k,it)+'”.', typed:''});
     lgpPlay(q,k,it.say,'now');
   }
   return q;
+}
+/* ---------- the Mistake Dojo: a wrong answer stores only WHICH sentence, game and level; the Dojo rebuilds the question fresh (new spare words, new order) ---------- */
+function lgpAlive(r){ if(!r||!r.k||!LGP[r.k]) return false; return r.kd==='tw' ? LANGV[r.k].some(x=>x.w===r.w) : LGP[r.k].some(x=>x.id===r.sid); }
+function lgpRebuild(slim){
+  const r=slim&&slim.lgpref; if(!lgpAlive(r)) return null; const lv=Math.min(4,Math.max(1,+r.lv||1)); let q;
+  if(r.kd==='tw') q=lgpWord(r.k,lv,new Set(),LANGV[r.k].find(x=>x.w===r.w));
+  else { const it=LGP[r.k].find(x=>x.id===r.sid); q = r.kd==='fb' ? lgpFill(it,lv) : r.kd==='tp' ? lgpTap(it,lv,LGP[r.k]) : lgpTrans(it,lv,LGP[r.k]); }
+  return (q.type==='build'||q.type==='typein') ? q : Object.assign(q,{opts:shuffle([q.correct].concat(q.wrong))});
 }
 function lgpStart(k, g){
   if(!LGP[k]) return;
@@ -8748,8 +8756,8 @@ const LGPACTIONS = {
   bwcheck:()=>{
     const q=R&&R.qs[R.i]; if(!q||q.type!=='build'||q.done) return; if(!q.built.length){ toast('Tap some words first.'); return; }
     const got=q.built.map(i=>q.bank[i].t); q.typed=got.join(' '); q.ok=got.length===q.ans.length && got.every((t,j)=>t===q.ans[j]);
-    q.done=true; q.msg=q.ok?rand(CHEERS):rand(OOPS); recordAnswer(q,q.ok,'type');
-    if(q.ok){ award(XP_CORRECT,COINS_CORRECT); playSound('correct'); } else playSound('wrong');
+    q.done=true; q.msg=q.ok?rand(CHEERS):rand(OOPS); recordAnswer(q,q.ok,R.kind==='dojo'?'dojo':'type');
+    if(q.ok){ award(XP_CORRECT,COINS_CORRECT); playSound('correct'); if(q.clearedNow){ award(15,5); checkTrophies(); } } else playSound('wrong');
     render();
   }
 };
@@ -12564,7 +12572,7 @@ function startRound(o){
   const picked=pickQuestions(o);
   if(!picked.length){ toast(o.kind==='dojo'?'Your Dojo is empty. Nice work!':'No questions available here yet.'); return; }
   R={kind:o.kind, opts:o, subj:o.kind==='dojo'?'mixed':(o.keys&&o.keys.length===1?o.keys[0]:'mixed'), mode:S.mode, back:o.back||{name:'home'},
-     qs:picked.map(q=>Object.assign({},q,{opts:shuffle([q.correct].concat(q.wrong)), done:false, ok:false})), i:0, shown:false, xp:0, coins:0, hints:0, tiers:[0,0,0,0,0]};
+     qs:picked.map(q=>(q.lgpref&&lgpRebuild(q))||Object.assign({},q,{opts:shuffle([q.correct].concat(q.wrong)), done:false, ok:false})), i:0, shown:false, xp:0, coins:0, hints:0, tiers:[0,0,0,0,0]};
   go('round');
 }
 function startDictation(){
@@ -12853,8 +12861,8 @@ const ACTIONS = {
     const q=R.qs[R.i]; if(!q || q.done) return;
     const v=(($('#typein')||{}).value||'').trim(); if(!v){ toast('Type your answer first.'); return; }
     q.done=true; q.typed=v; q.ok=typedOK(q,v); q.msg=q.ok?rand(CHEERS):rand(OOPS);
-    recordAnswer(q,q.ok,'type');
-    if(q.ok){ award(XP_CORRECT,COINS_CORRECT); playSound('correct'); } else playSound('wrong');
+    recordAnswer(q,q.ok,R.kind==='dojo'?'dojo':'type');
+    if(q.ok){ award(XP_CORRECT,COINS_CORRECT); playSound('correct'); if(q.clearedNow){ award(15,5); checkTrophies(); } } else playSound('wrong');
     render();
   },
   wcheck:()=>{

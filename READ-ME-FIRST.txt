@@ -1,12 +1,29 @@
 THE ANNALIESCE ACADEMY: NEW VERSION
 =====================================
-THIS VERSION: Academy version 54, built 21 Sep 2026, 16:30.
+THIS VERSION: Academy version 55, built 21 Sep 2026, 17:03.
 After you upload, open the site and scroll to the very bottom of the HOME page.
-It should say:  "Academy version 54 . built 21 Sep 2026, 16:30".
+It should say:  "Academy version 55 . built 21 Sep 2026, 17:03".
 If it says something older, or nothing, the new upload has not reached the site yet
 (see "If the site ever looks unchanged" below).
 
-NEW IN VERSION 54 (it also includes everything from versions 51, 52 and 53, listed further down)
+NEW IN VERSION 55 (it also includes everything from versions 51 to 54, listed further down)
+
+WRONG ANSWERS IN LANGUAGE PRACTICE NOW GO INTO THE MISTAKE DOJO
+ - In version 54 I left them out and said they could not be replayed. That was my mistake: it can be done, and it is how the rest of the Academy works.
+ - A wrong answer in any of the four games now lands in the Mistake Dojo, listed under Spanish or Mandarin with a clear label
+   (for example: Tap the words: "Hello, my name is Ana.", or the sentence with its gap).
+ - In the Dojo it comes back as the SAME KIND of question she got wrong: tap-the-words, a typed word, or multiple choice. It is made fresh each time
+   (different spare words, a different order) and at the same level she missed it.
+ - The usual Dojo rules apply: two right answers in a row clear it (with the 15 XP bonus), and a wrong answer in the Dojo starts the count again.
+ - The results screen now says the tricky ones are in the Dojo, as it does everywhere else.
+ - The Listening lab is older and still does not use the Dojo. Tell me if you want it to.
+ - Sound: the new play buttons use exactly the same device voices as the Listening lab and the Listen buttons (the Spanish and Mandarin voices already on the device).
+
+ABOUT CHECKING THE LANGUAGE: you speak Mandarin, so you are the right person to check the Mandarin sentences, and nobody else is needed.
+If any sentence, or any "wrong" choice that could actually be right, sounds off to you, tell me and I will change it. The Spanish sentences have not been read by anyone
+(the older Spanish vocabulary and lessons are in the same position).
+
+NEW IN VERSION 54 (included)
 
 LANGUAGE PRACTICE FOR SPANISH AND MANDARIN (the first part of queue item 10)
 Where: open Spanish or Mandarin, then tap "Language practice" (next to Listening lab and Speaking practice).
@@ -31,20 +48,19 @@ Where: open Spanish or Mandarin, then tap "Language practice" (next to Listening
  - TRANSLATE THE WORD: the usual drill, using the 124 Spanish and 74 Mandarin words already in the Academy.
 
 4. HOW IT COUNTS
- - Right answers earn XP like any other round. Wrong answers do NOT go into the Mistake Dojo (they cannot be replayed there), so the results screen says to have another go.
+ - Right answers earn XP like any other round. Wrong answers go into the Mistake Dojo (added in version 55, see above).
  - Every sentence belongs to a real lesson topic (Greetings, Family, Formal and informal and so on), so her answers count on the Coverage map.
  - The parent summary gets one new line: "Language practice: X of Y right".
  - 40 sentences in each language, 10 at each level.
 
-PLEASE CHECK THE LANGUAGE. The 80 sentences were written by me. The pinyin spelling and tone marks were checked against a dictionary, but NOBODY WHO SPEAKS SPANISH OR MANDARIN HAS LOOKED AT THEM.
-If a teacher or a friend can read through them, the Mandarin "fill in the blank" answers are the ones most worth checking. Tell me anything that sounds odd and I will change it.
+THE LANGUAGE: the 80 sentences were written by me. The pinyin spelling and tone marks were checked against a dictionary, but no person has read the sentences yet (see the note under version 55).
 NOT TESTED: the sound on a real device. I can only test with a pretend voice, so please try it on her device and tell me if anything sounds wrong.
 
 STILL TO COME from this idea (queue item 10): "Repeat after me" (she says the sentence and the app checks it; this needs the speech-recognition switch you already approved for Say it better), back-and-forth conversations, and recap sessions.
 
 TWO SMALL FIXES
  - On a very small phone the box where she types an answer was wider than the screen and pushed its Check button off the edge. That affected spelling dictation and "Type it" rounds too. Fixed.
- - After a round where nothing can go into the Dojo (this new practice and the Listening lab), the results no longer say the tricky ones "are now in your Dojo".
+ - After a Listening lab round (which does not use the Dojo), the results no longer say the tricky ones "are now in your Dojo".
 
 NEW IN VERSION 53 (included)
 
