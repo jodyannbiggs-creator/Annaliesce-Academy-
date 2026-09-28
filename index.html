@@ -146,6 +146,18 @@ nav button.on,nav button:hover{background:var(--dsage);color:#fff}
 .bwchip.right{border-color:var(--good);background:#E1F3EA}
 .bwchip.wrong{border-color:var(--bad);background:#FCE7E2}
 .bwchip[disabled]{opacity:1}
+.feedback ol.wk-steps{margin:8px 0 0;padding-left:1.6em;text-align:left}
+.feedback ol.wk-steps li{margin:5px 0}
+.symcard{margin:8px 0}
+.msym{display:block;margin:0 auto}
+.symguide{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.symcell{background:#fff;border:2px solid #eadfb8;border-radius:12px;padding:8px;text-align:center;font-size:.85rem}
+.symcell b{display:block;margin-top:4px}
+.symcell small{display:block;color:#6b5b62}
+.mit .msym{margin:2px auto}
+.mcols.msymcols{grid-template-columns:78px 1fr}
+.msymcols .mit{min-height:68px;display:flex;align-items:center;padding:6px}
+.msymcols .mit .msym{width:56px;height:56px}
 .spellrow{display:flex;gap:10px;max-width:460px;margin:8px auto 14px}
 .spellrow input{flex:1 1 0;min-width:0;font:inherit;font-size:1.2rem;padding:10px 12px;border:2px solid var(--sage);border-radius:12px}
 .answer{background:var(--soft);border:2px solid var(--line);border-radius:12px;padding:12px;margin:10px 0;text-align:center}
@@ -414,7 +426,7 @@ textarea.slin{width:100%;font:inherit;padding:10px;border:2px solid var(--line);
 <div id="toast" role="status" aria-live="polite" hidden></div>
 <input type="file" id="impfile" accept="application/json,.json" hidden>
 <script>
-const BUILD_INFO={n:58,at:'22 Sep 2026, 07:26'};
+const BUILD_INFO={n:63,at:'28 Sep 2026, 11:45'};
 /* =====================================================================
    THE ANNALIESCE ACADEMY
    ---------------------------------------------------------------------
@@ -1596,7 +1608,11 @@ const STROKE_RULES = ['Top to bottom','Left to right','Horizontal before vertica
 /* ---- Chemical elements ---- */
 const ELEMENTS = [['H','Hydrogen'],['He','Helium'],['Li','Lithium'],['Be','Beryllium'],['B','Boron'],['C','Carbon'],['N','Nitrogen'],['O','Oxygen'],['F','Fluorine'],['Ne','Neon'],['Na','Sodium'],['Mg','Magnesium'],['Al','Aluminium'],['Si','Silicon'],['P','Phosphorus'],['S','Sulfur'],['Cl','Chlorine'],['Ar','Argon'],['K','Potassium'],['Ca','Calcium'],['Fe','Iron'],['Cu','Copper'],['Zn','Zinc'],['Ag','Silver'],['Au','Gold'],['Pb','Lead'],['Sn','Tin'],['Hg','Mercury']];
 /* a specific, memorable clue for each element's HINT — never names the element or its symbol, so it never gives the answer away */
-const ELEMENT_CLUES = {H:'It\'s the lightest gas there is — it makes party balloons float.',He:'It\'s the gas that makes your voice sound squeaky when you breathe it in from a balloon.',Li:'It\'s what rechargeable batteries in phones and laptops are made from.',Be:'Its symbol is just the first two letters of its name — nothing tricky going on.',B:'It\'s used to make extra-strong glass, like the kind used in ovenproof dishes.',C:'Diamonds and the graphite inside your pencil are both made of this.',N:'It makes up most of the air around you — about four-fifths of every breath.',O:'It\'s the gas you actually need to breathe in to stay alive.',F:'It\'s in toothpaste — that\'s the ingredient that protects your teeth.',Ne:'It glows in the tubes used for bright signs.',Na:'It\'s half of ordinary table salt.',Mg:'It burns with a dazzlingly bright white flame — a classic science-lesson demonstration.',Al:'Drinks cans and kitchen foil are made from it.',Si:'Computer chips are made from it, and so is most sand and glass.',P:'The tip of a match is coated with it, to help it catch fire.',S:'It\'s the reason rotten eggs smell so bad.',Cl:'It\'s what gives swimming pools their strong smell.',Ar:'It\'s often pumped into lightbulbs to stop the hot filament wearing away.',K:'Bananas are a famously good source of it.',Ca:'There\'s plenty of it in milk, and it\'s what keeps your bones and teeth strong.',Fe:'It\'s one of the resources you collect first in Roblox Bedwars, for tools and armour.',Cu:'Electrical wires are made from it, and it\'s why old coins can look orange-brown.',Zn:'It\'s often coated onto steel to stop it rusting.',Ag:'It\'s used in jewellery, and its symbol actually comes from its old Latin name.',Au:'It\'s the other resource in Roblox Bedwars, used to buy the strongest upgrades.',Pb:'Old water pipes used to be made from it — and it\'s actually where the word \'plumber\' comes from.',Sn:'Food cans used to be made from it, which is where they got their nickname.',Hg:'It\'s the only metal that\'s liquid at room temperature — old thermometers were filled with it.'};
+const ELEMENT_CLUES = {H:'It\'s the lightest gas there is — it makes party balloons float.',He:'It\'s the gas that makes your voice sound squeaky when you breathe it in from a balloon.',Li:'It\'s what rechargeable batteries in phones and laptops are made from.',Be:'Its symbol is just the first two letters of its name — nothing tricky going on.',B:'It\'s used to make extra-strong glass, like the kind used in ovenproof dishes.',C:'Diamonds and the graphite inside your pencil are both made of this.',N:'It makes up most of the air around you — about four-fifths of every breath.',O:'It\'s the gas you actually need to breathe in to stay alive.',F:'It\'s in toothpaste — that\'s the ingredient that protects your teeth.',Ne:'It glows in the tubes used for bright signs.',Na:'It\'s half of ordinary table salt.',Mg:'It burns with a dazzlingly bright white flame — a classic science-lesson demonstration.',Al:'Drinks cans and kitchen foil are made from it.',Si:'Computer chips are made from it, and so is most sand and glass.',P:'The tip of a match is coated with it, to help it catch fire.',S:'It\'s the reason rotten eggs smell so bad.',Cl:'It\'s what gives swimming pools their strong smell.',Ar:'It\'s often pumped into lightbulbs to stop the hot filament wearing away.',K:'Bananas are a famously good source of it.',Ca:'There\'s plenty of it in milk, and it\'s what keeps your bones and teeth strong.',Fe:'It\'s one of the resources you collect first in Roblox Bedwars, for tools and armour.',Cu:'Electrical wires are made from it, and it\'s why old coins can look orange-brown.',Zn:'It\'s often coated onto steel to stop it rusting.',Ag:'It\'s used in jewellery, and its symbol actually comes from its old Latin name.',Au:'It\'s the other resource in Roblox Bedwars, used to buy the strongest upgrades.',Pb:'Old water pipes used to be made from it — and it\'s actually where the word \'plumber\' comes from.',Sn:'Food cans used to be made from it, which is where they got their nickname.',Hg:'It\'s the only metal that\'s liquid at room temperature — old thermometers were filled with it.',
+Br:'It\'s one of only two elements that are liquid at room temperature.',
+I:'A pinch of it is added to table salt to keep your thyroid healthy.',
+U:'It\'s one of the heaviest naturally occurring elements there is.',
+W:'Its symbol comes from an old name for the element, wolfram.'};
 
 /* ---- Weekend ideas (check opening times before you go) ---- */
 const OUTINGS = {
@@ -3368,6 +3384,24 @@ addQs('geography',[
 ]);
 addNote('geography','Map skills','Four-figure grid reference: read the eastings (along the bottom) first and then the northings (up the side). The numbers belong to the bottom-left corner of the square. Along the corridor, then up the stairs. Six-figure references add tenths to pinpoint a place: the first three digits are the eastings (the two-digit line plus tenths along) and the last three are the northings (the two-digit line plus tenths up). Count the tenths from the bottom-left corner of the square. With 1 km squares, one tenth is 100 m.');
 
+/* Map symbols: fixed questions and revision notes (version 63). They live in their own file, loaded with the other question banks, because the question index (QBY) is built when app1.js loads: questions added by a file that loads after app1.js are silently missing. The pictures, games and guide are in mapsym.js. */
+addQs('geography',[
+["Map symbols","On an OS map, what does the abbreviation PH stand for?","Public house","Post house","Park and hotel","Public hall","PH stands for Public House, which means a pub."],
+["Map symbols","In the countryside on an OS map, what does the abbreviation PC stand for?","Public convenience (public toilets)","Post code","Park centre","Picnic camp","PC stands for Public Convenience, which means public toilets."],
+["Map symbols","What does the abbreviation PO mean on an OS Explorer map?","Post office","Police office","Public outlook","Parking only","PO stands for Post Office."],
+["Map symbols","What colour are tourist and leisure symbols, such as a picnic site, on OS maps?","Blue","Green","Black","Brown","Tourist and leisure symbols on OS maps are blue."],
+["Map symbols","What colour are contour lines on an OS map?","Brown","Blue","Green","Black","Contour lines join places at the same height and are drawn in brown."],
+["Map symbols","On an OS Explorer map, short green dashes show a...","Public footpath","River","Railway","Cliff","Short green dashes are public footpaths. Longer green dashes are bridleways."],
+["Map symbols","On an OS Explorer map, longer green dashes show a...","Bridleway","Public footpath","Motorway","Marsh","Longer green dashes are bridleways, which walkers, horse riders and cyclists may use."],
+["Map symbols","A blue letter P on an OS map shows...","Parking","A post office","A picnic site","A public house","A blue P marks a car park."],
+["Map symbols","A blue letter i on an OS map shows...","An information centre","An island","An inn","An industrial estate","A blue i marks an information centre."],
+["Map symbols","A small black cross on top of a little building shows a...","Church or place of worship","School","Post office","Lighthouse","A cross marks a church or other place of worship."],
+["Map symbols","A black line with short cross-bars, like a ladder, shows a...","Railway","Footpath","River","Motorway","A black line with cross-bars is a railway."],
+["Map symbols","A thick blue line on an OS map shows a...","Motorway","River","Railway","Footpath","Motorways are drawn as thick blue lines."]
+]);
+addNote('geography','Map symbols','OS maps use symbols and colours so a lot of information fits in a small space. Blue: water, motorways and tourist and leisure symbols (parking, information centre, camp site, caravan site, picnic site, viewpoint). Brown: contour lines. Green: woods and, on Explorer maps, public rights of way (short dashes for a footpath, longer dashes for a bridleway). Black: buildings, railways and cliffs. Some places use short letters: PH public house, PC public toilets, PO post office, Sch school, TH town hall. A church has a cross, and it may show a tower or a spire. Always check the key on the map you are using.');
+
+
 /* Computing: Keyboard shortcuts (hot keys). Fixed questions and revision notes.
    Written for Windows and Chromebook first (Ctrl), with the Mac (Command, written as ⌘) in every explanation. */
 newTopicQ('computing','Keyboard shortcuts',[],[
@@ -3917,7 +3951,7 @@ const METHODS_RAW = {
 maths:`Number::Circle the numbers and decide the operation ;; Do brackets first, then powers, then multiply and divide, then add and subtract (BIDMAS) ;; Estimate the answer by rounding so you can spot a slip::12 + 3 × 4 = 12 + 12 = 24, because multiplication comes before addition.::Round first to check: 19 × 4 is about 20 × 4 = 80.::Working left to right and ignoring BIDMAS.
 Place value::Write the number in a place value table ;; Each column is worth 10 times the column to its right ;; Read the digit, then its column::In 3,482 the 4 is in the hundreds column, so it is worth 400.::Zero is a place holder. It keeps every other digit in the right column.::Mixing up the digit (4) with its value (400).
 Operations::Line up the digits by place value ;; Start from the right and carry or borrow ;; Check with the inverse operation::48 × 6 = 288. Check: 288 ÷ 6 = 48.::To multiply by 9, multiply by 10 and take away the number.::Forgetting to carry.
-Decimals::Line up the decimal points ;; Fill any gaps with zeros ;; Calculate as normal, then bring the point straight down::3.5 + 2.75 = 3.50 + 2.75 = 6.25::To divide by a decimal, multiply both numbers by 10 until the divider is whole: 4.5 ÷ 0.5 = 45 ÷ 5 = 9.::Lining numbers up by their last digit instead of the point.
+Decimals::Adding and subtracting: line up the decimal points and fill any gaps with zeros ;; Multiplying: ignore the points, multiply the whole numbers, then put the point back so the answer has as many decimal places as the question had altogether ;; Dividing by a whole number: use a bus stop and put the point straight up onto the answer line ;; Estimate first, so you can spot a misplaced point::1.6 × 0.4: 16 × 4 = 64, and the question has 2 decimal places altogether, so 64 becomes 0.64. A 0 goes in front because there is nothing before the point.::To divide by a decimal, multiply both numbers by 10 until the divider is whole: 4.5 ÷ 0.5 = 45 ÷ 5 = 9.::Lining numbers up by their last digit instead of the point, or leaving out the 0 in front when the answer is smaller than 1.
 Fractions::To add or subtract, make the denominators the same ;; Add or subtract only the numerators ;; Simplify by dividing top and bottom by the same number::1/3 + 1/4 = 4/12 + 3/12 = 7/12::To multiply fractions, multiply the tops and multiply the bottoms. To divide, keep, change, flip.::Adding the denominators as well.
 Percentages::Find 10% by dividing by 10 ;; Build other percentages from 10% and 1% ;; Add the pieces::35% of 60: 10% = 6, so 30% = 18, and 5% = 3. Total 21.::Percentage change = change ÷ original × 100.::Using the new amount instead of the original one.
 Algebra::Do the same thing to both sides ;; Undo operations in reverse order ;; Check by putting your answer back in::3x + 2 = 14, so 3x = 12, so x = 4. Check: 3 × 4 + 2 = 14.::Collect like terms. Only add letters that match: 3a + 2a = 5a but 3a + 2b stays as it is.::Changing only one side of the equation.
@@ -3966,7 +4000,8 @@ Coasts::Waves erode cliffs at the base ;; Eroded material is carried and dropped
 Weathering::Weathering breaks rock where it is. Erosion carries it away ;; Physical weathering: freeze and thaw ;; Chemical: rain slowly dissolves rock ;; Biological: roots and animals::Water gets into a crack, freezes, expands and splits the rock.::Weathering stays, erosion moves.::Confusing weathering with erosion.
 Biomes::Look at temperature and rainfall ;; Say which plants and animals cope with that climate ;; Link the adaptations to the climate::A cactus stores water because deserts get little rain.::Hot and wet: rainforest. Hot and dry: desert. Cold: tundra.::Describing the biome without linking to the climate.
 Countries and continents::Find the continent first, then narrow to the region ;; Use neighbours and coastlines as clues ;; Learn one continent at a time::Brazil is the biggest country in South America. It has a long Atlantic coast.::Learn the shapes of the big countries first.::Guessing without using the neighbours as clues.
-UK geography::Picture the four nations: England, Scotland, Wales, Northern Ireland ;; Use compass directions to place cities ;; Link cities to rivers and coasts::Cardiff is in the south of Wales on the coast.::Scotland is north, Wales is west, Northern Ireland is across the Irish Sea.::Thinking Great Britain and the UK are the same.`,
+UK geography::Picture the four nations: England, Scotland, Wales, Northern Ireland ;; Use compass directions to place cities ;; Link cities to rivers and coasts::Cardiff is in the south of Wales on the coast.::Scotland is north, Wales is west, Northern Ireland is across the Irish Sea.::Thinking Great Britain and the UK are the same.
+Map symbols::Start with the colour: blue for water and visitor symbols, brown for contour lines, green for woods and paths, black for buildings and railways ;; Look at the shape: a tent, a caravan, a table, a cross, a tower, a bus ;; Short black letters name a place: PH, PC, PO, Sch and TH ;; On an Explorer map short green dashes are a footpath and longer green dashes are a bridleway ;; No key to hand? Use the colour, the shape and the picture as clues::A blue tent shape is a camp site, and a line of short green dashes beside it is a footpath you can walk::Colour first, then shape::Mixing up a footpath (short dashes) with a bridleway (longer dashes)`,
 computing:`Algorithms::Write the steps in order in plain words first ;; Use sequence, selection (if) and iteration (loops) ;; Test it with an example::To make tea: boil water, add a tea bag, wait, pour, add milk.::Trace the algorithm with a table.::Missing a step or getting the order wrong.
 Programming::Read the code line by line ;; Keep a table of what each variable equals ;; Watch the loops and the if statements::x = 3, then x = x + 2 makes x equal to 5.::Trace tables catch most mistakes.::Reading the code too fast and skipping a line.
 Binary::Write the place values 128, 64, 32, 16, 8, 4, 2, 1 ;; Put a 1 under the values you need and 0 under the rest ;; Add up the 1s::Decimal 13 = 8 + 4 + 1, so 00001101.::Start with the biggest place value and work down.::Writing the place values in the wrong order.
@@ -4596,7 +4631,7 @@ function spend(n){ L().cs += n; bump(); save(); }
 function weekBySubject(off=0){ const [a,b]=weekRange(off), by={}; S.rounds.filter(r=>r.d>=a&&r.d<=b&&r.kind!=='flash').forEach(r=>{ for(const k in (r.by||{})){ const x=(by[k]=by[k]||[0,0]); x[0]+=r.by[k][0]; x[1]+=r.by[k][1]; } }); return by; }
 function weekTotals(off=0){ const [a,b]=weekRange(off); const rs=S.rounds.filter(r=>r.d>=a&&r.d<=b); const q=rs.filter(r=>r.kind!=='flash'); return {rounds:rs.length, n:q.reduce((x,r)=>x+r.n,0), c:q.reduce((x,r)=>x+r.c,0), days:daysThisWeek(off)}; }
 function weakTopics(){ const out=[]; for(const k in S.stats) for(const t in S.stats[k]){ const [a,c]=S.stats[k][t]; if(a>=4 && c/a<0.7) out.push({k,t,a,c,p:Math.round(100*c/a)}); } return out.sort((x,y)=>x.p-y.p).slice(0,6); }
-function slimQ(q){ return {k:q.k, topic:q.topic, q:q.dq||q.q, lgpref:q.lgpref, correct:q.correct, wrong:q.wrong, exp:q.exp, hint:q.hint, map:q.map, grid:q.grid, staff:q.staff, rhythm:q.rhythm, mus:q.mus, flag:q.flag, flagopts:q.flagopts, correctLabel:q.correctLabel, gen:1, id:q.id}; }
+function slimQ(q){ return {k:q.k, topic:q.topic, q:q.dq||q.q, lgpref:q.lgpref, correct:q.correct, wrong:q.wrong, exp:q.exp, hint:q.hint, map:q.map, grid:q.grid, staff:q.staff, rhythm:q.rhythm, mus:q.mus, flag:q.flag, flagopts:q.flagopts, sym:q.sym, symopts:q.symopts, symgrid:q.symgrid, correctLabel:q.correctLabel, gen:1, id:q.id}; }
 function recordActivity(k, topic, attempts, correct){ const st=(L().st[k]=L().st[k]||{}); const t=(st[topic]=st[topic]||[0,0]); t[0]+=attempts; t[1]+=correct; bump(); }
 function recordAnswer(q, ok, kind){
   const l = L(), st = (l.st[q.k] = l.st[q.k] || {}), t = (st[q.topic] = st[q.topic] || [0,0]); t[0]++; if(ok) t[1]++;
@@ -4968,7 +5003,7 @@ gen('maths','Negative numbers','Negative numbers',()=>{
 });
 gen('maths','Fractions of amounts','Fractions of amounts',()=>{
   const den=pickr([2,3,4,5,8,10]), num=ri(1,den-1), unit=ri(2,12), amt=den*unit, ans=unit*num;
-  return {q:'What is '+num+'/'+den+' of '+amt+'?', correct:ans, wrong:numOpts(ans), exp:amt+' \u00f7 '+den+' = '+unit+', then \u00d7 '+num+' = '+ans+'.', hint:'Divide by the bottom number, then multiply by the top.'};
+  return {q:'What is '+num+'/'+den+' of '+amt+'?', correct:ans, wrong:numOpts(ans), exp:frAmtExp(num,den,amt), hint:'Divide by the bottom number, then multiply by the top.'};
 });
 function pctExp(p,amt,ans){ const t=amt/10, s='10% of '+amt+' is '+amt+' \u00f7 10 = '+t+'. ';
   const m={5:'5% is half of 10%: '+t+' \u00f7 2 = '+ans+'.',10:'So 10% of '+amt+' is '+ans+'.',15:'15% is 10% + 5%. 5% is half of 10%, which is '+t/2+'. '+t+' + '+t/2+' = '+ans+'.',20:'20% is 2 \u00d7 10%: 2 \u00d7 '+t+' = '+ans+'.',25:'25% is a quarter: '+amt+' \u00f7 4 = '+ans+'.',30:'30% is 3 \u00d7 10%: 3 \u00d7 '+t+' = '+ans+'.',40:'40% is 4 \u00d7 10%: 4 \u00d7 '+t+' = '+ans+'.',50:'50% is a half: '+amt+' \u00f7 2 = '+ans+'.',60:'60% is 6 \u00d7 10%: 6 \u00d7 '+t+' = '+ans+'.',75:'75% is three quarters: '+amt+' \u00f7 4 = '+amt/4+', then \u00d7 3 = '+ans+'.'};
@@ -4984,21 +5019,21 @@ gen('maths','Substitution','Substitution',()=>{
 });
 gen('maths','Solving equations','Solving equations',()=>{
   const x=ri(2,12), m=ri(2,9), c=ri(1,15), r=m*x+c;
-  return {q:'Solve '+m+'x + '+c+' = '+r, correct:'x = '+x, wrong:numOpts(x,v=>'x = '+v), exp:'Subtract '+c+': '+m+'x = '+(r-c)+'. Then divide by '+m+': x = '+x+'.', hint:'Undo the + first, then undo the multiplication.'};
+  return {q:'Solve '+m+'x + '+c+' = '+r, correct:'x = '+x, wrong:numOpts(x,v=>'x = '+v), exp:solveExp(m,c,x), hint:'Undo the + first, then undo the multiplication.'};
 });
 gen('maths','Area and perimeter','Area and perimeter',()=>{
   const l=ri(3,15), w=ri(2,l), kind=pickr(['area','perimeter','triangle']); let q, ans, exp;
-  if(kind==='area'){ ans=l*w; q='A rectangle is '+l+' cm by '+w+' cm. What is its area?'; exp='Area = length \u00d7 width = '+l+' \u00d7 '+w+' = '+ans+' cm\u00b2.'; }
-  else if(kind==='perimeter'){ ans=2*(l+w); q='A rectangle is '+l+' cm by '+w+' cm. What is its perimeter?'; exp='Add all four sides: 2 \u00d7 ('+l+' + '+w+') = '+ans+' cm.'; }
-  else { const b=2*ri(2,8), h=ri(3,12); ans=b*h/2; q='A triangle has a base of '+b+' cm and a height of '+h+' cm. What is its area?'; exp='Area = \u00bd \u00d7 base \u00d7 height = '+ans+' cm\u00b2.'; }
+  if(kind==='area'){ ans=l*w; q='A rectangle is '+l+' cm by '+w+' cm. What is its area?'; exp=rectAreaExp(l,w); }
+  else if(kind==='perimeter'){ ans=2*(l+w); q='A rectangle is '+l+' cm by '+w+' cm. What is its perimeter?'; exp=rectPerimExp(l,w); }
+  else { const b=2*ri(2,8), h=ri(3,12); ans=b*h/2; q='A triangle has a base of '+b+' cm and a height of '+h+' cm. What is its area?'; exp=triAreaExp(b,h); }
   const u = kind==='perimeter' ? ' cm' : ' cm\u00b2';
   return {q, correct:ans+u, wrong:numOpts(ans,v=>v+u), exp, hint: kind==='perimeter' ? 'Perimeter is the distance around the outside.' : 'Area is the space inside the shape.'};
 });
 gen('maths','Averages','Averages',()=>{
   const kind=pickr(['mean','median','range']); let nums, ans, q, exp;
-  if(kind==='mean'){ const m=ri(4,15); let tries=0; do{ nums=[ri(1,20),ri(1,20),ri(1,20),ri(1,20)]; nums.push(5*m-nums.reduce((a,b)=>a+b,0)); }while((nums[4]<1||nums[4]>25)&&tries++<50); if(nums[4]<1||nums[4]>25) nums=[m,m,m,m,m]; ans=m; q='What is the mean of '+nums.join(', ')+'?'; exp='Total '+nums.reduce((a,b)=>a+b,0)+' \u00f7 5 = '+m+'.'; }
-  else if(kind==='median'){ nums=[ri(1,20),ri(1,20),ri(1,20),ri(1,20),ri(1,20)]; const s=nums.slice().sort((a,b)=>a-b); ans=s[2]; q='What is the median of '+nums.join(', ')+'?'; exp='In order: '+s.join(', ')+'. The middle value is '+ans+'.'; }
-  else { nums=[ri(1,20),ri(1,20),ri(1,20),ri(1,20),ri(1,20)]; ans=Math.max(...nums)-Math.min(...nums); q='What is the range of '+nums.join(', ')+'?'; exp='Biggest '+Math.max(...nums)+' minus smallest '+Math.min(...nums)+' = '+ans+'.'; }
+  if(kind==='mean'){ const m=ri(4,15); let tries=0; do{ nums=[ri(1,20),ri(1,20),ri(1,20),ri(1,20)]; nums.push(5*m-nums.reduce((a,b)=>a+b,0)); }while((nums[4]<1||nums[4]>25)&&tries++<50); if(nums[4]<1||nums[4]>25) nums=[m,m,m,m,m]; ans=m; q='What is the mean of '+nums.join(', ')+'?'; exp=meanAvgExp(nums,m); }
+  else if(kind==='median'){ nums=[ri(1,20),ri(1,20),ri(1,20),ri(1,20),ri(1,20)]; const s=nums.slice().sort((a,b)=>a-b); ans=s[2]; q='What is the median of '+nums.join(', ')+'?'; exp=medianExp(nums); }
+  else { nums=[ri(1,20),ri(1,20),ri(1,20),ri(1,20),ri(1,20)]; ans=Math.max(...nums)-Math.min(...nums); q='What is the range of '+nums.join(', ')+'?'; exp=rangeExp(nums); }
   return {q, correct:ans, wrong:numOpts(ans), exp, hint: kind==='mean'?'Add them all up, then divide by how many there are.':kind==='median'?'Put them in order first.':'Biggest minus smallest.'};
 });
 gen('maths','Sequences','Sequences',()=>{
@@ -5011,8 +5046,8 @@ gen('maths','Sequences','Sequences',()=>{
 });
 gen('maths','Times tables and BIDMAS','Times tables and BIDMAS',()=>{
   const kind=pickr(['x','div','bidmas']);
-  if(kind==='x'){ const a=ri(3,12), b=ri(3,12), ans=a*b; return {q:'What is '+a+' \u00d7 '+b+'?', correct:ans, wrong:numOpts(ans), exp:a+' \u00d7 '+b+' = '+ans+'.', hint:'Use a times table you know well, then adjust.'}; }
-  if(kind==='div'){ const a=ri(3,12), b=ri(3,12), ans=a; return {q:'What is '+a*b+' \u00f7 '+b+'?', correct:ans, wrong:numOpts(ans), exp:b+' \u00d7 '+a+' = '+a*b+'.', hint:'Think of the times table backwards.'}; }
+  if(kind==='x'){ const a=ri(3,12), b=ri(3,12), ans=a*b; return {q:'What is '+a+' \u00d7 '+b+'?', correct:ans, wrong:numOpts(ans), exp:tblMulExp(a,b), hint:'Use a times table you know well, then adjust.'}; }
+  if(kind==='div'){ const a=ri(3,12), b=ri(3,12), ans=a; return {q:'What is '+a*b+' \u00f7 '+b+'?', correct:ans, wrong:numOpts(ans), exp:tblDivExp(a,b), hint:'Think of the times table backwards.'}; }
   const a=ri(2,9), b=ri(2,9), c=ri(2,9), ans=a+b*c, w=uniq([(a+b)*c, ans+1, ans-1, ans+2, ans-2, ans+3].filter(v=>v!==ans)).slice(0,3);
   return {q:'Work out '+a+' + '+b+' \u00d7 '+c, correct:ans, wrong:w, exp:'BIDMAS: multiply first. '+b+' \u00d7 '+c+' = '+b*c+', then add '+a+': '+a+' + '+b*c+' = '+ans+'.', hint:'BIDMAS: multiplication before addition.'};
 });
@@ -5023,13 +5058,13 @@ gen('maths','Rounding','Rounding',()=>{
   return {q:'Round '+x+' to 1 decimal place', correct:ans, wrong:wr.slice(0,3), exp:'Round '+x+' to 1 decimal place. The digit after the first decimal place is '+x.split('.')[1][1]+'. '+(Number(x.split('.')[1][1])>=5?'That is 5 or more, so round the first decimal place up: '+ans+'.':'That is less than 5, so the first decimal place stays the same: '+ans+'.'), hint:'Look at the digit after the one you keep.'};
 });
 gen('maths','Angles','Angles',()=>{
-  if(Math.random()<0.5){ const a=ri(20,160), ans=180-a; return {q:'Angles on a straight line add to 180\u00b0. One angle is '+a+'\u00b0. What is the other?', correct:ans+'\u00b0', wrong:numOpts(ans,v=>v+'\u00b0'), exp:'180 \u2212 '+a+' = '+ans+'.', hint:'A straight line is 180\u00b0.'}; }
+  if(Math.random()<0.5){ const a=ri(20,160), ans=180-a; return {q:'Angles on a straight line add to 180\u00b0. One angle is '+a+'\u00b0. What is the other?', correct:ans+'\u00b0', wrong:numOpts(ans,v=>v+'\u00b0'), exp:lineAngleExp(a), hint:'A straight line is 180\u00b0.'}; }
   const a=ri(30,80), b=ri(30,80), ans=180-a-b;
-  return {q:'Two angles in a triangle are '+a+'\u00b0 and '+b+'\u00b0. What is the third?', correct:ans+'\u00b0', wrong:numOpts(ans,v=>v+'\u00b0'), exp:'Angles in a triangle add to 180. 180 \u2212 '+a+' \u2212 '+b+' = '+ans+'.', hint:'Angles in a triangle add to 180\u00b0.'};
+  return {q:'Two angles in a triangle are '+a+'\u00b0 and '+b+'\u00b0. What is the third?', correct:ans+'\u00b0', wrong:numOpts(ans,v=>v+'\u00b0'), exp:triAngleExp(a,b), hint:'Angles in a triangle add to 180\u00b0.'};
 });
 gen('maths','Ratio sharing','Ratio sharing',()=>{
   const a=ri(1,5), b=ri(a+1,7), u=ri(2,9), tot=(a+b)*u, ans=b*u;
-  return {q:'Share \u00a3'+tot+' in the ratio '+a+' : '+b+'. How much is the larger share?', correct:'\u00a3'+ans, wrong:numOpts(ans,v=>'\u00a3'+v), exp:a+' + '+b+' = '+(a+b)+' parts. \u00a3'+tot+' \u00f7 '+(a+b)+' = \u00a3'+u+' a part. '+b+' \u00d7 \u00a3'+u+' = \u00a3'+ans+'.', hint:'Add the parts, divide the total by that, then multiply.'};
+  return {q:'Share \u00a3'+tot+' in the ratio '+a+' : '+b+'. How much is the larger share?', correct:'\u00a3'+ans, wrong:numOpts(ans,v=>'\u00a3'+v), exp:ratioShareExp(a,b,u), hint:'Add the parts, divide the total by that, then multiply.'};
 });
 
 /* ---- Spanish verb conjugation ---- */
@@ -5136,32 +5171,32 @@ gen('maths','Place value','Place value',()=>{
 
 gen('maths','Decimals','Decimals',()=>{
   const v=ri(0,3); let q, ai, dp, exp, hint;
-  if(v===0){ const a=ri(11,999), b=ri(11,999); ai=a+b; dp=2; q=fmtScaled(a,2)+' + '+fmtScaled(b,2); exp='Line up the decimal points and add: '+fmtScaled(a,2)+' + '+fmtScaled(b,2)+' = '+fmtScaled(a+b,2)+'.'; hint='Line up the decimal points.'; }
-  else if(v===1){ const a=ri(200,999), b=ri(11,a-1); ai=a-b; dp=2; q=fmtScaled(a,2)+' \u2212 '+fmtScaled(b,2); exp='Line up the decimal points and subtract: '+fmtScaled(a,2)+' \u2212 '+fmtScaled(b,2)+' = '+fmtScaled(a-b,2)+'.'; hint='Line up the decimal points.'; }
-  else if(v===2){ const a=ri(2,49), b=ri(2,9); ai=a*b; dp=2; q=fmtScaled(a,1)+' \u00d7 '+fmtScaled(b,1); exp=fmtScaled(a,1)+' \u00d7 '+fmtScaled(b,1)+': ignore the decimal points: '+a+' \u00d7 '+b+' = '+a*b+'. Each number has 1 decimal place, so the answer has 2: '+fmtScaled(a*b,2)+'.'; hint='Multiply without the points, then count the decimal places.'; }
-  else { const r=ri(2,60), b=ri(2,9); ai=r; dp=1; q=fmtScaled(r*b,1)+' \u00f7 '+b; exp=fmtScaled(r*b,1)+' \u00f7 '+b+': ignore the decimal point: '+r*b+' \u00f7 '+b+' = '+r+'. The number being divided has 1 decimal place, so the answer has 1: '+fmtScaled(r,1)+'.'; hint='Divide as usual. The decimal point stays in the same place.'; }
+  if(v===0){ const a=ri(11,999), b=ri(11,999); ai=a+b; dp=2; q=fmtScaled(a,2)+' + '+fmtScaled(b,2); exp=decAddExp(a,b); hint='Line up the decimal points.'; }
+  else if(v===1){ const a=ri(200,999), b=ri(11,a-1); ai=a-b; dp=2; q=fmtScaled(a,2)+' \u2212 '+fmtScaled(b,2); exp=decSubExp(a,b); hint='Line up the decimal points.'; }
+  else if(v===2){ const a=ri(2,49), b=ri(2,9); ai=a*b; dp=2; q=fmtScaled(a,1)+' \u00d7 '+fmtScaled(b,1); exp=decMulExp(a,b); hint='Multiply without the points, then count the decimal places.'; }
+  else { const r=ri(2,60), b=ri(2,9); ai=r; dp=1; q=fmtScaled(r*b,1)+' \u00f7 '+b; exp=decDivExp(r,b); hint='Divide as usual. The decimal point stays in the same place.'; }
   return {q:'What is '+q+'?', correct:fmtScaled(ai,dp), wrong:posOpts(ai,n=>fmtScaled(n,dp)), exp, hint};
 }); genBT('Decimals');
 
 gen('maths','Fractions','Fractions',()=>{
   const v=ri(0,3);
   if(v===0){ const d=pickr([2,3,4,5]), n=ri(1,d-1), k=ri(2,5), ans=n*k;
-    return {q:n+'/'+d+' = ?/'+(d*k), correct:ans, wrong:posOpts(ans), exp:'Multiply top and bottom by '+k+'. '+n+' \u00d7 '+k+' = '+ans+'.', hint:'What did the bottom number get multiplied by?'}; }
+    return {q:n+'/'+d+' = ?/'+(d*k), correct:ans, wrong:posOpts(ans), exp:fracEquivExp(n,d,k), hint:'What did the bottom number get multiplied by?'}; }
   if(v===1){ const g=ri(2,6), pair=pickr([[1,2],[1,3],[2,3],[3,4],[2,5],[3,5],[3,8],[5,6]]), n=pair[0]*g, d=pair[1]*g, ans=fr(n,d);
-    return {q:'Simplify '+n+'/'+d, correct:ans, wrong:pick3(ans,[fr(n,d)===n+'/'+d?'1/2':n/g+'/'+d,pair[0]+'/'+(pair[1]+1),(pair[0]+1)+'/'+pair[1],pair[1]+'/'+pair[0],n+'/'+(d-1)],j=>(pair[0]+j+1)+'/'+(pair[1]+j+2)), exp:'Divide top and bottom by '+g+': '+n+' \u00f7 '+g+' = '+n/g+' and '+d+' \u00f7 '+g+' = '+d/g+'. So '+n+'/'+d+' = '+ans+'.', hint:'Find the biggest number that goes into both.'}; }
+    return {q:'Simplify '+n+'/'+d, correct:ans, wrong:pick3(ans,[fr(n,d)===n+'/'+d?'1/2':n/g+'/'+d,pair[0]+'/'+(pair[1]+1),(pair[0]+1)+'/'+pair[1],pair[1]+'/'+pair[0],n+'/'+(d-1)],j=>(pair[0]+j+1)+'/'+(pair[1]+j+2)), exp:fracSimpExp(n,d,g), hint:'Find the biggest number that goes into both.'}; }
   if(v===2){ const d1=pickr([2,3,4,6]), d2=pickr([2,3,4,6]), n1=ri(1,d1-1), n2=ri(1,d2-1), L=d1*d2/gcd(d1,d2), top=n1*(L/d1)+n2*(L/d2), ans=fr(top,L);
-    return {q:'What is '+n1+'/'+d1+' + '+n2+'/'+d2+'?', correct:ans, wrong:pick3(ans,[fr(n1+n2,d1+d2),fr(top+1,L),fr(top,L+d1),fr(Math.abs(n1*(L/d1)-n2*(L/d2))||1,L)],j=>fr(top+j,L+2*j+1)), exp:'Use a common denominator of '+L+': '+n1*(L/d1)+'/'+L+' + '+n2*(L/d2)+'/'+L+' = '+top+'/'+L+(ans!==top+'/'+L?', which simplifies to '+ans:'')+'.', hint:'Make the bottom numbers the same first. Never add the bottoms.'}; }
+    return {q:'What is '+n1+'/'+d1+' + '+n2+'/'+d2+'?', correct:ans, wrong:pick3(ans,[fr(n1+n2,d1+d2),fr(top+1,L),fr(top,L+d1),fr(Math.abs(n1*(L/d1)-n2*(L/d2))||1,L)],j=>fr(top+j,L+2*j+1)), exp:fracAddExp(n1,d1,n2,d2), hint:'Make the bottom numbers the same first. Never add the bottoms.'}; }
   const d=pickr([4,5,8,10]), w=ri(1,4), n=ri(1,d-1), top=w*d+n;
-  return {q:'Write '+top+'/'+d+' as a mixed number.', correct:w+' '+fr(n,d).replace(/^(\d+)\/(\d+)$/,'$1/$2'), wrong:pick3(w+' '+fr(n,d),[(w+1)+' '+fr(n,d),w+' '+fr(d-n,d),(w-1>0?w-1:w+2)+' '+fr(n,d),n+' '+w+'/'+d],j=>(w+j+1)+' '+fr(n,d)), exp:top+' \u00f7 '+d+' = '+w+' remainder '+n+', so it is '+w+' whole'+(w>1?'s':'')+' and '+fr(n,d)+' left: '+w+' '+fr(n,d)+'.', hint:'Divide the top by the bottom. The remainder goes over the bottom.'};
+  return {q:'Write '+top+'/'+d+' as a mixed number.', correct:w+' '+fr(n,d).replace(/^(\d+)\/(\d+)$/,'$1/$2'), wrong:pick3(w+' '+fr(n,d),[(w+1)+' '+fr(n,d),w+' '+fr(d-n,d),(w-1>0?w-1:w+2)+' '+fr(n,d),n+' '+w+'/'+d],j=>(w+j+1)+' '+fr(n,d)), exp:fracMixedExp(top,d,w,n), hint:'Divide the top by the bottom. The remainder goes over the bottom.'};
 }); genBT('Fractions');
 
 gen('maths','Percentage change','Percentage change',()=>{
   const v=ri(0,3);
-  if(v===0){ const p=pickr([20,40,60,80,120,160,200]), c=pickr([10,20,25,50]), ans=p*(100+c)/100; return {q:'Increase \u00a3'+p+' by '+c+'%.', correct:'\u00a3'+ans, wrong:posOpts(ans,n=>'\u00a3'+n), exp:c+'% of \u00a3'+p+' is \u00a3'+p*c/100+'. Add it on: \u00a3'+ans+'.', hint:'Find the percentage, then add it.'}; }
-  if(v===1){ const p=pickr([20,40,60,80,120,160,200]), c=pickr([10,20,25,50]), ans=p*(100-c)/100; return {q:'A \u00a3'+p+' coat has '+c+'% off. What is the sale price?', correct:'\u00a3'+ans, wrong:posOpts(ans,n=>'\u00a3'+n), exp:c+'% of \u00a3'+p+' is \u00a3'+p*c/100+'. Take it off: \u00a3'+ans+'.', hint:'Find the discount, then take it away.'}; }
-  if(v===2){ const y=pickr([20,25,40,50,60,80,100]), opts=[5,10,15,20,25,30,40,50,60,75].filter(pc=>(y*pc)%100===0), pc=pickr(opts), x=y*pc/100; return {q:'What percentage is '+x+' of '+y+'?', correct:pc+'%', wrong:posOpts(pc,n=>n+'%'), exp:x+'/'+y+' = '+pc+'/100.', hint:'Write it as a fraction, then make the bottom 100.'}; }
+  if(v===0){ const p=pickr([20,40,60,80,120,160,200]), c=pickr([10,20,25,50]), ans=p*(100+c)/100; return {q:'Increase \u00a3'+p+' by '+c+'%.', correct:'\u00a3'+ans, wrong:posOpts(ans,n=>'\u00a3'+n), exp:pctIncExp(p,c), hint:'Find the percentage, then add it.'}; }
+  if(v===1){ const p=pickr([20,40,60,80,120,160,200]), c=pickr([10,20,25,50]), ans=p*(100-c)/100; return {q:'A \u00a3'+p+' coat has '+c+'% off. What is the sale price?', correct:'\u00a3'+ans, wrong:posOpts(ans,n=>'\u00a3'+n), exp:pctDiscExp(p,c), hint:'Find the discount, then take it away.'}; }
+  if(v===2){ const y=pickr([20,25,40,50,60,80,100]), opts=[5,10,15,20,25,30,40,50,60,75].filter(pc=>(y*pc)%100===0), pc=pickr(opts), x=y*pc/100; return {q:'What percentage is '+x+' of '+y+'?', correct:pc+'%', wrong:posOpts(pc,n=>n+'%'), exp:pctWhatExp(x,y,pc), hint:'Write it as a fraction, then make the bottom 100.'}; }
   const f=pickr([[1,2,50],[1,4,25],[3,4,75],[1,5,20],[2,5,40],[3,5,60],[4,5,80],[1,10,10],[3,10,30],[7,10,70]]);
-  return {q:'Write '+f[0]+'/'+f[1]+' as a percentage.', correct:f[2]+'%', wrong:posOpts(f[2],n=>n+'%'), exp:f[0]+' \u00f7 '+f[1]+' = '+f[2]/100+', which is '+f[2]+'%.', hint:'Divide the top by the bottom, then multiply by 100.'};
+  return {q:'Write '+f[0]+'/'+f[1]+' as a percentage.', correct:f[2]+'%', wrong:posOpts(f[2],n=>n+'%'), exp:pctFracExp(f[0],f[1],f[2]), hint:'Divide the top by the bottom, then multiply by 100.'};
 }); genBT('Percentages');
 
 gen('maths','Factors and primes','Factors and primes',()=>{
@@ -5170,9 +5205,9 @@ gen('maths','Factors and primes','Factors and primes',()=>{
     return {q:'Which of these is a factor of '+n+'?', correct:ans, wrong:shuffle(nf).slice(0,3), exp:n+' \u00f7 '+ans+' = '+n/ans+', so '+ans+' is a factor.', hint:'A factor divides exactly with no remainder.'}; }
   if(v===1){ const ans=pickr([11,13,17,19,23,29,31,37]); return {q:'Which of these is a prime number?', correct:ans, wrong:shuffle([15,21,25,27,33,35,39,49,51,55]).slice(0,3), exp:ans+' has only two factors: 1 and '+ans+'.', hint:'A prime number has exactly two factors.'}; }
   if(v===2){ const g=ri(2,9), pr=pickr([[2,3],[3,4],[2,5],[3,5],[4,5]]), a=g*pr[0], b=g*pr[1];
-    return {q:'What is the highest common factor (HCF) of '+a+' and '+b+'?', correct:g, wrong:posOpts(g), exp:'The biggest number that divides both '+a+' and '+b+' is '+g+'.', hint:'List the factors of both, then find the biggest one they share.'}; }
+    return {q:'What is the highest common factor (HCF) of '+a+' and '+b+'?', correct:g, wrong:posOpts(g), exp:hcfExp(a,b,g), hint:'List the factors of both, then find the biggest one they share.'}; }
   const p=pickr([[4,6,12],[3,4,12],[6,8,24],[4,10,20],[6,9,18],[3,5,15],[8,12,24],[9,12,36],[6,10,30]]);
-  return {q:'What is the lowest common multiple (LCM) of '+p[0]+' and '+p[1]+'?', correct:p[2], wrong:pick3(p[2],[p[0]*p[1],p[0]+p[1],p[2]*2,p[2]/2,Math.max(p[0],p[1])],j=>p[2]+j*p[0]), exp:'The first number that is in both times tables is '+p[2]+'.', hint:'Write out the first few multiples of each number.'};
+  return {q:'What is the lowest common multiple (LCM) of '+p[0]+' and '+p[1]+'?', correct:p[2], wrong:pick3(p[2],[p[0]*p[1],p[0]+p[1],p[2]*2,p[2]/2,Math.max(p[0],p[1])],j=>p[2]+j*p[0]), exp:lcmExp(p[0],p[1],p[2]), hint:'Write out the first few multiples of each number.'};
 }); genBT('Factors and primes');
 
 gen('maths','Powers and roots','Powers and roots',()=>{
@@ -5214,39 +5249,39 @@ gen('maths','Simplifying and expanding','Simplifying and expanding',()=>{
 
 gen('maths','Ratio and proportion','Ratio and proportion',()=>{
   if(Math.random()<0.5){ const g=ri(2,7), pr=pickr([[1,2],[2,3],[3,4],[1,3],[2,5],[3,5],[1,4]]), a=pr[0]*g, b=pr[1]*g, ans=pr[0]+' : '+pr[1];
-    return {q:'Simplify the ratio '+a+' : '+b, correct:ans, wrong:pick3(ans,[pr[1]+' : '+pr[0],pr[0]+' : '+(pr[1]+1),(pr[0]+1)+' : '+pr[1],(pr[0]*2)+' : '+pr[1]],j=>(pr[0]+j)+' : '+(pr[1]+j+1)), exp:'Divide both numbers by '+g+': '+a+' \u00f7 '+g+' = '+pr[0]+' and '+b+' \u00f7 '+g+' = '+pr[1]+'. So '+a+' : '+b+' = '+ans+'.', hint:'Divide both sides by the biggest number that goes into both.'}; }
+    return {q:'Simplify the ratio '+a+' : '+b, correct:ans, wrong:pick3(ans,[pr[1]+' : '+pr[0],pr[0]+' : '+(pr[1]+1),(pr[0]+1)+' : '+pr[1],(pr[0]*2)+' : '+pr[1]],j=>(pr[0]+j)+' : '+(pr[1]+j+1)), exp:ratioSimpExp(a,b,pr[0],pr[1]), hint:'Divide both sides by the biggest number that goes into both.'}; }
   const p=pickr([2,3,4,5]), q2=p+pickr([2,3,4,5,6]), u=ri(2,9)*10, ans=u*q2, item=pickr(['flour','sugar','rice']);
-  return {q:'A recipe for '+p+' people uses '+u*p+' g of '+item+'. How much is needed for '+q2+' people?', correct:ans+' g', wrong:posOpts(ans,n=>n+' g'), exp:u*p+' \u00f7 '+p+' = '+u+' g each. '+u+' \u00d7 '+q2+' = '+ans+' g.', hint:'Find the amount for one person first.'};
+  return {q:'A recipe for '+p+' people uses '+u*p+' g of '+item+'. How much is needed for '+q2+' people?', correct:ans+' g', wrong:posOpts(ans,n=>n+' g'), exp:recipeExp(p,q2,u), hint:'Find the amount for one person first.'};
 }); genBT('Ratio');
 
 gen('maths','Ordering and temperature','Ordering and temperature',()=>{
   const v=ri(0,2);
   if(v===0){ const s=uniq([ri(-9,9),ri(-9,9),ri(-9,9),ri(-9,9),ri(-9,9),ri(-9,9)]).slice(0,4); while(s.length<4){ const z=ri(-9,9); if(!s.includes(z)) s.push(z); } const small=Math.random()<0.5, ans=small?Math.min(...s):Math.max(...s);
     return {q:'Which is the '+(small?'smallest':'largest')+'? '+s.map(mn).join(', '), correct:mn(ans), wrong:s.filter(z=>z!==ans).map(mn), exp:'Put them in order on a number line: '+s.slice().sort((x,y)=>x-y).map(mn).join(', ')+'. Numbers further left are smaller. The '+(small?'smallest':'largest')+' is '+mn(ans)+'.', hint:'Picture a number line. Negatives are to the left of zero.'}; }
-  if(v===1){ const t=ri(-6,6), f=ri(2,9), ans=t-f; return {q:'The temperature is '+mn(t)+'\u00b0C and falls by '+f+'\u00b0C. What is it now?', correct:mn(ans)+'\u00b0C', wrong:numOpts(ans,n=>mn(n)+'\u00b0C'), exp:mn(t)+' \u2212 '+f+' = '+mn(ans)+'.', hint:'Falling means moving left on the number line.'}; }
-  const t=ri(-9,-2), r=ri(t*-1+1,14), ans=t+r; return {q:'The temperature is '+mn(t)+'\u00b0C and rises by '+r+'\u00b0C. What is it now?', correct:mn(ans)+'\u00b0C', wrong:numOpts(ans,n=>mn(n)+'\u00b0C'), exp:mn(t)+' + '+r+' = '+mn(ans)+'.', hint:'Rising means moving right on the number line.'};
+  if(v===1){ const t=ri(-6,6), f=ri(2,9), ans=t-f; return {q:'The temperature is '+mn(t)+'\u00b0C and falls by '+f+'\u00b0C. What is it now?', correct:mn(ans)+'\u00b0C', wrong:numOpts(ans,n=>mn(n)+'\u00b0C'), exp:tempFallExp(t,f), hint:'Falling means moving left on the number line.'}; }
+  const t=ri(-9,-2), r=ri(t*-1+1,14), ans=t+r; return {q:'The temperature is '+mn(t)+'\u00b0C and rises by '+r+'\u00b0C. What is it now?', correct:mn(ans)+'\u00b0C', wrong:numOpts(ans,n=>mn(n)+'\u00b0C'), exp:tempRiseExp(t,r), hint:'Rising means moving right on the number line.'};
 }); genBT('Number');
 
 gen('maths','Mean puzzles','Mean puzzles',()=>{
   const m=ri(5,12); let a,b,c,d,tries=0; do{ a=ri(1,15); b=ri(1,15); c=ri(1,15); d=4*m-(a+b+c); }while((d<1||d>20)&&tries++<80); if(d<1||d>20){ a=b=c=m; d=m; }
-  return {q:'The mean of four numbers is '+m+'. Three of the numbers are '+a+', '+b+' and '+c+'. What is the fourth?', correct:d, wrong:posOpts(d), exp:'The total must be 4 \u00d7 '+m+' = '+4*m+'. '+4*m+' \u2212 ('+a+' + '+b+' + '+c+') = '+d+'.', hint:'Find the total first: mean \u00d7 how many.'};
+  return {q:'The mean of four numbers is '+m+'. Three of the numbers are '+a+', '+b+' and '+c+'. What is the fourth?', correct:d, wrong:posOpts(d), exp:meanExp(m,a,b,c,d), hint:'Find the total first: mean \u00d7 how many.'};
 }); genBT('Statistics');
 
 gen('maths','Polygons and shapes','Polygons and shapes',()=>{
   const v=ri(0,3), names={5:'pentagon',6:'hexagon',7:'heptagon',8:'octagon',9:'nonagon',10:'decagon'}, n=ri(5,10);
-  if(v===0){ const ans=(n-2)*180; return {q:'What do the interior angles of a '+names[n]+' add up to?', correct:ans+'\u00b0', wrong:posOpts(ans,x=>x+'\u00b0').map((z,i)=>i===0?((n*180)+'\u00b0'):z).filter((z,i,arr)=>z!==ans+'\u00b0'&&arr.indexOf(z)===i).concat([((n-1)*180)+'\u00b0',((n-2)*90)+'\u00b0',((n-3)*180)+'\u00b0']).filter((z,i,arr)=>z!==ans+'\u00b0'&&arr.indexOf(z)===i).slice(0,3), exp:'A '+names[n]+' splits into '+(n-2)+' triangles. '+(n-2)+' \u00d7 180\u00b0 = '+ans+'\u00b0.', hint:'Number of sides minus 2, then multiply by 180.'}; }
+  if(v===0){ const ans=(n-2)*180; return {q:'What do the interior angles of a '+names[n]+' add up to?', correct:ans+'\u00b0', wrong:posOpts(ans,x=>x+'\u00b0').map((z,i)=>i===0?((n*180)+'\u00b0'):z).filter((z,i,arr)=>z!==ans+'\u00b0'&&arr.indexOf(z)===i).concat([((n-1)*180)+'\u00b0',((n-2)*90)+'\u00b0',((n-3)*180)+'\u00b0']).filter((z,i,arr)=>z!==ans+'\u00b0'&&arr.indexOf(z)===i).slice(0,3), exp:polySumExp(names[n],n), hint:'Number of sides minus 2, then multiply by 180.'}; }
   if(v===1){ return {q:'How many sides does a '+names[n]+' have?', correct:n, wrong:posOpts(n).map(Number).filter(z=>z!==n&&z<14).concat([n+1,n-1,n+2]).filter((z,i,arr)=>z!==n&&arr.indexOf(z)===i).slice(0,3), exp:'A '+names[n]+' has '+n+' sides.', hint:'Think of the Greek number in the name.'}; }
-  if(v===2){ const b=ri(3,12), h=ri(2,9), ans=b*h; return {q:'A parallelogram has a base of '+b+' cm and a perpendicular height of '+h+' cm. What is its area?', correct:ans+' cm\u00b2', wrong:posOpts(ans,x=>x+' cm\u00b2'), exp:'Area = base \u00d7 height = '+b+' \u00d7 '+h+' = '+ans+' cm\u00b2.', hint:'Use the perpendicular height, not the slanted side.'}; }
+  if(v===2){ const b=ri(3,12), h=ri(2,9), ans=b*h; return {q:'A parallelogram has a base of '+b+' cm and a perpendicular height of '+h+' cm. What is its area?', correct:ans+' cm\u00b2', wrong:posOpts(ans,x=>x+' cm\u00b2'), exp:paraAreaExp(b,h), hint:'Use the perpendicular height, not the slanted side.'}; }
   const a=ri(2,8), b=a+2*ri(1,3), h=ri(2,8), ans=(a+b)*h/2;
-  return {q:'A trapezium has parallel sides of '+a+' cm and '+b+' cm, and a height of '+h+' cm. What is its area?', correct:ans+' cm\u00b2', wrong:posOpts(ans,x=>x+' cm\u00b2'), exp:'Area = \u00bd \u00d7 ('+a+' + '+b+') \u00d7 '+h+' = '+ans+' cm\u00b2.', hint:'Add the parallel sides, multiply by the height, then halve.'};
+  return {q:'A trapezium has parallel sides of '+a+' cm and '+b+' cm, and a height of '+h+' cm. What is its area?', correct:ans+' cm\u00b2', wrong:posOpts(ans,x=>x+' cm\u00b2'), exp:trapAreaExp(a,b,h), hint:'Add the parallel sides, multiply by the height, then halve.'};
 }); genBT('Geometry');
 
 gen('maths','Written methods','Written methods',()=>{
   const v=ri(0,2);
   if(v===0){ const b=ri(3,9); let a,qq,r; do{ a=ri(50,199); qq=Math.floor(a/b); r=a%b; }while(r===0); const ans=qq+' remainder '+r;
-    return {q:'What is '+a+' \u00f7 '+b+'? Give the remainder.', correct:ans, wrong:pick3(ans,[qq+' remainder '+(r+1),(qq+1)+' remainder '+r,qq+' remainder '+(b-r),r+' remainder '+qq],j=>(qq+j)+' remainder '+(r+j)), exp:'How many whole '+b+'s fit in '+a+'? '+b+' \u00d7 '+qq+' = '+b*qq+', the biggest multiple that fits. What is left: '+a+' \u2212 '+b*qq+' = '+r+'. So '+a+' \u00f7 '+b+' = '+qq+' remainder '+r+'.', hint:'How many whole '+b+'s fit in '+a+'? What is left over?'}; }
+    return {q:'What is '+a+' \u00f7 '+b+'? Give the remainder.', correct:ans, wrong:pick3(ans,[qq+' remainder '+(r+1),(qq+1)+' remainder '+r,qq+' remainder '+(b-r),r+' remainder '+qq],j=>(qq+j)+' remainder '+(r+j)), exp:wmDivExp(a,b), hint:'How many whole '+b+'s fit in '+a+'? What is left over?'}; }
   if(v===1){ const a=ri(12,99), b=ri(3,9), ans=a*b; return {q:'What is '+a+' \u00d7 '+b+'?', correct:ans, wrong:posOpts(ans), exp:'Split it: '+Math.floor(a/10)*10+' \u00d7 '+b+' = '+Math.floor(a/10)*10*b+' and '+a%10+' \u00d7 '+b+' = '+(a%10)*b+'. Add them: '+Math.floor(a/10)*10*b+' + '+(a%10)*b+' = '+ans+'.', hint:'Split the bigger number into tens and units.'}; }
-  const a=pickr([1000,2000,500]), b=ri(101,a-11), ans=a-b; return {q:'What is '+a.toLocaleString('en-GB')+' \u2212 '+b+'?', correct:ans.toLocaleString('en-GB'), wrong:posOpts(ans,n=>n.toLocaleString('en-GB')), exp:'Count up from '+b+' to '+a.toLocaleString('en-GB')+': '+a.toLocaleString('en-GB')+' \u2212 '+b+' = '+ans.toLocaleString('en-GB')+'.', hint:'Count up from the smaller number.'};
+  const a=pickr([1000,2000,500]), b=ri(101,a-11), ans=a-b; return {q:'What is '+a.toLocaleString('en-GB')+' \u2212 '+b+'?', correct:ans.toLocaleString('en-GB'), wrong:posOpts(ans,n=>n.toLocaleString('en-GB')), exp:countUpExp(b,a), hint:'Count up from the smaller number.'};
 }); genBT('Operations');
 
 gen('maths','nth term problems','nth term problems',()=>{
@@ -5267,9 +5302,9 @@ gen('science','Periodic table','Periodic table',()=>{
   const easy=PT.filter(e=>e.num<=36), v=ri(0,3);
   if(v===0){ const e=pickr(easy), ans=e.num; return {q:'What is the atomic number of '+e.name+'?', correct:ans, wrong:posOpts(ans), exp:e.name+' ('+e.sym+') has atomic number '+e.num+'.', hint:'Find it in the periodic table. Elements are in order of atomic number.'}; }
   if(v===1){ const cat=pickr(['ak','ha','ng','ae']), e=pickr(PT.filter(x=>x.cat===cat&&x.num<=56)), names={ak:'Group 1',ae:'Group 2',ha:'Group 7',ng:'Group 0'}, ans=names[cat];
-    return {q:'Which group of the periodic table is '+e.name+' in?', correct:ans, wrong:Object.values(names).filter(x=>x!==ans), exp:e.name+' is '+PT_CATS[cat].toLowerCase()+'.', hint:'Alkali metals are Group 1, halogens are Group 7 and noble gases are Group 0.'}; }
+    return {q:'Which group of the periodic table is '+e.name+' in?', correct:ans, wrong:Object.values(names).filter(x=>x!==ans), exp:e.name+' is '+PT_CATS[cat].toLowerCase()+'.', hint:'Alkali metals are Group 1, alkaline earth metals are Group 2, halogens are Group 7 and noble gases are Group 0.'}; }
   if(v===2){ const facts=['H','N','Ca','Hg','Fe','Cu','Si','Cl','Ne','Mg','Br','Pb','C','He','Zn','I','Sn','U','W'], sym=pickr(facts), e=PT.find(x=>x.sym===sym), others=shuffle(PT.filter(x=>facts.includes(x.sym)&&x.sym!==sym)).slice(0,3);
-    return {q:'Which element is this? '+PT_FACTS[sym], correct:e.name, wrong:others.map(x=>x.name), exp:e.name+' ('+e.sym+'): '+PT_FACTS[sym], hint:'It starts with the letter '+e.name[0]+'.'}; }
+    return {q:'Which element is this? '+PT_FACTS[sym], correct:e.name, wrong:others.map(x=>x.name), exp:e.name+' ('+e.sym+'): '+PT_FACTS[sym], hint:(typeof ELEMENT_CLUES!=='undefined'&&ELEMENT_CLUES[sym])||('It starts with the letter '+e.name[0]+'.')}; }
   const gases=PT.filter(e=>['H','He','N','O','Ne','Ar','Cl'].includes(e.sym)), solids=PT.filter(e=>['Na','Mg','Al','Fe','Cu','Zn','Ag','Au','C','S'].includes(e.sym)), g=pickr(gases);
   return {q:'Which of these is a gas at room temperature?', correct:g.name, wrong:shuffle(solids).slice(0,3).map(x=>x.name), exp:g.name+' is a gas at room temperature. The others are solids.', hint:'Think of the air around you and of metals.'};
 }); genBT('Chemistry');
@@ -5915,6 +5950,10 @@ const CAP_ZOOM = {uk:'eu',ew:'eu',en:'eu',es:'eu',ee:'eu',ase:'as',asc:'as',asm:
 const UKMAP = {ENG:'England',SCT:'Scotland',WLS:'Wales',NIR:'Northern Ireland',IRL:'Republic of Ireland'};
 /* a specific, memorable clue for each capital's HINT — never names the capital itself, so it never gives the answer away; used by both this file and gens.js's world Capital cities quiz */
 const CAP_CLUES = {ENG:'Big Ben, the Thames, and a famous Tower are all here.',SCT:'Its castle sits on top of the remains of an old volcano.',WLS:'It only officially became the capital in 1955 — more recent than you might think.',NIR:'The Titanic was built in this city\'s shipyards.',IRL:'Home to Trinity College and the famous Guinness brewery.',FRA:'The Eiffel Tower stands here.',DEU:'A famous wall once split this city in two.',BEL:'It\'s home to the main offices of the European Union.',NLD:'It\'s the official capital, but the country\'s government actually works from a different city, The Hague.',LUX:'It\'s a tiny country wedged between three much bigger neighbours.',CHE:'Not Zurich, which is bigger — a bear appears on its coat of arms.',AUT:'Famous for classical music — Mozart lived and worked here.',PRT:'It sits on the River Tagus, right where the river meets the Atlantic Ocean.',ESP:'It sits right in the middle of the country.',NOR:'It sits at the end of a long, narrow fjord.',SWE:'It\'s built across many islands, joined by bridges.',FIN:'It sits on the coast of the Baltic Sea, among many small islands.',DNK:'Its name comes from words meaning \'merchants\' harbour\'.',ISL:'It\'s the most northerly capital city in the whole world.',EST:'It has a beautiful old walled town with cobbled streets.',LVA:'It sits right on the coast of the Baltic Sea.',LTU:'It\'s the biggest city in the three Baltic states, with a large old town.',ITA:'\'All roads lead\' here — it was once the centre of a huge ancient empire.',GRC:'It\'s named after a Greek goddess of wisdom.',HRV:'It sits below a hill topped with a cathedral, on the River Sava.',SVN:'A green dragon sits on top of its hilltop castle and on its coat of arms.',BIH:'It hosted the Winter Olympics in 1984.',SRB:'It sits where two rivers, the Sava and the Danube, meet.',MNE:'It sits where two rivers meet, near the country\'s biggest lake.',MKD:'A huge statue of a warrior on a horse stands in its main square.',ALB:'Many of its old buildings were painted in bright colours to cheer the city up.',BGR:'A mountain with ski slopes rises right at the edge of the city.',CYP:'It\'s the only capital city in the world divided by a border between two countries.',POL:'It sits on the River Vistula.',CZE:'It\'s known as the city of a hundred spires.',SVK:'It sits on the River Danube.',HUN:'It grew from two separate towns on opposite riverbanks joining together.',ROU:'Its grand old buildings once earned it the nickname \'Little Paris\'.',UKR:'It sits on the River Dnieper.',BLR:'Almost the whole city had to be rebuilt after being destroyed in the Second World War.',MDA:'The country is famous for its vineyards and deep underground wine cellars nearby.',RUS:'Red Square and the Kremlin are here.',CHN:'Its name literally means \'northern capital\'.',JPN:'Its name literally means \'eastern capital\'.',KOR:'A tower on a hill overlooks the city from above its river.',PRK:'It\'s home to one of the tallest hotels in the world, shaped like a giant pyramid, that has never opened.',MNG:'It\'s one of the coldest capital cities in the world.',VNM:'It\'s in the north of the country, near a lake with a legend about a magic sword.',THA:'Its full ceremonial name is one of the longest place names in the world.',KHM:'It sits where the Mekong River meets two others.',LAO:'It sits on the Mekong River, close to a neighbouring country\'s border.',MMR:'It became the capital in 2006, built specially for the job — a different city was the capital before.',MYS:'The Petronas Twin Towers are here.',IDN:'It\'s on the island of Java, one of the most crowded islands on Earth.',PHL:'It\'s on the island of Luzon.',BRN:'It\'s home to one of the largest palaces in the world, with well over a thousand rooms.',TLS:'This young country\'s capital sits on the north coast of the island of Timor.',IND:'A big city holds a smaller, specially planned government area inside it.',PAK:'It was specially built as a brand new capital in the 1960s.',BGD:'It\'s known as the rickshaw capital of the world, with hundreds of thousands of them.',NPL:'Mount Everest is in this country, and the city\'s valley is full of ancient temples.',BTN:'It\'s one of the only capital cities in the world with no traffic lights at all.',AFG:'It sits in a valley surrounded by the Hindu Kush mountains.',KAZ:'This capital has been renamed more than once and is full of futuristic buildings.',UZB:'It\'s the largest city in Central Asia.',TKM:'It\'s famous for having an enormous number of white marble buildings.',TJK:'Its name means \'Monday\' — it grew from a market held on that day each week.',KGZ:'It sits at the foot of snow-capped mountains, the Tian Shan range.',TUR:'Not Istanbul, which is bigger.',IRN:'It sits at the foot of mountains that have ski resorts nearby.',IRQ:'It sits on the River Tigris.',SYR:'It\'s considered one of the oldest continuously lived-in cities in the world.',LBN:'It\'s on the Mediterranean coast.',JOR:'It\'s built across several hills, a bit like Rome.',SAU:'It sits in the middle of the desert, far from the coast.',YEM:'It\'s one of the highest capital cities in the world, over 2,000 metres up.',OMN:'It sits on the coast, tucked between mountains and the sea.',ARE:'Not Dubai, which is the biggest city.',QAT:'It hosted the football World Cup in 2022.',KWT:'It sits on a natural harbour on the Persian Gulf.',GEO:'It grew up around natural hot springs, which gave the city its name.',ARM:'It\'s said to be one of the oldest continuously lived-in cities in the world, older than Rome.',AZE:'It\'s on the Caspian Sea.',MAR:'Not Casablanca, which is bigger.',DZA:'Its old town is a steep, UNESCO-listed hillside neighbourhood called the Casbah.',TUN:'It starts the same way as the country\'s own name.',LBY:'Its name comes from Greek, meaning \'three cities\'.',EGY:'It\'s on the River Nile, near the Pyramids.',MRT:'It sits right on the edge of the Sahara Desert, near the Atlantic coast.',MLI:'It sits beside a great river that flows right across West Africa.',NER:'It sits beside a great river that flows right across West Africa.',SEN:'It\'s on the most westerly point of mainland Africa.',GMB:'It sits on an island where a major river meets the Atlantic Ocean.',GIN:'It\'s built on a narrow peninsula and a small island.',GNB:'It sits on a river estuary on the west coast.',SLE:'It was founded as a home for freed and formerly enslaved people.',LBR:'It\'s named after a US President.',CIV:'It\'s the official capital, but a bigger coastal city does most of the government\'s work.',GHA:'This was the capital when the country became the first in sub-Saharan Africa to gain independence, in 1957.',BFA:'It hosts FESPACO, one of Africa\'s biggest film festivals.',TGO:'It sits right on the coast, close to a bigger neighbouring country.',BEN:'It\'s the official capital, but the government actually works from a different city.',NGA:'Not Lagos, which is the biggest city.',TCD:'It sits where two rivers, the Chari and Logone, meet.',CMR:'It\'s built across seven hills, a bit like Rome.',CAF:'It sits on a river, on the border with a much bigger neighbouring country.',GAB:'Its name means \'free town\' in French — like Freetown, it was founded for freed enslaved people.',COG:'It faces another country\'s capital city across a river — the only two capitals in the world in sight of each other.',COD:'It faces another country\'s capital city across a river — the only two capitals in the world in sight of each other.',GNQ:'It\'s on an island, not on the country\'s mainland.',SDN:'The Blue Nile and White Nile meet here.',SDS:'It sits on the White Nile, in the world\'s newest country (independent since 2011).',ERI:'Its Italian-style Art Deco buildings earned it a UNESCO World Heritage listing.',ETH:'Its name means \'new flower\'.',DJI:'It sits at a narrow strait where the Red Sea meets the Gulf of Aden.',SOM:'It\'s on the Indian Ocean coast.',KEN:'Its name means \'cool water\' in the Maasai language.',UGA:'It\'s built across several hills, near Lake Victoria.',RWA:'It\'s often ranked as one of the cleanest and safest cities in Africa.',BDI:'The capital moved here from a different city in 2019.',TZA:'Not Dar es Salaam, which is the biggest city.',AGO:'Thanks to oil wealth, it has often been ranked one of the most expensive cities in the world.',ZMB:'It sits almost exactly in the centre of the country, on a plateau.',MWI:'It replaced a different city as the capital in 1975.',MOZ:'It\'s on the Indian Ocean coast, and was once known by a Portuguese name, Lourenço Marques.',ZWE:'It was once called Salisbury, before the country changed its own name too.',BWA:'It\'s one of the fastest-growing cities in Africa, built up mainly since independence in 1966.',NAM:'It sits in the middle of the country and still has buildings from its time as a German colony.',LSO:'This whole country is a tiny enclave, completely surrounded by just one other country.',SWZ:'This country used to be called Swaziland.',MDG:'Its local nickname is short, but the city itself is built across a great many hills.',ZAF:'This country actually has three capital cities — this is the main one, used for government.',BOL:'It has two capital cities, and is one of only two landlocked countries in South America.',GRL:'It\'s the world\'s largest island that isn\'t a whole continent, and most of it is covered in ice.',CAN:'Not Toronto, which is bigger.',USA:'Purpose-built to be the seat of government, and not part of any state.',MEX:'It\'s built on the site of an ancient Aztec city, Tenochtitlan.',GTM:'It\'s the largest city in Central America.',BLZ:'It became the capital after a hurricane hit the old coastal capital in 1961.',SLV:'Its name means \'the holy saviour\'.',HND:'Its name is thought to mean \'silver hill\' in an indigenous language.',NIC:'It sits on the shore of a big lake.',CRI:'It sits in a valley high in the mountains, called the Central Valley.',PAN:'The famous canal starts right nearby.',CUB:'Its old town, full of vintage American cars, is a UNESCO World Heritage Site.',JAM:'Reggae music, including Bob Marley, grew up in this city.',HTI:'Its name is French for \'port of the prince\'.',DOM:'It\'s one of the oldest cities founded by Europeans anywhere in the Americas.',BHS:'It\'s on the island of New Providence.',BRA:'Not Rio de Janeiro — this city was built from scratch in the 1950s.',ARG:'Its name means \'fair winds\' in Spanish.',CHL:'It has the Andes mountains right behind it.',PER:'It\'s on the Pacific coast.',COL:'It\'s high up in the Andes mountains.',VEN:'It\'s close to the Caribbean coast.',ECU:'The country\'s name means \'equator\' in Spanish, and this city sits close to the line.',URY:'It sits on the wide River Plate estuary.',PRY:'It\'s on a wide river in the middle of South America.',GUY:'Much of it sits below sea level, protected by a sea wall, a bit like the Netherlands.',SUR:'Its old town has wooden Dutch colonial buildings and is a UNESCO World Heritage Site.',AUS:'Not Sydney! It was built as a compromise between Sydney and Melbourne.',NZL:'It\'s named after a famous Duke who defeated Napoleon.',PNG:'It has no road connection to most of the rest of the country — you fly or sail instead.',FJI:'It\'s one of the wettest capital cities in the world.',SLB:'It\'s on the island of Guadalcanal, the site of a major Second World War battle.',VUT:'It sits on an island in a South Pacific volcanic archipelago.',GBR:'Big Ben, the Thames, and a famous Tower are all here.'};
+
+/* FLAG_CLUES: what each flag LOOKS like, for the hint on "Pick the flag" (she is given a country name and must choose its flag from pictures). Written from the flags as the app actually draws them
+   (Twemoji, flags.js), NOT from memory of the real flags: e.g. the app's Northern Ireland flag is the Union Jack. tests/flow_flaghints.js re-checks every colour word against the drawing's real colours, and that no clue names a country. */
+const FLAG_CLUES = {ENG:'a red cross on a white background',SCT:'a white diagonal cross on a blue background',WLS:'a red dragon, with white on the top half and green on the bottom half',NIR:'the Union Jack: red and white crosses on a blue background',IRL:'three vertical stripes: green, white and orange',FRA:'three vertical stripes: blue, white and red, with blue on the left',DEU:'three horizontal stripes: black at the top, red in the middle and yellow at the bottom',BEL:'three vertical stripes: black, yellow and red, with black on the left',NLD:'three horizontal stripes: red at the top, white in the middle and dark blue at the bottom',LUX:'three horizontal stripes: red at the top, white in the middle and light blue at the bottom',CHE:'a short white cross in the middle of a red square',AUT:'three horizontal stripes: red, white and red',PRT:'a green band on the left and a bigger red band on the right, with a yellow and red emblem where they meet',ESP:'three horizontal stripes: red, a wide yellow one, and red, with a coat of arms on the left',NOR:'a blue cross with a white edge on a red background',SWE:'a yellow cross on a blue background',FIN:'a blue cross on a white background',DNK:'a white cross that reaches the edges, on a red background, with the upright of the cross to the left of centre',ISL:'a red cross with a white edge on a blue background',EST:'three horizontal stripes: blue at the top, black in the middle and white at the bottom',LVA:'a dark red flag with a thin white stripe across the middle',LTU:'three horizontal stripes: yellow at the top, green in the middle and red at the bottom',ITA:'three vertical stripes: green, white and red, with green on the left',GRC:'blue and white horizontal stripes, with a white cross on a blue square in the top left corner',HRV:'three horizontal stripes: red, white and blue, with a red and white checked shield in the middle',SVN:'three horizontal stripes: white, blue and red, with a small shield in the top left',BIH:'a blue flag with a yellow triangle and a line of white stars down the slanted edge',SRB:'three horizontal stripes: red, blue and white, with a coat of arms on the left',MNE:'a red flag with a yellow border and a yellow double-headed eagle in the middle',MKD:'a red flag with a yellow sun in the middle and yellow rays spreading out to the edges',ALB:'a red flag with a black double-headed eagle in the middle',BGR:'three horizontal stripes: white, green and red',CYP:'a white flag with an orange map of the island above two green olive branches',POL:'two horizontal stripes: white at the top and red at the bottom',CZE:'white on top and red below, with a blue triangle on the left',SVK:'three horizontal stripes: white, blue and red, with a shield on the left',HUN:'three horizontal stripes: red at the top, white in the middle and green at the bottom',ROU:'three vertical stripes: blue, yellow and red, with blue on the left and nothing in the middle',UKR:'two horizontal stripes: blue at the top and yellow at the bottom',BLR:'a red stripe above a green stripe, with a red and white pattern down the left edge',MDA:'three vertical stripes: blue, yellow and red, with a coat of arms in the middle',RUS:'three horizontal stripes: white at the top, blue in the middle and red at the bottom',CHN:'a red flag with one big yellow star and four small yellow stars in the top left',JPN:'a white flag with a big red circle in the middle',KOR:'a white flag with a red and blue circle in the middle and four black sets of lines in the corners',PRK:'a wide red stripe with a thin white line either side and a blue stripe above and below, with a red star in a white circle on the left',MNG:'three vertical stripes: red, blue and red, with a yellow symbol on the left',VNM:'a red flag with a big yellow star in the middle',THA:'five horizontal stripes: red, white, blue, white and red, with the blue one in the middle the widest',KHM:'a wide red stripe between two blue stripes, with a white temple in the middle',LAO:'red, blue and red horizontal stripes with a white circle in the middle',MMR:'three horizontal stripes: yellow, green and red, with a big white star in the middle',MYS:'red and white stripes with a blue square in the top left holding a yellow crescent and star',IDN:'two horizontal stripes: red at the top and white at the bottom',PHL:'a blue stripe above a red stripe, with a white triangle on the left holding a yellow sun and three yellow stars',BRN:'a yellow flag with a black and a white diagonal stripe and a red emblem in the middle',TLS:'a red flag with a yellow triangle and a black triangle on the left, and a white star',IND:'three horizontal stripes: orange at the top, white in the middle and green at the bottom, with a blue wheel in the middle',PAK:'a green flag with a white crescent and star, and a white stripe on the left',BGD:'a green flag with a red circle',NPL:'two red triangles on top of each other with a blue edge and a white moon and sun, so it is the only flag that is not a rectangle',BTN:'a flag split by a diagonal into yellow at the top and orange at the bottom, with a white dragon in the middle',AFG:'three vertical stripes: black, red and green, with a white emblem in the middle',KAZ:'a blue flag with a yellow sun and eagle in the middle and a yellow pattern down the left edge',UZB:'blue, white and green horizontal stripes with thin red lines, and a white crescent and stars in the top left',TKM:'a green flag with a red carpet pattern down the left side and a white crescent and stars',TJK:'three horizontal stripes: red, white and green, with a yellow crown and stars in the middle',KGZ:'a red flag with a yellow sun in the middle',TUR:'a red flag with a white crescent and star',IRN:'three horizontal stripes: green, white and red, with a yellow emblem in the middle',IRQ:'three horizontal stripes: red, white and black, with green Arabic writing on the white stripe',SYR:'three horizontal stripes: red, white and black, with two green stars on the white stripe',LBN:'red, white and red horizontal stripes with a green cedar tree in the middle',JOR:'black, white and green horizontal stripes with a red triangle on the left holding a white star',SAU:'a green flag with white Arabic writing and a white sword',YEM:'three horizontal stripes: red at the top, white in the middle and black at the bottom',OMN:'a red band on the left, and white, red and green horizontal stripes on the right, with a white emblem in the top left',ARE:'a red band on the left, and green, white and black horizontal stripes on the right',QAT:'a dark red flag with a white zigzag edge on the left',KWT:'green, white and red horizontal stripes with a black shape on the left',GEO:'a white flag with a big red cross and four small red crosses',ARM:'three horizontal stripes: red, blue and orange',AZE:'three horizontal stripes: blue, red and green, with a white crescent and star in the middle',MAR:'a red flag with a green star in the middle',DZA:'two vertical halves: green on the left and white on the right, with a red crescent and star in the middle',TUN:'a red flag with a white circle in the middle holding a red crescent and star',LBY:'three horizontal stripes: red, black and green, with a white crescent and star on the black stripe',EGY:'three horizontal stripes: red, white and black, with a yellow eagle in the middle',MRT:'a green flag with a yellow crescent and star, and a thin red stripe at the top and bottom',MLI:'three vertical stripes: green, yellow and red, with green on the left',NER:'three horizontal stripes: orange at the top, white in the middle and green at the bottom, with an orange circle in the middle',SEN:'three vertical stripes: green, yellow and red, with a green star in the middle',GMB:'red, white, blue, white and green horizontal stripes, with the blue one in the middle',GIN:'three vertical stripes: red, yellow and green, with red on the left',GNB:'a red stripe on the left with a black star, and yellow above green on the right',SLE:'three horizontal stripes: green, white and blue',LBR:'red and white stripes with a blue square in the top left holding a white star',CIV:'three vertical stripes: orange, white and green, with orange on the left',GHA:'three horizontal stripes: red, yellow and green, with a black star in the middle',BFA:'two horizontal stripes: red at the top and green at the bottom, with a yellow star in the middle',TGO:'green and yellow stripes with a red square in the top left holding a white star',BEN:'a green stripe on the left, and yellow above red on the right',NGA:'three vertical stripes: green, white and green',TCD:'three vertical stripes: blue, yellow and red, with blue on the left',CMR:'three vertical stripes: green, red and yellow, with a yellow star on the red stripe',CAF:'four horizontal stripes: blue, white, green and yellow, with a red vertical stripe down the middle and a yellow star in the top left',GAB:'three horizontal stripes: green at the top, yellow in the middle and blue at the bottom',COG:'a diagonal yellow stripe between a green triangle at the top left and a red triangle at the bottom right',COD:'a blue flag with a red diagonal stripe edged in yellow, and a yellow star in the top left',GNQ:'green, white and red horizontal stripes with a blue triangle on the left and a coat of arms in the middle',SDN:'red, white and black horizontal stripes with a green triangle on the left',SDS:'black, red and green horizontal stripes separated by white lines, with a blue triangle on the left holding a yellow star',ERI:'a big red triangle on the left with a yellow wreath, green above it and blue below it',ETH:'three horizontal stripes: green, yellow and red, with a blue circle and a yellow star in the middle',DJI:'light blue above green, with a white triangle on the left holding a red star',SOM:'a light blue flag with one big white star in the middle',KEN:'black, red and green horizontal stripes with white edges, and a red and black shield with white spears in the middle',UGA:'six horizontal stripes: black, yellow, red, black, yellow and red, with a white circle and a bird in the middle',RWA:'a light blue stripe at the top, then a yellow stripe and a green stripe, with a yellow sun in the top right',BDI:'a white diagonal cross dividing red and green triangles, with a white circle and three red stars in the middle',TZA:'a green triangle at the top left and a blue triangle at the bottom right, separated by a black stripe with yellow edges',AGO:'red above black, with a yellow half cog wheel, a machete and a star in the middle',ZMB:'a green flag with an orange eagle in the top right and red, black and orange stripes at the bottom right',MWI:'black, red and green horizontal stripes with a red rising sun on the black stripe',MOZ:'green, black and yellow horizontal stripes edged with white lines, and a red triangle on the left holding a yellow star',ZWE:'seven horizontal stripes of green, yellow, red and black, with a white triangle on the left holding a red star',BWA:'a light blue flag with a black stripe edged in white across the middle',NAM:'a blue triangle with a yellow sun at the top left, a green triangle at the bottom right, and a red diagonal stripe with white edges',LSO:'blue, white and green horizontal stripes with a black hat in the middle',SWZ:'blue, yellow, red, yellow and blue horizontal stripes, with a black and white shield and spears in the middle',MDG:'a white stripe on the left, and red above green on the right',ZAF:'a sideways green Y shape between a red stripe and a blue stripe, with a black triangle with a yellow edge on the left',CAN:'red, white and red vertical stripes with a red maple leaf in the middle',USA:'red and white stripes with a blue square in the top left holding white stars',MEX:'three vertical stripes: green, white and red, with an eagle on a cactus in the middle',GTM:'three vertical stripes: light blue, white and light blue, with a coat of arms in the middle',BLZ:'a blue flag with a red stripe at the top and bottom and a white circle with a coat of arms in the middle',SLV:'blue, white and blue horizontal stripes with a coat of arms in the middle',HND:'blue, white and blue horizontal stripes with five blue stars in the middle',NIC:'blue, white and blue horizontal stripes with a triangle emblem in the middle',CRI:'blue, white, red, white and blue horizontal stripes, with the red one in the middle the widest and holding a small coat of arms',PAN:'four squares: white with a blue star, red, blue, and white with a red star',CUB:'blue and white horizontal stripes with a red triangle on the left holding a white star',JAM:'a yellow diagonal cross dividing green triangles at the top and bottom from black triangles at the sides',HTI:'blue above red, with a white square in the middle holding a coat of arms',DOM:'a white cross dividing the flag into four rectangles, blue and red, with a coat of arms in the middle',BHS:'light blue, yellow and light blue horizontal stripes with a black triangle on the left',BRA:'a green flag with a big yellow diamond holding a blue circle with white stars',ARG:'three horizontal stripes: light blue, white and light blue, with a yellow sun in the middle',CHL:'a white stripe on top and a red stripe below, with a blue square in the top left holding a white star',PER:'three vertical stripes: red, white and red',COL:'three horizontal stripes: yellow, blue and red, with the yellow one the widest',VEN:'yellow, blue and red horizontal stripes with an arc of white stars on the blue stripe',ECU:'yellow, blue and red horizontal stripes with a coat of arms in the middle, and the yellow one the widest',URY:'white and blue horizontal stripes with a white square in the top left holding a yellow sun',PRY:'three horizontal stripes: red, white and blue, with a round emblem in the middle',GUY:'a green flag with a yellow arrow shape edged in white, and a red triangle inside it with a black edge',SUR:'green, white, red, white and green horizontal stripes with a yellow star in the middle of the wide red stripe',AUS:'a blue flag with the red and white Union Jack in the top left corner and white stars',NZL:'a blue flag with the red and white Union Jack in the top left corner and four red stars with white edges',PNG:'a black triangle and a red triangle split by a diagonal, with a yellow bird on the red side and white stars on the black side',FJI:'a light blue flag with the red and white Union Jack in the top left corner and a shield on the right',SLB:'a blue triangle with five white stars, a green triangle, and a yellow diagonal stripe between them',VUT:'a red stripe above a green stripe, joined to a black triangle on the left with a yellow Y shape'};
 const CAPS = CAPS_RAW.split('\n').map(l=>{ const p=l.split('|'), c={reg:p[0], code:p[1], name:p[2], cap:p[3], hook:p[4]||''};
   c.map = UKMAP[c.code] ? {v:'uk', hl:UKMAP[c.code]} : (GEO.world[c.code] ? {v:'world', z:c.code==='RUS'?'world':CAP_ZOOM[c.reg], hl:c.code} : null); return c; });
 const capsIn = reg => reg==='all' ? CAPS : CAPS.filter(c=>c.reg===reg);
@@ -5937,8 +5976,8 @@ function flagCards(reg){ const label=regInfo(reg)[1];
 function flagQ(c, mode, pool){
   pool = pool && pool.length>=4 ? pool : (capsIn(c.reg).length>=4 ? capsIn(c.reg) : CAPS);
   const g = {k:'geography', t:'Flags', bt:'Countries and continents'};
-  if(mode==='pick') return finalize(g, {q:'Which flag belongs to '+c.name+'?', correct:c.code, correctLabel:c.name, wrong:uniq4(c.code,pool.map(x=>x.code)), flagopts:true, exp:'This is the flag of '+c.name+'. Its capital city is '+c.cap+'.', hint:'Think about the colours and shapes you remember from '+c.name+'.'});
-  return finalize(g, {q:'Which country does this flag belong to?', correct:c.name, wrong:uniq4(c.name,pool.map(x=>x.name)), flag:c.code, exp:'This is the flag of '+c.name+'. Its capital city is '+c.cap+'.', hint:'It is in '+regInfo(c.reg)[1]+'.'});
+  if(mode==='pick') return finalize(g, {q:'Which flag belongs to '+c.name+'?', correct:c.code, correctLabel:c.name, wrong:uniq4(c.code,pool.map(x=>x.code)), flagopts:true, exp:'This is the flag of '+c.name+'. Its capital city is '+c.cap+'.', hint:(typeof FLAG_CLUES!=='undefined'&&FLAG_CLUES[c.code])?('Look for '+FLAG_CLUES[c.code]+'.'):('Think about the colours and shapes you remember from '+c.name+'.')});
+  return finalize(g, {q:'Which country does this flag belong to?', correct:c.name, wrong:uniq4(c.name,pool.map(x=>x.name)), flag:c.code, exp:'This is the flag of '+c.name+'. Its capital city is '+c.cap+'.', hint:(typeof CAP_CLUES!=='undefined'&&CAP_CLUES[c.code])||('It is in '+regInfo(c.reg)[1]+'.')});
 }
 function flagQuiz(reg, n){ const pool=capsIn(reg), out=[], seen=new Set(); let guard=0; const order=shuffle(pool.slice());
   while(out.length<n && guard++<n*8 && order.length){ const pass=Math.floor(out.length/order.length), c=order[out.length%order.length], q=flagQ(c, (out.length+pass)%2?'pick':'which', pool); if(!seen.has(q.id)){ seen.add(q.id); out.push(q); } } return out; }
@@ -6221,7 +6260,8 @@ function pairGen(k, title, label, bt, rows, o){
     else { q=o.rev(r); correct=r[0]; let keys=[...new Set(same.filter(x=>x[1]!==r[1]).map(x=>x[0]))];
       if(keys.length<3) keys=keys.concat([...new Set(rows.filter(x=>x[1]!==r[1]).map(x=>x[0]))]).filter((v,i,a)=>a.indexOf(v)===i);
       wrong=shuffle(keys).slice(0,3); }
-    return {q, correct, wrong, exp:(o.exp?o.exp(r):r[0]+': '+r[1]+'.'), hint:o.hint||'Think about what you have learned about this topic.', src:[r[0],r[1],useRev?'rev':'fwd']};
+    const hintVal = typeof o.hint==='function' ? o.hint(r,useRev) : o.hint;
+    return {q, correct, wrong, exp:(o.exp?o.exp(r):r[0]+': '+r[1]+'.'), hint:hintVal||'Think about what you have learned about this topic.', src:[r[0],r[1],useRev?'rev':'fwd']};
   });
   if(bt) genBT(bt);
 }
@@ -6463,6 +6503,12 @@ gen('music','Beats in a bar','🥁 Beats in a bar',()=>{
   const wrong=shuffle(cand).slice(0,3).map(u);
   return {q:'In '+ts[1]+' time a bar has '+ts[0]+' beats. It already has '+(b?'a '+a[0]+' and a '+b[0]:'a '+a[0])+'. How many beats are left?', correct:u(left), wrong, exp:'A '+a[0]+' is '+u(a[1])+(b?' and a '+b[0]+' is '+u(b[1]):'')+', so '+u(used)+' are used. '+ts[0]+' − '+used+' = '+left+'.', hint:'Add up the beats already used, then take that away from the total.', src:['beats',ts[1],a[0],b?b[0]:'']};
 }); genBT('Notation');
+const MU_DYN_CLUES = {'Piano (p)':'The instrument is named after this word — because, unlike a harpsichord, it can play both this and its opposite.','Pianissimo (pp)':'Doubling the letters on an Italian dynamic word like this one makes it even more extreme.','Mezzo piano (mp)':'Mezzo means \'medium\' in Italian.','Mezzo forte (mf)':'Mezzo means \'medium\' in Italian.','Forte (f)':'It\'s the second half of the piano\'s full name — because early pianos could play both quiet and this.','Fortissimo (ff)':'Doubling the letters on an Italian dynamic word like this one makes it even more extreme.','Crescendo':'It\'s related to the English word \'increase\'.','Diminuendo':'It\'s related to the English word \'diminish\'.'};
+const MU_TEMPO_CLUES = {'Adagio':'It comes from the Italian \'ad agio\', meaning \'at ease\'.','Andante':'It\'s related to the Italian word for \'to walk\'.','Moderato':'Think of a moderator, who keeps a discussion balanced — neither too much nor too little.','Allegro':'It actually comes from an Italian word meaning \'cheerful\', not directly from a word for speed.','Presto':'Stage magicians often say a word that also means this, right at the exciting finish of a trick.','Ritardando':'It\'s related to the English word \'retard\'.','Accelerando':'It\'s related to the English word \'accelerate\'.'};
+const MU_COMP_CLUES = {'Vivaldi':'He was an Italian priest with red hair, nicknamed \'The Red Priest\'.','Mozart':'He was a child prodigy who was already composing music before he was 6 years old.','Beethoven':'He kept composing even after he had gone completely deaf.','Tchaikovsky':'He was Russian, and also wrote the music for The Nutcracker.','Holst':'He was English, and taught music at a girls\' school for most of his life.','Prokofiev':'He was Russian, and in his most famous piece each character has their own instrument.','Saint-Saëns':'He was French, and one of his most famous pieces has a movement called \'The Swan\'.','Handel':'He was born in Germany but spent most of his working life in England.','Bach':'He was German, worked mainly for churches, and had over 20 children.','Elgar':'He was English, and one of his tunes is played every year at the Last Night of the Proms.'};
+const MU_WORDS_CLUES = {'Melody':'It\'s the part of a song you\'d hum or sing along to.','Harmony':'Think of different notes blending together at the same time, like in a choir.','Rhythm':'It\'s why you can clap along to a song, even without knowing any of the notes.','Pulse':'Like a heartbeat — you could tap your foot to it.','Pitch':'Think of a mouse\'s squeak compared with a lion\'s roar — very different sounding notes.','Timbre':'It\'s why a violin and a trumpet playing the exact same note still sound different.','Chord':'On a guitar, it\'s what you get from strumming several strings at once, not just plucking one.','Scale':'Do, re, mi, fa, so, la, ti, do — that\'s an example.','Octave':'On a piano, count eight white keys along, including both ends where you start and stop.','Ostinato':'Think of a bassline in a pop song that just keeps repeating.','Drone':'Think of the constant background note in bagpipe music.','Riff':'Think of a short, catchy guitar hook you could hum from memory.','Solo':'Think of a guitarist stepping forward for their big moment in a rock song.','Ensemble':'Think of an orchestra or a band playing together.','Conductor':'The person standing at the front, waving a baton.','Rest':'In written music, it has its own little symbol instead of a note — but you still count the beat.','Stave':'Notes are written either sitting on one of these, or floating in a gap between two of them.','Treble clef':'It\'s shaped a bit like a curly letter G.','Bass clef':'It\'s shaped like a backwards C, with two dots after it.','Sharp':'It looks like a hashtag, or a tic-tac-toe board (#).','Flat':'It looks like a lowercase letter b.','Tie':'Unlike two separate notes played one after another, this makes them sound as one longer note.','Time signature':'The two numbers at the very start of a piece of music, like 4/4.','Verse':'The part of a song where the words are different each time.','Chorus':'The part of a song you\'d sing along to, because it repeats.','Improvise':'Jazz musicians do this all the time — playing something brand new on the spot.','Compose':'Mozart, Beethoven and Bach all did this for a living.'};
+const MU_STYLES_CLUES = {'Jazz':'Louis Armstrong and Duke Ellington are two of its most famous names.','Blues':'Its name comes from an old phrase for feeling sad.','Reggae':'Bob Marley is probably its most famous artist.','Baroque':'Think of powdered wigs, harpsichords and church organs.','Romantic':'Think of composers like Chopin and Tchaikovsky, full of big emotions.','Opera':'Even ordinary conversations are sung, often in Italian.','Musical':'Think of shows like The Lion King or Wicked.','Folk':'Often just a voice and an acoustic guitar, telling an old story.','Gospel':'Think of a choir clapping and swaying in a church.','Hip hop':'Think of rapping over a beat, with a DJ scratching records.','Samba':'Think of Rio de Janeiro\'s carnival, with drums and dancing.','Bhangra':'Think of a dhol drum at a Punjabi wedding celebration.','Gamelan':'Think of an orchestra made almost entirely of gongs and metal instruments.','Steel pans':'Think of the Caribbean, with drums made from old oil barrels.','Flamenco':'Think of fast guitar strumming and rhythmic hand-clapping.'};
+const MU_INST_RULE = 'Strings are plucked or bowed, woodwind is blown across a reed or hole, brass buzzes through a mouthpiece, percussion is hit or shaken, and keyboard instruments are played with keys.';
 const MU_DYN = rowsOf(`Piano (p)|Quiet|d
 Pianissimo (pp)|Very quiet|d
 Mezzo piano (mp)|Moderately quiet|d
@@ -6471,7 +6517,7 @@ Forte (f)|Loud|d
 Fortissimo (ff)|Very loud|d
 Crescendo|Gradually getting louder|d
 Diminuendo|Gradually getting quieter|d`);
-pairGen('music','Dynamics','🔊 Loud and quiet','Dynamics and tempo',MU_DYN,{fwd:r=>'What does “'+r[0]+'” mean in music?', rev:r=>'Which musical word means “'+r[1].toLowerCase()+'”?', hint:'Forte is loud and piano is quiet.'});
+pairGen('music','Dynamics','🔊 Loud and quiet','Dynamics and tempo',MU_DYN,{fwd:r=>'What does “'+r[0]+'” mean in music?', rev:r=>'Which musical word means “'+r[1].toLowerCase()+'”?', hint:r=>MU_DYN_CLUES[r[0]]});
 const MU_TEMPO = rowsOf(`Adagio|Slowly|t
 Andante|At a walking pace|t
 Moderato|At a moderate speed|t
@@ -6479,7 +6525,7 @@ Allegro|Fast and lively|t
 Presto|Very fast|t
 Ritardando|Gradually getting slower|t
 Accelerando|Gradually getting faster|t`);
-pairGen('music','Tempo words','⏩ Speed words','Dynamics and tempo',MU_TEMPO,{fwd:r=>'What does “'+r[0]+'” mean in music?', rev:r=>'Which Italian word means “'+r[1].toLowerCase()+'”?', hint:'Tempo is the speed of the music.'});
+pairGen('music','Tempo words','⏩ Speed words','Dynamics and tempo',MU_TEMPO,{fwd:r=>'What does “'+r[0]+'” mean in music?', rev:r=>'Which Italian word means “'+r[1].toLowerCase()+'”?', hint:r=>MU_TEMPO_CLUES[r[0]]});
 const MU_INST = rowsOf(`Violin|Strings|i
 Cello|Strings|i
 Harp|Strings|i
@@ -6498,7 +6544,7 @@ Timpani|Percussion|i
 Triangle|Percussion|i
 Piano|Keyboard|i
 Organ|Keyboard|i`);
-pairGen('music','Instrument families','🎻 Instrument families','Instruments',MU_INST,{fwd:r=>'Which instrument family does the '+r[0].toLowerCase()+' belong to?', rev:r=>'Which of these is in the '+r[1].toLowerCase()+' family?', exp:r=>'The '+r[0].toLowerCase()+' is in the '+r[1].toLowerCase()+' family.', hint:'Think about how the sound is made.'});
+pairGen('music','Instrument families','🎻 Instrument families','Instruments',MU_INST,{fwd:r=>'Which instrument family does the '+r[0].toLowerCase()+' belong to?', rev:r=>'Which of these is in the '+r[1].toLowerCase()+' family?', exp:r=>'The '+r[0].toLowerCase()+' is in the '+r[1].toLowerCase()+' family.', hint:MU_INST_RULE});
 const MU_COMP = rowsOf(`Vivaldi|The Four Seasons|c
 Mozart|The Magic Flute|c
 Beethoven|Symphony No. 9|c
@@ -6509,7 +6555,7 @@ Saint-Saëns|Carnival of the Animals|c
 Handel|Water Music|c
 Bach|The Brandenburg Concertos|c
 Elgar|Enigma Variations|c`);
-pairGen('music','Composers and works','🎹 Composers and works',null,MU_COMP,{fwd:r=>'Which piece did '+r[0]+' compose?', rev:r=>'Who composed “'+r[1]+'”?', exp:r=>r[0]+' composed '+r[1]+'.', hint:'Listen in your head to the famous tune.'});
+pairGen('music','Composers and works','🎹 Composers and works',null,MU_COMP,{fwd:r=>'Which piece did '+r[0]+' compose?', rev:r=>'Who composed “'+r[1]+'”?', exp:r=>r[0]+' composed '+r[1]+'.', hint:r=>MU_COMP_CLUES[r[0]]});
 /* ---------------- PSHE ---------------- */
 const PS_TERMS = rowsOf(`Consent|Freely agreeing to something|t
 Stereotype|An unfair fixed idea about a group of people|t
@@ -6891,7 +6937,7 @@ Verse|A section of a song that tells the story|w
 Chorus|The repeated main section of a song|w
 Improvise|To make up music as you play|w
 Compose|To create new music|w`);
-pairGen('music','Music words','🎶 Music words','Elements of music',MU_WORDS,{fwd:r=>'What does “'+r[0]+'” mean in music?', rev:r=>'Which music word means: '+lc(r[1])+'?', hint:'Think about how the word is used when you play or sing.'});
+pairGen('music','Music words','🎶 Music words','Elements of music',MU_WORDS,{fwd:r=>'What does “'+r[0]+'” mean in music?', rev:r=>'Which music word means: '+lc(r[1])+'?', hint:r=>MU_WORDS_CLUES[r[0]]});
 const MU_STYLES = rowsOf(`Jazz|Improvised music that began in New Orleans|s
 Blues|Soulful music with a 12-bar structure|s
 Reggae|Music from Jamaica with off-beat rhythms|s
@@ -6907,7 +6953,7 @@ Bhangra|Energetic dance music from Punjab|s
 Gamelan|A percussion orchestra from Indonesia|s
 Steel pans|Percussion instruments from Trinidad|s
 Flamenco|Passionate Spanish guitar music and dance|s`);
-pairGen('music','Music styles','🌍 Music styles',null,MU_STYLES,{fwd:r=>'What is '+r[0]+'?', rev:r=>'Which style of music is this? '+r[1]+'.', exp:r=>r[0]+': '+r[1]+'.', hint:'Think about where the music comes from and how it sounds.'});
+pairGen('music','Music styles','🌍 Music styles',null,MU_STYLES,{fwd:r=>'What is '+r[0]+'?', rev:r=>'Which style of music is this? '+r[1]+'.', exp:r=>r[0]+': '+r[1]+'.', hint:r=>MU_STYLES_CLUES[r[0]]});
 /* ---- PSHE ---- */
 const PS_NUMS = rowsOf(`Emergency services (police, fire, ambulance)|999|n
 Non-emergency police|101|n
@@ -7269,10 +7315,10 @@ gen('maths','Negative number sums','➖ Negative number sums',()=>{
 }); genBT('Negative numbers');
 gen('maths','Circles','⭕ Circles',()=>{
   const t=ri(0,3), r=ri(2,12), d=2*r; let q,ans,exp,unit=' cm',cands;
-  if(t===0){ q='A circle has a radius of '+r+' cm. What is its diameter?'; ans=d; exp='The diameter is twice the radius: 2 × '+r+' = '+d+' cm.'; cands=[r,d+2,r*r,d-2]; }
-  else if(t===1){ q='A circle has a diameter of '+d+' cm. What is its circumference? (Use π ≈ 3.14.)'; ans=3.14*d; exp='Circumference = π × diameter = 3.14 × '+d+' = '+fmtD(ans)+' cm.'; cands=[3.14*r,3.14*d*d,3.14*d*2,d*2]; }
-  else if(t===2){ q='A circle has a radius of '+r+' cm. What is its area? (Use π ≈ 3.14.)'; ans=3.14*r*r; unit=' cm²'; exp='Area = π × radius² = 3.14 × '+r+' × '+r+' = '+fmtD(ans)+' cm².'; cands=[3.14*2*r,3.14*d,3.14*r,3.14*r*r*2]; }
-  else { q='A circle has a radius of '+r+' cm. What is its circumference? (Use π ≈ 3.14.)'; ans=3.14*2*r; exp='Circumference = 2 × π × radius = 2 × 3.14 × '+r+' = '+fmtD(ans)+' cm.'; cands=[3.14*r,3.14*r*r,3.14*r*4,2*r]; }
+  if(t===0){ q='A circle has a radius of '+r+' cm. What is its diameter?'; ans=d; exp=circDiaExp(r); cands=[r,d+2,r*r,d-2]; }
+  else if(t===1){ q='A circle has a diameter of '+d+' cm. What is its circumference? (Use π ≈ 3.14.)'; ans=3.14*d; exp=circCircDExp(d); cands=[3.14*r,3.14*d*d,3.14*d*2,d*2]; }
+  else if(t===2){ q='A circle has a radius of '+r+' cm. What is its area? (Use π ≈ 3.14.)'; ans=3.14*r*r; unit=' cm²'; exp=circAreaExp(r); cands=[3.14*2*r,3.14*d,3.14*r,3.14*r*r*2]; }
+  else { q='A circle has a radius of '+r+' cm. What is its circumference? (Use π ≈ 3.14.)'; ans=3.14*2*r; exp=circCircRExp(r); cands=[3.14*r,3.14*r*r,3.14*r*4,2*r]; }
   const f=x=>fmtD(x)+unit;
   return {q, correct:f(ans), wrong:pickWrong(ans,cands,f), exp, hint:'Write the formula first: C = πd or 2πr, and A = πr².', src:['circ',t,r]};
 }); genBT('Circles');
@@ -7432,7 +7478,8 @@ Coasts::🌊 Where the land meets the sea, waves are always at work.::Waves erod
 Weathering::🧊 Rocks are broken down by weather, quietly, all the time.::Weathering breaks rock where it is. Erosion carries it away.::Freeze-thaw: water freezes in cracks, expands and splits the rock ;; Chemical: slightly acid rain dissolves some rocks like limestone ;; Biological: roots push rocks apart ;; Erosion and weathering are not the same::Freeze-thaw weathering is common on mountains in winter.::What is the difference between weathering and erosion?|Weathering breaks rock in place, and erosion carries it away.::Limestone pavements are shaped by rainwater.
 Biomes::🌴 A biome is a big area with a similar climate, plants and animals.::Plants and animals are adapted to the biome they live in.::Tropical rainforests are hot and wet all year ;; Deserts get very little rain ;; The tundra is cold, with frozen ground ;; Adaptations help living things survive::A cactus stores water in its thick stem to survive in the desert.::Where are tropical rainforests found?|Near the Equator.::Rainforests cover about six per cent of the Earth's land but have over half of all land species.
 Countries and continents::🗺️ Knowing your countries is like having a map of the world in your head.::There are seven continents and five oceans, and each country has a shape, neighbours and a capital.::Learn one continent at a time ;; Use neighbours and coastlines as clues ;; Learn the biggest countries first ;; Use the Capital Cities Academy to practise::Brazil is the biggest country in South America. It has a long Atlantic coast.::Which is the largest continent?|Asia.::Russia is the largest country in the world.
-UK geography::🇬🇧 The UK is small, but it is packed with variety.::The UK has four nations, many cities, rivers and mountains.::Learn the nations and their capitals ;; Place big cities, rivers and mountains on the map ;; Ben Nevis is the highest mountain in the UK ;; The longest river in the UK is the Severn::Cardiff is the capital of Wales and is on the south coast.::Which is the highest mountain in the UK?|Ben Nevis, in Scotland.::The UK has thousands of islands.`,
+UK geography::🇬🇧 The UK is small, but it is packed with variety.::The UK has four nations, many cities, rivers and mountains.::Learn the nations and their capitals ;; Place big cities, rivers and mountains on the map ;; Ben Nevis is the highest mountain in the UK ;; The longest river in the UK is the Severn::Cardiff is the capital of Wales and is on the south coast.::Which is the highest mountain in the UK?|Ben Nevis, in Scotland.::The UK has thousands of islands.
+Map symbols::🗺️ A map is a secret code. The symbols are its letters, and once you can read them any map tells you a whole story.::Map symbols are small pictures, letters and coloured lines that show what is on the ground, so a whole landscape fits on one sheet of paper. Ordnance Survey (OS) maps use the same symbols everywhere, and the key explains them.::Start with the colour: blue is for water, motorways and tourist and leisure symbols, brown is for contour lines, green is for woods and (on Explorer maps) footpaths and bridleways, and black is for buildings, railways and cliffs ;; Tourist symbols are blue pictures: a tent is a camp site, a caravan shape is a caravan site, a table is a picnic site, a P is parking, an i is an information centre, and rays fanning out show a viewpoint ;; Some places use short black letters: PH is a public house, PC is public toilets, PO is a post office, Sch is a school and TH is a town hall ;; A cross on a small building is a church, and a square tower or a pointed spire drawn with it shows what the church has ;; On an Explorer map short green dashes are a public footpath and longer green dashes are a bridleway ;; No key to hand? Use the colour, the shape and the picture as clues::You spot a blue tent shape beside a line of short green dashes. Blue and a tent mean a camp site, and the short green dashes mean a public footpath you can walk to reach it.::What does a blue letter P on the map show?|Parking, because blue is for visitor symbols and the letter P stands for parking.::On an OS Explorer map, 4 cm on the map is 1 km on the ground.`,
 re:`Holy books::📖 Holy books are the guidebooks of a faith.::Believers treat their holy books with great respect because they contain God's teaching.::Christians: the Bible ;; Muslims: the Qur'an ;; Jews: the Torah ;; Sikhs: the Guru Granth Sahib ;; Hindus: the Vedas and other texts::Muslims keep the Qur'an on a high shelf and wash their hands before reading it.::What is the Jewish holy book called?|The Torah.::The Bible is the most translated book in the world.
 Places of worship::🕌 A place of worship is a special building where a community meets to pray.::Every faith has a special place to worship, with its own features.::Christians: church ;; Muslims: mosque ;; Jews: synagogue ;; Hindus: mandir ;; Sikhs: gurdwara ;; Buddhists: temple or vihara::A gurdwara has a langar, a free kitchen open to everyone.::What is a Sikh place of worship called?|A gurdwara.::Many mosques have a dome and a minaret.
 Beliefs::💭 Beliefs are the big ideas that guide how people live.::Religions answer questions such as Who is God? and What happens after death?::Monotheism means believing in one God ;; Polytheism means believing in many gods ;; Karma means actions have consequences ;; Buddhists follow the Four Noble Truths::Christianity, Islam and Judaism are monotheistic. Hinduism has many gods and goddesses.::What does polytheism mean?|Belief in many gods.::Some Buddhists follow the Eightfold Path.
@@ -7869,6 +7916,11 @@ mandarin|Vocabulary|Explain|Explain how to learn Chinese words using tones and c
 computing|Keyboard shortcuts|Explain|Explain how to move a sentence from one place to another using keyboard shortcuts.|Select the sentence first@@select~highlight ;; Cut it with Ctrl + X so it is taken out@@cut~ctrl x~ctrl+x~ctrl + x~control x~command x~⌘ x~⌘+x ;; Click where the sentence should go@@click~cursor~place~position~where ;; Paste it with Ctrl + V@@paste~ctrl v~ctrl+v~ctrl + v~control v~command v~⌘ v~⌘+v
 computing|Keyboard shortcuts|Explain|Explain what a keyboard shortcut is and why it is useful.|A keyboard shortcut is a combination of keys pressed together@@combination~keys together~press~together~combo~two keys~more than one key ;; It does a job that would otherwise need the mouse or a menu@@mouse~menu~job~task~action~instead ;; It saves time and effort@@time~quick~fast~effort~easier~speed`;
 
+/* Map symbols: written-answer questions (version 63). Format as in wbank.js. Keywords: ~ means or, & means and; word stems. */
+const WQ_RAW7 = `geography|Map symbols|Explain|Explain why maps use symbols.|A symbol is a small picture, letter or line that stands for a real feature@@stand for~stands for~represent~picture~letter~line~small ;; Symbols let a lot of information fit on a small map@@fit~space~small~lot~much~information ;; The key explains what each symbol means@@key~explain~mean~tells~shows
+geography|Map symbols|Describe|Describe how you can tell a public footpath from a bridleway on an OS Explorer map.|Both are shown with green dashes@@green~dash ;; A public footpath has short dashes@@short ;; A bridleway has longer dashes, and horse riders and cyclists may use it as well@@longer~long~horse~ride~cycl
+geography|Map symbols|Explain|Explain what the colours blue, brown and green show on an OS map.|Blue shows water, motorways and tourist and leisure symbols@@water~river~lake~motorway~tourist~leisure~picnic~camp ;; Brown shows contour lines, which join places at the same height@@contour~height~hill~slope ;; Green shows woods, and on Explorer maps public footpaths and bridleways@@wood~tree~forest~footpath~bridleway~path`;
+
 /* =====================================================================
    WRITTEN ANSWERS: exam-style questions she answers in her own words.
    The checker looks for the KEY IDEAS in a good answer (a keyword check, not a teacher).
@@ -7889,7 +7941,7 @@ const WQ_CMD = {
 };
 const WQ_WORD = /[A-Za-z0-9’'\-²³½π√£%]+/g;
 const wNorm = t => stripAcc(String(t||'').toLowerCase()).replace(/[’‘]/g,"'").replace(/[“”]/g,'"');
-const WQ = (WQ_RAW+'\n'+WQ_RAW2+'\n'+WQ_RAW3+'\n'+WQ_RAW4+'\n'+WQ_RAW5+'\n'+WQ_RAW6).split('\n').map(l=>{ const p=l.split('|'); const pts=p[4].split(' ;; ').map(x=>{ const a=x.split('@@'); return {t:a[0].trim(), spec:(a[1]||'').trim()}; }); return {id:'w_'+hash(p[3]), k:p[0], topic:p[1], cmd:p[2], q:p[3], pts, auto:false}; });
+const WQ = (WQ_RAW+'\n'+WQ_RAW2+'\n'+WQ_RAW3+'\n'+WQ_RAW4+'\n'+WQ_RAW5+'\n'+WQ_RAW6+'\n'+WQ_RAW7).split('\n').map(l=>{ const p=l.split('|'); const pts=p[4].split(' ;; ').map(x=>{ const a=x.split('@@'); return {t:a[0].trim(), spec:(a[1]||'').trim()}; }); return {id:'w_'+hash(p[3]), k:p[0], topic:p[1], cmd:p[2], q:p[3], pts, auto:false}; });
 const WQ_STOP = new Set('about after again their there these those which where while would could should other every because being through between something using always never often first second third later before under above write think make makes each same part parts called known means mean like with from have that this when what into only your more most some also then than them they does doing done just very'.split(' '));
 function wqStems(s){ for(const min of [5,4,3]){ const seen=new Set(), out=[]; (wNorm(s).match(/[a-z]{3,}/g)||[]).forEach(w=>{ if(w.length<min || WQ_STOP.has(w)) return; const st=w.length>6?w.slice(0,6):(w.length>4?w.replace(/s$/,''):w); if(!seen.has(st)){ seen.add(st); out.push(st); } }); if(out.length) return out.slice(0,8); } return []; }
 function wqAutoPoint(t){ const stems=wqStems(t); return {t, stems, min:Math.max(1,Math.ceil(stems.length*0.4))}; }
@@ -8962,6 +9014,185 @@ function g6make(mode){
 });
 
 /* =====================================================================
+   MAP SYMBOLS (version 63). Jody asked for a topic where Anna learns to IDENTIFY map symbols, with games to test it.
+   Names, meanings and colour conventions follow the Ordnance Survey Explorer (1:25 000) and Landranger (1:50 000) map keys, and were checked against OS's own material:
+   tourist and leisure symbols are BLUE; contour lines are BROWN; rivers and motorways are BLUE; on an Explorer map public footpaths are SHORT GREEN DASHES and bridleways are LONGER
+   GREEN DASHES; some places are shown by short LETTERS (PH public house, PC public convenience in rural areas, PO post office, Sch school, TH town hall).
+   THE PICTURES ARE OUR OWN SIMPLIFIED DRAWINGS in the style of OS symbols (OS artwork is copyright), drawn on a 48 x 48 grid. Do not claim they are the exact OS glyphs.
+   Rules for editing: NO apostrophes or backslashes in any text here (the tests enforce it); a "clue" must never contain the symbol's own name (see tests/flow_mapsym.js).
+   ===================================================================== */
+const _MB='#0b62b8', _MK='#262626', _MG='#2f8a3c', _MN='#9a5a2b', _MP='#fbf7e9';
+const _msLet = t => '<text x="24" y="33" font-size="'+(t.length>2?21:24)+'" font-weight="700" text-anchor="middle" fill="'+_MK+'" font-family="Arial,Helvetica,sans-serif">'+t+'</text>';
+const _msRays = (cx,cy,r1,r2,n,from,to,col,w) => { let s=''; for(let i=0;i<n;i++){ const a=(from+(to-from)*i/(n-1))*Math.PI/180; s+='<path d="M'+(cx+r1*Math.cos(a)).toFixed(1)+' '+(cy+r1*Math.sin(a)).toFixed(1)+'L'+(cx+r2*Math.cos(a)).toFixed(1)+' '+(cy+r2*Math.sin(a)).toFixed(1)+'" stroke="'+col+'" stroke-width="'+w+'" stroke-linecap="round"/>'; } return s; };
+const _msTies = () => { let s=''; for(let i=0;i<7;i++){ const t=(i+0.5)/7, x=3+42*t, y=36-24*t; s+='<path d="M'+(x-2.5).toFixed(1)+' '+(y-4.3).toFixed(1)+'L'+(x+2.5).toFixed(1)+' '+(y+4.3).toFixed(1)+'" stroke="'+_MK+'" stroke-width="2.4"/>'; } return s; };
+const MAP_SYMS = [
+/* ---- tourist and leisure: drawn in BLUE on OS maps ---- */
+{id:'info',cat:'tourist',name:'Information centre',look:'a bold blue letter i',clue:'Visitors go here to pick up leaflets and ask questions.',use:'pick up a leaflet and ask about local walks',
+ exp:'A blue letter i marks an information centre, where visitors can get maps, leaflets and advice. Tourist and leisure symbols on OS maps are blue.',
+ draw:'<circle cx="24" cy="10" r="4.6" fill="'+_MB+'"/><path d="M17 20h7v18M16 38h16" stroke="'+_MB+'" stroke-width="5" fill="none"/>'},
+{id:'parking',cat:'tourist',name:'Parking',look:'a blue letter P',clue:'Drivers look for this when they want to leave the car.',use:'leave the car while you go for a walk',
+ exp:'A blue letter P marks a car park. Tourist and leisure symbols on OS maps are blue.',
+ draw:'<path d="M15 43V8h11a10.5 10.5 0 0 1 0 21H15" stroke="'+_MB+'" stroke-width="6" fill="none" stroke-linejoin="round"/>'},
+{id:'camp',cat:'tourist',name:'Camp site',look:'a blue triangle, like a tent',clue:'Imagine putting this shape up and sleeping in it overnight.',use:'pitch a tent for the weekend',
+ exp:'A blue tent shape marks a camp site, a place where you can pitch a tent. Tourist and leisure symbols on OS maps are blue.',
+ draw:'<path d="M5 40L24 8l19 32z" fill="'+_MB+'"/><path d="M24 21l7 19H17z" fill="'+_MP+'"/><path d="M2 40h44" stroke="'+_MB+'" stroke-width="2"/>'},
+{id:'caravan',cat:'tourist',name:'Caravan site',look:'a blue caravan seen from the side, with a wheel',clue:'It is a small home on wheels that you tow behind a car.',use:'park a caravan for a holiday',
+ exp:'A blue caravan shape marks a caravan site. Tourist and leisure symbols on OS maps are blue.',
+ draw:'<rect x="4" y="13" width="34" height="21" rx="7" fill="'+_MB+'"/><rect x="10" y="19" width="10" height="7" rx="1" fill="'+_MP+'"/><circle cx="17" cy="36" r="5" fill="'+_MB+'" stroke="'+_MP+'" stroke-width="2"/><path d="M38 30h8" stroke="'+_MB+'" stroke-width="3" stroke-linecap="round"/>'},
+{id:'picnic',cat:'tourist',name:'Picnic site',look:'a blue table with a bench on each side',clue:'It is a table with benches, where you could eat your lunch outdoors.',use:'eat sandwiches outdoors at a table',
+ exp:'A blue picnic table marks a picnic site. Tourist and leisure symbols on OS maps are blue.',
+ draw:'<rect x="9" y="15" width="30" height="5" rx="1" fill="'+_MB+'"/><path d="M15 20L9 41M33 20L39 41" stroke="'+_MB+'" stroke-width="3.5" stroke-linecap="round"/><rect x="3" y="27" width="15" height="3.5" fill="'+_MB+'"/><rect x="30" y="27" width="15" height="3.5" fill="'+_MB+'"/>'},
+{id:'viewpoint',cat:'tourist',name:'Viewpoint',look:'a blue dot with rays fanning out above it',clue:'The rays spread out like the wide scene you can take in from a hilltop.',use:'enjoy a wide view over the valley',
+ exp:'A blue dot with rays fanning out marks a viewpoint, a spot with a good view. The rays show how wide the view is. Tourist and leisure symbols on OS maps are blue.',
+ draw:'<circle cx="24" cy="37" r="4" fill="'+_MB+'"/>'+_msRays(24,37,9,22,7,180,360,_MB,3)},
+/* ---- places shown by letters: BLACK ---- */
+{id:'ph',cat:'letters',name:'Public house',look:'black letters: the first letter of each word in its name',clue:'The letters stand for a place where adults go for a drink and a meal.',use:'find somewhere to have a meal and a drink',
+ exp:'PH stands for Public House, which means a pub. OS maps show some places with short black letters instead of a picture.',draw:_msLet('PH')},
+{id:'pc',cat:'letters',name:'Public toilets',look:'black letters: the first letter of each word in its name',clue:'It is somewhere you are very glad to find in the countryside after a long walk.',use:'find the nearest public toilets',
+ exp:'PC stands for Public Convenience, which means public toilets. OS maps use it in the countryside. Places shown by letters use short black letters.',draw:_msLet('PC')},
+{id:'po',cat:'letters',name:'Post office',look:'black letters: the first letter of each word in its name',clue:'You would go here to buy stamps and post a parcel.',use:'buy stamps and post a parcel',
+ exp:'PO stands for Post Office. OS maps show some places with short black letters instead of a picture.',draw:_msLet('PO')},
+{id:'sch',cat:'letters',name:'School',look:'black letters: the first three letters of the word',clue:'Children go here from Monday to Friday.',use:'find the school',
+ exp:'Sch is short for School. OS maps show some places with short black letters instead of a picture.',draw:_msLet('Sch')},
+{id:'th',cat:'letters',name:'Town hall',look:'black letters: the first letter of each word in its name',clue:'The mayor and the council work in this big building in the middle of town.',use:'find the building where the town council meets',
+ exp:'TH stands for Town Hall. OS maps show some places with short black letters instead of a picture.',draw:_msLet('TH')},
+/* ---- buildings and structures: BLACK ---- */
+{id:'church',cat:'buildings',grp:'church',name:'Church or place of worship',look:'a black cross above a small building',clue:'The cross is a clue about what people do inside.',use:'find a church',
+ exp:'A cross on a small building marks a church or other place of worship. If it also has a tower or a spire, the symbol shows that too.',
+ draw:'<rect x="9" y="29" width="30" height="12" fill="'+_MK+'"/><path d="M24 4v27M15 12h18" stroke="'+_MK+'" stroke-width="5"/>'},
+{id:'churchtower',cat:'buildings',grp:'church',name:'Church with a tower',look:'a black cross on a building that has a square tower',clue:'Look for the square block that stands up above the rest of the building.',use:'find a church that has a tower',
+ exp:'A place of worship with a square tower shows the cross on top of a tower. OS maps show places of worship with a tower, or with a spire, minaret or dome.',
+ draw:'<rect x="5" y="30" width="24" height="10" fill="'+_MK+'"/><rect x="29" y="18" width="13" height="22" fill="'+_MK+'"/><path d="M35.5 4v12M30.5 9h10" stroke="'+_MK+'" stroke-width="4"/>'},
+{id:'churchspire',cat:'buildings',grp:'church',name:'Church with a spire',look:'a black building with a pointed triangle on top',clue:'The top of the building comes to a sharp point, like the tip of a pencil.',use:'find a church that has a tall pointed top',
+ exp:'A place of worship with a spire has a pointed triangle on top. OS maps show places of worship with a tower, or with a spire, minaret or dome.',
+ draw:'<rect x="5" y="30" width="24" height="10" fill="'+_MK+'"/><rect x="29" y="25" width="13" height="15" fill="'+_MK+'"/><path d="M29 25l6.5-20 6.5 20z" fill="'+_MK+'"/>'},
+{id:'bus',cat:'buildings',name:'Bus or coach station',look:'a black bus seen from the side',clue:'It shows a vehicle that carries lots of passengers along a route.',use:'catch a bus or a coach',
+ exp:'A bus shape marks a bus or coach station.',
+ draw:'<rect x="4" y="10" width="40" height="24" rx="6" fill="'+_MK+'"/><rect x="9" y="15" width="8" height="8" fill="'+_MP+'"/><rect x="20" y="15" width="8" height="8" fill="'+_MP+'"/><rect x="31" y="15" width="8" height="8" fill="'+_MP+'"/><circle cx="14" cy="36" r="4.5" fill="'+_MK+'" stroke="'+_MP+'" stroke-width="2"/><circle cx="34" cy="36" r="4.5" fill="'+_MK+'" stroke="'+_MP+'" stroke-width="2"/>'},
+{id:'lighthouse',cat:'buildings',name:'Lighthouse',look:'a black tower with a lamp on top and beams of light',clue:'Ships look out for this tower at night because it shines a beam across the sea.',use:'find the tower that warns ships about the rocks',
+ exp:'A tower with beams of light marks a lighthouse.',
+ draw:'<path d="M19 43l3-23h4l3 23z" fill="'+_MK+'"/><rect x="20" y="12" width="8" height="8" fill="'+_MK+'"/><path d="M19 12l5-8 5 8z" fill="'+_MK+'"/><path d="M17 15l-11-4M17 18l-12 1M31 15l11-4M31 18l12 1" stroke="'+_MK+'" stroke-width="2.4" stroke-linecap="round"/>'},
+{id:'windmill',cat:'buildings',name:'Windmill',look:'a black tower with four sails in an X shape',clue:'Its four big arms turn in the breeze to grind grain into flour.',use:'find the old mill that grinds grain into flour',
+ exp:'A tower with four sails marks a windmill, with or without its sails.',
+ draw:'<path d="M19 43l3.5-20h3l3.5 20z" fill="'+_MK+'"/><path d="M24 22L9 7M24 22L39 37M24 22L39 7M24 22L9 37" stroke="'+_MK+'" stroke-width="3.2" stroke-linecap="round"/><circle cx="24" cy="22" r="3" fill="'+_MK+'"/>'},
+{id:'turbine',cat:'buildings',name:'Wind turbine',look:'a black tall thin pole with three blades',clue:'Three blades on a tall pole spin round to generate electricity.',use:'find a tall machine that turns the breeze into electricity',
+ exp:'A tall pole with three blades marks a wind turbine, or wind generator, which turns wind into electricity.',
+ draw:'<path d="M22.6 43h2.8l1-24h-4.8z" fill="'+_MK+'"/><path d="M24 19V3M24 19L10.5 26.8M24 19L37.5 26.8" stroke="'+_MK+'" stroke-width="3" stroke-linecap="round"/><circle cx="24" cy="19" r="3" fill="'+_MK+'"/>'},
+{id:'pylons',cat:'buildings',name:'Electricity pylons',look:'a black line with small tower frames along it',clue:'Tall metal towers march across the fields, carrying thick cables.',use:'see where the big overhead cables cross the fields',
+ exp:'A line with small tower shapes along it marks an electricity transmission line, with a pylon at each tower.',
+ draw:'<path d="M2 20h44" stroke="'+_MK+'" stroke-width="2"/><path d="M12 20l-5 21M12 20l5 21M8.5 31h7M7.5 36h9M7 20h10" stroke="'+_MK+'" stroke-width="2.2" fill="none"/><path d="M36 20l-5 21M36 20l5 21M32.5 31h7M31.5 36h9M31 20h10" stroke="'+_MK+'" stroke-width="2.2" fill="none"/>'},
+/* ---- land, water, paths and lines ---- */
+{id:'cliff',cat:'land',name:'Cliff',look:'a black wavy edge with short lines pointing down',clue:'The short strokes are like teeth pointing down a very steep drop.',use:'spot a very steep drop at the edge of the land',
+ exp:'A wavy edge with short lines pointing downhill marks a cliff, a very steep drop.',
+ draw:'<path d="M3 16C12 12 18 20 26 16S40 13 45 16" stroke="'+_MK+'" stroke-width="2.6" fill="none"/><path d="M6 16v11M11 15v6M16 18v11M21 19v6M27 16v11M32 15v6M38 14v11M43 15v6" stroke="'+_MK+'" stroke-width="2"/>'},
+{id:'conifer',cat:'land',name:'Coniferous trees',look:'green pointed triangle trees',clue:'The pointed triangle shapes are like Christmas trees.',use:'find a wood of pointed evergreen trees',
+ exp:'Pointed, triangle-shaped tree symbols show coniferous trees, such as pines and firs. Woodland is drawn in green.',
+ draw:'<path d="M6 30L15 8l9 22z" fill="'+_MG+'"/><rect x="13.5" y="30" width="3" height="6" fill="'+_MG+'"/><path d="M24 43l9-23 9 23z" fill="'+_MG+'"/><rect x="31.5" y="43" width="3" height="3" fill="'+_MG+'"/>'},
+{id:'broadleaf',cat:'land',name:'Non-coniferous trees',look:'green round-topped trees on trunks',clue:'The round shapes are like the leafy tops of an oak or a beech.',use:'find a wood of leafy trees such as oak',
+ exp:'Round-topped tree symbols show non-coniferous (leafy) trees, such as oak and beech. Woodland is drawn in green.',
+ draw:'<circle cx="15" cy="17" r="9" fill="'+_MG+'"/><rect x="13.5" y="24" width="3" height="11" fill="'+_MG+'"/><circle cx="33" cy="29" r="10" fill="'+_MG+'"/><rect x="31.5" y="37" width="3" height="9" fill="'+_MG+'"/>'},
+{id:'marsh',cat:'land',name:'Marsh',look:'blue tufts of reeds standing on wet ground',clue:'The little tufts show plants growing where the ground is very wet.',use:'avoid the wet, boggy ground',
+ exp:'Blue tufts of reeds mark marsh, wet and boggy ground.',
+ draw:'<path d="M3 36h42" stroke="'+_MB+'" stroke-width="2"/><path d="M10 36v-10M10 36l-4-8M10 36l4-8M22 36v-10M22 36l-4-8M22 36l4-8M34 36v-10M34 36l-4-8M34 36l4-8" stroke="'+_MB+'" stroke-width="2.2" stroke-linecap="round"/><path d="M4 43h7M16 43h7M28 43h7M40 43h5" stroke="'+_MB+'" stroke-width="2"/>'},
+{id:'contour',cat:'land',name:'Contour lines',look:'brown wiggly rings, one inside another',clue:'Each brown ring joins places that are at exactly the same height above the sea.',use:'work out how high and how steep the hill is',
+ exp:'Brown wiggly rings are contour lines. Each line joins places at the same height, and lines close together mean a steep slope. Contour lines are brown on OS maps.',
+ draw:'<path d="M5 26C5 12 22 5 33 10C43 15 45 27 38 36C30 46 11 43 7 34C6 31 5 29 5 26z" stroke="'+_MN+'" stroke-width="2.2" fill="none"/><path d="M14 26C14 17 24 14 31 18C37 21 37 29 31 33C25 38 16 35 14 28z" stroke="'+_MN+'" stroke-width="2.2" fill="none"/><ellipse cx="24" cy="26" rx="5" ry="3.5" stroke="'+_MN+'" stroke-width="2.2" fill="none"/>'},
+{id:'footpath',cat:'land',name:'Public footpath',look:'a green line of short dashes',clue:'Short green dashes show a route that walkers are allowed to use.',use:'follow a route that walkers have a legal right to use',
+ exp:'On an OS Explorer map, short green dashes show a public footpath, a route walkers have a legal right to use.',
+ draw:'<path d="M4 38L44 10" stroke="'+_MG+'" stroke-width="4" stroke-dasharray="6 5" fill="none"/>'},
+{id:'bridleway',cat:'land',name:'Bridleway',look:'a green line of longer dashes',clue:'Longer green dashes show a route where you could also meet someone on a horse.',use:'follow a route that walkers and horse riders may both use',
+ exp:'On an OS Explorer map, longer green dashes show a bridleway, which walkers, horse riders and cyclists may use.',
+ draw:'<path d="M4 38L44 10" stroke="'+_MG+'" stroke-width="4" stroke-dasharray="14 6" fill="none"/>'},
+{id:'railway',cat:'land',name:'Railway',look:'a black line with short cross-bars, like a ladder',clue:'A line with cross-bars like a ladder: something with wheels runs along it.',use:'follow the line that trains run on',
+ exp:'A black line with short cross-bars shows a railway.',
+ draw:'<path d="M3 36L45 12" stroke="'+_MK+'" stroke-width="3"/>'+_msTies()},
+{id:'motorway',cat:'land',name:'Motorway',look:'a thick blue line',clue:'A very wide road that cars can use at high speed.',use:'find the fastest road for driving a long way',
+ exp:'A thick blue line shows a motorway. Motorways are blue on OS maps.',
+ draw:'<path d="M3 35C16 35 27 15 45 15" stroke="'+_MB+'" stroke-width="9" fill="none"/>'},
+{id:'river',cat:'land',name:'River or stream',look:'a thin blue wiggly line',clue:'It is drawn as a wiggling line, and you would find a bridge over it.',use:'find where water flows across the land',
+ exp:'A thin blue wiggly line shows a river or stream. Water is blue on OS maps.',
+ draw:'<path d="M3 38C13 26 19 42 27 28S39 18 45 10" stroke="'+_MB+'" stroke-width="3.4" fill="none" stroke-linecap="round"/>'}
+];
+const msGet = id => MAP_SYMS.find(s=>s.id===id);
+const _msCatHint = {tourist:'Symbols for visitors and leisure are drawn in blue.', letters:'Some places are shown with short black letters, not pictures.', buildings:'Buildings and structures are drawn in black.', land:'Lines and patterns show the land: brown for height, blue for water, green for paths and trees, black for rail and cliffs.'};
+/* a symbol as a picture. size in pixels. label is what a screen reader hears (it must NOT give the answer away on a "what is it" question) */
+function symImg(id, size, label){ const s=msGet(id); if(!s) return ''; return '<svg class="msym" viewBox="0 0 48 48" width="'+size+'" height="'+size+'" role="img" aria-label="'+(label||'A map symbol')+'" xmlns="http://www.w3.org/2000/svg"><rect x="0.5" y="0.5" width="47" height="47" rx="7" fill="'+_MP+'" stroke="#e2d9b5"/>'+s.draw+'</svg>'; }
+function _msOpts(s, n){ const same=shuffle(MAP_SYMS.filter(x=>x.id!==s.id&&x.cat===s.cat)), other=shuffle(MAP_SYMS.filter(x=>x.id!==s.id&&x.cat!==s.cat)); return same.slice(0,2).concat(other,same.slice(2)).slice(0,n); }
+
+/* ---- 1. what is it? (a symbol, choose its name) ---- */
+gen('geography','Map symbols: what is it?','\ud83d\uddfa\ufe0f Map symbols: what is it?',()=>{ const s=pickr(MAP_SYMS);
+  return {q:'What does this map symbol show?', correct:s.name, wrong:_msOpts(s,3).map(x=>x.name), sym:s.id, exp:s.exp, hint:s.clue}; });
+GENS[GENS.length-1].pic=1; genBT('Map symbols');
+/* ---- 2. find the symbol (a name, choose its picture) ---- */
+gen('geography','Map symbols: find the symbol','\ud83d\udd0d Map symbols: find the symbol',()=>{ const s=pickr(MAP_SYMS);
+  return {q:'Which symbol means \u201c'+s.name+'\u201d?', correct:s.id, correctLabel:s.name, wrong:_msOpts(s,3).map(x=>x.id), symopts:true, exp:s.exp, hint:'Look for '+s.look+'.'}; });
+GENS[GENS.length-1].pic=1; genBT('Map symbols');
+/* ---- 3. which would you use? (a situation, choose the symbol) ---- */
+gen('geography','Map symbols: which would you use?','\ud83c\udfaf Map symbols: which would you use?',()=>{ const s=pickr(MAP_SYMS);
+  return {q:'You want to '+s.use+'. Which symbol should you look for on the map?', correct:s.id, correctLabel:s.name, wrong:_msOpts(s,3).map(x=>x.id), symopts:true, exp:s.exp, hint:_msCatHint[s.cat]}; });
+GENS[GENS.length-1].pic=1; genBT('Map symbols');
+
+/* ---- 4. map detective: a drawn map with NO KEY. Find the feature, then use the grid reference. ---- */
+const MS_SCENE_POOL = ['info','parking','camp','caravan','picnic','viewpoint','church','churchtower','churchspire','bus','lighthouse','windmill','turbine','ph','pc','po','sch','th','pylons'];
+function symScene(){
+  const e0=ri(1,3), n0=ri(1,3), used=new Set(), groups=new Set(), ids=[];
+  shuffle(MS_SCENE_POOL.slice()).forEach(id=>{ const g=msGet(id).grp; if(ids.length<6 && !(g&&groups.has(g))){ ids.push(id); if(g) groups.add(g); } });
+  const f=ids.map(id=>{ let i,j; do{ i=ri(0,7); j=ri(0,7); }while(used.has(i+','+j)); used.add(i+','+j); return {id, name:msGet(id).name, i, j}; });
+  return {e0, n0, f, sym:1};
+}
+function symGridHTML(s){
+  const C=40, L=34, T=8, W=L+8*C+8, H=T+8*C+26; let p='';
+  for(let i=0;i<=8;i++){ const x=L+i*C; p+='<line x1="'+x+'" y1="'+T+'" x2="'+x+'" y2="'+(T+8*C)+'"/><text x="'+x+'" y="'+(T+8*C+17)+'" text-anchor="middle">'+g2(s.e0+i)+'</text>'; }
+  for(let j=0;j<=8;j++){ const y=T+(8-j)*C; p+='<line x1="'+L+'" y1="'+y+'" x2="'+(L+8*C)+'" y2="'+y+'"/><text x="'+(L-6)+'" y="'+(y+4)+'" text-anchor="end">'+g2(s.n0+j)+'</text>'; }
+  const sy=s.f.map(f=>'<g transform="translate('+(L+f.i*C+3)+' '+(T+(7-f.j)*C+3)+') scale('+((C-6)/48).toFixed(3)+')">'+msGet(f.id).draw+'</g>').join('');
+  return '<svg class="gridmap" viewBox="0 0 '+W+' '+H+'" role="img" aria-label="A map grid with six map symbols. There is no key, so use what you know about map symbols."><rect x="'+L+'" y="'+T+'" width="'+(8*C)+'" height="'+(8*C)+'" fill="'+_MP+'"/><g stroke="#7db3e6" stroke-width="1" fill="#3b2b35" font-size="11" font-family="inherit">'+p+'</g>'+sy+'</svg><p class="muted center" style="margin:4px 0">There is no key on this map. Use what you know about map symbols.</p>';
+}
+gen('geography','Map symbols: map detective','\ud83d\udd75\ufe0f Map symbols: map detective',()=>{
+  const s=symScene(), f=pickr(s.f), sy=msGet(f.id), ref=gridRef(s,f), e=s.e0+f.i, n=s.n0+f.j;
+  if(Math.random()<0.5){
+    const swap=g2(n)+g2(e), cand=[g2(e+1)+g2(n), g2(e)+g2(n+1), g2(Math.max(1,e-1))+g2(n), g2(e)+g2(Math.max(1,n-1))];
+    let wrong=(swap!==ref?[swap]:[]).concat(shuffle(cand)).filter((x,i,a)=>x!==ref&&a.indexOf(x)===i).slice(0,3);
+    while(wrong.length<3){ const x=g2(ri(1,11))+g2(ri(1,11)); if(x!==ref&&!wrong.includes(x)) wrong.push(x); }
+    return {q:'Find the '+sy.name.toLowerCase()+' on the map. What is its four-figure grid reference?', correct:ref, wrong, symgrid:s, exp:'The symbol for '+sy.name.toLowerCase()+' is '+sy.look+'. Read along the bottom first: '+g2(e)+'. Then up the side: '+g2(n)+'. So it is in square '+ref+'. '+sy.exp, hint:'Spot the symbol first: '+sy.look+'. Then go along the corridor and up the stairs.'};
+  }
+  return {q:'Which symbol is in grid square '+ref+'?', correct:sy.name, wrong:shuffle(s.f.filter(x=>x!==f)).slice(0,3).map(x=>x.name), symgrid:s, exp:'Square '+ref+' means easting '+g2(e)+' along the bottom and northing '+g2(n)+' up the side. The symbol there is '+sy.look+'. '+sy.exp, hint:'Find the square first: along the corridor, then up the stairs. '+_msCatHint[sy.cat]};
+});
+GENS[GENS.length-1].pic=1; genBT('Map symbols');
+
+/* ---- 5. colours and lines: only facts confirmed against OS's own material ---- */
+const MS_COLOURS = [
+ ['What colour are contour lines on an OS map?','Brown','Contour lines join places at the same height, and they are drawn in brown (they can look orange-brown).','Think of the colour of soil and hills, not of water or leaves.'],
+ ['What colour are rivers, streams and lakes on an OS map?','Blue','Water is drawn in blue on OS maps.','Think of the colour we paint the sea.'],
+ ['What colour is a motorway on an OS map?','Blue','Motorways are drawn as thick blue lines.','It is the same colour as the water on the map, but drawn as a thick line.'],
+ ['What colour are tourist and leisure symbols, such as a picnic site or a camp site?','Blue','Tourist and leisure symbols on OS maps are blue.','Visitor symbols share their colour with rivers and lakes.'],
+ ['What colour are woodland and trees on an OS map?','Green','Woodland is drawn in green.','Think of the colour of leaves.'],
+ ['On an OS Explorer map, what colour are the dashes that show public footpaths and bridleways?','Green','On an OS Explorer map public rights of way are green dashes: short dashes for footpaths, longer dashes for bridleways.','On Explorer maps, routes you may walk share their colour with woodland.'],
+ ['What colour are railway lines on an OS map?','Black','Railways are drawn as black lines with short cross-bars.','The line is the darkest colour, like the ink on this page.']
+];
+gen('geography','Map symbols: colours and lines','\ud83c\udfa8 Map symbols: colours and lines',()=>{ const r=pickr(MS_COLOURS), pool=shuffle(['Brown','Blue','Green','Black','Red','Purple'].filter(c=>c!==r[1])).slice(0,3);
+  return {q:r[0], correct:r[1], wrong:pool, exp:r[2], hint:r[3]}; });
+genBT('Map symbols');
+
+/* ---- match-ups: picture on the left, name on the right ---- */
+MATCHES.push(
+ {k:'geography',t:'Match-up',title:'Match the tourist symbol to its meaning',pairs:['info','parking','camp','caravan','picnic','viewpoint'].map(i=>['sym:'+i,msGet(i).name])},
+ {k:'geography',t:'Match-up',title:'Match the letters to the place',pairs:['ph','pc','po','sch','th'].map(i=>['sym:'+i,msGet(i).name])},
+ {k:'geography',t:'Match-up',title:'Match the building symbol to its name',pairs:['church','churchtower','churchspire','bus','lighthouse','windmill'].map(i=>['sym:'+i,msGet(i).name])},
+ {k:'geography',t:'Match-up',title:'Match the land symbol to its meaning',pairs:['cliff','marsh','contour','footpath','bridleway','railway'].map(i=>['sym:'+i,msGet(i).name])}
+);
+
+/* ---- the guide: every symbol, with a picture and a way to remember it ---- */
+function vSymGuide(m){
+  const s=subj('geography'), cats=[['tourist','Tourist and leisure (blue)'],['letters','Places shown by letters (black)'],['buildings','Buildings and structures (black)'],['land','Land, water, paths and lines']];
+  const ix=t=>GENS.findIndex(g=>g.t===t);
+  m.innerHTML='<section class="module" style="--c:'+s.c+'"><button class="btn ghost small" data-act="subject" data-k="geography">\u2190 '+esc(s.n)+'</button><h2 style="margin-top:10px">\ud83d\uddfa\ufe0f Map symbols guide</h2>'
+   +'<p class="muted">Ordnance Survey (OS) maps use symbols and colours. These are simplified pictures in the style of the OS symbols. Always check the key on the map you are using.</p>'
+   +cats.map(([c,label])=>'<h3>'+label+'</h3><div class="symguide">'+MAP_SYMS.filter(x=>x.cat===c).map(x=>'<div class="symcell">'+symImg(x.id,64,x.name)+'<b>'+esc(x.name)+'</b><small>'+esc(x.look.charAt(0).toUpperCase()+x.look.slice(1))+'</small></div>').join('')+'</div>').join('')
+   +'<h3>The colour code</h3><ul><li><b>Blue</b>: water, motorways, and tourist and leisure symbols</li><li><b>Brown</b>: contour lines</li><li><b>Green</b>: woods, and on Explorer maps public footpaths and bridleways</li><li><b>Black</b>: buildings, railways and cliffs</li></ul>'
+   +'<div class="row" style="margin-top:12px"><button class="btn" data-act="gen" data-g="'+[ix('Map symbols: what is it?'),ix('Map symbols: find the symbol'),ix('Map symbols: which would you use?')].join(',')+'">\ud83d\uddfa\ufe0f Test me</button><button class="btn gold" data-act="gen" data-g="'+ix('Map symbols: map detective')+'">\ud83d\udd75\ufe0f Map detective</button><button class="btn gold" data-act="mstart" data-k="geography" data-t="Match the tourist symbol to its meaning">\ud83c\udccf Match-up</button></div></section>';
+}
+
+/* =====================================================================
    REASONING WORKSHOP (English and Literature). For open questions that have NO fixed answer.
    She writes a point, evidence from the text, an explanation and a second point.
    The checker looks at HOW the answer is built (not whether the idea is "right"), gives stars,
@@ -9386,7 +9617,7 @@ SPECIFIC_HINTS['Angles']=q=>{ const t=_t(q); let m=t.match(/One angle is (\d+)°
 SPECIFIC_HINTS['Ratio sharing']=q=>{ const m=_t(q).match(/Share £(\d+) in the ratio (\d+) : (\d+)\./); return m?'Add the parts of the ratio first: '+m[2]+' + '+m[3]+'. Then divide £'+m[1]+' by that total to find one part.':''; };
 SPECIFIC_HINTS['Coordinates']=q=>{ const t=_t(q); let m; if(m=t.match(/point \((-?\d+), (-?\d+)\) is reflected in the x-axis/)) return 'Reflecting ('+_f(+m[1])+', '+_f(+m[2])+') in the x-axis keeps x the same and changes the sign of y.'; if(m=t.match(/point \((-?\d+), (-?\d+)\) is reflected in the y-axis/)) return 'Reflecting ('+_f(+m[1])+', '+_f(+m[2])+') in the y-axis keeps y the same and changes the sign of x.'; if(m=t.match(/midpoint of \((-?\d+), (-?\d+)\) and \((-?\d+), (-?\d+)\)/)) return 'Add the two x values ('+_f(+m[1])+' and '+_f(+m[3])+') and halve. Then add the two y values ('+_f(+m[2])+' and '+_f(+m[4])+') and halve.'; if(m=t.match(/is (\d+) (right|left) and (\d+) (up|down) from the origin/)) return m[1]+' '+m[2]+' means x is '+(m[2]==='right'?'positive':'negative')+'. '+m[3]+' '+m[4]+' means y is '+(m[4]==='up'?'positive':'negative')+'. Write the across number first.'; if(m=t.match(/Which part of the grid is \((-?\d+), (-?\d+)\)/)) return 'For ('+_f(+m[1])+', '+_f(+m[2])+'): is x positive or negative? Is y positive or negative? Right and up are positive.'; return ''; };
 SPECIFIC_HINTS['Transformations']=q=>{ const t=_t(q); let m; if(m=t.match(/point \((-?\d+), (-?\d+)\) is translated (\d+) (left|right) and (\d+) (up|down)/)) return 'For x: '+m[3]+' '+m[4]+' means '+(m[4]==='right'?'add':'take away')+' '+m[3]+'. For y: '+m[5]+' '+m[6]+' means '+(m[6]==='up'?'add':'take away')+' '+m[5]+'.'; if(/translated/.test(t)) return 'Right adds to x and left takes away from x. Up adds to y and down takes away from y.'; if(m=t.match(/point \((-?\d+), (-?\d+)\) is rotated (.+?) about the origin/)) return /180/.test(m[3])?'A 180° turn changes both signs: (x, y) becomes (−x, −y).':/anticlockwise/.test(m[3])?'A 90° anticlockwise turn changes (x, y) into (−y, x).':'A 90° clockwise turn changes (x, y) into (y, −x).'; if(m=t.match(/point \((-?\d+), (-?\d+)\) is enlarged by scale factor (\d+)/)) return 'Multiply both coordinates by the scale factor: '+_f(+m[1])+' × '+m[3]+' and '+_f(+m[2])+' × '+m[3]+'.'; if(m=t.match(/scale factor (\d+)/)) return 'Lengths are multiplied by the scale factor '+m[1]+'. Do that first.'; return ''; };
-SPECIFIC_HINTS['Decimals']=q=>{ const t=_t(q); let m=t.match(/What is (\d+(?:\.\d+)?) × (\d+(?:\.\d+)?)\?/); if(m) return 'Ignore the decimal points and work out '+_dg(m[1])+' × '+_dg(m[2])+'. Then count the decimal places.'; m=t.match(/What is (\d+(?:\.\d+)?) ÷ (\d+(?:\.\d+)?)\?/); if(m) return 'Ignore the decimal point and work out '+_dg(m[1])+' ÷ '+m[2]+'. Then put the decimal point back.'; m=t.match(/What is (\d+(?:\.\d+)?) ([+\-]) (\d+(?:\.\d+)?)\?/); return m?'Line up the decimal points in '+m[1]+' and '+m[3]+', then '+(m[2]==='+'?'add':'subtract')+' the hundredths first.':''; };
+/* SPECIFIC_HINTS['Decimals'] now lives in decexp.js (version 59): it builds on her numbers AND says how to do the working */
 SPECIFIC_HINTS['Units and measures']=q=>{ const t=_t(q); let m=t.match(/What is ([\d,.]+) (\w+) in (\w+)\?/); if(m) return 'You have '+m[1]+' '+m[2]+'. Going from a bigger unit to a smaller one means multiplying, and smaller to bigger means dividing. Is '+m[2]+' bigger or smaller than '+m[3]+'?'; m=t.match(/How many minutes are in ([\d.]+) hours\?/); return m?'There are 60 minutes in 1 hour. Split '+m[1]+' hours into whole hours and part of an hour.':''; };
 SPECIFIC_HINTS['Place value']=q=>{ const t=_t(q).replace(/(\d),(?=\d{3}\b)/g,'$1'); let m=t.match(/What is (\d+(?:\.\d+)?) × (10+)\?/); if(m) return 'Multiplying by '+m[2]+' moves every digit '+(m[2].length-1)+' place'+(m[2].length>2?'s':'')+' to the left.'; m=t.match(/What is (\d+(?:\.\d+)?) ÷ (10+)\?/); if(m) return 'Dividing by '+m[2]+' moves every digit '+(m[2].length-1)+' place'+(m[2].length>2?'s':'')+' to the right.'; m=t.match(/Round ([\d,]+) to the nearest ([\d,]+)/); if(m) return 'Look at the digit to the right of the '+m[2]+'s place in '+m[1]+'. Is it 5 or more?'; m=t.match(/value of the digit (\d) in ([\d,.]+)\?/); if(m) return 'Which column is the '+m[1]+' in '+m[2]+': units, tens, hundreds or thousands? Multiply the digit by that column\'s value.'; m=t.match(/Which is the (?:largest|smallest)\? (.+)$/); return m?'Line up '+m[1]+' by their decimal points and compare the tenths first.':''; };
 SPECIFIC_HINTS['Percentage change']=q=>{ const t=_t(q); let m=t.match(/What percentage is (\d+) of (\d+)\?/); if(m) return 'Write it as a fraction: '+m[1]+' out of '+m[2]+'. Then find the equivalent fraction out of 100.'; m=t.match(/Write (\d+)\/(\d+) as a percentage/); if(m) return 'Divide '+m[1]+' by '+m[2]+', then multiply by 100.'; m=t.match(/Increase £(\d+) by (\d+)%/); if(m) return 'Find '+m[2]+'% of £'+m[1]+' first, then add it on.'; m=t.match(/A £(\d+) coat has (\d+)% off/); return m?'Find '+m[2]+'% of £'+m[1]+' first, then take it off.':''; };
@@ -9421,8 +9652,9 @@ function hintFromExp(q){
   return 'Think about this: '+h;
 }
 function hintFirstLetter(q){ const a=String(q.correctLabel||q.correct||'').trim(); if(a.length<=3||/^-?[\d£$.,%\s]+$/.test(a)||/^(yes|no|true|false)\b/i.test(a)) return ''; const n=a.split(/\s+/).length; return n>6?'':'The answer starts with “'+a.charAt(0).toUpperCase()+'”'+(n>1?' and has '+n+' words':'')+'.'; }
+const PAIRGEN_GENERIC = 'Think about what you have learned about this topic.';
 function hintText(q){
-  if(q.gen){ const f=SPECIFIC_HINTS[q.gt]; const h=f?f(q):''; if(h) return h; if(q.hint) return q.hint; return hintOfBase(q); }
+  if(q.gen){ const f=SPECIFIC_HINTS[q.gt]; const h=f?f(q):''; if(h) return h; if(q.hint){ if(q.hint===PAIRGEN_GENERIC){ const fe=hintFromExp(q); if(fe) return fe; } return q.hint; } return hintOfBase(q); }
   if(q.gloss||q.vocab) return hintOfBase(q);
   return hintFromExp(q)||hintFirstLetter(q)||hintOfBase(q);
 }
@@ -9441,6 +9673,489 @@ const HINTACTIONS = {
 
 /* the original name, kept so anything that asks for a hint the old way still works */
 function hintOf(q){ return hintText(q); }
+
+/* =====================================================================
+   HINT_STATUS: tracks, for every procedurally-generated question type (every entry in GENS -- all 145 of them), whether its Hint 1 has been reviewed for
+   Jody's request that hints be specific to the actual question on screen (not a generic template), personalised with things Anna knows where that's a genuine fit.
+   Four settled states:
+     'dynamic' -- the hint is built live from the real numbers/words in that exact question (SPECIFIC_HINTS in hints.js for maths; a few Spanish verb generators do
+                  the same thing inline). All 32 core maths question types work this way; it already existed before this review, not new.
+     'fact'    -- the question asks her to recall a fact about one specific thing (a capital, an element, a UK city...). Fixed with a per-item lookup table of a
+                  specific/personal clue (CAP_CLUES, ELEMENT_CLUES, UK_CITY_CLUES, UK_MT_CLUES), checked so it never names the correct answer or a possible wrong choice.
+     'skill'   -- the question tests a method, skill or a piece of learned knowledge where a well-written STRATEGY hint (not a per-item personal fact) is the right
+                  kind of help -- "Lines from the bottom: E G B D F (Every Good Boy Deserves Fun)" for music notation, "Take off -ar and add the ending" for Spanish
+                  verbs, "Think about which event or period this person belongs to" for a history figure. CHECKED, one by one, and found to already be genuinely good
+                  -- this is the OUTCOME of a full sweep of the app in version 58, not a default assumption. A few (Money sums: "Work it out step by step.") are
+                  plainer than the rest but still method-appropriate, comparable to the maths formula hints, so were not rewritten.
+     'todo'    -- not yet fixed. 48 types as of v62, all re-opened in v59 (History, RE, D&T, Art, Literature, most Science, word-list types, five maths word types); see the
+                  VERSION 59 CORRECTION note below.
+   VERSION 59 CORRECTION (from Jody's feedback that the music hints made no sense, e.g. "listen to it in your head" when she has never heard the piece): the 'skill' label had been given far too
+   easily in v58, to anything whose hint was not a copy-paste template. The real test is: "if a Year 7 who does NOT already know the answer is stuck, does this hint move her closer, or does it
+   only work if she already knows it?" A single sentence shared by every row of a table of separate facts (a composer, an artist, a historical figure, a lab tool) cannot pass that test, however
+   topic-appropriate it sounds. So: the six music fact-recall types were rewritten with a clue per row and are now 'fact'; about 50 other fact-recall types that were labelled 'skill' were re-opened as
+   'todo' (History, RE, D&T, Art, Literature, most Science, and the word-list types). What is still 'skill' was judged by reading the hint text only, not by attempting the question as a stuck child, so it
+   deserves a second look too. Genuine method questions (binary, grid references, Spanish verb endings, speed = distance / time) are still 'skill' or 'dynamic' because a method really is the right help there.
+   tests/flow_hintregistry.js fails loudly if any GENS entry (now or added later) has no entry here at all, so a new question type can never silently ship with an
+   unreviewed hint and go unnoticed -- a 'todo' entry itself does not fail the test, since an honest, tracked backlog of one thing is fine; an UNTRACKED one is not.
+   When adding a new gen(...)/pairGen(...) call: add one line here in the SAME turn -- classify it right away if quick, or write 'todo' so it is never lost from view.
+   Key format: 'subject|title', exactly matching the k and t passed to gen(k,t,label,f) (or pairGen's first two arguments).
+   ===================================================================== */
+const HINT_STATUS = {
+/* ---- maths: core 32, via SPECIFIC_HINTS in hints.js (dynamic, built from the real numbers in each question); pre-existing, not new in v58 ---- */
+'maths|Negative numbers':'dynamic','maths|Negative number sums':'dynamic','maths|Fractions of amounts':'dynamic','maths|Percentages of amounts':'dynamic',
+'maths|Substitution':'dynamic','maths|Solving equations':'dynamic','maths|Area and perimeter':'dynamic','maths|Averages':'dynamic','maths|Times tables and BIDMAS':'dynamic',
+'maths|Rounding':'dynamic','maths|Angles':'dynamic','maths|Ratio sharing':'dynamic','maths|Coordinates':'dynamic','maths|Transformations':'dynamic','maths|Place value':'dynamic',
+'maths|Decimals':'dynamic','maths|Fractions':'dynamic','maths|Percentage change':'dynamic','maths|Factors and primes':'dynamic','maths|Powers and roots':'dynamic',
+'maths|Units and measures':'dynamic','maths|Probability':'dynamic','maths|Simplifying and expanding':'dynamic','maths|Ratio and proportion':'dynamic',
+'maths|Ordering and temperature':'dynamic','maths|Mean puzzles':'dynamic','maths|Polygons and shapes':'dynamic','maths|Written methods':'dynamic','maths|nth term problems':'dynamic',
+'maths|Circles':'dynamic','maths|Straight-line graphs':'dynamic','maths|Sequences':'dynamic',
+/* ---- maths: 5 more found in gens3.js during the v58 review, using pairGen's per-title strategy hint (checked, good) ---- */
+'maths|Polygons':'todo','maths|Formulae':'todo','maths|Angle facts':'todo','maths|Conversions':'todo','maths|Maths words':'todo',
+/* ---- geography: fact-based, fixed in v57-58 with CAP_CLUES/UK_CITY_CLUES/UK_MT_CLUES ---- */
+'geography|Capital cities':'fact','geography|Capital: country to city':'fact','geography|Capital: city to country':'fact','geography|Find the country':'fact',
+'geography|UK nations':'fact','geography|UK cities':'fact','geography|UK mountains':'fact',
+/* ---- geography: skill/method questions, checked and left as they were ---- */
+'geography|Which continent?':'skill','geography|Which ocean?':'skill','geography|Grid references':'skill',
+'geography|Six-figure references: easy':'skill','geography|Six-figure references: medium':'skill','geography|Six-figure references: hard':'skill',
+'geography|Geography words':'todo','geography|UK facts':'todo',
+/* ---- geography: flags (v62): Pick the flag describes the flag (FLAG_CLUES in caps.js, checked against the flag drawings' real colours); Name the flag uses the landmark clue (CAP_CLUES) ---- */
+'geography|Name the flag':'fact','geography|Pick the flag':'fact',
+/* ---- geography: map symbols (v63): a clue per symbol (MAP_SYMS in mapsym.js), checked so no clue names its own symbol ---- */
+'geography|Map symbols: what is it?':'fact','geography|Map symbols: find the symbol':'fact','geography|Map symbols: which would you use?':'fact','geography|Map symbols: map detective':'fact','geography|Map symbols: colours and lines':'fact',
+/* ---- science: fact-based, fixed in v57-58 ---- */
+'science|Chemical symbols':'fact',
+'science|Periodic table':'fact',
+/* ---- science: skill/method or already-fact-like (per-organism/per-part) strategy hints, checked ---- */
+'science|Acid or alkali?':'skill','science|Speed, distance and time':'skill','science|Organs and their jobs':'todo','science|Cell parts':'todo','science|Plant parts':'todo',
+'science|Planets':'todo','science|Energy types':'todo','science|Renewable or not?':'todo','science|Science units':'todo','science|Lab equipment':'todo',
+'science|Separating mixtures':'todo','science|Changes of state':'todo','science|Food groups':'todo',
+/* ---- computing: all checked, all already have a genuinely specific method hint (e.g. "Write the place values (128, 64, 32...) under the digits") ---- */
+'computing|Binary to decimal':'skill','computing|Decimal to binary':'skill','computing|Logic gates':'skill','computing|Bits and bytes':'skill','computing|Trace the code':'skill',
+'computing|Data units':'todo','computing|Computing words':'todo',
+'computing|Hot keys: what does it do?':'skill','computing|Hot keys: which keys?':'skill','computing|Hot keys: Windows or Mac?':'skill','computing|Hot keys: the right one for the job':'skill',
+/* ---- english: all checked, already good (e.g. "Split the word into syllables", "Say the plural in a sentence: two ___") ---- */
+'english|Plurals':'skill','english|Prefixes':'skill','english|Word classes':'skill','english|Homophones':'skill','english|Extreme words':'skill','english|Thesaurus swap':'skill',
+/* ---- spanish: El or la? has a rule-based hint; verb ones build the hint live from the actual pronoun/verb ending, so are 'dynamic' not just 'skill' ---- */
+'spanish|El or la?':'skill','spanish|Verb conjugation':'dynamic','spanish|Verb endings':'dynamic',
+'spanish|Listen: what does it mean?':'skill','spanish|Listen: which word?':'skill','spanish|Listen: which number?':'skill',
+/* ---- mandarin ---- */
+'mandarin|Numbers to 99':'skill','mandarin|Listen: what does it mean?':'skill','mandarin|Listen: which word?':'skill','mandarin|Listen: which number?':'skill','mandarin|Listen: which tone?':'skill',
+/* ---- music: all checked, already good (e.g. "Every Good Boy Deserves Fun", specific listening-lab hints per aural type) ---- */
+'music|Beats in a bar':'skill','music|Listening lab':'skill','music|Note values':'skill','music|Dynamics':'fact','music|Tempo words':'fact','music|Instrument families':'fact',
+'music|Composers and works':'fact','music|Music words':'fact','music|Music styles':'fact','music|Name the note: easy':'skill','music|Name the note: medium':'skill',
+'music|Name the note: sharps and flats':'skill','music|Line or space?':'skill','music|How many beats?':'skill','music|Complete the bar':'skill','music|Listen: which music word?':'skill',
+/* ---- pshe ---- */
+'pshe|What should you do?':'skill','pshe|Money sums':'skill','pshe|PSHE words':'todo','pshe|Useful numbers':'todo',
+/* ---- history ---- */
+'history|Which came first?':'skill','history|When did it happen?':'todo','history|Who was who?':'todo','history|History words':'todo',
+/* ---- re, dt, art, literature: all checked, already have a topic-appropriate strategy hint ---- */
+'re|Religion facts':'todo','re|Religion words':'todo',
+'dt|Material properties':'todo','dt|Tools and jobs':'todo','dt|Types of material':'todo','dt|Staying safe in D&T':'todo','dt|Materials and their uses':'todo','dt|Design words':'todo','dt|Mechanisms and their jobs':'todo',
+'art|Mixing colours':'todo','art|Complementary colours':'todo','art|Artists and their work':'todo','art|Art movements':'todo','art|Art words':'todo','art|More art words':'todo',
+'literature|Spot the technique':'skill','literature|Characters and plays':'todo','literature|Poetry forms':'todo','literature|Story words':'todo','literature|Who said it?':'todo',
+'literature|Literary words':'todo','literature|Future Hopes: who wrote it?':'todo','literature|Future Hopes: story ideas':'todo','literature|Future Hopes words':'todo',
+};
+
+/* =====================================================================
+   DECIMALS: FULL WORKED EXPLANATIONS, A DETAILED HINT, AND A "WHY IT WENT WRONG" CHECK (version 59).
+   Jody's report, from real use: Anna got 1.6 x 0.4 right but did not understand WHY the answer is 0.64 (why the 0 is in front), and got 53.1 / 9 wrong and could not follow
+   "531 / 9 = 59" because the division itself was never shown. The old explanations were one line each and skipped exactly the parts a child finds hard.
+   Every explanation below is a run of short sentences: the "How to work it out" box turns each sentence into a numbered step (workSteps in fixes2.js), so a long
+   explanation stays readable. Rules for editing this file:
+     - Every equation is written as "A op B = C" (or a chain like "3 + 1 + 1 = 5") so tests/flow_decimals.js can re-check every number in every explanation by machine.
+     - Never start a sentence with "(" (the step splitter would turn it into a step of its own) and never use ";;" or "::" (they are separators in methods.js).
+     - Work from the numbers as DISPLAYED in the question (fmtScaled drops trailing zeros: 250 hundredths shows as 2.5), not from the hidden whole numbers behind them.
+   ===================================================================== */
+const _dxDigits = s => String(s).replace('.','');
+const _dxDp = s => (String(s).split('.')[1]||'').length;
+const _dxPlaces = n => n===0 ? 'no decimal places' : n+' decimal place'+(n===1?'':'s');
+const _dx2 = n => String(Math.floor(n/100))+'.'+String(n%100).padStart(2,'0');      /* hundredths as text, keeping both places: 503 -> '5.03' */
+const _dxNames = ['ones','tenths','hundredths'];
+/* "The 0 on the end does not change the value, so we can drop it": says why the answer shown is shorter than the one just built */
+function _dxTrim(untrimmed, final){
+  if(untrimmed===final) return '';
+  const z=(untrimmed.match(/0+$/)||[''])[0].length;
+  return ' The 0'+(z===1?'':'s')+' on the end '+(z===1?'does':'do')+' not change the value, so we can drop '+(z===1?'it':'them')+': '+final+'.';
+}
+
+/* ---------- multiplying: a/10 x b/10 ---------- */
+function decMulExp(a, b){
+  const sa=fmtScaled(a,1), sb=fmtScaled(b,1), da=_dxDp(sa), db=_dxDp(sb), T=da+db, WA=parseInt(_dxDigits(sa),10), WB=parseInt(_dxDigits(sb),10), P=WA*WB, ans=fmtScaled(a*b,2), out=[];
+  out.push('Ignore the decimal points and multiply the whole numbers: '+WA+' \u00d7 '+WB+' = '+P+'.');
+  out.push(da>0 ? sa+' has '+_dxPlaces(da)+' and '+sb+' has '+_dxPlaces(db)+', so the answer needs '+da+' + '+db+' = '+T+' decimal places.'
+                : sa+' has no decimal places and '+sb+' has '+_dxPlaces(db)+', so the answer needs '+T+' decimal place'+(T===1?'':'s')+'.');
+  const conv=[]; if(da>0) conv.push(sa+' into '+WA); if(db>0) conv.push(sb+' into '+WB);
+  out.push('Here is why: turning '+conv.join(' and ')+' made '+(conv.length===2?'each number':'the number')+' 10 times bigger, so '+P+' is '+(T===2?'10 \u00d7 10 = 100':'10')+' times too big.');
+  out.push('To fix it we divide by '+(T===2?'100':'10')+', which moves the decimal point '+T+' place'+(T===1?'':'s')+' to the left.');
+  const ds=String(P), unit=T===2?'hundredths':'tenths'; let un;
+  if(ds.length>T){ un=ds.slice(0,ds.length-T)+'.'+ds.slice(ds.length-T); out.push('Count '+T+' place'+(T===1?'':'s')+' in from the right-hand end of '+P+': '+P+' becomes '+un+'.'+_dxTrim(un,ans)); }
+  else if(ds.length===T){ un='0.'+ds; out.push(P+' has exactly '+T+' digit'+(T===1?'':'s')+', so the point goes right at the front, with nothing before it.');
+    out.push('When there are no whole ones we write a 0 in front of the point: '+un+'.');
+    out.push('That 0 in front of the point shows there are 0 whole ones, and the rest of the number is '+ds+' '+unit+'.');
+    const tn=_dxTrim(un,ans).trim(); if(tn) out.push(tn); }
+  else { un='0.'+ds.padStart(T,'0'); out.push(P+' has only '+ds.length+' digit'+(ds.length===1?'':'s')+', but the answer needs '+T+' decimal places, so we fill the empty places with 0s: '+un+'. The 0 in front of the point shows there are no whole ones.'+_dxTrim(un,ans)); }
+  const A=Number(sa);
+  if(da>0 && A<1) out.push('Quick check: both numbers are smaller than 1, so the answer has to be smaller than both of them, and '+ans+' is smaller than '+sa+' and '+sb+', so it makes sense.');
+  else if(da>0){ const rA=Math.round(A), est=String(+(rA*Number(sb)).toFixed(3)); out.push('Quick check: '+sa+' is about '+rA+', and '+rA+' \u00d7 '+sb+' = '+est+', so the answer should be roughly '+est+', and '+ans+' is around that size, so it makes sense.'); }
+  out.push('So '+sa+' \u00d7 '+sb+' = '+ans+'.');
+  return out.join(' ');
+}
+
+/* ---------- dividing by a whole number: the bus stop (short division) ---------- */
+function decDivExp(r, b){
+  const D=r*b, sD=fmtScaled(D,1), sr=fmtScaled(r,1), padded=(sD.indexOf('.')<0 && sr.indexOf('.')>=0), sU=padded?sD+'.0':sD;   /* 3 shown as "3" but 3 / 2 = 1.5: write 3.0 so there is a digit to carry into */
+  const hasPoint=sU.indexOf('.')>=0, intLen=sU.split('.')[0].length, digs=_dxDigits(sU).split('').map(Number), n=digs.length, out=[];
+  out.push('Set it out as a bus stop (short division): '+b+' goes outside the bracket and '+sD+' goes inside.');
+  if(padded) out.push('The answer will not be a whole number, so write '+sD+' as '+sU+' to give yourself a place to carry into. Adding .0 does not change the number.');
+  if(hasPoint) out.push('Write the decimal point on the answer line straight above the point inside the bracket. Then divide one digit at a time and ignore the point until the end.');
+  _dxBus(digs,b,hasPoint,intLen,out);
+  out.push('Read along the answer line: '+sr+'.');
+  out.push('Check by multiplying back: '+sr+' \u00d7 '+b+' = '+sD+'.');
+  out.push('So '+sD+' \u00f7 '+b+' = '+sr+'.');
+  return out.join(' ');
+}
+
+
+/* the shared bus-stop working, digit by digit. Used by Decimals (always exact) and by Written methods (which can end with a remainder). */
+function _dxBus(digs, b, hasPoint, intLen, out){
+  let rem=0; const n=digs.length;
+  for(let i=0;i<n;i++){
+    const dg=digs[i], cur=rem*10+dg, q=Math.floor(cur/b), used=q*b, left=cur-used, nxt=digs[i+1], last=(i===n-1);
+    if(q>0){
+      out.push(b+' into '+cur+': '+b+' \u00d7 '+q+' = '+used+', so it goes '+q+(q===1?' time':' times')+' and we write '+q+' on the answer line.');
+      if(left>0 && nxt!==undefined) out.push(cur+' \u2212 '+used+' = '+left+' is left over, so carry the '+left+' across to the next digit ('+nxt+') to make '+(left*10+nxt)+'.');
+      else if(left>0) out.push(cur+' \u2212 '+used+' = '+left+' is left over, and there are no more digits, so '+left+' is the remainder.');
+      else if(!last) out.push('Nothing is left over, so move on to the next digit ('+nxt+').');
+      else out.push('Nothing is left over, so we are done.');
+    } else if(cur===0){
+      out.push(b+' into 0 is 0, so we write 0 on the answer line.'+(last?'':' Move on to the next digit ('+nxt+').'));
+    } else if(last){
+      out.push(b+' does not go into '+cur+', so we write 0 on the answer line. There are no more digits, so the '+cur+' left over is the remainder.');
+    } else {
+      const needZero=(hasPoint && i===intLen-1) || i>0;
+      out.push(b+' does not go into '+cur+', so we '+(needZero?'write 0 on the answer line and ':'')+'carry the '+cur+' across to the next digit ('+nxt+') to make '+(cur*10+nxt)+'.');
+    }
+    rem=left;
+  }
+  return rem;
+}
+/* ---------- Written methods: a whole number divided by 3 to 9, with a remainder ---------- */
+function wmDivExp(a, b){
+  const out=[], digs=String(a).split('').map(Number), qq=Math.floor(a/b), r=a%b;
+  out.push('Set it out as a bus stop (short division): '+b+' goes outside the bracket and '+a+' goes inside.');
+  _dxBus(digs,b,false,digs.length,out);
+  out.push('The answer line reads '+qq+', with '+r+' left over.');
+  out.push('Check: '+qq+' \u00d7 '+b+' = '+(qq*b)+', and '+(qq*b)+' + '+r+' = '+a+'.');
+  out.push('So '+a+' \u00f7 '+b+' = '+qq+' remainder '+r+'.');
+  return out.join(' ');
+}
+const _wmOldHint = SPECIFIC_HINTS['Written methods'];
+SPECIFIC_HINTS['Written methods']=q=>{
+  const m=_t(q).match(/What is (\d+) ÷ (\d+)\? Give the remainder\./);
+  if(m){ const b=parseInt(m[2],10), ds=m[1].split('').map(Number); let cur=0, i=0; do{ cur=cur*10+ds[i]; i++; }while(cur<b && i<ds.length);
+    return 'Set it out as a bus stop with '+m[2]+' outside and '+m[1]+' inside. Divide one digit at a time, starting with how many '+m[2]+'s go into '+cur+'. Whatever is left over at the very end is the remainder.'; }
+  return _wmOldHint ? _wmOldHint(q) : '';
+};
+
+/* ---------- adding and subtracting hundredths, column by column ---------- */
+function _dxPadNote(pairs){
+  const pad=[]; pairs.forEach(([t,v])=>{ const d=_dxDp(t); if(d<2) pad.push(t+' has '+(d===0?'no decimal places':'only 1 decimal place')+', so write it as '+_dx2(v)); });
+  return pad.length ? pad.join(', and ')+'. Adding 0s on the end does not change a number.' : '';
+}
+function _dxRoundNote(sa, sb, op, ra, rb, est, ans){
+  return 'Quick check: '+sa+' is about '+ra+' and '+sb+' is about '+rb+', and '+ra+' '+op+' '+rb+' = '+est+', so the answer should be roughly '+est+', and '+ans+' is around that size, so it makes sense.';
+}
+function decAddExp(a, b){
+  const sa=fmtScaled(a,2), sb=fmtScaled(b,2), s=a+b, ans=fmtScaled(s,2), out=[];
+  out.push('Write the numbers one under the other with the decimal points in a straight line, so tenths are under tenths and hundredths are under hundredths.');
+  const pn=_dxPadNote([[sa,a],[sb,b]]); if(pn) out.push(pn);
+  const A=[Math.floor(a/100)%10, Math.floor(a/10)%10, a%10], B=[Math.floor(b/100)%10, Math.floor(b/10)%10, b%10]; let carry=0;
+  for(let c=2;c>=0;c--){
+    const x=A[c], y=B[c], tot=x+y+carry;
+    let t='Add the '+_dxNames[c]+(c===2?' first':'')+(carry?', including the 1 carried':'')+': '+x+' + '+y+(carry?' + '+carry:'')+' = '+tot;
+    if(tot>=10){ t+=', so write '+(tot%10)+' and carry 1 to the '+(c>0?_dxNames[c-1]:'tens')+' column.'; carry=1; } else { t+=', so write '+tot+'.'; carry=0; }
+    out.push(t);
+  }
+  if(carry) out.push('There is nothing else to add in the tens column, so write the carried 1 there.');
+  out.push('Bring the decimal point straight down between the ones and the tenths: '+_dx2(s)+'.'+_dxTrim(_dx2(s),ans));
+  const ra=Math.round(a/100), rb=Math.round(b/100); if(ra+rb>=1) out.push(_dxRoundNote(sa,sb,'+',ra,rb,ra+rb,ans));
+  out.push('So '+sa+' + '+sb+' = '+ans+'.');
+  return out.join(' ');
+}
+function decSubExp(a, b){
+  const sa=fmtScaled(a,2), sb=fmtScaled(b,2), d=a-b, ans=fmtScaled(d,2), out=[];
+  out.push('Write the bigger number on top and the other under it, with the decimal points in a straight line, so tenths are under tenths and hundredths are under hundredths.');
+  const pn=_dxPadNote([[sa,a],[sb,b]]); if(pn) out.push(pn);
+  const A=[Math.floor(a/100)%10, Math.floor(a/10)%10, a%10], B=[Math.floor(b/100)%10, Math.floor(b/10)%10, b%10], changed=[false,false,false];
+  for(let c=2;c>=0;c--){
+    let x=A[c]; const y=B[c];
+    if(changed[c]) out.push('The '+_dxNames[c]+' column is now '+x+' because of the borrowing.');
+    if(x<y){
+      let j=c-1; while(j>=0 && A[j]===0) j--;
+      if(j===c-1){ A[j]-=1; changed[j]=true;
+        out.push('In the '+_dxNames[c]+' column, '+x+' is smaller than '+y+', so borrow 1 from the '+_dxNames[j]+' column and turn it into 10 here: '+x+' + 10 = '+(x+10)+'.'); }
+      else { A[j]-=1; changed[j]=true; for(let k=j+1;k<c;k++){ A[k]=9; changed[k]=true; }
+        out.push('In the '+_dxNames[c]+' column, '+x+' is smaller than '+y+', and the '+_dxNames[c-1]+' column has 0 so it cannot lend. Borrow from the '+_dxNames[j]+' column instead: it becomes '+A[j]+', the '+_dxNames[c-1]+' column becomes 9, and 10 goes into the '+_dxNames[c]+' column: '+x+' + 10 = '+(x+10)+'.'); }
+      x+=10;
+      out.push(x+' \u2212 '+y+' = '+(x-y)+', so write '+(x-y)+'.');
+    } else out.push('Subtract the '+_dxNames[c]+(c===2?' first':'')+': '+x+' \u2212 '+y+' = '+(x-y)+', so write '+(x-y)+'.');
+  }
+  out.push('Bring the decimal point straight down between the ones and the tenths: '+_dx2(d)+'.'+_dxTrim(_dx2(d),ans));
+  const ra=Math.round(a/100), rb=Math.round(b/100); out.push(_dxRoundNote(sa,sb,'\u2212',ra,rb,ra-rb,ans));
+  out.push('So '+sa+' \u2212 '+sb+' = '+ans+'.');
+  return out.join(' ');
+}
+
+/* ---------- the hint (Hint 1): builds on her actual numbers, and now says HOW ---------- */
+SPECIFIC_HINTS['Decimals']=q=>{
+  const t=_t(q); let m=t.match(/What is (\d+(?:\.\d+)?) × (\d+(?:\.\d+)?)\?/);
+  if(m) return 'Ignore the decimal points and work out '+_dg(m[1])+' × '+_dg(m[2])+'. Then count the decimal places in the question: your answer needs that many places after its point, and you may need to add a 0 in front to make room.';
+  m=t.match(/What is (\d+(?:\.\d+)?) ÷ (\d+(?:\.\d+)?)\?/);
+  if(m){ const b=parseInt(m[2],10), ds=_dxDigits(m[1]).split('').map(Number); let cur=0, i=0; do{ cur=cur*10+ds[i]; i++; }while(cur<b && i<ds.length);
+    return 'Set it out as a bus stop with '+m[2]+' outside and '+m[1]+' inside'+(m[1].indexOf('.')>=0?', and put the decimal point straight up onto the answer line':'')+'. Then divide one digit at a time, starting with how many '+m[2]+'s go into '+cur+'.'; }
+  m=t.match(/What is (\d+(?:\.\d+)?) ([+\-]) (\d+(?:\.\d+)?)\?/);
+  return m ? 'Line up the decimal points in '+m[1]+' and '+m[3]+', then '+(m[2]==='+'?'add the hundredths column first, carrying to the next column when a column reaches 10.':'subtract the hundredths column first, borrowing from the next column when you need to.') : '';
+};
+
+/* ---------- "Why it may have gone wrong": checks the answer she actually chose ---------- */
+MISTAKE_RULES['Decimals']=(q,ch,co)=>{
+  const t=_t(q), cn=Number(ch), on=Number(co); if(!isFinite(cn)||!isFinite(on)||on===0) return '';
+  const norm=s=>String(s).replace('.','').replace(/^0+/,'').replace(/0+$/,'');
+  if(norm(ch)===norm(co)){ const k=Math.round(Math.log10(cn/on)); if(k!==0 && Math.abs(k)<=3){ const f=Math.pow(10,Math.abs(k));
+    return 'The digits in your answer are right, but the decimal point is in the wrong place, so it is '+f+' times too '+(k>0?'big':'small')+'. Count the decimal places again, and use a quick estimate to check the size.'; } }
+  let m=t.match(/What is (\d+(?:\.\d+)?) ÷ (\d+(?:\.\d+)?)\?/);
+  if(m) return 'Check by multiplying back: '+ch+' × '+m[2]+' = '+(+(cn*Number(m[2])).toFixed(6))+', but the number you started with was '+m[1]+', so '+ch+' cannot be right. Try the bus stop again, one digit at a time.';
+  m=t.match(/What is (\d+(?:\.\d+)?) × (\d+(?:\.\d+)?)\?/);
+  if(m){ const A=_dg(m[1]), B=_dg(m[2]); return 'Multiply the whole numbers first: '+A+' × '+B+' = '+(parseInt(A,10)*parseInt(B,10))+'. The digits of your answer ('+norm(ch)+') do not match, so the multiplication slipped. Try it again carefully.'; }
+  m=t.match(/What is (\d+(?:\.\d+)?) ([+\-]) (\d+(?:\.\d+)?)\?/);
+  if(m) return 'Check each column from the right, and remember to '+(m[2]==='+'?'carry':'borrow')+'. Your answer is '+(cn>on?'too big':'too small')+', so one of the columns went wrong.';
+  return '';
+};
+
+/* When she answers a generated question RIGHT, a long step-by-step explanation is shown as the same numbered list she would see if she were wrong, instead of one wall of text. */
+function expHTML(q){
+  const st=(q.gen&&q.ok)?workSteps(q.exp):[];
+  return st.length>=4 ? '<ol class="wk-steps">'+st.map(s=>'<li>'+esc(s)+'</li>').join('')+'</ol>' : '<br>'+esc(q.exp);
+}
+
+/* =====================================================================
+   MATHS EXPLANATIONS THAT TEACH THE METHOD (version 60): the same fix as decexp.js (Decimals), for the other question types whose explanation JUMPED over the hard step.
+   Found by reading what each maths question type says after she answers, as a child who is stuck would. Examples of the jump: "12 x 5 = 60" (how do you find the 5?), "6 / 3 = 2, then x 1"
+   (what do the top and bottom numbers mean?), "multiply top and bottom by 4" (where does the 4 come from?), "the first number in both times tables is 24" (show the lists),
+   "the total must be 4 x 10" (why?), "count up from 789 to 1,000" (show the counting), "5 - 7 = -2" (what happens when you cross zero?).
+   Rules (same as decexp.js): short sentences (each becomes a numbered step); every equation written "A op B = C" so tests/flow_mathexp.js can re-check every number by machine;
+   never start a sentence with "(", never use ";;" or "::"; end on "So ... = answer." (flow_work.js expects an explanation to reach the answer).
+   ===================================================================== */
+const _mxN = n => Number(n).toLocaleString('en-GB');
+const _mxFactors = n => { const f=[]; for(let i=1;i<=n;i++) if(n%i===0) f.push(i); return f; };
+const _mxMultiples = (n, upTo) => { const m=[]; for(let i=n;i<=upTo;i+=n) m.push(i); return m; };
+
+/* ---------- times tables ---------- */
+function tblMulExp(a, b){
+  const ans=a*b, out=[];
+  if(b>5){ out.push('Break it into times tables you know: '+a+' \u00d7 '+b+' is the same as '+a+' \u00d7 5 plus '+a+' \u00d7 '+(b-5)+'.');
+    out.push(a+' \u00d7 5 = '+a*5+' and '+a+' \u00d7 '+(b-5)+' = '+a*(b-5)+'.'); out.push('Add them: '+a*5+' + '+a*(b-5)+' = '+ans+'.'); }
+  else out.push('Count up in '+a+'s, '+b+' times: '+_mxMultiples(a,a*b).join(', ')+'.');
+  out.push('So '+a+' \u00d7 '+b+' = '+ans+'.'); return out.join(' ');
+}
+function tblDivExp(a, b){    /* (a x b) / b = a */
+  const n=a*b;
+  return 'Ask yourself: how many '+b+'s fit into '+n+'? Count up in '+b+'s until you reach '+n+': '+_mxMultiples(b,n).join(', ')+'. That took '+a+' jump'+(a===1?'':'s')+', so '+n+' \u00f7 '+b+' = '+a+'. '
+    +'Check by multiplying back: '+b+' \u00d7 '+a+' = '+n+'. So '+n+' \u00f7 '+b+' = '+a+'.';
+}
+
+/* ---------- fractions of an amount ---------- */
+function frAmtExp(num, den, amt){
+  const unit=amt/den, ans=unit*num;
+  return 'The bottom number, '+den+', says how many equal parts to split '+amt+' into. Think of the times table backwards: '+den+' \u00d7 '+unit+' = '+amt+', so '+amt+' \u00f7 '+den+' = '+unit+'. '
+    +'Each part is worth '+unit+'. The top number, '+num+', says how many of those parts to take: '+num+' \u00d7 '+unit+' = '+ans+'. So '+num+'/'+den+' of '+amt+' = '+ans+'.';
+}
+
+/* ---------- fractions ---------- */
+function fracEquivExp(n, d, k){
+  return 'Look at the bottom numbers: '+d+' became '+d*k+'. '+d+' \u00d7 '+k+' = '+d*k+', so the bottom was multiplied by '+k+'. '
+    +'Whatever you do to the bottom you must do to the top: '+n+' \u00d7 '+k+' = '+n*k+'. So '+n+'/'+d+' = '+n*k+'/'+d*k+'.';
+}
+function fracSimpExp(n, d, g){
+  const a=n/g, b=d/g, ans=fr(n,d);
+  return 'Find a number that goes into both '+n+' and '+d+': '+g+' does, because '+n+' = '+g+' \u00d7 '+a+' and '+d+' = '+g+' \u00d7 '+b+'. '
+    +'Divide the top and the bottom by '+g+': '+n+' \u00f7 '+g+' = '+a+' and '+d+' \u00f7 '+g+' = '+b+'. So '+n+'/'+d+' = '+ans+'. '
+    +(a===1?'It cannot be simplified any more, because the top is 1.':'It cannot be simplified any more, because no number except 1 goes into both '+a+' and '+b+'.');
+}
+function fracAddExp(n1, d1, n2, d2){
+  const L=d1*d2/gcd(d1,d2), k1=L/d1, k2=L/d2, a=n1*k1, b=n2*k2, top=a+b, ans=fr(top,L), out=[];
+  if(d1===d2) out.push('The bottom numbers are already the same ('+d1+'), so we can add the tops straight away.');
+  else {
+    out.push('You can only add fractions when the bottom numbers match. The bottoms are '+d1+' and '+d2+', and the smallest number they both go into is '+L+'.');
+    out.push(n1+'/'+d1+(k1===1?' already has '+L+' on the bottom.':': '+d1+' \u00d7 '+k1+' = '+L+', so multiply the top by '+k1+' too: '+n1+' \u00d7 '+k1+' = '+a+'. That makes '+a+'/'+L+'.'));
+    out.push(n2+'/'+d2+(k2===1?' already has '+L+' on the bottom.':': '+d2+' \u00d7 '+k2+' = '+L+', so multiply the top by '+k2+' too: '+n2+' \u00d7 '+k2+' = '+b+'. That makes '+b+'/'+L+'.'));
+  }
+  out.push('Now add the tops and keep the bottom the same: '+a+' + '+b+' = '+top+'. That gives '+top+'/'+L+'.');
+  const g=gcd(top,L); if(g>1) out.push(top+'/'+L+' can be simplified: divide the top and the bottom by '+g+': '+top+' \u00f7 '+g+' = '+top/g+' and '+L+' \u00f7 '+g+' = '+L/g+'.');
+  out.push('So '+n1+'/'+d1+' + '+n2+'/'+d2+' = '+ans+'.'); return out.join(' ');
+}
+function fracMixedExp(top, d, w, n){
+  const out=[], f=fr(n,d);
+  out.push('Ask how many whole '+d+'s fit into '+top+': '+d+' \u00d7 '+w+' = '+d*w+', and the next one up, '+d+' \u00d7 '+(w+1)+' = '+d*(w+1)+', is too big. So there '+(w===1?'is':'are')+' '+w+' whole one'+(w===1?'':'s')+'.');
+  out.push(top+' \u2212 '+d*w+' = '+n+' is left over, so the leftover goes on top of the '+d+': '+n+'/'+d+'.');
+  if(f!==n+'/'+d){ const g=gcd(n,d); out.push(n+'/'+d+' can be simplified: divide the top and the bottom by '+g+': '+n+' \u00f7 '+g+' = '+n/g+' and '+d+' \u00f7 '+g+' = '+d/g+'.'); }
+  out.push('So '+top+'/'+d+' = '+w+' '+f+'.'); return out.join(' ');
+}
+
+/* ---------- percentage change ---------- */
+function pctIncExp(p, c){ const x=p*c/100, ans=p+x;
+  return 'First find '+c+'% of \u00a3'+p+'. '+pctExp(c,p,x)+' Now add it on to the original price: \u00a3'+p+' + \u00a3'+x+' = \u00a3'+ans+'. So increasing \u00a3'+p+' by '+c+'% gives \u00a3'+ans+'.'; }
+function pctDiscExp(p, c){ const x=p*c/100, ans=p-x;
+  return 'First find '+c+'% of \u00a3'+p+'. '+pctExp(c,p,x)+' Now take it off the original price: \u00a3'+p+' \u2212 \u00a3'+x+' = \u00a3'+ans+'. So the sale price is \u00a3'+ans+'.'; }
+function pctWhatExp(x, y, pc){
+  const out=[], g=gcd(x,y); let a=x, b=y;
+  out.push('Write it as a fraction: '+x+' out of '+y+' is '+x+'/'+y+'.');
+  if(g>1){ a=x/g; b=y/g; out.push('Simplify it first: divide the top and the bottom by '+g+': '+x+' \u00f7 '+g+' = '+a+' and '+y+' \u00f7 '+g+' = '+b+'.'); }
+  const k=100/b;
+  out.push('Percent means out of 100, so make the bottom 100: '+b+' \u00d7 '+k+' = 100, so multiply the top by '+k+' too: '+a+' \u00d7 '+k+' = '+pc+'.');
+  out.push('So '+x+' out of '+y+' is '+pc+'/100, which is '+pc+'%.'); return out.join(' ');
+}
+function pctFracExp(n, d, pc){ const k=100/d;
+  return 'Percent means out of 100, so make the bottom 100. The bottom is '+d+', and '+d+' \u00d7 '+k+' = 100, so multiply the top by '+k+' too: '+n+' \u00d7 '+k+' = '+pc+'. So '+n+'/'+d+' = '+pc+'/100, which is '+pc+'%.'; }
+
+/* ---------- HCF and LCM: show the lists ---------- */
+function hcfExp(a, b, g){
+  const fa=_mxFactors(a), fb=_mxFactors(b), both=fa.filter(x=>fb.includes(x));
+  return 'List the factors of '+a+': '+fa.join(', ')+'. List the factors of '+b+': '+fb.join(', ')+'. The factors that appear in both lists are '+both.join(', ')+'. '
+    +'The biggest one is '+g+', so the HCF of '+a+' and '+b+' is '+g+'.';
+}
+function lcmExp(a, b, L){
+  return 'Write out the multiples of '+a+': '+_mxMultiples(a,L).join(', ')+'. Write out the multiples of '+b+': '+_mxMultiples(b,L).join(', ')+'. '
+    +'The first number that appears in both lists is '+L+', so the LCM of '+a+' and '+b+' is '+L+'.';
+}
+
+/* ---------- the mean ---------- */
+function meanExp(m, a, b, c, d){
+  return 'The mean is the total divided by how many numbers there are, so the total is the mean times how many: 4 \u00d7 '+m+' = '+4*m+'. '
+    +'The three numbers we know add up to '+a+' + '+b+' + '+c+' = '+(a+b+c)+'. The fourth number is whatever is missing from the total: '+4*m+' \u2212 '+(a+b+c)+' = '+d+'. So the fourth number is '+d+'.';
+}
+
+/* ---------- written subtraction: counting up in easy jumps ---------- */
+function countUpExp(b, a){
+  const out=[], jumps=[]; let cur=b;
+  out.push('Instead of taking away, count up from '+b+' to '+_mxN(a)+' in easy jumps.');
+  if(cur%10!==0){ const t=Math.ceil(cur/10)*10; out.push('To the next ten: '+cur+' + '+(t-cur)+' = '+t+'.'); jumps.push(t-cur); cur=t; }
+  if(cur%100!==0 && Math.ceil(cur/100)*100<=a){ const t=Math.ceil(cur/100)*100; out.push('To the next hundred: '+cur+' + '+(t-cur)+' = '+t+'.'); jumps.push(t-cur); cur=t; }
+  if(cur<a){ out.push('Then straight up to '+_mxN(a)+': '+cur+' + '+(a-cur)+' = '+_mxN(a)+'.'); jumps.push(a-cur); }
+  if(jumps.length>1) out.push('Add up the jumps: '+jumps.join(' + ')+' = '+_mxN(a-b)+'.');
+  out.push('So '+_mxN(a)+' \u2212 '+b+' = '+_mxN(a-b)+'.'); return out.join(' ');
+}
+
+/* ---------- temperature: what happens when you cross zero ---------- */
+function tempFallExp(t, f){
+  const ans=t-f, out=[];
+  if(t<0) out.push('It is already below zero, so falling makes it even colder. Add the two amounts and keep the minus: '+(-t)+' + '+f+' = '+(-ans)+', which is '+mn(ans)+'.');
+  else if(t===0) out.push('Start at 0. Every step down goes below zero, so '+f+' steps down is '+mn(ans)+'.');
+  else if(f<=t) out.push('Start at '+t+' on the number line and count back '+f+': '+t+' \u2212 '+f+' = '+ans+'.');
+  else { out.push('Start at '+t+' and count back to 0: that uses '+t+' of the '+f+' steps.'); out.push('There are '+f+' \u2212 '+t+' = '+(f-t)+' steps still to go, and they take you below zero, to '+mn(ans)+'.'); }
+  out.push('So the temperature is now '+mn(ans)+'\u00b0C.'); return out.join(' ');
+}
+function tempRiseExp(t, r){
+  const ans=t+r;
+  return 'Start at '+mn(t)+' and count up to 0: that uses '+(-t)+' of the '+r+' steps. There are '+r+' \u2212 '+(-t)+' = '+(r+t)+' steps still to go, and they take you above zero, to '+ans+'. So the temperature is now '+mn(ans)+'\u00b0C.';
+}
+
+/* =====================================================================
+   VERSION 61: the second batch. Area and perimeter, Polygons, Angles, Ratio, Solving equations, Circles, Averages.
+   ===================================================================== */
+const _mxD = x => String(+Number(x).toFixed(2));
+/* 3.14 x X, worked by splitting the 3.14 so a child can do it on paper: 3 x X and 0.14 x X, then add */
+const _mxPi = X => 'Work out 3.14 \u00d7 '+X+' by splitting the 3.14: 3 \u00d7 '+X+' = '+_mxD(3*X)+' and 0.14 \u00d7 '+X+' = '+_mxD(0.14*X)+', so '+_mxD(3*X)+' + '+_mxD(0.14*X)+' = '+_mxD(3.14*X)+'.';
+
+/* ---------- area and perimeter ---------- */
+function rectAreaExp(l, w){
+  const ans=l*w, out=[];
+  out.push('Area is the space inside a shape, counted in squares. For a rectangle, multiply the length by the width.');
+  if(l>10) out.push('Split the '+l+' into 10 and '+(l-10)+': 10 \u00d7 '+w+' = '+10*w+' and '+(l-10)+' \u00d7 '+w+' = '+(l-10)*w+', so '+10*w+' + '+(l-10)*w+' = '+ans+'.');
+  else out.push(l+' \u00d7 '+w+' = '+ans+'.');
+  out.push('The answer is in square centimetres, because we are counting squares that are 1 cm long and 1 cm wide.');
+  out.push('So the area is '+ans+' cm\u00b2.'); return out.join(' ');
+}
+function rectPerimExp(l, w){
+  const ans=2*(l+w);
+  return 'The perimeter is the distance all the way around the outside. A rectangle has two long sides and two short sides. Add all four sides: '+l+' + '+w+' + '+l+' + '+w+' = '+ans+'. '
+    +'A shortcut: add one long and one short side, then double it: '+l+' + '+w+' = '+(l+w)+', and 2 \u00d7 '+(l+w)+' = '+ans+'. So the perimeter is '+ans+' cm.';
+}
+function triAreaExp(b, h){
+  const ans=b*h/2;
+  return 'A triangle is exactly half of a rectangle with the same base and height. First find that rectangle: '+b+' \u00d7 '+h+' = '+b*h+'. Now take half of it: '+b*h+' \u00f7 2 = '+ans+'. So the area is '+ans+' cm\u00b2.';
+}
+
+/* ---------- polygons ---------- */
+function polySumExp(name, n){
+  const k=n-2, ans=k*180;
+  return 'Pick one corner and draw straight lines to all the other corners. This splits the '+name+' into triangles. A shape with '+n+' sides splits into '+n+' \u2212 2 = '+k+' triangles. '
+    +'The angles in each triangle add up to 180 degrees, so '+k+' \u00d7 180 = '+ans+'. So the interior angles of a '+name+' add up to '+ans+'\u00b0.';
+}
+function paraAreaExp(b, h){
+  return 'A parallelogram can be cut and re-arranged into a rectangle with the same base and height, so its area is base times height. Use the perpendicular height, which goes straight up at a right angle, not the slanted side. '
+    +b+' \u00d7 '+h+' = '+b*h+'. So the area is '+b*h+' cm\u00b2.';
+}
+function trapAreaExp(a, b, h){
+  const s=a+b, t=s*h;
+  return 'A trapezium has two parallel sides. Add them together: '+a+' + '+b+' = '+s+'. Multiply by the height: '+s+' \u00d7 '+h+' = '+t+'. Then halve it: '+t+' \u00f7 2 = '+t/2+'. So the area is '+t/2+' cm\u00b2.';
+}
+
+/* ---------- angles ---------- */
+function lineAngleExp(a){
+  const ans=180-a;
+  return 'Angles on a straight line add up to 180 degrees. One angle is '+a+'\u00b0, so the other is whatever is left: 180 \u2212 '+a+' = '+ans+'. Check: '+a+' + '+ans+' = 180. So the other angle is '+ans+'\u00b0.';
+}
+function triAngleExp(a, b){
+  const s=a+b, ans=180-s;
+  return 'The angles in a triangle add up to 180 degrees. Add the two you know: '+a+' + '+b+' = '+s+'. Take that away from 180: 180 \u2212 '+s+' = '+ans+'. Check: '+a+' + '+b+' + '+ans+' = 180. So the third angle is '+ans+'\u00b0.';
+}
+
+/* ---------- ratio ---------- */
+function ratioSimpExp(a, b, x, y){
+  const g=a/x;
+  return 'Find a number that goes into both '+a+' and '+b+': '+g+' does, because '+a+' = '+g+' \u00d7 '+x+' and '+b+' = '+g+' \u00d7 '+y+'. Divide both sides of the ratio by '+g+': '+a+' \u00f7 '+g+' = '+x+' and '+b+' \u00f7 '+g+' = '+y+'. '
+    +'It cannot be simplified any more, because no number except 1 goes into both '+x+' and '+y+'. So '+a+' : '+b+' = '+x+' : '+y+'.';
+}
+function recipeExp(p, q, u){
+  return 'First find the amount for ONE person: '+u*p+' \u00f7 '+p+' = '+u+' g. Check by multiplying back: '+u+' \u00d7 '+p+' = '+u*p+'. Now multiply by the number of people you want: '+u+' \u00d7 '+q+' = '+u*q+' g. So '+q+' people need '+u*q+' g.';
+}
+function ratioShareExp(a, b, u){
+  const n=a+b, tot=n*u, ans=b*u;
+  return 'Add the parts to see how many equal parts there are altogether: '+a+' + '+b+' = '+n+' parts. Share the total between them: '+tot+' \u00f7 '+n+' = '+u+' for each part. Check by multiplying back: '+n+' \u00d7 '+u+' = '+tot+'. '
+    +'The larger share has '+b+' parts: '+b+' \u00d7 '+u+' = '+ans+'. Check that the two shares add up to the total: '+a*u+' + '+ans+' = '+tot+'. So the larger share is \u00a3'+ans+'.';
+}
+
+/* ---------- solving equations ---------- */
+function solveExp(m, c, x){
+  const r=m*x+c;
+  return 'The equation says: '+m+' lots of x, plus '+c+', makes '+r+'. To find x, undo the steps backwards. The last step was adding '+c+', so subtract '+c+' from both sides: '+r+' \u2212 '+c+' = '+(r-c)+', so '+m+'x = '+(r-c)+'. '
+    +'The first step was multiplying x by '+m+', so divide both sides by '+m+': '+(r-c)+' \u00f7 '+m+' = '+x+'. Check by putting x back into the equation: '+m+' \u00d7 '+x+' + '+c+' = '+r+'. So x = '+x+'.';
+}
+
+/* ---------- circles ---------- */
+function circDiaExp(r){ const d=2*r;
+  return 'The diameter goes all the way across the circle, through the centre. The radius only goes from the centre to the edge, so the diameter is twice the radius: 2 \u00d7 '+r+' = '+d+'. So the diameter is '+d+' cm.'; }
+function circCircDExp(d){ const ans=3.14*d;
+  return 'The circumference is the distance around the circle. The formula is circumference = \u03c0 \u00d7 diameter, and we use \u03c0 \u2248 3.14. '+_mxPi(d)+' So the circumference is '+_mxD(ans)+' cm.'; }
+function circAreaExp(r){ const r2=r*r, ans=3.14*r2;
+  return 'The area of a circle is \u03c0 \u00d7 radius \u00d7 radius, using \u03c0 \u2248 3.14. First multiply the radius by itself: '+r+' \u00d7 '+r+' = '+r2+'. '+_mxPi(r2)+' The answer is in square centimetres. So the area is '+_mxD(ans)+' cm\u00b2.'; }
+function circCircRExp(r){ const d=2*r, ans=3.14*d;
+  return 'The circumference is 2 \u00d7 \u03c0 \u00d7 radius, using \u03c0 \u2248 3.14. First double the radius to get the diameter: 2 \u00d7 '+r+' = '+d+'. '+_mxPi(d)+' So the circumference is '+_mxD(ans)+' cm.'; }
+
+/* ---------- averages ---------- */
+function meanAvgExp(nums, m){
+  const tot=nums.reduce((x,y)=>x+y,0), n=nums.length;
+  return 'The mean is the total divided by how many numbers there are. Add them all up: '+nums.join(' + ')+' = '+tot+'. There are '+n+' numbers, so divide the total by '+n+': '+tot+' \u00f7 '+n+' = '+m+'. Check by multiplying back: '+m+' \u00d7 '+n+' = '+tot+'. So the mean is '+m+'.';
+}
+function medianExp(nums){
+  const s=nums.slice().sort((x,y)=>x-y), mid=s[Math.floor(s.length/2)];
+  return 'The median is the middle number when they are in order. Put them in order, smallest first: '+s.join(', ')+'. There are '+s.length+' numbers, so the middle one is the '+(Math.floor(s.length/2)+1)+'rd: '+mid+'. So the median is '+mid+'.';
+}
+function rangeExp(nums){
+  const big=Math.max(...nums), small=Math.min(...nums);
+  return 'The range shows how spread out the numbers are: biggest minus smallest. The biggest is '+big+' and the smallest is '+small+'. '+big+' \u2212 '+small+' = '+(big-small)+'. So the range is '+(big-small)+'.';
+}
 
 /* =====================================================================
    SILLY CONGRATULATION LINES, spoken (in the voice chosen in the Parent Desk) at the end of every round.
@@ -11970,7 +12685,7 @@ function go(name, params){ if(V && V.name==='round' && name!=='round') rpAbort()
 function render(){
   renderHeader();
   const m=$('#view'); m.innerHTML='';
-  const views={home:vHome,subject:vSubject,round:vRound,results:vResults,dojo:vDojo,oasis:vOasis,checkin:vCheckin,parent:vParent,thesaurus:vThesaurus,journal:vJournal,vault:vVault,notes:vNotes,verbs:vVerbs,chars:vChars,order:vOrder,match:vMatch,worksheet:vWorksheet,stroke:vStroke,report:vReport,words:vWords,upgrade:vUpgrade,talk:vTalk,periodic:vPeriodic,methods:vMethods,write:vWrite,players:vPlayers,caps:vCaps,capslearn:vCapLearn,atlas:vAtlas,lessons:vLessons,lesson:vLesson,storylab:vStoryLab,story:vStory,written:vWritten,wq:vWQ,coverage:vCoverage,fhguide:vFH,xwords:vXW,speak:vSpeak,rsn:vRsn,piano:vPiano,terms:vTerms,cheers:vCheers,lgprac:vLgp,hotkeys:vHotkeys,say:vSay,lab:vLab,puzzles:vPuzzles};
+  const views={home:vHome,subject:vSubject,symguide:vSymGuide,round:vRound,results:vResults,dojo:vDojo,oasis:vOasis,checkin:vCheckin,parent:vParent,thesaurus:vThesaurus,journal:vJournal,vault:vVault,notes:vNotes,verbs:vVerbs,chars:vChars,order:vOrder,match:vMatch,worksheet:vWorksheet,stroke:vStroke,report:vReport,words:vWords,upgrade:vUpgrade,talk:vTalk,periodic:vPeriodic,methods:vMethods,write:vWrite,players:vPlayers,caps:vCaps,capslearn:vCapLearn,atlas:vAtlas,lessons:vLessons,lesson:vLesson,storylab:vStoryLab,story:vStory,written:vWritten,wq:vWQ,coverage:vCoverage,fhguide:vFH,xwords:vXW,speak:vSpeak,rsn:vRsn,piano:vPiano,terms:vTerms,cheers:vCheers,lgprac:vLgp,hotkeys:vHotkeys,say:vSay,lab:vLab,puzzles:vPuzzles};
   (views[V.name]||vHome)(m);
   updatePill();
   if(V.name==='stroke') initWriter();
@@ -12042,7 +12757,9 @@ function vHome(m){
 
 function mapButtons(){
   const ix=t=>GENS.findIndex(g=>g.t===t), b=(ids,label)=>`<button class="btn ghost small" data-act="gen" data-g="${ids.join(',')}">${label}</button>`;
-  return b([ix('Find the country')],'🗺️ Find the country')+b([ix('Which continent?'),ix('Which ocean?')],'🌍 Continents and oceans')+b([ix('Capital cities')],'🏛️ Capital cities')+b([ix('UK nations'),ix('UK cities'),ix('UK mountains')],'🇬🇧 The UK map');
+  return b([ix('Find the country')],'🗺️ Find the country')+b([ix('Which continent?'),ix('Which ocean?')],'🌍 Continents and oceans')+b([ix('Capital cities')],'🏛️ Capital cities')+b([ix('UK nations'),ix('UK cities'),ix('UK mountains')],'🇬🇧 The UK map')
+   +b([ix('Map symbols: what is it?'),ix('Map symbols: find the symbol'),ix('Map symbols: which would you use?')],'\ud83d\uddfa\ufe0f Map symbols')+b([ix('Map symbols: map detective')],'\ud83d\udd75\ufe0f Map detective')
+   +'<button class="btn ghost small" data-act="go" data-v="symguide">\ud83d\udcd6 Symbols guide</button><button class="btn ghost small" data-act="mstart" data-k="geography" data-t="Match the tourist symbol to its meaning">\ud83c\udccf Symbol match-up</button>';
 }
 function vSubject(m){
   const s=subj(V.k), k=s.k, bank=QBY[k]||[], [a,c]=subjTotals(k), n=roundLen(), gs=gensOf(k), tc=tierCounts(k), nc=cardsFor(k).length;
@@ -12104,6 +12821,8 @@ function vSubject(m){
 
 /* ---- questions in a round ---- */
 function ctxHTML(q){
+  if(q.sym) return '<div class="center symcard">'+symImg(q.sym,132,'A map symbol')+'</div>';
+  if(q.symgrid) return symGridHTML(q.symgrid);
   if(q.flag) return `<div class="center" style="margin:6px 0">${flagImg(q.flag,150)}</div>`;
   if(q.grid) return gridHTML(q.grid);
   if(q.staff) return staffHTML(q.staff);
@@ -12156,12 +12875,12 @@ function vRound(m){
      ${q.hinted&&hint&&!q.done?`<div class="hintbox">💡 ${esc(hint)}${q.hint2?`<br><small>${q.elim&&q.elim.length===1?'One':'Two'} wrong answer${q.elim&&q.elim.length===1?'':'s'} ${q.elim&&q.elim.length===1?'is':'are'} crossed out.</small>`:''}${q.silly?`<div class="hintsilly">${esc(q.silly)}</div>`:''}</div>`:''}
      ${hint&&!q.hinted?`<div class="center"><button class="btn ghost small" data-act="hint">💡 Hint (−1 XP)</button></div>`:''}${q.hinted&&!q.hint2&&canElim(q)&&!noFeedback?`<div class="center"><button class="btn ghost small" data-act="hint2">✂️ Cross out ${elimCount(q)===1?'one wrong answer':'two wrong answers'} (−1 XP)</button></div>`:''}
      <div class="options">`+q.opts.map((o,i)=>{ let cls='opt'+(q.elim&&q.elim.includes(i)&&!q.done?' crossed':''); if(q.done){ if(noFeedback){ if(i===q.chosen) cls+=' chosen'; } else if(o===q.correct) cls+=' right'; else if(i===q.chosen) cls+=' wrong'; }
-       return `<button class="${cls}" data-act="pick" data-i="${i}" ${q.flagopts?`aria-label="Flag ${'ABCD'[i]}"`:''} ${(q.done||(q.elim&&q.elim.includes(i)))?'disabled':''}><span class="ltr">${'ABCD'[i]}</span>${q.flagopts?flagImg(o,84):`<span>${esc(o)}</span>`}</button>`; }).join('')+`</div>`;
+       return `<button class="${cls}" data-act="pick" data-i="${i}" ${q.flagopts?`aria-label="Flag ${'ABCD'[i]}"`:q.symopts?`aria-label="Symbol ${'ABCD'[i]}"`:''} ${(q.done||(q.elim&&q.elim.includes(i)))?'disabled':''}><span class="ltr">${'ABCD'[i]}</span>${q.flagopts?flagImg(o,84):q.symopts?symImg(o,76,'Symbol '+'ABCD'[i]):`<span>${esc(o)}</span>`}</button>`; }).join('')+`</div>`;
   }
   let fb='';
   if(q.done && !noFeedback && !flash){
     const wb=(!q.ok && q.type!=='spell' && q.type!=='maptap')?workedBox(q):'';
-    fb=`<div class="feedback ${q.ok?'ok':'no'}"><strong>${esc(q.msg||'')}</strong>${q.ok?'':`<br>The answer is: <b>${esc(q.correctLabel||q.correct)}</b>`}${wb?'':`<br>${esc(q.exp)}`}${q.clearedNow?'<br><b>🥋 Cleared from your Dojo!</b>':''}</div>${wb}`;
+    fb=`<div class="feedback ${q.ok?'ok':'no'}"><strong>${esc(q.msg||'')}</strong>${q.ok?'':`<br>The answer is: <b>${esc(q.correctLabel||q.correct)}</b>`}${wb?'':expHTML(q)}${q.clearedNow?'<br><b>🥋 Cleared from your Dojo!</b>':''}</div>${wb}`;
   }
   if(q.done && !noFeedback && !flash && !q.ok && q.type!=='spell' && q.type!=='typein' && q.type!=='maptap' && !q.lgp){ const mc=methodFor(q); if(mc) fb+='<details class="mdet"><summary>🧠 The method for this topic</summary>'+methodHTML(mc)+'</details>'+`<div class="center"><button class="btn ghost small" data-act="methods" data-k="${q.k}">🧠 More tips for ${esc(s.n)}</button>${LESSONS[q.k]&&LESSONS[q.k][q.topic]?`<button class="btn small" data-act="lesson" data-k="${q.k}" data-t="${esc(q.topic)}">🎓 Full fun lesson</button>`:''}</div>`; }
   const next = (q.done && !flash) ? `<div class="center"><button id="nextbtn" class="btn big" data-act="next">${R.i<n-1?'Next ➔':(noFeedback?'Finish':'Finish the round')}</button></div>` : '';
@@ -12380,10 +13099,10 @@ function vOrder(m){
 /* ---- match-ups ---- */
 function vMatch(m){
   const M=V.m, s=subj(M.k);
-  const it=(side,i,txt)=>{ const ok=M.done[i]; const sel=M.sel&&M.sel.side===side&&M.sel.i===i; return `<button class="mit ${ok?'ok':''} ${sel?'sel':''}" data-act="mtap" data-side="${side}" data-i="${i}" ${ok?'disabled':''}>${esc(txt)}</button>`; };
+  const it=(side,i,txt)=>{ const ok=M.done[i]; const sel=M.sel&&M.sel.side===side&&M.sel.i===i; return `<button class="mit ${ok?'ok':''} ${sel?'sel':''}" data-act="mtap" data-side="${side}" data-i="${i}" ${ok?'disabled':''}>${/^sym:/.test(txt)?symImg(txt.slice(4),56,'A map symbol'):esc(txt)}</button>`; };
   m.innerHTML=`<section class="module" style="--c:${s.c}"><button class="btn ghost small" data-act="subject" data-k="${M.k}">← ${esc(s.n)}</button>
    <h2 style="margin-top:10px">🧩 ${esc(M.title)}</h2><p class="muted">Tap one on the left, then the one that matches it on the right. Matched: ${Object.keys(M.done).length} of ${M.pairs.length}. Mistakes: ${M.wrong}.</p>
-   <div class="mcols"><div>${M.left.map(i=>it('l',i,M.pairs[i][0])).join('')}</div><div>${M.right.map(i=>it('r',i,M.pairs[i][1])).join('')}</div></div>
+   <div class="mcols${M.pairs.some(p=>/^sym:/.test(p[0]))?' msymcols':''}"><div>${M.left.map(i=>it('l',i,M.pairs[i][0])).join('')}</div><div>${M.right.map(i=>it('r',i,M.pairs[i][1])).join('')}</div></div>
    ${M.finished?`<div class="feedback ok"><strong>All matched! 🎉</strong> ${M.wrong?`You made ${M.wrong} mistake${M.wrong===1?'':'s'}.`:'No mistakes.'} You earned +${M.xp} XP.</div><div class="row" style="margin-top:10px"><button class="btn big" data-act="mstart" data-k="${M.k}">Another match-up</button></div>`:''}</section>`;
 }
 
@@ -12800,10 +13519,11 @@ function autoPairs(k){
   if(VOCAB[k]){ const zh=k==='mandarin', list=VOCAB[k].split(';').map(s=>s.split('|')); return shuffle(list).slice(0,5).map(it=>[zh?it[0]+' ('+it[1]+')':it[0], zh?it[2]:it[1]]); }
   return shuffle((GLOSS[k]||[]).map(s=>s.split('|')).filter(it=>it[1].length<=70)).slice(0,5).map(it=>[it[0],it[1]]);
 }
-function startMatch(k){
-  const cur=MATCHES.filter(x=>x.k===k), auto=!!(GLOSS[k]||VOCAB[k]);
+function startMatch(k, wantTitle){
+  const cur=MATCHES.filter(x=>x.k===k), auto=!!(GLOSS[k]||VOCAB[k]), want=wantTitle&&cur.find(x=>x.title===wantTitle);
   let pairs, title;
-  if(cur.length && (!auto || Math.random()<0.5)){ const set=rand(cur); pairs=set.pairs; title=set.title; }
+  if(want){ pairs=want.pairs; title=want.title; }
+  else if(cur.length && (!auto || Math.random()<0.5)){ const set=rand(cur); pairs=set.pairs; title=set.title; }
   else { pairs=autoPairs(k); title='Match each word to its meaning'; }
   const idx=pairs.map((_,i)=>i);
   V={name:'match', m:{k, title, pairs, left:shuffle(idx), right:shuffle(idx), sel:null, done:{}, wrong:0, finished:false, xp:0}}; render(); window.scrollTo(0,0);
@@ -12970,7 +13690,7 @@ const ACTIONS = {
   strokewatch:()=>{ if(!HW) return; try{ HW.cancelQuiz(); }catch(e){} const m=$('#hwmsg'); if(m) m.innerHTML='&nbsp;'; HW.animateCharacter(); },
   strokequiz:()=>{ if(!HW) return; try{ HW.cancelQuiz(); }catch(e){} const m=$('#hwmsg'); if(m) m.textContent='Draw the first stroke.'; HW.quiz({onComplete:strokeDone}); },
   /* match-ups */
-  mstart:d=>startMatch(d.k),
+  mstart:d=>startMatch(d.k,d.t),
   mtap:d=>{
     const M=V.m; if(M.finished) return; const side=d.side, i=+d.i; if(M.done[i]) return;
     if(!M.sel || M.sel.side===side){ M.sel={side,i}; render(); return; }

@@ -1,12 +1,132 @@
 THE ANNALIESCE ACADEMY: NEW VERSION
 =====================================
-THIS VERSION: Academy version 58, built 22 Sep 2026, 07:26.
+THIS VERSION: Academy version 63, built 28 Sep 2026, 11:45.
 After you upload, open the site and scroll to the very bottom of the HOME page.
-It should say:  "Academy version 58 . built 22 Sep 2026, 07:26".
+It should say:  "Academy version 63 . built 28 Sep 2026, 11:45".
 If it says something older, or nothing, the new upload has not reached the site yet
 (see "If the site ever looks unchanged" below).
 
-NEW IN VERSION 58 (it also includes everything from versions 51 to 57, listed further down)
+NEW IN VERSION 63 (it also includes everything from versions 51 to 62, listed further down)
+
+MAP SYMBOLS: IDENTIFYING THEM, AND GAMES TO TEST THEM
+You asked whether I had done the map symbols. I had not, and I have now. It is a new Geography topic called Map symbols. Find it on the Geography page: the map buttons row now has "Map symbols", "Map detective", "Symbols guide" and "Symbol match-up".
+ - LEARN THEM: a Symbols guide shows all 29 symbols in four groups with a picture, the name and a way to remember each one. There are also revision notes, a Full fun lesson, a method card, 12 fixed questions and 3 written-answer questions.
+ - IDENTIFY THEM, three ways: (1) a symbol picture and she chooses its name; (2) a name and she chooses the right picture from four; (3) a situation ("you want to pitch a tent for the weekend") and she chooses the symbol to look for.
+ - THE MAP DETECTIVE: a drawn map with blue grid lines like a real OS map, six symbols on it and NO KEY. She has to recognise a symbol to answer "what is the grid reference of the caravan site?" or "which symbol is in grid square 0306?". This tests the symbols and grid references together.
+ - PICTURE MATCH-UPS: four sets (tourist symbols, the letters PH PC PO Sch TH, buildings, and land and lines). The symbol pictures are on the left and the names on the right, side by side even on a phone.
+ - COLOURS AND LINES: seven questions (contour lines are brown; water and motorways and tourist symbols are blue; woods are green; on an Explorer map footpaths are short green dashes; railways are black).
+ Everything earns XP and coins as normal, and a wrong answer goes into the Mistake Dojo with its picture.
+The symbols: tourist and leisure (information centre, parking, camp site, caravan site, picnic site, viewpoint); places shown by letters (PH public house, PC public toilets, PO post office, Sch school, TH town hall); buildings (church, church with a tower, church with a spire, bus or coach station, lighthouse,
+windmill, wind turbine, electricity pylons); and land and lines (cliff, coniferous and non-coniferous trees, marsh, contour lines, footpath, bridleway, railway, motorway, river).
+HOW I CHECKED IT IS RIGHT: the names, meanings and colour rules follow the Ordnance Survey Explorer and Landranger keys and OS's own guide to rights of way, and I only included things I could confirm. I left out symbols I could not confirm (youth hostel, visitor centre, telephone, castle and others).
+One thing to know: the pictures are my own simplified drawings in the style of OS symbols, not the exact OS artwork (which is copyright), so the guide says "simplified pictures in the style of". I looked at every drawing before including it. The tests check that each symbol is drawn in the colour it is described as, that the letters
+spell what they should, that a footpath is drawn with shorter dashes than a bridleway, that no hint gives its own answer away, and that every grid reference in the Map detective is right (worked out again separately). I broke it 15 ways on purpose and every one was caught. I also tapped through every part on a phone-sized screen and a very small one.
+THINGS THAT CHANGED BECAUSE OF IT: (a) there is now one more topic, so her coverage percentage dips very slightly, because there is one more topic to master. The coverage badges (Map Maker, Pathfinder, Trailblazer) still work the same way. (b) Several of my own older tests counted topics and buttons exactly, and I updated them on purpose.
+STILL NOT DONE from the same request: the human, physical and environmental geography topics.
+
+WHAT IS STILL OPEN
+ - The 48 question types marked "not done" for specific hints (History, Art, Literature, RE, D&T, most Science, and the word lists), music repeating, and other subjects' explanations.
+ - Two questions I still need you to answer: what should I add to music first, and has any other question left her stuck?
+
+NEW IN VERSION 62 (included)
+
+FLAG QUESTIONS NOW HAVE REAL HINTS (the last geography question types)
+ - PICK THE FLAG ("Which flag belongs to Thailand?"): the hint now says what the flag LOOKS like, for all 164 countries. For example: "Look for five horizontal stripes: red, white, blue, white and red, with the blue one in the middle the widest."
+   Before, it just said "Think about the colours and shapes you remember".
+ - NAME THE FLAG ("Which country does this flag belong to?"): she can already see the flag, so describing it would not help. The hint is now a specific clue about the country itself (the same landmark facts as the capital-city questions), instead of "It is in Asia".
+How I made sure the descriptions are right: I did not write them from memory of the real flags. I displayed all 164 flags exactly as the Academy draws them and wrote each description from what is on screen. This matters: the Academy's Northern Ireland flag is the Union Jack,
+and its Iran and Afghanistan flags differ from some you would find online. Then a computer check reads the colours actually painted in each flag's picture and confirms every colour word in every description is really there and no main colour is left out.
+Another check makes sure no description names a country (that would give the answer away) and that every description is different from every other. I went through all 97 pairs of similar flags in the same region (Netherlands and Luxembourg, Norway and Iceland,
+Romania and Moldova...) to make sure the hints tell them apart: stripe direction, the order of the colours, dark or light blue, or a symbol. That review found two problems, which I fixed: Switzerland and Denmark had identical descriptions, and Romania needed to say it has nothing in the middle
+(Moldova has a coat of arms). I broke the code on purpose 8 ways and the tests caught all 8. I also checked the longest descriptions on a very small phone screen: they wrap cleanly.
+
+WHAT IS LEFT
+ - The 48 question types still marked "not done" for specific hints: History, Art, Literature, RE, D&T, most Science, and the word-list types. These are all facts to be recalled, so each needs a clue per item, written and checked like the flags and capitals.
+ - Music repeating (small lists, needs more questions written) and other subjects' explanations (science calculations, computing, languages).
+ - Two questions I still need you to answer: what should I add to music first, and has any other question left her stuck?
+
+NEW IN VERSION 61 (included)
+
+THE REST OF THE CORE MATHS EXPLANATIONS NOW TEACH THE METHOD TOO
+Last time I said area, angles, ratio, solving equations, circles and averages were still too terse. They are done. Every explanation is short numbered steps, ends on the answer, and where it helps checks the answer by working back:
+ - AREA AND PERIMETER: says what area and perimeter MEAN (area counts squares, perimeter is the distance round the outside), works the multiplication by splitting a number over 10 (13 x 9 = 10 x 9 + 3 x 9), and explains a triangle as half of a rectangle.
+   This was the "1/2 x 12 x 11 = 66" gap: it now shows 12 x 11 = 132, then half of 132 = 66.
+ - POLYGONS: why the angles add up (draw lines from one corner, the shape splits into n - 2 triangles, each is 180 degrees), why a parallelogram is base x height (and to use the straight-up height, not the slanted side), and the trapezium as add, multiply by the height, halve.
+ - ANGLES: 180 minus what you know, then a check that the angles add back up to 180.
+ - RATIO: simplifying shows WHY a number goes into both sides. Recipes find the amount for ONE person first (150 / 5 = 30, checked by 30 x 5 = 150), then multiply. Sharing shows adding the parts, the size of one part, and checks that both shares add back to the total.
+ - SOLVING EQUATIONS: says what the equation means in words ("7 lots of x, plus 7, makes 63"), undoes the steps backwards on both sides (63 - 7 = 56, then 56 / 7 = 8), and checks by putting x back in.
+ - CIRCLES: explains diameter, radius, circumference and area, and splits the 3.14 multiplication into 3 x and 0.14 x so she can do it on paper (3 x 144 = 432 and 0.14 x 144 = 20.16, so 452.16).
+ - AVERAGES: the mean shows adding up, dividing, and checking by multiplying back; the median shows putting them in order and taking the middle; the range shows the biggest and smallest.
+So every one of the 32 core maths question types has now been read as a child who is stuck would read it, and either fixed or judged already clear.
+How I checked: every equation in every explanation is re-worked independently, over thousands of questions (all 2,742 angle questions, all 1,320 equations, every circle radius, 1,500 random sets of averages...). I broke the code on purpose 10 ways; the tests caught 9 straight away and the 10th exposed a gap in my own test (it did not check the recipe multiplication), which I fixed and re-proved.
+
+STILL OPEN
+ - Other subjects' explanations have not been read this way (science calculations, computing, Spanish and Mandarin).
+ - The 50 question types marked "not done" for specific hints (History, Art, Literature, most Science, flags) and the music repetition.
+ - Two questions I still need you to answer: what should I add to music first, and has any other question left her stuck?
+
+NEW IN VERSION 60 (included)
+
+MORE EXPLANATIONS THAT TEACH, ACROSS MATHS
+After the decimals problem you reported, I read what every core maths question says after she answers, the way a child who is stuck would. Nine question types had the same problem: they jumped over the hard step. Each one now shows the method,
+one small numbered step at a time, ending on the answer, with a check where that helps:
+ - 60 / 12 (and every times-table division): it used to say "12 x 5 = 60" and never showed how to find the 5. Now: "how many 12s fit into 60? Count up in 12s: 12, 24, 36, 48, 60. That took 5 jumps", then checks by multiplying back.
+   Times-table multiplying now splits into tables she knows (7 x 8 = 7 x 5 + 7 x 3).
+ - FRACTIONS OF AN AMOUNT (1/3 of 6): says what the bottom number does (how many equal parts) and what the top number does (how many parts to take).
+ - FRACTIONS: equivalent fractions show where the multiplier comes from (2 became 8, and 2 x 4 = 8, so the top is x 4 too). Simplifying shows WHY a number goes into both. Adding shows finding the common bottom, converting each fraction,
+   adding the tops, and simplifying. Mixed numbers show how many whole ones fit and what is left over.
+ - PERCENTAGE CHANGE: increase and discount now find the percentage first and then show the pounds being added or taken off (before, it just said "take it off: 30"). "What percentage is 10 of 40" and "3/5 as a percentage" make the bottom 100.
+ - HCF and LCM: list the factors of both numbers and the ones they share, or write out the multiples until one appears in both lists (before, it just named the answer).
+ - THE MEAN PUZZLE: says WHY the total is the mean times how many.
+ - WRITTEN SUBTRACTION (1,000 - 789): shows counting up in easy jumps (789 + 1 = 790, 790 + 10 = 800, 800 + 200 = 1,000, so 211).
+ - TEMPERATURE: shows what happens when it crosses zero (5 falling by 7: count back 5 to reach 0, 2 more steps go below zero, so -2).
+How I checked: by machine, over every possible question of the small kinds and thousands of the big ones. Every equation in every explanation is re-worked independently. The factor lists, multiple lists, common bottoms and counting-up jumps are
+also recalculated separately and compared. I broke the code on purpose 10 ways and the tests caught all 10 (one "breakage" turned out to be harmless and still gave a correct explanation, so I swapped it for a real one).
+
+STILL A BIT TERSE (I have not touched these, and would like to know if any left her stuck): area of a triangle ("1/2 x 12 x 11 = 66" does not work the multiplication), angles on a line ("180 - 98 = 82"), ratio and proportion,
+solving equations, circles and averages. The music repetition and the 50 hint types marked "not done" from the last version are also still open.
+
+NEW IN VERSION 59 (included)
+
+1. DECIMALS: EXPLANATIONS THAT ACTUALLY TEACH (what you reported)
+You said Anna got 1.6 x 0.4 right but did not understand why the answer starts with 0, and got 53.1 / 9 wrong because the division itself was never shown. Both were true: the old explanations skipped the hard part.
+Every Decimals explanation is now a short numbered working, one small step at a time, with the reason for each rule:
+ - MULTIPLYING (1.6 x 0.4): multiply the whole numbers (16 x 4 = 64). WHY we count decimal places: turning 1.6 into 16 and 0.4 into 4 made each number 10 times bigger, so 64 is 100 times too big, so we move the point 2 places left.
+   WHY THE 0 IS IN FRONT: 64 has exactly 2 digits, so the point lands at the very front with nothing before it, and we write a 0 there to show there are 0 whole ones and 64 hundredths. It also explains when extra 0s are needed (0.06)
+   and why 0.30 is written 0.3. It ends with a quick estimate check (1.6 is about 2, and 2 x 0.4 = 0.8, so about 0.8 makes sense).
+ - DIVIDING (53.1 / 9): a full bus stop (short division), digit by digit: where the decimal point goes, why 9 does not go into 5, 9 x 5 = 45, 53 - 45 = 8, carry the 8 to make 81, 9 x 9 = 81, then a check by multiplying back (5.9 x 9 = 53.1).
+   If the number is shown as a whole number but the answer is not (like 3 / 2 = 1.5) it explains writing 3 as 3.0.
+ - ADDING AND SUBTRACTING: line up the points, work column by column from the right, carrying and borrowing (including borrowing across a 0), then a quick check.
+ - Every explanation now ends with a line like "So 53.1 / 9 = 5.9."
+ - The hint says HOW, using her numbers: for 53.1 / 9 it says to set it out as a bus stop and start with how many 9s go into 53.
+ - The "Why it may have gone wrong" line now checks the answer she ACTUALLY chose. If she picks 6.1: "6.1 x 9 = 54.9, but you started with 53.1, so 6.1 cannot be right." If the digits are right but the point is misplaced, it says the answer is 10 times too big or small.
+ - When she gets one RIGHT, the explanation now also shows as numbered steps (before, only wrong answers did). Short explanations elsewhere are unchanged.
+ - WRITTEN METHODS DIVISION (like 153 / 7) had the same problem ("7 x 21 = 147" with no way to find the 21). It now gets the same bus stop working, ending with the remainder.
+ - The "method for this topic" card for Decimals now covers multiplying and dividing, not just adding.
+How I checked it: by machine, every possible question of these kinds (all 384 multiplications, 472 divisions, 852 written divisions, and 8,000 adds and subtracts). Every number in every explanation is re-worked independently, and the digits written along the answer
+line must spell the true answer. I also broke the code on purpose 11 different ways, and the tests caught all 11.
+
+2. MUSIC HINTS (what you reported)
+"Listen to the music in your head" only works if she already knows the tune, so it is not a hint. I went back over the music question types with a stricter test: would this help a child who is stuck? Six failed and are rewritten with a specific clue for each
+item: Composers and works, Dynamics, Tempo words, Instrument families, Music words and Music styles. For example, Beethoven: "He kept composing even after he had gone completely deaf." Crescendo: "It is related to the English word increase."
+Instrument families now explains how each family makes its sound. The tests also catch a hint that just re-words its own answer (several of my first drafts did) or spells out the answer word itself.
+
+3. I WAS TOO GENEROUS LAST TIME, AND HAVE CORRECTED THE RECORD
+In version 58 I told you about 100 question types already had good hints. That was the wrong standard: I approved anything that was not an identical template, without asking whether a stuck child could use it. About 50 of those (History, Art, Literature, RE, D&T, most
+Science and several word-list types) are re-opened as "not done" in the project list. They are NOT fixed yet. Name the flag and Pick the flag are also still to do.
+The project now has a checklist of all 145 question types, and the tests fail if a question type is ever added without being listed, so a new one cannot slip through unreviewed.
+
+4. SMALLER THINGS
+ - The Periodic table riddle gets a specific second clue for each element (now 32 elements), and its "which group" hint was missing Group 2 (alkaline earth metals): fixed.
+ - Two older tests were updated on purpose, because they checked the exact wording of the old Decimals hint and that explanations end on the answer.
+
+WHAT I HAVE NOT DONE (and want your steer on)
+ - MUSIC REPEATS: the hints are fixed, but the repetition you noticed is because the lists are small (8 dynamics, 7 speed words, 10 composers, 15 styles, 5 note values). Fixing that needs more questions written, not better hints. What would you like added first?
+ - OTHER MATHS EXPLANATIONS may have the same "jumps to the answer" problem: I only fixed Decimals and written division. Written subtraction says "Count up from 835 to 2,000" without showing how, and I have not looked at Fractions or Percentages.
+   If any other question left her stuck, tell me which and I will do the same.
+ - The 50 re-opened question types above.
+
+NEW IN VERSION 58 (included)
 
 MORE SPECIFIC GEOGRAPHY HINTS, AND A REGRESSION I CAUGHT AND FIXED
 Four more geography question types now have a specific hint instead of a generic one:
