@@ -1,307 +1,80 @@
 THE ANNALIESCE ACADEMY: NEW VERSION
 =====================================
-THIS VERSION: Academy version 63, built 28 Sep 2026, 11:45.
+THIS VERSION: Academy version 74, built 29 Sep 2026, 07:49.
 After you upload, open the site and scroll to the very bottom of the HOME page.
-It should say:  "Academy version 63 . built 28 Sep 2026, 11:45".
+It should say:  "Academy version 74 . built 29 Sep 2026, 07:49".
 If it says something older, or nothing, the new upload has not reached the site yet
 (see "If the site ever looks unchanged" below).
 
-NEW IN VERSION 63 (it also includes everything from versions 51 to 62, listed further down)
+NEW SINCE YOUR LAST UPLOAD
 
-MAP SYMBOLS: IDENTIFYING THEM, AND GAMES TO TEST THEM
-You asked whether I had done the map symbols. I had not, and I have now. It is a new Geography topic called Map symbols. Find it on the Geography page: the map buttons row now has "Map symbols", "Map detective", "Symbols guide" and "Symbol match-up".
- - LEARN THEM: a Symbols guide shows all 29 symbols in four groups with a picture, the name and a way to remember each one. There are also revision notes, a Full fun lesson, a method card, 12 fixed questions and 3 written-answer questions.
- - IDENTIFY THEM, three ways: (1) a symbol picture and she chooses its name; (2) a name and she chooses the right picture from four; (3) a situation ("you want to pitch a tent for the weekend") and she chooses the symbol to look for.
- - THE MAP DETECTIVE: a drawn map with blue grid lines like a real OS map, six symbols on it and NO KEY. She has to recognise a symbol to answer "what is the grid reference of the caravan site?" or "which symbol is in grid square 0306?". This tests the symbols and grid references together.
- - PICTURE MATCH-UPS: four sets (tourist symbols, the letters PH PC PO Sch TH, buildings, and land and lines). The symbol pictures are on the left and the names on the right, side by side even on a phone.
- - COLOURS AND LINES: seven questions (contour lines are brown; water and motorways and tourist symbols are blue; woods are green; on an Explorer map footpaths are short green dashes; railways are black).
- Everything earns XP and coins as normal, and a wrong answer goes into the Mistake Dojo with its picture.
-The symbols: tourist and leisure (information centre, parking, camp site, caravan site, picnic site, viewpoint); places shown by letters (PH public house, PC public toilets, PO post office, Sch school, TH town hall); buildings (church, church with a tower, church with a spire, bus or coach station, lighthouse,
-windmill, wind turbine, electricity pylons); and land and lines (cliff, coniferous and non-coniferous trees, marsh, contour lines, footpath, bridleway, railway, motorway, river).
-HOW I CHECKED IT IS RIGHT: the names, meanings and colour rules follow the Ordnance Survey Explorer and Landranger keys and OS's own guide to rights of way, and I only included things I could confirm. I left out symbols I could not confirm (youth hostel, visitor centre, telephone, castle and others).
-One thing to know: the pictures are my own simplified drawings in the style of OS symbols, not the exact OS artwork (which is copyright), so the guide says "simplified pictures in the style of". I looked at every drawing before including it. The tests check that each symbol is drawn in the colour it is described as, that the letters
-spell what they should, that a footpath is drawn with shorter dashes than a bridleway, that no hint gives its own answer away, and that every grid reference in the Map detective is right (worked out again separately). I broke it 15 ways on purpose and every one was caught. I also tapped through every part on a phone-sized screen and a very small one.
-THINGS THAT CHANGED BECAUSE OF IT: (a) there is now one more topic, so her coverage percentage dips very slightly, because there is one more topic to master. The coverage badges (Map Maker, Pathfinder, Trailblazer) still work the same way. (b) Several of my own older tests counted topics and buttons exactly, and I updated them on purpose.
-STILL NOT DONE from the same request: the human, physical and environmental geography topics.
+A BUG YOU SPOTTED: THE LANGUAGE PRACTICE "MIX" GAME WAS MISSING A WHOLE GAME TYPE
+You said the "combine" button claims 4 games when there are 5 cards on the page. You were right, and it was a real bug, not
+just wording. "Repeat after me" (the microphone game) was added after the "mix" button was built, and the mix's list of
+games was never updated to include it -- so for months, every time she played "a mix of everything", she was only ever
+getting Fill in the blank, Tap what you hear, Translate the sentence and Translate the word, never Repeat after me, even
+though it was sitting right there as a fifth option.
+FIXED: the mix now looks at whichever games are actually on the page and cycles through all of them -- so when speech
+checking is on, she now gets two Repeat after me questions in every ten, spread evenly among the rest. When speech
+checking is off (the default, until you switch it on in the Parent Desk), the mix works exactly as before, with the
+original four. The button no longer says a number at all ("A mix of everything" instead of "A mix of all four"), so it
+cannot go stale again the next time a game is added.
+
+NEW IN VERSION 67
+
+MUSIC, FIXED PROPERLY, PER THE YEAR 7 CURRICULUM AND BEYOND
+You said you were not sure what music needed, so I looked at it myself against the Year 7 curriculum. It turned out
+to have only 4 topics, and the tables behind the repeating questions were tiny (5 note values, 7 tempo words, 8
+dynamics, 10 composers, 18 instruments, 27 words, 15 styles) -- that is why the same questions kept coming back.
+ - BIGGER TABLES, so the repeating stops: note values 5 -> 12 (I added the missing rests and dotted lengths, and the
+   question now says "note or rest"), dynamics 8 -> 11, tempo words 7 -> 11, composers 10 -> 38 (Purcell right
+   through to Johann Strauss II, covering every musical era), instruments 18 -> 46, music words 27 -> 46, music
+   styles 15 -> 29. Every new row got its own clue for the Hint button, written to the same standard as before:
+   it never gives the answer away, and I checked live that the repeats are gone (before, a question could ask the
+   same handful of things over and over; now, in 600 tries, over 90% of the rows come up).
+ - A NEW QUESTION TYPE: Expression words -- 16 Italian performance terms she will meet in music (legato, staccato,
+   pizzicato, arpeggio, rubato, fermata and more), each with a clue.
+ - SIX NEW TOPICS, following the Year 7 curriculum: VOICES AND SINGING (soprano, alto, tenor, bass, unison and
+   harmony, a cappella, how the voice works), MUSICAL PERIODS (Medieval through to the 20th century, with dates and
+   what makes each one sound the way it does), MELODY AND HARMONY (scales, intervals, chords, cadences), RHYTHM AND
+   METRE (time signatures, syncopation, ostinato), STRUCTURE AND TEXTURE (binary/ternary/rondo form, and
+   monophonic/homophonic/polyphonic texture), WORLD MUSIC (samba, gamelan, steel pans, raga and tala, bhangra).
+   Each has a full lesson, a method card (the four ORIGINAL music topics never had one -- I added those too), a
+   revision note and two written-answer questions -- about 76 new questions in all.
+ - The Music page is now grouped the way Geography and History are: Reading and writing music, Building blocks,
+   Instruments and voices, Music through time, Music around the world, Key words. Plus six new match-up games
+   (composer to period, instrument to family, note to length, voice to description, style to home, expression word
+   to meaning).
+A PROBLEM FOUND IN MY OWN EARLIER MUSIC HINTS, AND FIXED: four of the old composer clues named another composer
+right there in the sentence (for example the clue for Brahms mentioned Clara Schumann by name), so a stuck child
+could work it out by elimination rather than the clue itself. All four are reworded.
+A GENUINE APP-WIDE BUG, FOUND BY TESTING ON A REAL PHONE SCREEN (not Music-specific -- this affects every subject):
+the "New badge!" pop-up and the small message at the top of the screen could sit on top of the answer buttons for a
+few seconds and swallow a tap underneath them. If she tapped an answer right after earning a badge mid-round, the
+tap could simply do nothing, which would look like the app was not responding. Both are fixed so a tap now passes
+straight through them, on every page, in every subject.
+HOW I CHECKED IT: the tests hold their own copy of every fact (which note is how many beats, which composer wrote
+which piece, which instrument is in which family, and so on) and check the app against that copy, not against
+itself. They also played through a full round of the new questions on a real, simulated phone screen at two sizes,
+tapped Hint on the new question type, and played a match-up game -- with the round-complete and hint-trophy
+celebrations popping up and being dismissed along the way, exactly as they would for her.
 
 WHAT IS STILL OPEN
- - The 48 question types marked "not done" for specific hints (History, Art, Literature, RE, D&T, most Science, and the word lists), music repeating, and other subjects' explanations.
- - Two questions I still need you to answer: what should I add to music first, and has any other question left her stuck?
-
-NEW IN VERSION 62 (included)
-
-FLAG QUESTIONS NOW HAVE REAL HINTS (the last geography question types)
- - PICK THE FLAG ("Which flag belongs to Thailand?"): the hint now says what the flag LOOKS like, for all 164 countries. For example: "Look for five horizontal stripes: red, white, blue, white and red, with the blue one in the middle the widest."
-   Before, it just said "Think about the colours and shapes you remember".
- - NAME THE FLAG ("Which country does this flag belong to?"): she can already see the flag, so describing it would not help. The hint is now a specific clue about the country itself (the same landmark facts as the capital-city questions), instead of "It is in Asia".
-How I made sure the descriptions are right: I did not write them from memory of the real flags. I displayed all 164 flags exactly as the Academy draws them and wrote each description from what is on screen. This matters: the Academy's Northern Ireland flag is the Union Jack,
-and its Iran and Afghanistan flags differ from some you would find online. Then a computer check reads the colours actually painted in each flag's picture and confirms every colour word in every description is really there and no main colour is left out.
-Another check makes sure no description names a country (that would give the answer away) and that every description is different from every other. I went through all 97 pairs of similar flags in the same region (Netherlands and Luxembourg, Norway and Iceland,
-Romania and Moldova...) to make sure the hints tell them apart: stripe direction, the order of the colours, dark or light blue, or a symbol. That review found two problems, which I fixed: Switzerland and Denmark had identical descriptions, and Romania needed to say it has nothing in the middle
-(Moldova has a coat of arms). I broke the code on purpose 8 ways and the tests caught all 8. I also checked the longest descriptions on a very small phone screen: they wrap cleanly.
-
-WHAT IS LEFT
- - The 48 question types still marked "not done" for specific hints: History, Art, Literature, RE, D&T, most Science, and the word-list types. These are all facts to be recalled, so each needs a clue per item, written and checked like the flags and capitals.
- - Music repeating (small lists, needs more questions written) and other subjects' explanations (science calculations, computing, languages).
- - Two questions I still need you to answer: what should I add to music first, and has any other question left her stuck?
-
-NEW IN VERSION 61 (included)
-
-THE REST OF THE CORE MATHS EXPLANATIONS NOW TEACH THE METHOD TOO
-Last time I said area, angles, ratio, solving equations, circles and averages were still too terse. They are done. Every explanation is short numbered steps, ends on the answer, and where it helps checks the answer by working back:
- - AREA AND PERIMETER: says what area and perimeter MEAN (area counts squares, perimeter is the distance round the outside), works the multiplication by splitting a number over 10 (13 x 9 = 10 x 9 + 3 x 9), and explains a triangle as half of a rectangle.
-   This was the "1/2 x 12 x 11 = 66" gap: it now shows 12 x 11 = 132, then half of 132 = 66.
- - POLYGONS: why the angles add up (draw lines from one corner, the shape splits into n - 2 triangles, each is 180 degrees), why a parallelogram is base x height (and to use the straight-up height, not the slanted side), and the trapezium as add, multiply by the height, halve.
- - ANGLES: 180 minus what you know, then a check that the angles add back up to 180.
- - RATIO: simplifying shows WHY a number goes into both sides. Recipes find the amount for ONE person first (150 / 5 = 30, checked by 30 x 5 = 150), then multiply. Sharing shows adding the parts, the size of one part, and checks that both shares add back to the total.
- - SOLVING EQUATIONS: says what the equation means in words ("7 lots of x, plus 7, makes 63"), undoes the steps backwards on both sides (63 - 7 = 56, then 56 / 7 = 8), and checks by putting x back in.
- - CIRCLES: explains diameter, radius, circumference and area, and splits the 3.14 multiplication into 3 x and 0.14 x so she can do it on paper (3 x 144 = 432 and 0.14 x 144 = 20.16, so 452.16).
- - AVERAGES: the mean shows adding up, dividing, and checking by multiplying back; the median shows putting them in order and taking the middle; the range shows the biggest and smallest.
-So every one of the 32 core maths question types has now been read as a child who is stuck would read it, and either fixed or judged already clear.
-How I checked: every equation in every explanation is re-worked independently, over thousands of questions (all 2,742 angle questions, all 1,320 equations, every circle radius, 1,500 random sets of averages...). I broke the code on purpose 10 ways; the tests caught 9 straight away and the 10th exposed a gap in my own test (it did not check the recipe multiplication), which I fixed and re-proved.
-
-STILL OPEN
- - Other subjects' explanations have not been read this way (science calculations, computing, Spanish and Mandarin).
- - The 50 question types marked "not done" for specific hints (History, Art, Literature, most Science, flags) and the music repetition.
- - Two questions I still need you to answer: what should I add to music first, and has any other question left her stuck?
-
-NEW IN VERSION 60 (included)
-
-MORE EXPLANATIONS THAT TEACH, ACROSS MATHS
-After the decimals problem you reported, I read what every core maths question says after she answers, the way a child who is stuck would. Nine question types had the same problem: they jumped over the hard step. Each one now shows the method,
-one small numbered step at a time, ending on the answer, with a check where that helps:
- - 60 / 12 (and every times-table division): it used to say "12 x 5 = 60" and never showed how to find the 5. Now: "how many 12s fit into 60? Count up in 12s: 12, 24, 36, 48, 60. That took 5 jumps", then checks by multiplying back.
-   Times-table multiplying now splits into tables she knows (7 x 8 = 7 x 5 + 7 x 3).
- - FRACTIONS OF AN AMOUNT (1/3 of 6): says what the bottom number does (how many equal parts) and what the top number does (how many parts to take).
- - FRACTIONS: equivalent fractions show where the multiplier comes from (2 became 8, and 2 x 4 = 8, so the top is x 4 too). Simplifying shows WHY a number goes into both. Adding shows finding the common bottom, converting each fraction,
-   adding the tops, and simplifying. Mixed numbers show how many whole ones fit and what is left over.
- - PERCENTAGE CHANGE: increase and discount now find the percentage first and then show the pounds being added or taken off (before, it just said "take it off: 30"). "What percentage is 10 of 40" and "3/5 as a percentage" make the bottom 100.
- - HCF and LCM: list the factors of both numbers and the ones they share, or write out the multiples until one appears in both lists (before, it just named the answer).
- - THE MEAN PUZZLE: says WHY the total is the mean times how many.
- - WRITTEN SUBTRACTION (1,000 - 789): shows counting up in easy jumps (789 + 1 = 790, 790 + 10 = 800, 800 + 200 = 1,000, so 211).
- - TEMPERATURE: shows what happens when it crosses zero (5 falling by 7: count back 5 to reach 0, 2 more steps go below zero, so -2).
-How I checked: by machine, over every possible question of the small kinds and thousands of the big ones. Every equation in every explanation is re-worked independently. The factor lists, multiple lists, common bottoms and counting-up jumps are
-also recalculated separately and compared. I broke the code on purpose 10 ways and the tests caught all 10 (one "breakage" turned out to be harmless and still gave a correct explanation, so I swapped it for a real one).
-
-STILL A BIT TERSE (I have not touched these, and would like to know if any left her stuck): area of a triangle ("1/2 x 12 x 11 = 66" does not work the multiplication), angles on a line ("180 - 98 = 82"), ratio and proportion,
-solving equations, circles and averages. The music repetition and the 50 hint types marked "not done" from the last version are also still open.
-
-NEW IN VERSION 59 (included)
-
-1. DECIMALS: EXPLANATIONS THAT ACTUALLY TEACH (what you reported)
-You said Anna got 1.6 x 0.4 right but did not understand why the answer starts with 0, and got 53.1 / 9 wrong because the division itself was never shown. Both were true: the old explanations skipped the hard part.
-Every Decimals explanation is now a short numbered working, one small step at a time, with the reason for each rule:
- - MULTIPLYING (1.6 x 0.4): multiply the whole numbers (16 x 4 = 64). WHY we count decimal places: turning 1.6 into 16 and 0.4 into 4 made each number 10 times bigger, so 64 is 100 times too big, so we move the point 2 places left.
-   WHY THE 0 IS IN FRONT: 64 has exactly 2 digits, so the point lands at the very front with nothing before it, and we write a 0 there to show there are 0 whole ones and 64 hundredths. It also explains when extra 0s are needed (0.06)
-   and why 0.30 is written 0.3. It ends with a quick estimate check (1.6 is about 2, and 2 x 0.4 = 0.8, so about 0.8 makes sense).
- - DIVIDING (53.1 / 9): a full bus stop (short division), digit by digit: where the decimal point goes, why 9 does not go into 5, 9 x 5 = 45, 53 - 45 = 8, carry the 8 to make 81, 9 x 9 = 81, then a check by multiplying back (5.9 x 9 = 53.1).
-   If the number is shown as a whole number but the answer is not (like 3 / 2 = 1.5) it explains writing 3 as 3.0.
- - ADDING AND SUBTRACTING: line up the points, work column by column from the right, carrying and borrowing (including borrowing across a 0), then a quick check.
- - Every explanation now ends with a line like "So 53.1 / 9 = 5.9."
- - The hint says HOW, using her numbers: for 53.1 / 9 it says to set it out as a bus stop and start with how many 9s go into 53.
- - The "Why it may have gone wrong" line now checks the answer she ACTUALLY chose. If she picks 6.1: "6.1 x 9 = 54.9, but you started with 53.1, so 6.1 cannot be right." If the digits are right but the point is misplaced, it says the answer is 10 times too big or small.
- - When she gets one RIGHT, the explanation now also shows as numbered steps (before, only wrong answers did). Short explanations elsewhere are unchanged.
- - WRITTEN METHODS DIVISION (like 153 / 7) had the same problem ("7 x 21 = 147" with no way to find the 21). It now gets the same bus stop working, ending with the remainder.
- - The "method for this topic" card for Decimals now covers multiplying and dividing, not just adding.
-How I checked it: by machine, every possible question of these kinds (all 384 multiplications, 472 divisions, 852 written divisions, and 8,000 adds and subtracts). Every number in every explanation is re-worked independently, and the digits written along the answer
-line must spell the true answer. I also broke the code on purpose 11 different ways, and the tests caught all 11.
-
-2. MUSIC HINTS (what you reported)
-"Listen to the music in your head" only works if she already knows the tune, so it is not a hint. I went back over the music question types with a stricter test: would this help a child who is stuck? Six failed and are rewritten with a specific clue for each
-item: Composers and works, Dynamics, Tempo words, Instrument families, Music words and Music styles. For example, Beethoven: "He kept composing even after he had gone completely deaf." Crescendo: "It is related to the English word increase."
-Instrument families now explains how each family makes its sound. The tests also catch a hint that just re-words its own answer (several of my first drafts did) or spells out the answer word itself.
-
-3. I WAS TOO GENEROUS LAST TIME, AND HAVE CORRECTED THE RECORD
-In version 58 I told you about 100 question types already had good hints. That was the wrong standard: I approved anything that was not an identical template, without asking whether a stuck child could use it. About 50 of those (History, Art, Literature, RE, D&T, most
-Science and several word-list types) are re-opened as "not done" in the project list. They are NOT fixed yet. Name the flag and Pick the flag are also still to do.
-The project now has a checklist of all 145 question types, and the tests fail if a question type is ever added without being listed, so a new one cannot slip through unreviewed.
-
-4. SMALLER THINGS
- - The Periodic table riddle gets a specific second clue for each element (now 32 elements), and its "which group" hint was missing Group 2 (alkaline earth metals): fixed.
- - Two older tests were updated on purpose, because they checked the exact wording of the old Decimals hint and that explanations end on the answer.
-
-WHAT I HAVE NOT DONE (and want your steer on)
- - MUSIC REPEATS: the hints are fixed, but the repetition you noticed is because the lists are small (8 dynamics, 7 speed words, 10 composers, 15 styles, 5 note values). Fixing that needs more questions written, not better hints. What would you like added first?
- - OTHER MATHS EXPLANATIONS may have the same "jumps to the answer" problem: I only fixed Decimals and written division. Written subtraction says "Count up from 835 to 2,000" without showing how, and I have not looked at Fractions or Percentages.
-   If any other question left her stuck, tell me which and I will do the same.
- - The 50 re-opened question types above.
-
-NEW IN VERSION 58 (included)
-
-MORE SPECIFIC GEOGRAPHY HINTS, AND A REGRESSION I CAUGHT AND FIXED
-Four more geography question types now have a specific hint instead of a generic one:
- - Find the country (the map question) — same landmark facts as the capital-city hints.
- - UK nations, UK cities (18 cities: London, Manchester, Edinburgh, Belfast, and so on), UK mountains.
-While doing this I found a genuine bug in my own first draft: Turkey, Russia, Kazakhstan and Egypt already had a special hint explaining they sit across two continents, which matters for a map
-question. My new landmark-fact hints would have quietly replaced that and lost the continent information. An existing test caught it before it ever reached you. Fixed: those four countries keep
-their special hint, everyone else gets the new landmark fact.
-
-WHICH GEOGRAPHY QUESTIONS ARE LEFT, AND WHICH ONE'S NOT GETTING THIS TREATMENT
-Geography now has 2 question types left: Name the flag and Pick the flag (these need a different kind of clue — what the flag looks like, not a place fact — still to write).
-Three others (Which continent?, Which ocean?, Grid references) were checked and I decided NOT to change them: they test a skill (reading a map, reading a grid reference) rather than asking her to
-recall a fact about one specific place, and their hints already explain the method properly (the same way the maths hints do). If you'd rather these three also got the personal-fact treatment,
-tell me and I'll redo them — I made a judgement call rather than assuming, so flagging it here.
-
-STILL TO DO: the other 8 subjects — computing, English, the rest of science, Spanish, music, PSHE, history and Mandarin. Some of these will turn out to be "skill" questions like the three above,
-which won't need much work; others will need the same kind of per-item content as the capitals and elements. Full list is in the project notes; continuing through them next.
-
-NEW IN VERSION 57 (included)
-
-FIXED: A HINT COULD HAND OVER THE ANSWER FOR FREE
-You spotted this. The second hint ("cross out wrong answers", 1 XP) always tried to cross out two — but on a question with only 3 choices (1 right, 2 wrong), crossing out both wrong ones just left
-the correct answer sitting there for free. Now it always leaves at least one wrong answer on screen: a 3-choice question crosses out only one. This is one shared piece of code, so the fix applies to
-every question in the Academy, not just one subject — including the language practice questions where you first noticed it.
-
-HINTS ARE BECOMING SPECIFIC TO THE ACTUAL QUESTION, SUBJECT BY SUBJECT
-You asked for hints to be specific to what she's actually being asked, not generic — using things she knows, like Roblox, where that genuinely fits. I checked the maths hints first: good news, maths
-already does this and has for a while — every maths hint is already built from the real numbers in that exact question. So the work still to do is everywhere else. This version does two of them:
- - GEOGRAPHY, capital cities: every one of the 164 countries in the Academy now gets a real, specific clue instead of "it starts with the letter X". Your own example — capital of England — now hints
-   "Big Ben, the Thames, and a famous Tower are all here." I checked every single clue by computer to make sure none of them ever gives away the actual answer, or points at one of the wrong choices
-   on screen instead (a few clues had to be reworded because they accidentally named a country that was also one of the multiple-choice options).
- - SCIENCE, chemical symbols: all 28 elements now get a specific clue. Au and Fe (gold and iron) hint at Roblox Bedwars, since I checked that's genuinely where she'd know them from. I didn't force a
-   Roblox link onto every element — most get a real, specific fact instead (bananas and potassium, toothpaste and fluorine, and so on), since making something up to sound personal would be worse.
-
-STILL TO DO: you were clear this should be every subject, not just those two — I'd read it as an example rather than the whole ask. Counting properly, there are 33 more question types still using a
-generic hint, across geography (10 more), English, computing, science, Spanish, music, PSHE, history and Mandarin. Logged in the project notes with the full list; working through them next.
-
-NEW IN VERSION 56 (included)
-
-REPEAT AFTER ME (the last part of queue item 10 that needed building; e and f are still to come)
-Where: Spanish or Mandarin > Language practice > "Repeat after me".
-
- - Needs the SAME switch as Say it better (Parent Desk > word-checking, off by default, per device). With it off, the card explains that a grown-up needs to switch it on. With it on, the same
-   notice as Say it better appears every time: this browser sends her voice to Google, Apple or Microsoft to turn it into words, and the Academy never saves her voice or her words — only the score.
- - She hears the sentence (or reads it, if speaking is off), taps "Say it", and speaks. What she said is lined up against the sentence: every word turns green (said) or red (not heard).
- - At Hard and Extremely hard the words are hidden until she answers (there's a "Show the words" button for 1 XP if she wants a peek first).
- - Speech checking is approximate, so at Easy and Medium (only for a longer sentence) ONE word is allowed to slip and it still counts right — the slipped word still shows red so she can see it.
-   It hears sounds, not tones, so it cannot properly judge Mandarin tones — a note says so on the Mandarin questions.
- - A wrong answer goes into the Mistake Dojo, same as the other games. There it comes back as another Repeat after me question if speech checking is still on for that device, or as
-   tap-the-words for the same sentence if not, so a mistake can always still be practised.
-
-A BUG I FOUND AND FIXED, NOT RELATED TO THE LANGUAGE WORK
-While testing, a wrong answer on a "what is the capital of ___" question would once in a while show as a fake multi-step "how to work it out" list instead of a plain fact. It only happened for
-the United States, because "Washington, D.C." has two periods in it, and the app's code that turns an explanation into numbered steps was misreading "D.C." as the end of a sentence. In the worst
-case it broke the explanation into five garbled pieces. I checked this also happened before this session's changes, so it was not something I introduced — I just happened to find it while testing.
-Fixed by writing the capital as "Washington, DC" (no periods) everywhere it appears. This was not something you asked for; flagging it so you know it happened.
-
-NEW IN VERSION 55 (included)
-
-WRONG ANSWERS IN LANGUAGE PRACTICE NOW GO INTO THE MISTAKE DOJO
- - In version 54 I left them out and said they could not be replayed. That was my mistake: it can be done, and it is how the rest of the Academy works.
- - A wrong answer in any of the four games now lands in the Mistake Dojo, listed under Spanish or Mandarin with a clear label
-   (for example: Tap the words: "Hello, my name is Ana.", or the sentence with its gap).
- - In the Dojo it comes back as the SAME KIND of question she got wrong: tap-the-words, a typed word, or multiple choice. It is made fresh each time
-   (different spare words, a different order) and at the same level she missed it.
- - The usual Dojo rules apply: two right answers in a row clear it (with the 15 XP bonus), and a wrong answer in the Dojo starts the count again.
- - The results screen now says the tricky ones are in the Dojo, as it does everywhere else.
- - The Listening lab is older and still does not use the Dojo. Tell me if you want it to.
- - Sound: the new play buttons use exactly the same device voices as the Listening lab and the Listen buttons (the Spanish and Mandarin voices already on the device).
-
-ABOUT CHECKING THE LANGUAGE: you speak Mandarin, so you are the right person to check the Mandarin sentences, and nobody else is needed.
-If any sentence, or any "wrong" choice that could actually be right, sounds off to you, tell me and I will change it. The Spanish sentences have not been read by anyone
-(the older Spanish vocabulary and lessons are in the same position).
-
-NEW IN VERSION 54 (included)
-
-LANGUAGE PRACTICE FOR SPANISH AND MANDARIN (the first part of queue item 10)
-Where: open Spanish or Mandarin, then tap "Language practice" (next to Listening lab and Speaking practice).
-
-1. HOW HARD? Easy, Medium, Hard or Extremely hard. Each language keeps its own level.
- - Easy: short sentences, three choices, the English meaning is shown.
- - Medium: longer sentences, four choices, the meaning is shown.
- - Hard: the meaning is hidden (a hint shows it for 1 XP), and when she translates she picks the Spanish or Mandarin herself.
- - Extremely hard: long sentences, extra wrong words to avoid, Mandarin with NO pinyin, and vocabulary words are typed.
-   Mandarin shows pinyin under the characters at Easy, Medium and Hard.
-
-2. SOUND. Every question has a button to hear it, and there is a switch on the page to turn speaking off. It is remembered and shared between her devices.
- - With speaking off (or on a device with no Spanish or Mandarin voice) "Tap what you hear" becomes "Tap the words": she sees the English and builds the sentence.
- - On a "fill in the blank" question the sound button plays only AFTER she has answered, because saying the sentence would give the answer away.
- - It is the device's own voice. Nothing is sent anywhere.
-
-3. THE GAMES (ten questions each, or a mix of all four)
- - FILL IN THE BLANK: a sentence with a gap. She picks the word that fits (verb endings, tu or usted, agreement, joining words, measure words in Mandarin).
- - TAP WHAT YOU HEAR: she hears the sentence and taps the words, in order, from a bank that also holds extra wrong words.
-   A wrong answer shows which words were in the wrong place, then the right sentence and what it means.
- - TRANSLATE THE SENTENCE: Spanish or Mandarin to English at Easy and Medium; English to Spanish or Mandarin at Hard and Extremely hard.
- - TRANSLATE THE WORD: the usual drill, using the 124 Spanish and 74 Mandarin words already in the Academy.
-
-4. HOW IT COUNTS
- - Right answers earn XP like any other round. Wrong answers go into the Mistake Dojo (added in version 55). Repeat after me (version 56) is in the Dojo too.
- - Every sentence belongs to a real lesson topic (Greetings, Family, Formal and informal and so on), so her answers count on the Coverage map.
- - The parent summary gets one new line: "Language practice: X of Y right".
- - 40 sentences in each language, 10 at each level.
-
-THE LANGUAGE: the 80 sentences were written by me. The pinyin spelling and tone marks were checked against a dictionary, but no person has read the sentences yet (see the note under version 55).
-NOT TESTED: the sound on a real device. I can only test with a pretend voice, so please try it on her device and tell me if anything sounds wrong.
-
-STILL TO COME from this idea (queue item 10): "Repeat after me" (she says the sentence and the app checks it; this needs the speech-recognition switch you already approved for Say it better), back-and-forth conversations, and recap sessions.
-
-TWO SMALL FIXES
- - On a very small phone the box where she types an answer was wider than the screen and pushed its Check button off the edge. That affected spelling dictation and "Type it" rounds too. Fixed.
- - After a Listening lab round (which does not use the Dojo), the results no longer say the tricky ones "are now in your Dojo".
-
-NEW IN VERSION 53 (included)
-
-A. YOUR TEN NEW BADGE PICTURES ARE IN
- - Seven trophies already existed and now show their pictures: Map Maker, Pathfinder, Trailblazer, Whole Map, Revision Hero, Climate Storyteller and Future Hopes Reader.
- - THREE HAD NO TROPHY, SO I MADE THEM (the rules are mine, easy to change):
-   1. Explorer Extraordinaire: meet 100 different countries in the Capital cities and Flags flashcards. A country counts once its capital card or its flag card has reached Bronze.
-   2. The Scholar's Chronicle: all 4 coverage stars for Future Hopes (lesson passed, practised, secure, and a written answer).
-   3. The Cartographer's Masterpiece: the whole Year 7 coverage map at 100% AND nothing due for revision.
-      (Whole Map already means every star on every topic, so the Masterpiece needed something harder than that. Tell me if you meant something else.)
- - That makes 105 trophies, 63 of them with pictures. A badge she has won turns to colour and can be tapped to see it big, as in version 52.
-
-B. WHAT I DID TO THE PICTURES
- - FIVE of them (Map Maker, Revision Hero, Climate Storyteller, Future Hopes Reader, Explorer Extraordinaire) had a count painted into the picture, like "0 of 25".
-   On a badge she has WON that would look wrong, so I took that line out and filled the space in from the surface around it. Everything else in the pictures is exactly as you sent it. Your original files are untouched.
- - The new pictures are 384 pixels wide (the older ones are 240), so they stay sharp when enlarged. That makes the page about 0.4 MB bigger (first visit only, then it is saved on the device).
- - SLIPS INSIDE THE ARTWORK ITSELF that I cannot fix by editing: on the Whole Map badge "Quarter" is split as "Qua-rter"; on Trailblazer it says "75% o of"; on the Cartographer's Masterpiece the words "'Year 7'" are doubled and the title runs into the edge.
-   If you want them fixed, they need to be made again with the wording corrected. Send new ones and I will swap them in.
-
-C. A FIX: Whole Map (and Map Maker, Pathfinder, Trailblazer) could be given slightly EARLY, because the coverage percentage is rounded (99.84% counted as 100%). They now need the exact figure.
-
-D. STILL WAITING FOR ARTWORK (they show an emoji for now): 36 trophies.
- - 11 subject Master badges (all subjects except Maths, History and Literature) and 10 subject Superstar badges.
- - 15 newer trophies: Deep Thinker, Pianist, Shortcut Star, Confident Speaker, Power Pauser, Music Reader, Clear Thinker, Master Reasoner, Good Listener, Brave Speaker, Word Climber, Summit Scholar, Lexicon Legend, Extreme Tester and Flawless Climb.
-
-ALSO NEW SINCE VERSION 50 (versions 51 and 52)
-
-1. THE SILLY LINES SHOULD SOUND MORE ALIVE
- WHAT YOU SEE ON SCREEN IS NOT CHANGED. Only what the voice is given.
- - Words the computer voice said wrongly are now spelt for the voice: habibi, yalla, beta, delulu, solulu, "huge W" and Nobel.
- - Spanish and Mandarin phrases (Muy bien, Casi perfecto, Bueno, Vamos, Hen hao and the rest) are said by a Spanish or Mandarin voice if the device has one.
-   If it has not, they are spelt so the English voice gets close.
- - Every sentence now has its own speed and pitch. A perfect score is brighter and quicker. A low score is slower and gentler. A short shout like "Slay!" is lifted and stretched.
-   A question rises. The last sentence settles. Your own speed and pitch settings in the Parent Desk still count: this is added on top.
- - Parent Desk > "Or choose a computer voice": voices marked with a star usually sound the most natural. THE VOICE ITSELF MATTERS MOST. Voices differ a lot between devices.
-   On an iPhone or iPad: Settings > Accessibility > Spoken Content > Voices, and download one marked Enhanced or Premium.
-   On a computer, Microsoft Edge usually has the most natural ones.
- - "Best available" no longer picks the old novelty or robot voices when a better one is there.
- - On the "Review and edit the lines" screen, a line that is said differently from how it is written now shows "Said as: ..." underneath.
- - NOTHING NEW LEAVES THE DEVICE. These are the device's own voices, exactly as before. (A much more human, AI-made voice would be possible, but it would cost money and send the words to an outside company, so it is your decision. I have not built it.)
- PLEASE LISTEN ON HER DEVICE. I have no way to hear sound, so the spellings and the delivery are reasoned, not heard. My guess for "beta" is "bay-ta".
- You do NOT need to edit anything. Just tell me which word sounds wrong (for example "habibi sounds like ...") and I will fix it in the next version.
-
-2. SILLY LINES WHEN SHE ASKS FOR A HINT
- - 16 lines for when she asks for a hint, and 8 for when two wrong answers are crossed out. Each shows in the hint box and is spoken.
- - None of them mention the answer, and none say the question is easy. A hint still costs 1 XP.
- - They follow the same Parent Desk setting (spoken, shown only, or off), and you can review them and switch any line off: Parent Desk > Silly congratulation lines > Review and edit the lines. There are two new groups at the end of the buttons.
-
-3. MORE CELEBRATION LINES
- - 6 more each for the 60-second quick-fire, after a warm-up, after flashcards and for a new personal best, because those groups repeated the most.
- - 235 lines now. The 187 you have already reviewed are exactly as they were, and any you switched off stay off.
-
-4. TAP A BADGE SHE HAS WON TO SEE IT BIG (Trophy room and Master badges)
- - A badge she has NOT won is grey and cannot be tapped.
- - When she wins it, it turns to colour. Then she can tap it and it opens big, so she can see all the detail. It also shows what it is for and the date she won it.
- - Tap it again (anywhere on it) and it goes back to its normal size. The Close button, tapping outside it, and the Escape key do the same.
- - The pictures are 200 to 256 pixels wide, so they open at about 300 pixels: bigger than the list, but not stretched until they go blurry.
-   Sharper badges would need bigger artwork (that goes with the badge art you are still to send, item W3).
- - Trophies that only have an emoji are not tappable, because there is no artwork to show.
-
-NOT BUILT, BY YOUR CHOICE: sound effects (queue item 8). Item 8's silly spoken lines are done.
-
-THE "SPEEDY GONZALES, IS THAT YOU?" LINE STAYS, as you asked.
+ - THE DUOLINGO-STYLE WORD DECK YOU ASKED ABOUT: yes, this is very buildable, and I think it would be a genuinely good
+   addition -- see my message in chat for the design I'd use (it reuses the same speech-checking system as Repeat after
+   me, plus a version that works even with speech checking off). I have not built it yet: tell me if you want it built
+   next, ahead of History, or added to the queue after.
+ - HISTORY BEYOND THE STUARTS is next in the queue, now that you have said yes: the Industrial Revolution, the British Empire
+   (including slavery and its abolition), and the World Wars. I will plan the specific facts and how they are
+   presented carefully, the same care I took with the Civil War and Plague and Fire, since some of it is heavy for
+   Year 7.
+ - Tell me if Anna gets stuck on any specific question, in any subject, and I will fix that hint next.
+ - 45 question types still give a general hint (Religious Studies 2, Design and Technology 7, Art 6, Literature 8,
+   Science 11, Maths 5, Geography 2, Computing 2, PSHE 2), starting with Religious Studies.
+ - About 53 of the Geography and Map symbols hints still show a blank where the answer was ("??? is a service...").
+   That is how the app normally builds hints for hand-written questions and it is safe, but proper clues would be
+   better.
+ - "Which came first?" in History still gives one general hint.
 
 IN EARLIER VERSIONS
  - SAY IT BETTER (English page): a speaking coach with 24 prompts, filler-word highlighting, pace, structure, key ideas and word upgrades. No marks.
@@ -324,29 +97,22 @@ WHAT IS IN THIS VERSION
  - 235 silly spoken lines (congratulations and hints)
  - Thesaurus (172 words), the everyday Word of the Day, avatar shop and parent report
 
-THE 4 FILES TO UPLOAD (this README is only for you)
+THE FILE TO UPLOAD (this README is only for you)
+Only index.html has changed this time. share-image.png, manifest.webmanifest and LICENSES-README.txt are unchanged, but are
+included again below in case you want to check them -- you only need to upload index.html.
 STEPS
  1. Unzip this file so you can see the files (GitHub cannot open a zip).
  2. Go to github.com and open your repository, "Annaliesce-Academy-".
     You should see the file list, with index.html in it.
  3. Click  "Add file"  (near the top right of the file list), then  "Upload files".
- 4. Drag all 4 files into the box (or click "choose your files").
-    index.html, manifest.webmanifest and LICENSES-README.txt have the SAME NAMES as
-    files already there, so GitHub replaces them automatically. share-image.png is
-    new and simply gets added.
+ 4. Drag index.html into the box (or click "choose your files"). It has the SAME NAME
+    as the file already there, so GitHub replaces it automatically.
  5. Scroll down and click the green  "Commit changes"  button.
  6. Netlify notices by itself and updates the site in about a minute.
     To check: open Netlify, click your site, click "Deploys". The top one should say
     "Published".
  7. Open the site and refresh the page. If she has the site saved on her tablet or
     phone like an app, close it fully and open it again while online.
-
-THE LINK PREVIEW PICTURE
- - WhatsApp, iMessage and others remember old previews. To see the new picture,
-   send the link with something extra on the end, for example:
-       https://theannaliesceacademy.netlify.app/?v=2
- - Check the file share-image.png is in the MAIN page of the repository, next to
-   index.html, not inside a folder.
 
 IMPORTANT
  - Upload into the MAIN page of the repository (where index.html already is),
