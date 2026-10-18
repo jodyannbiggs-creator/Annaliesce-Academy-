@@ -426,7 +426,7 @@ textarea.slin{width:100%;font:inherit;padding:10px;border:2px solid var(--line);
 <div id="toast" role="status" aria-live="polite" hidden></div>
 <input type="file" id="impfile" accept="application/json,.json" hidden>
 <script>
-const BUILD_INFO={n:142,at:'17 Oct 2026, 20:53'};
+const BUILD_INFO={n:168,at:'19 Oct 2026, 00:00'};
 /* =====================================================================
    THE ANNALIESCE ACADEMY
    ---------------------------------------------------------------------
@@ -6989,6 +6989,51 @@ Danelaw|The part of England ruled by the Vikings|t
 Anglo-Saxons|Settlers who came from northern Europe after the Romans left|t`);
 pairGen('history','History words','📜 History words',null,H_TERMS,{fwd:r=>'What does “'+r[0]+'” mean?', rev:r=>'Which word means: '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'?', hint:r=>H_TERM_CLUES[r[0]]||'Say the word in a sentence about the past.'});
 /* ---------------- RE ---------------- */
+/* per-row clues for "Religion facts" (item 11a, RE sub-chunk): this table's fwd question gives the religion away as the answer, its rev question gives the TERM
+   away as the answer, so one shared hint (keyed by the term, r[0]) must never name either the term or the religion -- checked below in flow_rehints.js, which also
+   checks it never names any OTHER row's term or religion either (every clue below deliberately avoids all 6 religion names for exactly this reason). */
+const RE_FACT_CLUES = {
+'Bible':"This book is split into two main parts, an Old Testament and a New Testament, and it's the best-selling book of all time.",
+"Qur'an":"Believers try to learn this book by heart, reciting it in its original Arabic wherever they live in the world.",
+'Torah':"This forms the first five books of a much bigger holy book, and is traditionally kept as a long handwritten scroll.",
+'Guru Granth Sahib':"This is treated as a living teacher rather than just a book, and is placed on a raised platform in its place of worship.",
+'Vedas':"These are among the oldest religious writings still used today, first passed down by word of mouth long before they were ever written.",
+'Tripitaka':"Its name literally means three baskets, because its teachings were first sorted into three big collections.",
+'Church':"Many of these buildings have a tower or spire, and are laid out with rows of seats facing an altar at the front.",
+'Mosque':"Look for a tall tower called a minaret, built beside this building to call people to prayer.",
+'Synagogue':"Inside, look for an ark at the front, holding handwritten scrolls of a much older holy book.",
+'Gurdwara':"Anyone who visits this building, whatever their background, is welcome to eat for free in its kitchen afterwards.",
+'Mandir':"Inside, you will usually find several small shrines, each one dedicated to a different god.",
+'Vihara':"This building is also where the faith's monks or nuns actually live, not just where visitors come to worship.",
+'Christmas':"This festival celebrates a birth, and falls in the middle of winter in the UK.",
+'Easter':"This spring festival moves to a different date every year, and is linked to eggs as a symbol of new life.",
+"Eid al-Fitr":"This festival marks the end of a whole month of daytime fasting.",
+"Eid al-Adha":"This festival remembers a father's willingness to make a sacrifice, and falls around the time of a yearly pilgrimage.",
+'Passover':"This festival remembers an escape from slavery, and is marked with a meal that includes flat, unleavened bread.",
+'Hanukkah':"This festival of lights lasts eight days, with one more candle lit each night.",
+'Vaisakhi':"This spring festival marks the founding of a special, initiated community of believers.",
+'Holi':"You would recognise this one instantly: it's the festival where people throw brightly coloured powder and water over each other.",
+'Vesak':"This single festival remembers three big events in one person's life all at once: their birth, their enlightenment and their death.",
+'Cross':"This simple shape is a reminder of how a central figure in this faith died, and is often worn as jewellery.",
+'Star of David':"This symbol is made of two overlapping triangles, and also appears on a certain country's flag.",
+'Khanda':"This symbol is built from swords and a circle, standing for strength and belief in one eternal God.",
+'Om':"This symbol represents a sacred sound, often chanted at the start of prayer and meditation.",
+'Dharma wheel':"This symbol has eight spokes, one for each step on a path said to lead to the end of suffering.",
+'Vicar':"This leader usually looks after one particular local place of worship and its congregation.",
+'Imam':"This leader stands at the front of the congregation to lead prayers, several times a day.",
+'Rabbi':"This title literally means my teacher, or my master.",
+'Granthi':"This person's main job is to read aloud from the community's holy scripture during worship.",
+'Jesus':"Followers believe this figure is the son of God, and that he came back to life after being executed.",
+'Muhammad':"Followers believe this figure received messages from God through an angel, over a period of 23 years.",
+'Guru Nanak':"This figure was the first in a line of ten spiritual teachers, and founded a brand new faith in the 15th century.",
+'The Buddha':"Before becoming a spiritual teacher, this figure was born a wealthy prince who gave up his palace life.",
+'Baptism':"This practice uses water to formally welcome someone into the faith, whether as a baby or as an adult.",
+'Five Pillars':"These are five basic duties every follower is expected to carry out, including prayer, fasting and giving to the poor.",
+'Shabbat':"This is a weekly day of rest, running from Friday evening until Saturday evening.",
+'Langar':"This is a free community kitchen, open to absolutely anyone who walks in, whatever their faith or background.",
+'Puja':"This is an act of worship carried out at a home shrine or temple, often involving offerings of flowers, food or light.",
+'Four Noble Truths':"These are four basic ideas at the heart of the faith, the first being that life inevitably involves suffering.",
+};
 const RE_ROWS = rowsOf(`Bible|Christianity|holy book
 Qur'an|Islam|holy book
 Torah|Judaism|holy book
@@ -7029,7 +7074,7 @@ Shabbat|Judaism|practice or belief
 Langar|Sikhism|practice or belief
 Puja|Hinduism|practice or belief
 Four Noble Truths|Buddhism|practice or belief`);
-pairGen('re','Religion facts','🕊️ Religion facts',null,RE_ROWS,{fwd:r=>'Which religion has the '+r[2]+' “'+r[0]+'”?', rev:r=>'Which of these is a '+r[2]+' in '+r[1]+'?', exp:r=>'“'+r[0]+'” is a '+r[2]+' in '+r[1]+'.', hint:'Think about which faith uses this word.'});
+pairGen('re','Religion facts','🕊️ Religion facts',null,RE_ROWS,{fwd:r=>'Which religion has the '+r[2]+' “'+r[0]+'”?', rev:r=>'Which of these is a '+r[2]+' in '+r[1]+'?', exp:r=>'“'+r[0]+'” is a '+r[2]+' in '+r[1]+'.', hint:r=>RE_FACT_CLUES[r[0]]});
 /* ---------------- D&T ---------------- */
 const DT_PROPS = rowsOf(`Hard|Resists scratching and denting|prop
 Tough|Absorbs shock without breaking|prop
@@ -7423,6 +7468,51 @@ Reign|The time a monarch rules|t
 Rebellion|An uprising against those in power|t
 Tax|Money a ruler demands from the people|t`));
 /* ---- extend the RE table, and add religion words ---- */
+/* per-row clues for "Religion words" (item 11a, RE sub-chunk, same session as Religion facts' RE_FACT_CLUES in gens2.js): this table's fwd question gives the
+   FULL DEFINITION (r[1]) away as the answer and its rev question gives the TERM (r[0]) away as the answer, so the shared hint (keyed by r[0], same pattern as
+   music's MU_WORDS_CLUES) must never name the term and must never closely paraphrase its own definition -- both checked in flow_rehints.js, along with the
+   plain-leak and paraphrase-overlap checks already proven in flow_musichints.js. */
+const RE_WORD_CLUES = {
+'Brahma':"This god is often shown with four heads, each one facing a different direction.",
+'Vishnu':"This god is said to have taken many different forms on Earth, including a fish, a turtle, and a prince called Rama.",
+'Shiva':"This god is often shown dancing inside a ring of fire, with a crescent moon in his hair.",
+'Ganesh':"People often pray to this one first, before starting something new like a journey or a big exam.",
+'Lakshmi':"People might light extra lamps and clean their homes to welcome this one in, especially around Diwali.",
+'Karma':"This is the idea some people sum up as what goes around, comes around.",
+'Kesh':"This is never cut, from birth onwards, and is usually kept neatly wrapped up under a turban.",
+'Kangha':"This is used to keep the hair underneath a turban neat and tidy.",
+'Kara':"This is worn on the wrist, meant to remind the wearer to act with good hands.",
+'Kachera':"This is a practical item of clothing, originally chosen because it was easier to move and fight in than long robes.",
+'Kirpan':"This is carried for self-defence and to stand up for others, never to start a fight.",
+'Shahadah':"Saying this out loud, and meaning it, is the very first step to becoming a believer.",
+'Salah':"This is done kneeling and bowing, facing the same direction every time, several times through the day.",
+'Zakat':"A small portion of what someone owns gets set aside each year and passed on to those who need it more.",
+'Sawm':"This means going without food or drink from sunrise to sunset, for a whole month each year.",
+'Hajj':"Making this journey at least once, if able to, is one of the five basic duties of the faith.",
+'Wudu':"This involves cleaning the hands, face and feet in a set order, before taking part in worship.",
+'Qibla':"Mosques all around the world are built facing exactly the same single point on the map.",
+'Mihrab':"Look for a small decorated arch-shaped dip at the front of the building, showing everyone exactly which way to face.",
+'Adhan':"This is called out loudly, often from a tower, to let everyone nearby know it is time.",
+'Halal':"This word is often seen on food packaging, showing it meets certain religious rules for what is allowed.",
+'Kosher':"This word is also sometimes used in everyday English to mean something is proper or legitimate, beyond just food.",
+'Bar Mitzvah':"This is a big celebration, often involving a special reading out loud in front of the whole community.",
+'Kippah':"This is a small, round piece of cloth, and some wearers keep it in place with a clip.",
+'Mezuzah':"People passing through the doorway might touch or kiss this as they go in or out.",
+'Menorah':"This has several branches, and one extra candle is used each night to light all the others.",
+'Seder':"This involves following a set order of readings, songs and symbolic foods, all around a shared table.",
+'Yom Kippur':"This is considered the most solemn day of the whole year, traditionally spent fasting and thinking about wrongdoings.",
+'Rosh Hashanah':"This is marked by the blowing of a ram's horn, and sweet foods like apple dipped in honey.",
+'Trinity':"This is one of the harder ideas for believers to put into simple words: one being, yet somehow three persons.",
+'Eucharist':"This re-enacts something that happened at a famous last meal, the night before a well-known arrest.",
+'Advent':"This is counted down with a special calendar, often one with a little door or chocolate for every day.",
+'Lent':"This lasts for roughly six weeks, and some people choose to give something up for the whole stretch.",
+'Pentecost':"This is sometimes thought of as the birthday of the Church, a loud and exciting event in a room full of frightened people.",
+'Good Friday':"This solemn day falls two days before a much happier, egg-filled celebration.",
+'Dharma':"In this faith, following the right path matters more than belief in any single god.",
+'Sangha':"This is one of three things a believer formally promises to turn to for guidance, alongside the teacher and the teachings.",
+'Nirvana':"This is the ultimate goal of the whole spiritual path, not a physical place but a state of mind.",
+'Meditation':"This often involves sitting still and focusing on the breath, and plenty of non-religious people practise it too.",
+};
 const RE_WORDS = rowsOf(`Brahma|The Hindu god of creation|Hindu
 Vishnu|The Hindu god who preserves the world|Hindu
 Shiva|The Hindu god of destruction and change|Hindu
@@ -7462,7 +7552,7 @@ Dharma|The Buddha's teachings|Buddhist
 Sangha|The Buddhist community of monks and nuns|Buddhist
 Nirvana|The Buddhist state of freedom from suffering|Buddhist
 Meditation|Calming and focusing the mind, important in Buddhism|Buddhist`);
-pairGen('re','Religion words','📿 Religion words',null,RE_WORDS,{fwd:r=>'What does “'+r[0]+'” mean? (a '+r[2]+' word)', rev:r=>'Which '+r[2]+' word means: '+lc(r[1])+'?', hint:'Think about which faith the word belongs to.'});
+pairGen('re','Religion words','📿 Religion words',null,RE_WORDS,{fwd:r=>'What does “'+r[0]+'” mean? (a '+r[2]+' word)', rev:r=>'Which '+r[2]+' word means: '+lc(r[1])+'?', hint:r=>RE_WORD_CLUES[r[0]]});
 /* ---- D&T ---- */
 DT_TOOLS.push(...rowsOf(`Spirit level|Checking that a surface is flat and level|tool
 Mitre saw|Cutting angled joints|tool
@@ -9800,6 +9890,119 @@ const LGP = {
 };
 
 /* =====================================================================
+   SCRIPTED BACK-AND-FORTH CONVERSATIONS (queue item 10e). Language page > Language practice > Back-and-forth conversations.
+   Jody's idea (item 10): "Back-and-forth conversations in the language, to help her speak properly." The feasibility note on this item said it
+   can be built as SCRIPTED conversations with choices (offline, safe) -- a free-form open conversation would need an AI service and is a bigger
+   decision (cost, privacy, safety), so that version was NOT built; this is the scripted, choice-based version.
+   Three short scenarios per language, each with THREE of her turns. At each turn she sees what the other speaker just said (read aloud if
+   speaking is on, same as the rest of Language practice) and picks which of three replies continues the conversation -- one right, two wrong.
+   The conversation always carries on with the CORRECT line (whether she picked it or not), so by the end she has seen the whole exchange done
+   properly, and the transcript builds up turn by turn exactly like the real round engine's q.lines mechanism already does for other lgp games.
+   Each scenario reuses a TOPIC that already has its own real lesson in that language (Greetings, Family, Formal and informal), so answers are
+   recorded under that topic and count towards the Coverage map, same rule as every other sentence in lgpdata.js.
+   WRONG OPTIONS are written to be genuinely testable, not just "obviously silly": some repeat something already said earlier in the SAME
+   conversation (now wrong because it has already been covered), some are a real sentence about something else entirely, and scenario 3's
+   wrong options deliberately use the INFORMAL register (tú/你, slang) where the correct reply needs the FORMAL one (usted/您) -- directly
+   testing the exact grammar point already taught in the Formal and informal lesson for both languages, rather than a random distractor.
+   NOT CHECKED BY A SPANISH OR MANDARIN TEACHER: written by Claude, same as the rest of lgpdata.js. Please have someone who speaks the
+   language look through it -- Jody, this especially means you for the Mandarin, since you mentioned you can check it yourself.
+   SHAPE: each scenario is {id, title, topic, turns:[{them:{t,en[,py]}, her:{t,en[,py], wrong:[{t,en[,py]},{t,en[,py]}]}}, ...]}.
+   Spanish entries have no py field at all (the language has no separate pronunciation spelling); Mandarin entries give the whole line's
+   pinyin as one string (not per-character, since this game needs whole-sentence replies, not word-by-word tapping like Tap what you hear).
+   ===================================================================== */
+const LGPCONV_RAW = {
+spanish: [
+  { id:'es_meet', title:'Meeting someone new', topic:'Greetings', turns:[
+    { them:{t:'¡Hola! ¿Cómo te llamas?', en:'Hello! What is your name?'},
+      her:{t:'Me llamo Ana.', en:'My name is Ana.', wrong:[
+        {t:'Adiós, hasta luego.', en:'Goodbye, see you later.'},
+        {t:'Tengo doce años.', en:'I am twelve years old.'}]} },
+    { them:{t:'Mucho gusto, Ana. ¿Cuántos años tienes?', en:'Nice to meet you, Ana. How old are you?'},
+      her:{t:'Tengo doce años.', en:'I am twelve years old.', wrong:[
+        {t:'Me llamo Ana.', en:'My name is Ana.'},
+        {t:'Hoy es lunes.', en:'Today is Monday.'}]} },
+    { them:{t:'¡Qué bien! ¿De dónde eres?', en:'Great! Where are you from?'},
+      her:{t:'Soy de Inglaterra.', en:'I am from England.', wrong:[
+        {t:'Me gusta el fútbol.', en:'I like football.'},
+        {t:'Tengo un perro.', en:'I have a dog.'}]} }
+  ]},
+  { id:'es_family', title:'Talking about your family', topic:'Family', turns:[
+    { them:{t:'¿Tienes hermanos?', en:'Do you have any brothers or sisters?'},
+      her:{t:'Tengo una hermana.', en:'I have one sister.', wrong:[
+        {t:'Soy de Inglaterra.', en:'I am from England.'},
+        {t:'Hoy es sábado.', en:'Today is Saturday.'}]} },
+    { them:{t:'¿Cómo se llama tu hermana?', en:'What is your sister’s name?'},
+      her:{t:'Se llama Rosa.', en:'Her name is Rosa.', wrong:[
+        {t:'Me llamo Ana.', en:'My name is Ana.'},
+        {t:'Tiene un gato.', en:'She has a cat.'}]} },
+    { them:{t:'¿Dónde viven tus abuelos?', en:'Where do your grandparents live?'},
+      her:{t:'Mis abuelos viven en Madrid.', en:'My grandparents live in Madrid.', wrong:[
+        {t:'Mi madre se llama Rosa.', en:'My mother is called Rosa.'},
+        {t:'Tengo doce años.', en:'I am twelve years old.'}]} }
+  ]},
+  { id:'es_formal', title:'Asking an adult for help', topic:'Formal and informal', turns:[
+    { them:{t:'Buenos días. ¿En qué puedo ayudarle?', en:'Good morning. How can I help you?'},
+      her:{t:'Perdone, ¿dónde está el baño, por favor?', en:'Excuse me, where is the bathroom, please? (polite)', wrong:[
+        {t:'Perdona, ¿dónde está el baño?', en:'Excuse me, where is the bathroom? (the word for a friend, not a stranger)'},
+        {t:'Me llamo Ana.', en:'My name is Ana.'}]} },
+    { them:{t:'Está al fondo, a la derecha.', en:'It is at the back, on the right.'},
+      her:{t:'Muchas gracias, señor.', en:'Thank you very much, sir.', wrong:[
+        {t:'Gracias, tío.', en:'Thanks, mate. (slang for a friend, not a stranger)'},
+        {t:'Tengo doce años.', en:'I am twelve years old.'}]} },
+    { them:{t:'De nada. ¡Que tenga un buen día!', en:'You’re welcome. Have a good day!'},
+      her:{t:'Igualmente, muchas gracias.', en:'Likewise, thank you very much.', wrong:[
+        {t:'Igual, chao.', en:'Same, bye. (very informal slang for a friend)'},
+        {t:'Soy de Inglaterra.', en:'I am from England.'}]} }
+  ]}
+],
+mandarin: [
+  { id:'zh_meet', title:'Meeting someone new', topic:'Greetings', turns:[
+    { them:{t:'你好！你叫什么名字？', py:'Nǐ hǎo! Nǐ jiào shénme míngzi?', en:'Hello! What is your name?'},
+      her:{t:'我叫安娜。', py:'Wǒ jiào Ānnà.', en:'My name is Anna.', wrong:[
+        {t:'再见，明天见。', py:'Zàijiàn, míngtiān jiàn.', en:'Goodbye, see you tomorrow.'},
+        {t:'我十二岁。', py:'Wǒ shí’èr suì.', en:'I am twelve years old.'}]} },
+    { them:{t:'很高兴认识你。你几岁？', py:'Hěn gāoxìng rènshi nǐ. Nǐ jǐ suì?', en:'Nice to meet you. How old are you?'},
+      her:{t:'我十二岁。', py:'Wǒ shí’èr suì.', en:'I am twelve years old.', wrong:[
+        {t:'我叫安娜。', py:'Wǒ jiào Ānnà.', en:'My name is Anna.'},
+        {t:'今天是星期一。', py:'Jīntiān shì xīngqīyī.', en:'Today is Monday.'}]} },
+    { them:{t:'你是哪国人？', py:'Nǐ shì nǎ guó rén?', en:'Where are you from?'},
+      her:{t:'我是英国人。', py:'Wǒ shì Yīngguó rén.', en:'I am English.', wrong:[
+        {t:'我喜欢足球。', py:'Wǒ xǐhuan zúqiú.', en:'I like football.'},
+        {t:'我有一只猫。', py:'Wǒ yǒu yì zhī māo.', en:'I have a cat.'}]} }
+  ]},
+  { id:'zh_family', title:'Talking about your family', topic:'Family', turns:[
+    { them:{t:'你有兄弟姐妹吗？', py:'Nǐ yǒu xiōngdì jiěmèi ma?', en:'Do you have any brothers or sisters?'},
+      her:{t:'我有一个姐姐。', py:'Wǒ yǒu yí ge jiějie.', en:'I have one older sister.', wrong:[
+        {t:'我是英国人。', py:'Wǒ shì Yīngguó rén.', en:'I am English.'},
+        {t:'今天是星期六。', py:'Jīntiān shì xīngqīliù.', en:'Today is Saturday.'}]} },
+    { them:{t:'她叫什么名字？', py:'Tā jiào shénme míngzi?', en:'What is her name?'},
+      her:{t:'她叫Rosa。', py:'Tā jiào Rosa.', en:'Her name is Rosa.', wrong:[
+        {t:'我叫安娜。', py:'Wǒ jiào Ānnà.', en:'My name is Anna.'},
+        {t:'她有一只猫。', py:'Tā yǒu yì zhī māo.', en:'She has a cat.'}]} },
+    { them:{t:'她几岁？', py:'Tā jǐ suì?', en:'How old is she?'},
+      her:{t:'她十五岁。', py:'Tā shíwǔ suì.', en:'She is fifteen years old.', wrong:[
+        {t:'我十二岁。', py:'Wǒ shí’èr suì.', en:'I am twelve years old.'},
+        {t:'她叫Rosa。', py:'Tā jiào Rosa.', en:'Her name is Rosa.'}]} }
+  ]},
+  { id:'zh_formal', title:'Talking to your teacher', topic:'Formal and informal', turns:[
+    { them:{t:'大家好！', py:'Dàjiā hǎo!', en:'Hello, everyone!'},
+      her:{t:'老师，您好！', py:'Lǎoshī, nín hǎo!', en:'Hello, teacher! (polite)', wrong:[
+        {t:'你好，朋友！', py:'Nǐ hǎo, péngyou!', en:'Hello, friend! (the word for a friend, not a teacher)'},
+        {t:'再见，老师。', py:'Zàijiàn, lǎoshī.', en:'Goodbye, teacher.'}]} },
+    { them:{t:'谢谢你来。你叫什么名字？', py:'Xièxie nǐ lái. Nǐ jiào shénme míngzi?', en:'Thank you for coming. What is your name?'},
+      her:{t:'我叫安娜。', py:'Wǒ jiào Ānnà.', en:'My name is Anna.', wrong:[
+        {t:'不客气。', py:'Bú kèqi.', en:'You’re welcome.'},
+        {t:'她叫Rosa。', py:'Tā jiào Rosa.', en:'Her name is Rosa.'}]} },
+    { them:{t:'很高兴认识你，安娜。', py:'Hěn gāoxìng rènshi nǐ, Ānnà.', en:'Nice to meet you, Anna.'},
+      her:{t:'谢谢老师！', py:'Xièxie, lǎoshī!', en:'Thank you, teacher!', wrong:[
+        {t:'谢谢，哥们儿！', py:'Xièxie, gēmenr!', en:'Thanks, bro! (slang for a friend, not a teacher)'},
+        {t:'我十二岁。', py:'Wǒ shí’èr suì.', en:'I am twelve years old.'}]} }
+  ]}
+]
+};
+const LGPCONV = LGPCONV_RAW;
+
+/* =====================================================================
    SPANISH AND MANDARIN PRACTICE (queue item 10, first part, version 54). Sentences are in lgpdata.js.
    Games (ten questions each, from the language page > Language practice):
      Fill in the blank (fb) · Tap what you hear (tp; with speaking off it becomes "Tap the words") · Translate the sentence (tr) · Translate the word (tw) · Repeat after me (rp, added v56, see lgprep.js) · a mix of everything.
@@ -9809,14 +10012,18 @@ const LGP = {
    supports it). BUG FIXED (v67, Jody -- "massive inconsistency ... says combine 4 when there's 5 types"): the mix card hardcoded a 4-kind plan and said "A mix of all four", left over from before Repeat
    after me existed (v56) -- so it never appeared in the mix even though it sat right there as a fifth card on the same page. The plan is now built from whichever kinds are actually on screen, and the label
    no longer names a number, so it can't go stale again the next time a kind is added.
-   Still to come from queue item 10: scripted conversations, recap sessions.
+   Back-and-forth conversations (item 10e) were added later, in lgpconv.js/lgpconvdata.js -- a scripted, choice-based version (see that
+   file's header for why). This file's lgpAlive/lgpRebuild/lgpTotals/vLgp below were extended to cover that new 'cv' kind, same as they
+   were already extended for 'rp' (Repeat after me) when THAT was added after this file was first written.
+   Recap sessions (item 10f) were added later still, further down this file -- not a new kind, a smarter selector over fb/tr/tp/tw/rp (see
+   that section's own header comment). Queue item 10 is now fully built; items a-f are all done.
    ===================================================================== */
 const LGP_LV = ['', 'Easy', 'Medium', 'Hard', 'Extremely hard'];
 const lgpS = () => (S.lgp = (S.lgp && typeof S.lgp==='object') ? S.lgp : {sp:1, lv:{spanish:1, mandarin:1}, t:0});
 const lgpLv = k => { const v=+((lgpS().lv||{})[k]); return v>=1&&v<=4 ? v : 1; };
 const lgpSpeakOn = k => lgpS().sp!==0 && ('speechSynthesis' in window) && hasVoice(LANG_CODE[k]);
 const lgpSet = fn => { const o=lgpS(); fn(o); o.t=Date.now(); save(); render(); };
-const lgpTotals = () => { const t={n:0,r:0}; Object.values(S.lg||{}).forEach(o=>['fb','tp','tr','tw','rp'].forEach(g=>{ t.n+=(o&&o[g+'n'])||0; t.r+=(o&&o[g+'r'])||0; })); return t; };
+const lgpTotals = () => { const t={n:0,r:0}; Object.values(S.lg||{}).forEach(o=>['fb','tp','tr','tw','rp','cv'].forEach(g=>{ t.n+=(o&&o[g+'n'])||0; t.r+=(o&&o[g+'r'])||0; })); return t; };
 const lgpBase = (it, kind, lv) => ({k:it.k, topic:it.topic, lgp:kind, lvl:lv, nocard:true, gen:1, id:'lgp_'+kind+'_'+it.id, lgpref:{k:it.k, kd:kind, lv, sid:it.id}, done:false, ok:false});
 /* sound: 'now' = the button plays at once; 'after' = it would give the answer away, so it plays once she has answered */
 function lgpPlay(q, k, say, when){
@@ -9884,16 +10091,85 @@ function lgpWord(k, lv, used, force){
   return q;
 }
 /* ---------- the Mistake Dojo: a wrong answer stores only WHICH sentence, game and level; the Dojo rebuilds the question fresh (new spare words, new order) ---------- */
-function lgpAlive(r){ if(!r||!r.k||!LGP[r.k]) return false; return r.kd==='tw' ? LANGV[r.k].some(x=>x.w===r.w) : LGP[r.k].some(x=>x.id===r.sid); }
+function lgpAlive(r){
+  if(!r||!r.k) return false;
+  if(r.kd==='tw') return !!(LANGV[r.k] && LANGV[r.k].some(x=>x.w===r.w));
+  if(r.kd==='cv'){ const sc=(LGPCONV[r.k]||[]).find(x=>x.id===r.scenario); return !!(sc && sc.turns[r.turn]); }
+  return !!(LGP[r.k] && LGP[r.k].some(x=>x.id===r.sid));
+}
 function lgpRebuild(slim){
   const r=slim&&slim.lgpref; if(!lgpAlive(r)) return null; const lv=Math.min(4,Math.max(1,+r.lv||1)); let q;
   if(r.kd==='tw') q=lgpWord(r.k,lv,new Set(),LANGV[r.k].find(x=>x.w===r.w));
+  else if(r.kd==='cv') q=lgpConvRebuildOne(r.k, LGPCONV[r.k].find(x=>x.id===r.scenario), r.turn, lv);
   else { const it=LGP[r.k].find(x=>x.id===r.sid); q = r.kd==='fb' ? lgpFill(it,lv) : r.kd==='tp' ? lgpTap(it,lv,LGP[r.k]) : r.kd==='rp' ? rpRebuild(it,lv) : lgpTrans(it,lv,LGP[r.k]); }
   return (q.type==='build'||q.type==='typein'||q.type==='say') ? q : Object.assign(q,{opts:shuffle([q.correct].concat(q.wrong))});
 }
 /* every kind currently on the practice hub, round-robined to 10 questions. rp only joins in when it is actually available (Parent Desk word-checking on, browser supports it) --
    this is the one place that decides what "the mix" contains, so a kind added here later never needs the label updated by hand. */
 function lgpMixPlan(){ const kinds=['fb','tr','tp','tw']; if(rpAvailable()) kinds.push('rp'); return Array.from({length:10},(_,i)=>kinds[i%kinds.length]); }
+/* ===== RECAP SESSIONS (queue item 10f, continuation session) =====
+   Not a new lgp "kind" -- a smarter SELECTOR over the kinds that already exist (fb/tr/tp/tw/rp), so it needs no new Mistake Dojo branch, no new
+   lgpTotals entry and no new parent-summary wording: a recap question is recorded exactly as if it had been played directly from its own game.
+   Builds on the SAME data the Coverage map already uses (covStatus, shared because recordAnswer files every lgp answer under the sentence's real
+   lesson topic) to find which of HER language topics are overdue or never tried, and on S.lg's own per-kind counts to find her weakest game, then
+   leans the round towards both -- more of what needs it, in the game she needs it in most -- while still drawing from the FULL set of that
+   level's 10 sentences (same level-for-level coverage as "a mix of everything"), so nothing from her chosen level is ever skipped, only reordered
+   and re-assigned a kind. Falls back to a plain, even spread whenever there is no real signal yet (a brand new profile, or nothing overdue). */
+function lgpKindWeak(k){
+  const kinds=['fb','tr','tp','tw']; if(rpAvailable()) kinds.push('rp');
+  const lg=(S.lg||{})[k]||{}, scored=kinds.map(kd=>{ const n=lg[kd+'n']||0, r=lg[kd+'r']||0; return {kd, tried:n>=3, acc:n>=3?r/n:0.65}; });
+  return scored.sort((a,b)=>a.acc-b.acc);
+}
+function lgpRecapKinds(k){
+  const weak=lgpKindWeak(k).map(s=>s.kd), reps=[];
+  weak.forEach((kd,i)=>{ const n=i===0?4:i===1?3:1; for(let j=0;j<n;j++) reps.push(kd); });
+  while(reps.length<10) reps.push(weak[0]);
+  return shuffle(reps.slice(0,10));
+}
+/* how much this one language topic needs revisiting: never tried beats everything; past that, the same overdue rule the Coverage map uses
+   (acc 80%+ comes back after 21 days, 60%+ after 7, under that after 3) decides whether it is due AT ALL (0 if not); only once it is actually
+   due does the shakiness of her accuracy nudge it up further, so a topic that is secure and freshly practised scores a clean 0, not a small
+   leftover sliver -- this is what lets "nothing is overdue" be genuinely true rather than a near-impossible 100%-accuracy-only state. */
+function lgpTopicNeed(k, topic){
+  const st=covStatus(k,topic); if(!st.a) return 1000;
+  const need=st.acc>=80?21:st.acc>=60?7:3, gap=st.last?dayDiff(st.last,today()):need, over=gap-need;
+  return over<0 ? 0 : over + (100-st.acc)/10;
+}
+function lgpRecapTop(k, n){
+  const lv=lgpLv(k), topics=[...new Set(LGP[k].filter(x=>x.lv===lv).map(x=>x.topic))];
+  return topics.map(t=>({t, need:lgpTopicNeed(k,t)})).sort((a,b)=>b.need-a.need).filter(x=>x.need>0).slice(0,n);
+}
+function lgpRecapConvos(k){
+  if(!LGPCONV[k]) return [];
+  return LGPCONV[k].map(sc=>({sc, need:lgpTopicNeed(k,sc.topic)})).filter(x=>x.need>0).sort((a,b)=>b.need-a.need);
+}
+function lgpRecapPlan(k){
+  const lv=lgpLv(k), sentences=LGP[k].filter(x=>x.lv===lv);
+  const ranked=sentences.slice().sort((a,b)=>lgpTopicNeed(k,b.topic)-lgpTopicNeed(k,a.topic));
+  const picked=Array.from({length:10},(_,i)=>ranked[i%ranked.length]);
+  const kinds=lgpRecapKinds(k);
+  return picked.map((sentence,i)=>({sentence, kind:kinds[i]}));
+}
+function lgpRecapStart(k){
+  if(!LGP[k]) return;
+  const plan=lgpRecapPlan(k), lv=lgpLv(k), all=LGP[k], used=new Set();
+  const qs=plan.map(({sentence,kind})=>kind==='fb'?lgpFill(sentence,lv):kind==='tp'?lgpTap(sentence,lv,all):kind==='tr'?lgpTrans(sentence,lv,all):kind==='rp'?lgpRepeat(sentence,lv):lgpWord(k,lv,used));
+  R={kind:'practice', opts:{kind:'practice',keys:[k],topic:'Language practice',n:qs.length,lgp:true,k}, subj:k, mode:S.mode, back:{name:'lgprecap',k}, hints:0, tiers:[0,0,0,0,0], qs:qs.map(q=>(q.type==='build'||q.type==='typein'||q.type==='say')?q:Object.assign(q,{opts:shuffle([q.correct].concat(q.wrong))})), i:0, xp:0, coins:0};
+  go('round');
+}
+const LGP_KIND_NAME = {fb:'Fill in the blank', tp:'Tap what you hear', tr:'Translate the sentence', tw:'Translate the word', rp:'Repeat after me'};
+function vLgpRecap(m){
+  const k=(V&&V.k)||'spanish'; if(!LGP[k]){ go('home'); return; }
+  const s=subj(k), topTopics=lgpRecapTop(k,3), weak=lgpKindWeak(k), convos=lgpRecapConvos(k).slice(0,2), w=weak[0];
+  m.innerHTML=`<section class="module" style="--c:${s.c}"><button class="btn ghost small" data-act="go" data-v="lgprac" data-k="${k}">← Back to Language practice</button><h2 style="margin-top:10px">📋 ${esc(LANG_NAME[k])} recap</h2>
+   <p>A catch-up session built from how you're actually doing: more of whatever needs it most, less of what you've already got solid. Still ten questions, at the level you've already chosen.</p>
+   <div class="card"><h3 style="margin-top:0">What this recap leans on</h3>
+    <p class="muted" style="margin:0 0 6px">${topTopics.length?'Topics due a revisit: '+topTopics.map(x=>esc(x.t)).join(', ')+'.':'Nothing is overdue right now -- this will lean towards your weaker game instead.'}</p>
+    <p class="muted" style="margin:0">Weakest game right now: <b>${esc(LGP_KIND_NAME[w.kd])}</b>${w.tried?' ('+Math.round(w.acc*100)+'% so far)':' (not tried yet)'}.</p></div>
+   <div class="center" style="margin:12px 0"><button class="btn gold" data-act="lgprecapstart" data-k="${k}">Start my recap</button></div>
+   ${convos.length?`<div class="card"><h3 style="margin-top:0">Conversations worth another try</h3>${convos.map(x=>`<div class="row" style="align-items:center;margin:4px 0"><span style="flex:1">${esc(x.sc.title)}</span><button class="btn small ghost" data-act="lgpconvstart" data-k="${k}" data-sc="${x.sc.id}">Replay</button></div>`).join('')}</div>`:''}
+   </section>`;
+}
 function lgpStart(k, g){
   if(!LGP[k]) return;
   if(g==='rp' && !rpAvailable()){ toast(rpWhyNot(),6500); return; }
@@ -9931,16 +10207,19 @@ function vLgp(m){
     : !('speechSynthesis' in window) ? 'This device cannot play sound, so the games work without it.'
     : !on ? 'This device has no '+LANG_NAME[k]+' voice installed, so the games work without sound here.' : 'Every question has a button to hear it. It is the device’s own voice, and nothing is sent anywhere.';
   m.innerHTML=`<section class="module" style="--c:${s.c}"><button class="btn ghost small" data-act="go" data-v="subject" data-k="${k}">← ${esc(s.n)}</button><h2 style="margin-top:10px">🧩 ${LANG_NAME[k]} practice</h2>
-   <p>Ten questions in each game. Choose how hard you want it, then a game.</p>
+   <p>Ten questions in most games (fewer for Repeat after me and the conversations). Choose how hard you want it, then a game.</p>
    <div class="card"><h3 style="margin-top:0">How hard?</h3><div class="row" role="group" aria-label="Difficulty">${[1,2,3,4].map(n=>`<button class="btn ${n===lv?'':'ghost'} small" data-act="lgplevel" data-k="${k}" data-n="${n}" aria-pressed="${n===lv}">${LGP_LV[n]}</button>`).join('')}</div><p class="muted" style="margin:8px 0 0">${esc(lgpLvText(k,lv))}</p></div>
    <div class="card"><h3 style="margin-top:0">Sound</h3><button class="btn ${L.sp===0?'ghost':''}" data-act="lgpspeak" aria-pressed="${L.sp!==0}">${L.sp===0?'🔇 Speaking is off. Tap to turn it on':'🔊 Speaking is on. Tap to turn it off'}</button><p class="muted" style="margin:8px 0 0">${esc(sound)}</p></div>
    ${rpOn?rpNotice():''}<div class="lgpgames">${game('fb','✏️','Fill in the blank','Pick the word that completes the sentence.')}${game('tp',on?'👂':'🧩',on?'Tap what you hear':'Tap the words',on?'Listen, then tap the words in the right order.':'Read the English, then tap the words in the right order.')}${game('tr','🔤','Translate the sentence','Say what a whole sentence means, or pick the right '+LANG_NAME[k]+'.')}${game('tw','📖','Translate the word','The everyday word drill.')}${rpCard}
-   <button class="lgpgame" data-act="lgpstart" data-k="${k}" data-g="mix"><span class="ic" aria-hidden="true">🎲</span><span><b>A mix of everything</b><br><small>Ten questions${rpOn?', including a couple you say out loud':''}, a bit of everything.</small></span></button></div></section>`;
+   <button class="lgpgame" data-act="go" data-v="lgpconv" data-k="${k}"><span class="ic" aria-hidden="true">💬</span><span><b>Back-and-forth conversations</b><br><small>A short scripted conversation -- you pick how to reply at each turn.</small>${lg.cvn?`<br><small>${lg.cvr||0} of ${lg.cvn} replies right so far</small>`:''}</span></button>
+   <button class="lgpgame" data-act="lgpstart" data-k="${k}" data-g="mix"><span class="ic" aria-hidden="true">🎲</span><span><b>A mix of everything</b><br><small>Ten questions${rpOn?', including a couple you say out loud':''}, a bit of everything.</small></span></button>
+   <button class="lgpgame" data-act="go" data-v="lgprecap" data-k="${k}"><span class="ic" aria-hidden="true">📋</span><span><b>Recap</b><br><small>A catch-up session, weighted towards whatever you most need to revisit.</small></span></button></div></section>`;
 }
 const LGPACTIONS = {
   lgplevel:d=>lgpSet(o=>{ o.lv=o.lv||{}; o.lv[d.k]=Math.min(4,Math.max(1,+d.n||1)); }),
   lgpspeak:()=>lgpSet(o=>{ o.sp=o.sp===0?1:0; }),
   lgpstart:d=>lgpStart(d.k,d.g),
+  lgprecapstart:d=>lgpRecapStart(d.k),
   bwadd:d=>{ const q=R&&R.qs[R.i]; if(!q||q.type!=='build'||q.done) return; const i=+d.i; if(q.built.includes(i)) return; q.built.push(i); render(); lgpFocus('.bwbank .bwchip:not([disabled])'); },
   bwremove:d=>{ const q=R&&R.qs[R.i]; if(!q||q.type!=='build'||q.done) return; q.built=q.built.filter(x=>x!==+d.i); render(); lgpFocus('.bwbank .bwchip:not([disabled])'); },
   bwclear:()=>{ const q=R&&R.qs[R.i]; if(!q||q.type!=='build'||q.done) return; q.built=[]; render(); },
@@ -10065,6 +10344,62 @@ const LGRACTIONS = {
   rpshow:()=>{ const q=R&&R.qs[R.i]; if(!q||q.type!=='say'||q.done||q.revealed||!q.hidden) return; q.revealed=true; hintCharge(); render(); },
   rpskip:()=>{ const q=R&&R.qs[R.i]; if(!q||q.type!=='say'||q.done) return; rpAbort(); q.done=true; q.skipped=true; q.ok=false; q.phase='done'; q.msg='Skipped. Nothing is counted.'; render(); }
 };
+
+/* =====================================================================
+   BACK-AND-FORTH CONVERSATIONS (queue item 10e, scripted/choice version -- see lgpconvdata.js for the data and the full explanation of why
+   it is scripted rather than free-form). Language page > Language practice > Back-and-forth conversations.
+   Each scenario is a fixed sequence of turns (3, not the usual 10) because a conversation is sequential, not a flat pool of unrelated
+   sentences like the other games -- so it is NOT included in "the mix" (lgpMixPlan in lgp.js), which only round-robins kinds that work on
+   standalone sentences. Picking "Back-and-forth conversations" on the hub goes to a small picker (vLgpConv) listing that language's
+   scenarios; picking one starts a round built from lgpConvBuild, same round engine (XP, results, Mistake Dojo) as every other game here.
+   The transcript (q.lines) builds up turn by turn using the SAME generic mechanism the standard question renderer already draws on for
+   every other lgp game (app2.js's vRound: `${(q.lines||[]).map(l=>...)}`) -- no new rendering code was needed for this feature at all.
+   The conversation always continues with the CORRECT line (right or wrong, she still sees how it should have gone), reconstructed fresh
+   from lgpconvdata.js each time rather than from her actual answers, so a Mistake Dojo retry of a single turn can rebuild its own history
+   on its own (lgpConvRebuildOne) exactly like a fresh play-through would.
+   ===================================================================== */
+const lgpConvLab = (k, line, py) => k==='spanish' ? line.t : (py ? line.t+' ('+line.py+')' : line.t);
+const lgpConvLine = (k, who, line, showEn, py) => ({ t:(who==='them'?'🗣️ They say: ':'🗩 You say: ')+lgpConvLab(k,line,py)+(showEn?' — “'+line.en+'”':''), c: who==='them'?'convthem':'convher' });
+const lgpConvExp = (k, line, py) => '“'+lgpConvLab(k,line,py)+'” means “'+line.en.replace(/\s*\([^)]*\)\s*$/,'').replace(/[.!?]+$/,'')+',” which is what fits the conversation here.';
+/* the transcript BEFORE turn uptoIdx: every earlier them-line plus the CORRECT her-line, so later turns always show a coherent conversation */
+function lgpConvHistUpTo(k, scenario, lv, uptoIdx){
+  const py=lv<4, showEn=lv<=2, hist=[];
+  for(let i=0;i<uptoIdx;i++){ const t=scenario.turns[i]; hist.push(lgpConvLine(k,'them',t.them,showEn,py)); hist.push(lgpConvLine(k,'her',t.her,showEn,py)); }
+  return hist;
+}
+function lgpConvQ(k, scenario, turnIdx, lv, hist){
+  const py=lv<4, showEn=lv<=2, turn=scenario.turns[turnIdx];
+  const q=lgpBase({k, topic:scenario.topic, id:scenario.id+'_t'+turnIdx}, 'cv', lv);
+  q.lgpref={k, kd:'cv', lv, scenario:scenario.id, turn:turnIdx};
+  q.lines=hist.concat([lgpConvLine(k,'them',turn.them,showEn,py)]);
+  Object.assign(q, {
+    q:'How should you reply?',
+    dq:'Conversation (“'+scenario.title+'”): how should you reply to “'+lgpConvLab(k,turn.them,py)+'”?',
+    correct:lgpConvLab(k,turn.her,py), wrong:turn.her.wrong.map(w=>lgpConvLab(k,w,py)),
+    exp:lgpConvExp(k,turn.her,py),
+    hint: lv<=2 ? 'One wrong choice repeats something already said earlier, and one is about something else entirely. Which one actually answers what they just asked?'
+               : 'Listen again if you need to. One wrong choice repeats something already said earlier, and one is about something else entirely.'
+  });
+  lgpPlay(q, k, turn.them.t, 'now');
+  return q;
+}
+const lgpConvBuild = (k, scenario, lv) => scenario.turns.map((turn,i)=>lgpConvQ(k,scenario,i,lv,lgpConvHistUpTo(k,scenario,lv,i)));
+const lgpConvRebuildOne = (k, scenario, turnIdx, lv) => lgpConvQ(k, scenario, turnIdx, lv, lgpConvHistUpTo(k, scenario, lv, turnIdx));
+function lgpConvStart(k, scId){
+  const scenario=(LGPCONV[k]||[]).find(x=>x.id===scId); if(!scenario) return;
+  const lv=lgpLv(k), qs=lgpConvBuild(k,scenario,lv).map(q=>Object.assign(q,{opts:shuffle([q.correct].concat(q.wrong))}));
+  R={kind:'practice', opts:{kind:'practice',keys:[k],topic:'Language practice',n:qs.length,lgp:true,k}, subj:k, mode:S.mode, back:{name:'lgpconv',k}, hints:0, tiers:[0,0,0,0,0], qs, i:0, xp:0, coins:0};
+  go('round');
+}
+function vLgpConv(m){
+  const k=(V&&V.k)||'spanish'; if(!LGPCONV[k]){ go('home'); return; }
+  const s=subj(k), lg=(S.lg||{})[k]||{}, n=lg.cvn||0, r=lg.cvr||0;
+  const card=sc=>`<button class="lgpgame" data-act="lgpconvstart" data-k="${k}" data-sc="${sc.id}"><span class="ic" aria-hidden="true">💬</span><span><b>${esc(sc.title)}</b><br><small>${sc.turns.length} things to say, as a back-and-forth conversation.</small></span></button>`;
+  m.innerHTML=`<section class="module" style="--c:${s.c}"><button class="btn ghost small" data-act="go" data-v="lgprac" data-k="${k}">← Back to Language practice</button><h2 style="margin-top:10px">💬 ${esc(LANG_NAME[k])} conversations</h2>
+   <p>Pick a conversation. The other person speaks first, and you choose how to reply.${n?` <br><small>${r} of ${n} replies right so far.</small>`:''}</p>
+   <div class="lgpgames">${LGPCONV[k].map(card).join('')}</div></section>`;
+}
+const LGCACTIONS = { lgpconvstart:d=>lgpConvStart(d.k,d.sc) };
 
 /* =====================================================================
    SIX-FIGURE GRID REFERENCES. A 5 km by 5 km map. Each square is divided into tenths.
@@ -10867,8 +11202,8 @@ const HINT_STATUS = {
 'pshe|What should you do?':'skill','pshe|Money sums':'skill','pshe|PSHE words':'todo','pshe|Useful numbers':'todo',
 /* ---- history ---- */
 'history|Which came first?':'skill','history|When did it happen?':'fact','history|Who was who?':'fact','history|History words':'fact',
-/* ---- re, dt, art, literature: all checked, already have a topic-appropriate strategy hint ---- */
-'re|Religion facts':'todo','re|Religion words':'todo',
+/* ---- re: fixed in v159 (item 11a) with RE_FACT_CLUES/RE_WORD_CLUES, a clue per row for both tables -- dt, art, literature still pending below ---- */
+'re|Religion facts':'fact','re|Religion words':'fact',
 'dt|Material properties':'todo','dt|Tools and jobs':'todo','dt|Types of material':'todo','dt|Staying safe in D&T':'todo','dt|Materials and their uses':'todo','dt|Design words':'todo','dt|Mechanisms and their jobs':'todo',
 'art|Mixing colours':'todo','art|Complementary colours':'todo','art|Artists and their work':'todo','art|Art movements':'todo','art|Art words':'todo','art|More art words':'todo',
 'literature|Spot the technique':'skill','literature|Characters and plays':'todo','literature|Poetry forms':'todo','literature|Story words':'todo','literature|Who said it?':'todo',
@@ -13804,7 +14139,7 @@ function go(name, params){ if(V && V.name==='round' && name!=='round') rpAbort()
 function render(){
   renderHeader();
   const m=$('#view'); m.innerHTML='';
-  const views={home:vHome,subject:vSubject,symguide:vSymGuide,round:vRound,results:vResults,dojo:vDojo,oasis:vOasis,checkin:vCheckin,parent:vParent,thesaurus:vThesaurus,journal:vJournal,vault:vVault,notes:vNotes,verbs:vVerbs,chars:vChars,order:vOrder,match:vMatch,worksheet:vWorksheet,stroke:vStroke,report:vReport,words:vWords,upgrade:vUpgrade,talk:vTalk,periodic:vPeriodic,methods:vMethods,write:vWrite,players:vPlayers,caps:vCaps,capslearn:vCapLearn,atlas:vAtlas,lessons:vLessons,lesson:vLesson,storylab:vStoryLab,story:vStory,written:vWritten,wq:vWQ,coverage:vCoverage,fhguide:vFH,xwords:vXW,speak:vSpeak,rsn:vRsn,piano:vPiano,terms:vTerms,cheers:vCheers,lgprac:vLgp,hotkeys:vHotkeys,say:vSay,lab:vLab,puzzles:vPuzzles,composers:vComposers};
+  const views={home:vHome,subject:vSubject,symguide:vSymGuide,round:vRound,results:vResults,dojo:vDojo,oasis:vOasis,checkin:vCheckin,parent:vParent,thesaurus:vThesaurus,journal:vJournal,vault:vVault,notes:vNotes,verbs:vVerbs,chars:vChars,order:vOrder,match:vMatch,worksheet:vWorksheet,stroke:vStroke,report:vReport,words:vWords,upgrade:vUpgrade,talk:vTalk,periodic:vPeriodic,methods:vMethods,write:vWrite,players:vPlayers,caps:vCaps,capslearn:vCapLearn,atlas:vAtlas,lessons:vLessons,lesson:vLesson,storylab:vStoryLab,story:vStory,written:vWritten,wq:vWQ,coverage:vCoverage,fhguide:vFH,xwords:vXW,speak:vSpeak,rsn:vRsn,piano:vPiano,terms:vTerms,cheers:vCheers,lgprac:vLgp,lgpconv:vLgpConv,lgprecap:vLgpRecap,hotkeys:vHotkeys,say:vSay,lab:vLab,puzzles:vPuzzles,composers:vComposers};
   (views[V.name]||vHome)(m);
   updatePill();
   if(V.name==='stroke') initWriter();
@@ -14392,7 +14727,7 @@ function summaryText(){
   if(last) T.push(`Latest check-in (week starting ${fmtDate(last.week)}): felt ${last.feel}/5${last.genius?', genius in '+subj(last.genius).n:''}${last.help?', wants help with '+subj(last.help).n:''}${last.note?'. Note: '+last.note:''}`);
   T.push(`Word of the day: ${Object.keys(S.wl).length} words learned. Latest weekly word test: ${(()=>{ const k=Object.keys(S.wt).sort().pop(); return k?`meanings ${S.wt[k].m[0]}/${S.wt[k].m[1]}, spelling ${S.wt[k].s[0]}/${S.wt[k].s[1]}`:'none yet'; })()}.`);
   { const lg=S.lg||{}, parts=Object.keys(lg).map(k=>`${k==='mandarin'?'Mandarin':'Spanish'}: listening ${lg[k].lr||0} of ${lg[k].ln||0} right, ${lg[k].sp||0} word${(lg[k].sp||0)===1?'':'s'} said aloud`); if(parts.length) T.push('Languages: '+parts.join('; ')+'.'); }
-  { const lt=lgpTotals(); if(lt.n) T.push(`Language practice: ${lt.r} of ${lt.n} right across fill in the blank, tap the words, translating and speaking.`); }
+  { const lt=lgpTotals(); if(lt.n) T.push(`Language practice: ${lt.r} of ${lt.n} right across fill in the blank, tap the words, translating, speaking and conversations.`); }
   if(Object.keys(S.rs||{}).length) T.push(`Reasoning workshop: ${Object.keys(S.rs).length} question${Object.keys(S.rs).length===1?'':'s'} tried, ${rsnCount(3)} at 3 stars or more.`);
   if(sbTalks()) T.push(`Speaking coach: ${sbTalks()} talk${sbTalks()===1?'':'s'} completed, ${(S.sb||{}).clean||0} smooth (30 seconds or more with hardly any filler words).`);
   if((S.hk||{}).rounds) T.push(`Computing: best score ${hkBest()} out of 10 in the keyboard shortcuts challenge (${S.hk.rounds} round${S.hk.rounds===1?'':'s'}).`);
@@ -15030,7 +15365,7 @@ Object.assign(ACTIONS, LESSONACTIONS);
 ACTIONS.thgroup=d=>{ V.tg=d.g; render(); };
 ACTIONS.branchtest=d=>practiceGate({kind:'branch',k:'science',keys:['science'],topics:SCI_TESTS[d.b],back:{name:'subject',k:'science'},label:'branch test'}, ()=>startRound({kind:'test', keys:['science'], topics:SCI_TESTS[d.b], branch:d.b, n:TEST_LEN, back:{name:'subject',k:'science'}}));
 Object.assign(ACTIONS, SLACTIONS);
-Object.assign(ACTIONS, WQACTIONS, COVACTIONS, FHACTIONS, XWACTIONS, FIXACTIONS, FIX2ACTIONS, LANGACTIONS, RSNACTIONS, MUACTIONS, PFACTIONS, HINTACTIONS, CHEERACTIONS, HKACTIONS, SBACTIONS, BVACTIONS, LGPACTIONS, LGRACTIONS, MCACTIONS);
+Object.assign(ACTIONS, WQACTIONS, COVACTIONS, FHACTIONS, XWACTIONS, FIXACTIONS, FIX2ACTIONS, LANGACTIONS, RSNACTIONS, MUACTIONS, PFACTIONS, HINTACTIONS, CHEERACTIONS, HKACTIONS, SBACTIONS, BVACTIONS, LGPACTIONS, LGRACTIONS, LGCACTIONS, MCACTIONS);
 
 </script>
 </body>
