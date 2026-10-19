@@ -1,12 +1,343 @@
 THE ANNALIESCE ACADEMY: NEW VERSION
 =====================================
-THIS VERSION: Academy version 74, built 29 Sep 2026, 07:49.
+THIS VERSION: Academy version 172, built 19 Oct 2026, 13:35.
 After you upload, open the site and scroll to the very bottom of the HOME page.
-It should say:  "Academy version 74 . built 29 Sep 2026, 07:49".
+It should say:  "Academy version 172 . built 19 Oct 2026, 13:35".
 If it says something older, or nothing, the new upload has not reached the site yet
 (see "If the site ever looks unchanged" below).
 
 NEW SINCE YOUR LAST UPLOAD
+
+RELIGIOUS STUDIES -- SMARTER HINTS (THE FIRST CHUNK OF THE HINT CLEAN-UP YOU ASKED FOR)
+This continues the hint-quality clean-up from your "listen to it in your head" feedback a while
+back -- you asked for hints that actually help a stuck child, specific to the exact question on
+screen, not a generic one-size-fits-all line. I went through the Academy and found 45 question
+types across several subjects were still giving one same hint for every single question in that
+type, which doesn't really help if she doesn't already know the answer. I'm fixing these in
+chunks rather than all at once, and Religious Studies (the smallest, so a good place to start)
+is now done: both its quiz types, "Religion facts" (holy books, places of worship, festivals,
+symbols, leaders and so on) and "Religion words" (Brahma, Zakat, Eucharist and the rest), now get
+a genuine, specific clue for every single item -- 79 clues in total, each one checked by a test
+to make sure it never just gives the answer away.
+
+DESIGN AND TECHNOLOGY -- SMARTER HINTS (THE SECOND CHUNK, STRAIGHT AFTER RELIGIOUS STUDIES)
+Same clean-up, continuing straight on. All seven D&T quiz types -- Material properties, Tools
+and jobs, Types of material, Staying safe in D&T, Materials and their uses, Design words, and
+Mechanisms and their jobs -- used to give the same one hint for every question in that type.
+Each now gets its own genuine clue per item -- 92 in total (tools turned out to have a few more
+hiding further down the file than I first found, so that one got a careful second pass), each
+checked the same way, by an automated test built specifically to make sure none of them give the
+answer away by accident.
+
+ART -- SMARTER HINTS (THE THIRD CHUNK, STRAIGHT AFTER DESIGN AND TECHNOLOGY)
+Same clean-up again, continuing straight on. All six Art quiz types -- Mixing colours,
+Complementary colours, Artists and their work, Art movements, Art words, and More art words --
+used to give the same one hint for every question in that type. Each now gets its own genuine
+clue per item -- 70 in total (two of the tables, Artists and Art movements, turned out to have a
+few more rows hiding further down the file than I first found, same as D&T's tools, so those got
+a careful second pass too). The Artists and Art movements clues describe what a real, famous,
+long-public painting actually looks like (brushstrokes, colours, subject) without ever naming the
+artist or the artwork/movement itself -- and I deliberately kept these purely about what you can
+see, leaving out anything about an artist's personal life (for instance, nothing about Van Gogh's
+own struggles, only his painting's swirling brushstrokes and stars).
+
+LITERATURE -- SMARTER HINTS (THE FOURTH CHUNK, STRAIGHT AFTER ART)
+Same clean-up again, continuing straight on. All eight Literature quiz types -- Characters and
+plays, Poetry forms, Story words, Who said it?, Literary words, Future Hopes: who wrote it?,
+Future Hopes: story ideas, and Future Hopes words -- used to give the same one hint for every
+question in that type. Each now gets its own genuine clue per item -- 100 in total. Characters
+and plays describes what a character actually does in the story (falls in love, murders a king,
+plays a trick with magic) without ever naming them or the play itself. Who said it? describes the
+moment and feeling behind a famous line without naming who says it. The two Future Hopes types
+(a real, already-approved school anthology that's been in the Academy for a while) describe the
+real, factual premise of each story -- using the same kind of plot description the Academy
+already uses elsewhere for these stories -- never any of the actual book text.
+
+SCIENCE -- SMARTER HINTS (THE FIFTH CHUNK, STRAIGHT AFTER LITERATURE)
+Same clean-up again, continuing straight on. All eleven Science quiz types -- Organs and their
+jobs, Cell parts, Plant parts, Planets, Energy types, Renewable or not?, Science units, Lab
+equipment, Separating mixtures, Changes of state, and Food groups -- used to give the same one
+hint for every question in that type. Each now gets its own genuine clue per item -- 104 in
+total. Most describe what the thing does or looks like without naming it (a heart clue talks
+about pumping, not "heart"). Science units needed extra care since a unit's own name (like
+"Newton" or "Kilogram") had to be kept out of every OTHER unit's clue too, including just the
+bare word on its own without its short form in brackets -- found and fixed by testing, not
+guessed at in advance. NEXT UP: the remaining word-list types -- Maths (5), Geography words and
+UK facts (2), Computing (2) and PSHE (2) -- 11 question types left after this one.
+
+SPANISH AND MANDARIN -- RECAP SESSIONS (VERSION 158, LAST TIME'S FEATURE -- THE LAST PART OF YOUR LANGUAGE PRACTICE IDEA)
+This finishes off the Duolingo-style language practice section -- part "f", the last one. You
+asked for "recap sessions, based on how much she has studied each subject", building on the
+coverage and revision system you already have. That's exactly what this is: a new "📋 Recap"
+button on the Language practice page, for both languages, sitting next to "A mix of everything".
+HOW IT WORKS: tap it and it tells her, in plain terms, which topics are due another look and
+which of her five games (fill in the blank, tap the words, translate the sentence, translate the
+word, Repeat after me) she's currently weakest at. Tap "Start my recap" and she gets the usual
+10-question round -- same scoring, same Mistake Dojo as every other game -- except the questions
+are chosen on purpose: more of whatever topic needs revisiting, more of whatever game she's
+struggling with, while still making sure all 10 of her level's sentences get covered, same
+guarantee "a mix of everything" already gives. If a Back-and-forth conversation (last time's
+feature) covers a topic that's also due, up to two "Replay" buttons for those appear too.
+UNDER THE HOOD, FOR WHAT IT'S WORTH: I built this to genuinely reuse what you already have,
+rather than bolt on something separate -- it leans on the exact same "is this topic overdue"
+rule the Coverage map already uses, and the exact same five games, rather than inventing a sixth
+one. That also means a wrong answer in a Recap round lands in the Mistake Dojo and gets trained
+exactly the same way as a wrong answer anywhere else -- I didn't have to write any new code for
+that part at all, and I checked that directly rather than assuming it.
+A BUG I FOUND AND FIXED BEFORE SHOWING IT TO YOU, BEING UPFRONT ABOUT IT: while writing the test
+for this, I found that my first attempt at the "how overdue is this topic" scoring never quite
+settled on a clean zero -- even a topic she'd just practised really well would score a tiny
+sliver above zero, which meant the page could never honestly say "nothing is overdue right now"
+even when that was true. Fixed before anything was delivered, and there's now a test specifically
+proving the "nothing overdue" message really does appear when it should.
+
+SPANISH AND MANDARIN -- BACK-AND-FORTH CONVERSATIONS (VERSION 149, LAST TIME'S FEATURE -- THE PREVIOUS PART OF YOUR LANGUAGE PRACTICE IDEA)
+This is the next piece of the Duolingo-style language practice you asked for ages ago -- part "e",
+back-and-forth conversations, "to help her speak properly". There's a decision baked into how I built
+it, so I want to be upfront about it straight away: a fully open, free-form conversation (where she can
+type or say almost anything and the app replies naturally) would need a live AI service doing the
+talking, which is a genuinely bigger decision -- it costs money per use, and it means sending whatever
+she says to an outside AI company while she's mid-conversation, which is a privacy question, not just a
+feature request. So for now I've built the SCRIPTED version: safe, free, and works entirely offline,
+like everything else here.
+HOW IT WORKS: a new "Back-and-forth conversations" button on the Language practice page, for both
+languages. She picks a conversation (3 per language: meeting someone new, talking about her family, and
+a third one built specifically around the Formal-and-informal lesson she already has -- asking a
+stranger for help in Spanish, talking to a teacher in Mandarin). The other person speaks first (she can
+tap to hear it), and she picks from 3 ways to reply -- her correct line, plus two wrong ones. One wrong
+answer is usually something she ALREADY said earlier in the same conversation (so she has to actually
+follow the back-and-forth, not just translate one sentence in isolation), and the third scenario in each
+language specifically tests the polite/informal distinction (for example, in Spanish the wrong answer
+says "Perdona" -- fine for a friend -- where the right one needs "Perdone", for a stranger). Whatever she
+picks, the conversation then carries on with the CORRECT line, so she always sees how it should have
+gone. Same scoring, same Mistake Dojo, same everything as the rest of Language practice.
+A SMALL THING I WANT TO FLAG CLEARLY: I wrote all the Mandarin dialogue myself and have NOT had it
+checked by a native speaker. You mentioned you speak Mandarin and can check things like this yourself --
+I'd genuinely appreciate it if you had a look, especially the three "Talking to your teacher" exchanges
+(they lean on 您/老师, the polite forms) and the family vocabulary. Nothing is live yet that depends on
+it being perfect, so there's no rush, but I'd rather you caught anything wrong than Anna learning it
+wrong.
+A TEST GAP I FOUND AND CLOSED WHILE DOUBLE-CHECKING MY OWN WORK, BEING UPFRONT ABOUT IT: while doing my
+usual "try to break it on purpose" testing, I realised NOTHING was actually checking that conversation
+answers get counted into your own parent report's "Language practice: N of M right" summary line -- every
+existing test for that line happened to use fill-in-the-blank or Repeat-after-me numbers, never
+conversations. The feature itself was wired correctly, but the safety net had a hole in it, so I added two
+proper checks for it before calling this done, rather than leaving it as an assumption.
+
+ENGLISH LITERATURE -- A NEW "DYSTOPIAN FICTION" TOPIC (VERSION 142)
+The curriculum-map check from a couple of versions ago also found that the real Year 7
+English/Literature syllabus teaches a Dystopian Fiction genre unit (through a specific novel
+about a boy's journey as a refugee) and a set of migration/refugee words that weren't
+anywhere in the Academy. That novel is still in copyright, so -- same rule as always -- I
+haven't used anything from it. In fact I went a step further than usual: I didn't name ANY
+real dystopian novel, author or character at all, not even a different, more famous one,
+because several of those are themselves still in copyright and some of their best-known
+words (like "Big Brother") belong to that specific book rather than to the genre as a whole.
+So the new topic teaches the IDEAS behind the genre, with made-up examples:
+ - DYSTOPIA and UTOPIA: an imagined "bad place" and an imagined "perfect place" -- opposites.
+ - OPPRESSION and CONFINEMENT: being treated cruelly by those in power, and being shut in or
+   kept within strict limits against your will.
+ - REBELLION: pushing back against an unfair ruling power.
+ - plus related words that round the topic out: totalitarian, surveillance, propaganda,
+   conformity, censorship, individuality and hierarchy.
+20 new questions, its own lesson, and -- unlike Art's Portrait artists -- its OWN "tips and
+tricks" card too. I checked first and found Literature works the opposite way round from
+Art: every single one of its existing topics already has its own tips card, so this new one
+got one as well, rather than sharing a generic one.
+
+MIGRATION/REFUGEE WORDS (HISTORY)
+The same survey found the nine actual words that novel teaches -- Refugee, Asylum,
+Statelessness, Displacement, Trafficking, Persecution, Humanitarian crisis, Deportation and
+Exile -- were missing everywhere, including from the Migration topic you already have in
+History. These are just ordinary dictionary words, not anything from the book itself, so I
+added proper definitions for all nine to History's glossary (so she'll meet them as "Key
+words" quiz questions too), and also added a short explanation of them directly onto the
+Migration topic's own revision notes, since that's specifically where you'd noticed they
+were missing from.
+TWO THINGS I FOUND AND FIXED WHILE TESTING, BEING UPFRONT ABOUT BOTH: first, three of my
+first-draft explanations for the new Dystopian Fiction questions accidentally repeated too
+many of the same words as their own answer (for example, explaining "opposites" by saying
+the two ideas were, well, opposite) -- the hint system is built to spot this and either hide
+the hint or garble it, so I caught it, rewrote those three explanations with different
+wording, and checked the fix properly rather than just assuming it worked. Second, one of the
+two new written-answer questions had a small overlap in its marking: the word "control" was
+meant to only count towards one point, but it also happened to appear inside the phrase "a
+controlled area" in a different point's own model sentence, so answering just that different
+point would have wrongly also ticked the "control" point. Fixed by swapping to a word that
+only appears in the point it's meant for.
+
+ART -- THE FIVE REAL YEAR 7 PORTRAIT ARTISTS (VERSION 121)
+The curriculum-map check I did a couple of versions ago found that Art's real Year 7
+syllabus names five specific portrait artists that were not anywhere in the Academy yet --
+Martin Schoeller, Esther Griffith, Lorna Simpson, Kehinde Wiley and Kelvin Okafor. This did
+not need a decision from you first (I flagged it as safe to just build), so I built it this
+time: a new "Portrait artists" topic on the Art page, 20 questions in all (4 for each
+artist), covering what actually makes each one distinctive --
+ - MARTIN SCHOELLER: his extreme close-up "Big Head" photographs, with the same flat
+   lighting and plain background for every single sitter, whether famous or not.
+ - ESTHER GRIFFITH: a Trinidadian painter who mixes hyper-realism with looser brushwork in
+   oil and watercolour, and painted portraits for "Wiki Unseen", a project giving a picture
+   to notable people (especially from the Caribbean) who had none on their Wikipedia page.
+ - LORNA SIMPSON: often hides her subject's face and pairs a photograph with a few words,
+   to make people question stereotypes about Black women -- and in 1990 became the first
+   African American woman to show work at the famous Venice Biennale art show.
+ - KEHINDE WILEY: paints large portraits of Black people in poses borrowed from grand old
+   historical paintings, against bold decorative patterned backgrounds -- he painted Barack
+   Obama's official 2018 presidential portrait, which hangs in the Smithsonian in Washington.
+ - KELVIN OKAFOR: draws hyperrealistic pencil portraits so detailed they can look like
+   photographs, building each one up feature by feature like a puzzle.
+TWO THINGS I LEFT OUT ON PURPOSE, AND WANT TO BE UPFRONT ABOUT: Martin Schoeller also has a
+well-known project photographing Holocaust survivors, and there were sexual-assault
+allegations made against Kehinde Wiley in 2024. Neither is mentioned anywhere in this topic
+-- the Holocaust-survivor project is the same kind of boundary you drew for History a while
+back, and the allegations are simply not relevant to, or appropriate for, a Year 7 lesson
+about someone's painting technique. Tell me if you'd rather I handled either differently.
+NO METHOD CARD FOR THIS TOPIC, ON PURPOSE: Art already doesn't give any of its topics their
+own "tips and tricks" card -- they all share one general one instead ("look closely, say
+what the artist did, give a reason"), and Portrait artists works the same way. I checked
+this properly by actually answering a question wrong and watching what appeared on screen,
+rather than just assuming -- nothing is missing, it shows the same shared card every other
+Art topic does.
+A MUTATION-TESTING NOTE, BEING HONEST ABOUT WHAT ONE TEST DIDN'T CATCH: as part of my usual
+"try to break it on purpose" testing, one of my four deliberate faults (a part of an
+explanation that repeated part of its own answer, for a question with an unusually long
+answer) was not caught by the test on the first try. That's because the hint system only
+double-checks for leaked wording automatically when an answer is 8 words or fewer -- a real
+limit of how the existing hint system works, not something new I broke. I swapped in a
+different deliberate fault that the tests do properly catch, and I'm noting this here rather
+than quietly moving past it, in case it's worth a closer look at longer-answer hints another
+time.
+
+GEOGRAPHY -- I ADDED WHAT WAS GENUINELY MISSING FROM THE REAL MAP (VERSION 120)
+You said "leave Geography, but simply add what's missing from the map". I read the whole
+real Year 7 Geography curriculum map again, properly, and checked every topic directly
+against what's actually in the Academy already (not just by reading file names -- I checked
+the live question list itself). Four things were genuinely missing, so I added 20 new
+questions into the existing topics they belong in:
+ - UK GEOGRAPHY: National Parks -- what they are, that people actually live and work inside
+   them (farmers, whole villages), and why that causes real disagreements between farmers,
+   visitors and conservation groups.
+ - DEVELOPMENT AND TRADE: tariffs (a tax on goods from abroad) and infrastructure (roads,
+   railways, ports, power) and why both matter to a country's economy.
+ - WEATHER AND CLIMATE: anticyclones and depressions (the two main pressure systems),
+   isobars, and the dew point.
+ - NATURAL RESOURCES AND ENERGY: the four "spheres" of the Earth (lithosphere, hydrosphere,
+   atmosphere, biosphere) and why plastic pollution in the ocean is a serious problem.
+I did NOT touch the Glaciation/Coasts question -- the school's Year 8 map places those
+topics in Year 8, but the Academy already teaches them in Year 7, and you said to leave that
+alone for now. It's still sitting in the queue, waiting for your decision, exactly as you
+asked.
+
+PSHE -- A NEW TOPIC ON FAMILIES, BUILT WITH YOUR GO-AHEAD (VERSION 120)
+You said yes to building PSHE content, since she'll be learning it in school anyway. I
+checked what the Academy already covers first: healthy relationships, friendships, online
+safety and staying safe were all already well covered. The one genuinely missing piece,
+compared with the real curriculum, was FAMILIES -- so that's what I built: a new topic
+covering single-parent families, step-families, foster and adoptive families, families with
+grandparents raising children, and same-sex parents, with the message that what makes a
+family is love, care and support, not any particular shape, and nobody should be made to
+feel embarrassed about their own family. I also added one more question to the existing
+Healthy relationships topic, about relationships always needing to be built on mutual
+respect and both people feeling ready.
+ONE THING I DECIDED MYSELF, AND WANT TO BE UPFRONT ABOUT: your go-ahead was broad, but I
+deliberately kept this strictly age-appropriate and did NOT build anything about
+sexual activity, pregnancy or contraception -- that level of detail belongs a few years later
+in a normal school RSE programme (the school's own curriculum map agrees: its own most
+explicit relationships content doesn't appear until Year 10/GCSE). If you want me to look at
+this differently, tell me and I will.
+A MISTAKE FOUND BY MY OWN TESTS AND FIXED BEFORE THIS REACHED YOU: one of my first-draft
+clues (for "What is the atmosphere?") gave away a bit too much, same kind of thing as the
+Migration mistake last time. My tests caught it and I rewrote it before anything was
+delivered.
+
+MIGRATION -- THE REAL YEAR 7 TOPIC THAT LAST VERSION'S DISCOVERY POINTED TO (VERSION 110)
+Last time, I told you that reading the school's own curriculum map showed Year 7's real
+"beyond the Stuarts" History topic is actually Migration, not the three topics I had just
+built (those turned out to be Year 8/9 content, built properly anyway). This version builds
+that real Year 7 topic: a new "Migration" topic on the History page, in the same "The wider
+world" section as Kingdoms of the World.
+It covers the Romans, Saxons, Vikings and Normans as groups who settled in Britain; the
+Tudor-era word "Blackamoor" and John Blanke, a Black trumpeter who played at the courts of
+Henry VII and Henry VIII and appears in a painting from 1511; Jewish migrants fleeing
+violent attacks (pogroms) in the Russian Empire, and the 1905 Aliens Act; the Irish Great
+Famine and the "navvies" who built Britain's railways and canals, and the prejudice they
+faced; the ship Empire Windrush arriving in 1948 and why Caribbean migrants came, and the
+prejudice the Windrush generation faced; and the Partition of India in 1947 and why South
+Asian families came to Britain afterwards. 19 questions in all, with a lesson, a method
+card, a revision note and two written-answer questions, same as every other History topic.
+This is standard, mainstream content taught in UK schools, so I did not stop to ask you a
+clarifying question before building it this time (unlike the Holocaust choice in the last
+version) -- tell me if you would rather I had checked first.
+A SMALL MISTAKE FOUND BY MY OWN TESTS AND FIXED BEFORE THIS REACHED YOU: three of my
+first-draft clues for the Hint button gave too much away (they repeated too many of the
+answer's own words), so my tests correctly caught it and I rewrote them to give a real clue
+from a different angle instead. Nothing wrong ever reached you; this is just how the testing
+is meant to work.
+WHILE DOUBLE-CHECKING THE NUMBERS FOR THIS README, I found the "about 2,633 fixed questions"
+figure at the bottom of this file had drifted out of date over several earlier versions (it
+was not keeping up as new topics were added over many sessions). I recounted everything
+properly this time: the true total is 2,889 fixed questions, now shown correctly below.
+
+HISTORY BEYOND THE STUARTS (VERSION 96) -- AND SOMETHING IMPORTANT I FOUND OUT PARTWAY THROUGH
+You said "continue" on History beyond the Stuarts, then chose all three topics (Industrial Revolution, the
+British Empire including slavery and its abolition, and the World Wars), and chose to leave the Holocaust out
+of World Wars for now. All three are built: a new "The modern world" section on the History page with
+Industrial Revolution (spinning jenny, steam engine, factory towns, child labour laws, the Peterloo Massacre,
+the Chartists), British Empire (the transatlantic slave trade, William Wilberforce, the 1807 and 1833 Acts,
+Harriet Tubman and the Underground Railroad, Toussaint Louverture and the Haitian revolution, the American
+Civil War) and World Wars (causes, trenches, the Armistice, the Blitz, evacuation, rationing, Churchill, D-Day --
+NOT the Holocaust, as you asked). Each has its own lesson, method card, revision note and written-answer
+questions, same as every other History topic.
+PARTWAY THROUGH, you sent me the school's own curriculum-map PDFs for every subject and said you had called the
+school and they confirmed the maps are correct. I read History's map, and it turns out Industrial Revolution and
+the British Empire/slavery are actually taught in YEAR 8, not Year 7, and the World Wars (with the Holocaust) in
+YEAR 9. Year 7's OWN "beyond the Stuarts" topic, according to the school's own map, is actually MIGRATION
+(Romans, Saxons, Vikings, Normans, Blackamoors, the Windrush generation, South Asian migration) followed by a
+small local-history topic on Lewisham.
+WHAT I DID ABOUT IT: you had already chosen the three topics and real work was already done, so rather than
+throw it away I finished building all three, properly, with the real vocabulary from the school's own curriculum
+(that's where Peterloo, the Chartists, Harriet Tubman and Toussaint Louverture came from) -- they are correct,
+well-tested content either way, just Year 8/9 rather than Year 7. I have now put the GENUINELY Year 7 content
+(Migration, then the Lewisham local history) at the top of the queue, and added a job to check the other ten
+subjects' curriculum maps against what is already built, in case the same kind of mismatch is sitting elsewhere
+too. Tell me if you would rather I prioritise anything differently.
+A MISTAKE I MADE AND FIXED: while building this, I accidentally overwrote the written-answer questions for six
+Music topics (Voices and singing, Musical periods, Melody and harmony, Rhythm and metre, Structure and texture,
+World music) by writing the new History questions into the same file name by mistake. My own full test run
+caught it before this reached you -- the Music questions are restored and the History ones moved to their own
+file, and I added a safeguard so a mistake like that shows up immediately next time too, not just eventually.
+
+YOU SAID THE "COMPOSERS AND WORKS" QUESTIONS WERE TOO HARD, AND ASKED ABOUT A SNIPPET OF EACH PIECE
+You said neither you nor Anna had heard of most of the 38 composers or pieces in that question type, and asked
+whether it could play a snippet of each piece and teach her the composers first. Both fair points -- that question
+type was built straight from the Year 7 curriculum list, with nothing to actually teach the 38 pairs beforehand.
+FIXED: a new "Meet the composers" page on the Music page (next to Piano and the Music words lab). It has a card for
+every one of the 38 composers and pieces, grouped into the same six musical periods she is already taught in the
+"Musical periods" topic (Medieval, Baroque, Classical, Romantic, Twentieth century, and a small "Modern and film
+music" group for John Williams), so looking through it is itself revision. Every card says who the composer was,
+roughly when they lived, and one real, memorable fact about them and their piece -- for example, that Bach had
+over 20 children, or that the first audience for Stravinsky's Rite of Spring actually started a riot in 1913.
+Every card also has a "Hear the name" button that reads the composer and piece out loud -- several of these names
+are genuinely hard to say (Rimsky-Korsakov, Mussorgsky, Pachelbel, Tchaikovsky), and I don't think she can "get to
+know" a composer whose name she has never heard said aloud. A "Try the questions now" button leads straight into
+the real quiz once she has looked through.
+ON THE SNIPPET IDEA: I looked into this properly, and I want to be straight with you about why I have only added
+two, rather than one for every piece. A real snippet is either a copyrighted recording -- which this project never
+uses, for any subject -- or the app playing the actual tune itself, note by note. That second way is only honest for
+a piece whose MUSIC (not just a particular recording of it) is old enough to be out of copyright, and several of
+these 38 are not: Bernstein, Britten, Copland, Vaughan Williams and Stravinsky all died too recently for that, and
+John Williams is alive and still actively writing new Star Wars music, so his tune is very much still his. For the
+pieces that ARE old enough, there is a second problem: nobody in the environment I build and test this in can
+actually listen to anything, so I had no way to check a melody I typed out by hand was really correct before
+teaching it to Anna as fact -- and a wrong note taught as the real tune seemed worse to me than no tune at all.
+So I have only included two real "Hear a tune" buttons, both chosen because neither needed a new, uncheckable
+transcription: Beethoven's Ode to Joy (this app already plays that exact tune elsewhere, in Follow the lights on
+the Piano page, so there was nothing new to get wrong) and the repeating bass pattern from Pachelbel's Canon (this
+is a standard chord pattern taught in every music theory book, not really "a copied melody" at all). Every other
+composer gets the spoken name and a real fact instead of a snippet.
+If there are a small number of these 38 pieces Anna would most like to actually hear, and you can find or link a
+short, clearly public-domain or openly-licensed recording of one (not a copyrighted CD or streaming clip), tell me
+which ones and I can look at building those in properly, with something real behind them rather than a guess.
 
 A BUG YOU SPOTTED: THE LANGUAGE PRACTICE "MIX" GAME WAS MISSING A WHOLE GAME TYPE
 You said the "combine" button claims 4 games when there are 5 cards on the page. You were right, and it was a real bug, not
@@ -60,17 +391,21 @@ tapped Hint on the new question type, and played a match-up game -- with the rou
 celebrations popping up and being dismissed along the way, exactly as they would for her.
 
 WHAT IS STILL OPEN
+ - LEWISHAM LOCAL HISTORY is next in the queue: a small mini-unit on the history of Lewisham, the real Year 7
+   curriculum's own closer for the year, alongside a summative assessment. I have not researched the actual local
+   history yet, so I will do that properly before building anything, the same care I took with the Civil War,
+   Plague and Fire, and Migration.
+ - CHECKING THE OTHER 10 SUBJECTS' CURRICULUM MAPS: now that History's own map showed a real mismatch, I want to
+   check the other subjects (PSHE/RSE, Computer Science, Art, DT, English, Geography, Maths, Spanish, Music, RE,
+   Science) against their own maps too, after Lewisham.
  - THE DUOLINGO-STYLE WORD DECK YOU ASKED ABOUT: yes, this is very buildable, and I think it would be a genuinely good
    addition -- see my message in chat for the design I'd use (it reuses the same speech-checking system as Repeat after
    me, plus a version that works even with speech checking off). I have not built it yet: tell me if you want it built
-   next, ahead of History, or added to the queue after.
- - HISTORY BEYOND THE STUARTS is next in the queue, now that you have said yes: the Industrial Revolution, the British Empire
-   (including slavery and its abolition), and the World Wars. I will plan the specific facts and how they are
-   presented carefully, the same care I took with the Civil War and Plague and Fire, since some of it is heavy for
-   Year 7.
+   next, or kept in the queue where it is.
  - Tell me if Anna gets stuck on any specific question, in any subject, and I will fix that hint next.
- - 45 question types still give a general hint (Religious Studies 2, Design and Technology 7, Art 6, Literature 8,
-   Science 11, Maths 5, Geography 2, Computing 2, PSHE 2), starting with Religious Studies.
+ - 11 question types still give a general hint (Maths 5, Geography words and UK facts 2,
+   Computing 2, PSHE 2) -- Religious Studies' 2, Design and Technology's 7, Art's 6,
+   Literature's 8 and Science's 11 are now done, starting with Maths next.
  - About 53 of the Geography and Map symbols hints still show a blank where the answer was ("??? is a service...").
    That is how the app normally builds hints for hand-written questions and it is safe, but proper clues would be
    better.
@@ -88,10 +423,25 @@ IN EARLIER VERSIONS
  - Maths answers checked by computer (about 10,600, 0 wrong); Extreme Word Challenge (116 words); all 164 capitals checked.
 
 WHAT IS IN THIS VERSION
- - 156 lessons, each with teach, study, try it and a 5-question check, plus revision notes
- - About 2,600 fixed questions, 33 reading passages and 145 endless practice games
+ - 179 lessons, each with teach, study, try it and a 5-question check, plus revision notes
+ - 2,967 fixed questions, 33 reading passages and 151 endless practice games
    (built from 865 checked facts), for all 14 subjects
- - Spanish and Mandarin Language practice (4 levels, 4 games, 80 sentences); 124 Spanish and 74 Mandarin words to hear and say; 317 written-answer questions, 22 reasoning questions,
+ - Spanish and Mandarin: Back-and-forth conversations (3 scripted scenarios per language), the
+   scripted/choice version of the conversation-practice idea, filed under Greetings/Family/Formal
+   and informal so it counts on the Coverage map -- Mandarin not yet checked by a native speaker
+ - Literature: a new Dystopian Fiction topic (dystopia, utopia, oppression, confinement,
+   rebellion and related genre words, taught generically with no real novel named); History:
+   nine migration/refugee words (refugee, asylum, statelessness, displacement, trafficking,
+   persecution, humanitarian crisis, deportation, exile) added to the glossary and to Migration's
+   own revision note
+ - Art: the five real Year 7 portrait artists (Schoeller, Griffith, Simpson, Wiley, Okafor)
+ - Geography: National Parks, tariffs and infrastructure, weather pressure systems, and the Earth's spheres
+   and plastic pollution. PSHE: a new Families topic
+ - History: Migration (Romans to the Windrush generation and Partition), and a "The modern world" section --
+   Industrial Revolution, British Empire, World Wars
+ - Meet the composers: a page teaching all 38 "Composers and works" pairs by musical period, every one with a
+   spoken name and a real fact, two with a real tune to hear
+ - Spanish and Mandarin Language practice (4 levels, 6 games plus a mix of everything, 80 sentences, 6 scripted conversations); 124 Spanish and 74 Mandarin words to hear and say; 364 written-answer questions, 22 reasoning questions,
    7 piano tunes, 12 music words to hear, Story Lab, Future Hopes guide, grid references, 164 flags, the capital cities academy
  - 105 trophies, with 63 badge pictures and 6 master badges
  - 235 silly spoken lines (congratulations and hints)

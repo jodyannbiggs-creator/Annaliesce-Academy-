@@ -426,7 +426,7 @@ textarea.slin{width:100%;font:inherit;padding:10px;border:2px solid var(--line);
 <div id="toast" role="status" aria-live="polite" hidden></div>
 <input type="file" id="impfile" accept="application/json,.json" hidden>
 <script>
-const BUILD_INFO={n:168,at:'19 Oct 2026, 00:00'};
+const BUILD_INFO={n:172,at:'19 Oct 2026, 13:35'};
 /* =====================================================================
    THE ANNALIESCE ACADEMY
    ---------------------------------------------------------------------
@@ -7076,6 +7076,25 @@ Puja|Hinduism|practice or belief
 Four Noble Truths|Buddhism|practice or belief`);
 pairGen('re','Religion facts','🕊️ Religion facts',null,RE_ROWS,{fwd:r=>'Which religion has the '+r[2]+' “'+r[0]+'”?', rev:r=>'Which of these is a '+r[2]+' in '+r[1]+'?', exp:r=>'“'+r[0]+'” is a '+r[2]+' in '+r[1]+'.', hint:r=>RE_FACT_CLUES[r[0]]});
 /* ---------------- D&T ---------------- */
+/* per-row clues for D&T's seven 'todo' hint types (item 11a, D&T sub-chunk, straight after RE): DT_PROPS/DT_TOOLS/DT_WORDS/DT_MECH are term+definition pairs (same
+   shape as RE_WORDS/MU_WORDS_CLUES -- fwd reveals the definition, rev reveals the term, so a hint must never name the term and must never closely paraphrase the
+   definition); DT_MATS/DT_SAFE/DT_USES group ALL their rows under one shared tag (same shape as RE_ROWS -- wrong answers can be drawn from the WHOLE table, not a
+   sub-category), so a hint must never name the term or the thing it's paired with (a material's category, or a safety item's body part). Checked in flow_dthints.js. */
+const DT_PROPS_CLUES = {
+'Hard':"Think of a diamond or a hammer head -- try to scratch it and you'll barely leave a mark.",
+'Tough':"Think of a cricket helmet or a crash helmet -- it needs to take a real knock without snapping.",
+'Malleable':"Think of pure gold, soft enough to shape by beating it with a mallet.",
+'Ductile':"Think of copper being stretched out to make long electrical cable.",
+'Brittle':"Think of a dry twig, or a chocolate bar straight from the fridge -- snap, not bend.",
+'Flexible':"Think of a rubber band or a garden hose -- you can curve it right over and it springs back.",
+'Durable':"Think of a pair of work boots that are still going strong after years of heavy use.",
+'Conductor':"Think of a metal spoon left in a hot drink -- the handle warms up too.",
+'Insulator':"Think of the plastic coating wrapped around an electrical cable.",
+'Absorbent':"Think of a kitchen towel mopping up a spill.",
+'Waterproof':"Think of a raincoat in a downpour -- nothing gets through to your clothes underneath.",
+'Biodegradable':"Think of a banana skin left in a compost bin, slowly rotting away to nothing.",
+'Renewable':"Think of a forest where new trees are planted to take the place of the ones that are cut down.",
+};
 const DT_PROPS = rowsOf(`Hard|Resists scratching and denting|prop
 Tough|Absorbs shock without breaking|prop
 Malleable|Can be hammered or pressed into shape|prop
@@ -7089,7 +7108,23 @@ Absorbent|Soaks up liquid|prop
 Waterproof|Does not let water through|prop
 Biodegradable|Breaks down naturally|prop
 Renewable|Can be replaced or grown again|prop`);
-pairGen('dt','Material properties','🧱 Material properties','Materials',DT_PROPS,{fwd:r=>'What does it mean if a material is '+r[0].toLowerCase()+'?', rev:r=>'Which property means: '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'?', exp:r=>r[0]+' means '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'.', hint:'Picture a real object made from the material.'});
+pairGen('dt','Material properties','🧱 Material properties','Materials',DT_PROPS,{fwd:r=>'What does it mean if a material is '+r[0].toLowerCase()+'?', rev:r=>'Which property means: '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'?', exp:r=>r[0]+' means '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'.', hint:r=>DT_PROPS_CLUES[r[0]]});
+const DT_TOOLS_CLUES = {
+'Tenon saw':"This has a stiff metal strip along the top to keep the blade perfectly straight as you cut.",
+'Coping saw':"This has a thin, narrow blade stretched in a deep frame, so it can turn corners a straight blade can't.",
+'Hacksaw':"This has a fine-toothed blade held under tension in a sturdy frame, tough enough for a pipe or a bolt.",
+'Try square':"This has one short and one long arm, always meeting at exactly 90 degrees.",
+'Vice':"This bolts to the edge of a workbench and has two jaws you wind together with a handle.",
+'G-clamp':"Shaped like the letter it's named after, with a screw you tighten by hand.",
+'Craft knife':"This has a short, very sharp replaceable blade, more like something from a pencil case than a toolbox.",
+'Steel rule':"This is a flat metal strip marked off in millimetres, too thin and rigid to bend.",
+'Bradawl':"This has a small pointed tip you twist and push by hand, no motor needed.",
+'Scriber':"This looks a bit like a long pin or needle with a sharp point at one end.",
+'Centre punch':"You hit the top of this with a hammer to leave a tiny dent exactly where you want it.",
+'Sandpaper':"This feels rough and gritty to the touch, like it has tiny stones stuck to one side.",
+'Glue gun':"This plugs in and heats up, with a trigger you squeeze to push out a melted stick.",
+'Pillar drill':"This stands fixed on a workbench with a lever you pull down, instead of being held in your hands.",
+};
 const DT_TOOLS = rowsOf(`Tenon saw|Cutting straight lines in wood|tool
 Coping saw|Cutting curves in wood|tool
 Hacksaw|Cutting metal|tool
@@ -7104,7 +7139,25 @@ Centre punch|Marking where to drill in metal|tool
 Sandpaper|Smoothing wood|tool
 Glue gun|Joining materials with hot glue|tool
 Pillar drill|Drilling holes accurately|tool`);
-pairGen('dt','Tools and jobs','🔧 Tools and jobs','Tools and safety',DT_TOOLS,{fwd:r=>'What is a '+r[0].toLowerCase()+' used for?', rev:r=>'Which tool is used for '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'?', exp:r=>'A '+r[0].toLowerCase()+' is used for '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'.', hint:'Think about the job, then the shape of the tool.'});
+pairGen('dt','Tools and jobs','🔧 Tools and jobs','Tools and safety',DT_TOOLS,{fwd:r=>'What is a '+r[0].toLowerCase()+' used for?', rev:r=>'Which tool is used for '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'?', exp:r=>'A '+r[0].toLowerCase()+' is used for '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'.', hint:r=>DT_TOOLS_CLUES[r[0]]});
+const DT_MATS_CLUES = {
+'Pine':"This pale, knotty wood comes from a fast-growing tree and is one of the cheapest woods you can buy.",
+'Oak':"This strong, light-brown wood was traditionally used for ships and castle beams, and has a very obvious grain pattern.",
+'Beech':"This pale, smooth, close-grained wood is a favourite for kitchen worktops and the seats of chairs.",
+'MDF':"This is made by pressing wood fibres and glue together under heat, so it has no grain at all and a smooth, even surface all the way through.",
+'Plywood':"This is made of thin layers of wood glued together with the grain running in alternating directions, for extra strength.",
+'Acrylic':"This can be heated and bent or moulded into shape, then it sets hard again as it cools -- sold in sheets in any colour.",
+'Polystyrene':"This is full of tiny trapped air bubbles, which is why it feels so light and crumbles so easily.",
+'Copper':"This orange-brown metal is excellent at carrying heat and electricity, and slowly turns green outdoors over many years.",
+'Aluminium':"This metal is unusually light for its strength, and does not rust the way some other metals do.",
+'Brass':"This yellowish metal is actually a mix of two other metals melted together, and is often used for door handles and musical instruments.",
+'Steel':"This is mostly iron with a small amount of carbon mixed in, which makes it far stronger than iron on its own.",
+'Bronze':"This metal, a mix of two others, was used for tools and weapons thousands of years before anyone could work with iron.",
+'Cotton':"This soft white fibre is picked from a plant's seed pods and spun into thread.",
+'Wool':"This fibre is sheared from an animal's coat once or twice a year, and traps air to help keep the animal comfortable.",
+'Polyester':"This fibre is made in a factory from chemicals derived from oil, not grown or farmed at all.",
+'Nylon':"This fibre was the first of its kind ever invented, originally developed to replace silk in stockings and parachutes.",
+};
 const DT_MATS = rowsOf(`Pine|Softwood|mat
 Oak|Hardwood|mat
 Beech|Hardwood|mat
@@ -7121,15 +7174,39 @@ Cotton|Natural fabric|mat
 Wool|Natural fabric|mat
 Polyester|Synthetic fabric|mat
 Nylon|Synthetic fabric|mat`);
-pairGen('dt','Types of material','🪵 Types of material','Materials',DT_MATS,{fwd:r=>'What type of material is '+r[0]+'?', rev:r=>'Which of these is a '+r[1].toLowerCase()+'?', exp:r=>r[0]+' is a '+r[1].toLowerCase()+'.', hint:'Think about where the material comes from.'});
+pairGen('dt','Types of material','🪵 Types of material','Materials',DT_MATS,{fwd:r=>'What type of material is '+r[0]+'?', rev:r=>'Which of these is a '+r[1].toLowerCase()+'?', exp:r=>r[0]+' is a '+r[1].toLowerCase()+'.', hint:r=>DT_MATS_CLUES[r[0]]});
+const DT_SAFE_CLUES = {
+'Goggles':"These wrap around your face and have clear lenses, so machine dust or flying chips can't get in while you can still see exactly what you're doing.",
+'Apron':"This hangs from your neck and ties around your waist, like the kind worn in a cookery lesson to keep you clean while you work.",
+'Gloves':"These cover your fingers individually, so you keep a good grip while handling something sharp or rough.",
+'Dust mask':"This covers your nose and mouth, so you aren't breathing in fine particles thrown up by sanding or cutting.",
+'Ear defenders':"These are large cushioned pads that clamp over the sides of your head, muffling the noise of loud machinery.",
+'Sturdy shoes':"These have a solid, enclosed front, so nothing heavy can land on your toes and do damage.",
+};
 const DT_SAFE = rowsOf(`Goggles|Your eyes|s
 Apron|Your clothes|s
 Gloves|Your hands|s
 Dust mask|Your lungs|s
 Ear defenders|Your ears|s
 Sturdy shoes|Your feet|s`);
-pairGen('dt','Staying safe in D&T','🥽 Staying safe','Tools and safety',DT_SAFE,{fwd:r=>'What do '+r[0].toLowerCase()+' protect?', rev:r=>'Which piece of safety equipment protects '+r[1].toLowerCase()+'?', exp:r=>r[0]+' protect '+r[1].toLowerCase()+'.', hint:'Match the equipment to the part of the body.'});
+pairGen('dt','Staying safe in D&T','🥽 Staying safe','Tools and safety',DT_SAFE,{fwd:r=>'What do '+r[0].toLowerCase()+' protect?', rev:r=>'Which piece of safety equipment protects '+r[1].toLowerCase()+'?', exp:r=>r[0]+' protect '+r[1].toLowerCase()+'.', hint:r=>DT_SAFE_CLUES[r[0]]});
 /* ---------------- ART ---------------- */
+/* per-row clues for Art's six 'todo' hint types (item 11a, the Art sub-chunk, straight after D&T): ART_MIX and ART_COMP are colour-pair tables where EVERY
+   row shares one tag, so a clue must never name its own result/complementary colour (or, for ART_MIX, its own component colours either, since it can be asked
+   in reverse) -- solved the RE_ROWS way, by never naming ANY of the handful of colour words used anywhere in that table at all (same trick RE used for the 6
+   religion names). ART_ARTISTS and ART_MOVES pair a real artist with a real, named artwork or movement -- both columns are short proper nouns, so both need
+   the RE_ROWS treatment (never name the artist OR the artwork/movement, checked against every other row's values too), describing the artwork's real visual
+   content/style only -- no reproduction, no quoted text, just a factual description of what a famous, long-public painting looks like, the same way any art
+   textbook would. ART_TERMS and ART_MORE are ordinary term+definition vocabulary (the RE_WORDS/DT_WORDS recipe). Checked in flow_arthints.js. */
+const ART_MIX_CLUES = {
+'Red and yellow':"Think of the colour of a satsuma, a pumpkin, or a traffic cone.",
+'Blue and yellow':"Think of the colour of fresh grass or a lime.",
+'Red and blue':"Think of the colour of a ripe plum or a bunch of grapes.",
+'Red and white':"Think of the colour of a flamingo or candyfloss.",
+'Blue and white':"Think of the colour of a clear summer sky, a few shades paler than usual.",
+'Black and white':"Think of the colour of storm clouds or an elephant's skin.",
+'Red and green':"Think of the colour of wet soil or a conker.",
+};
 const ART_MIX = rowsOf(`Red and yellow|Orange|mix
 Blue and yellow|Green|mix
 Red and blue|Purple|mix
@@ -7137,14 +7214,36 @@ Red and white|Pink|mix
 Blue and white|Light blue|mix
 Black and white|Grey|mix
 Red and green|Brown|mix`);
-pairGen('art','Mixing colours','🎨 Mixing colours','Colour theory',ART_MIX,{fwd:r=>'What do you get if you mix '+r[0].toLowerCase()+' paint?', rev:r=>'Which two colours mix to make '+r[1].toLowerCase()+'?', exp:r=>r[0]+' make '+r[1].toLowerCase()+'.', hint:'Think about the colour wheel.'});
+pairGen('art','Mixing colours','🎨 Mixing colours','Colour theory',ART_MIX,{fwd:r=>'What do you get if you mix '+r[0].toLowerCase()+' paint?', rev:r=>'Which two colours mix to make '+r[1].toLowerCase()+'?', exp:r=>r[0]+' make '+r[1].toLowerCase()+'.', hint:r=>ART_MIX_CLUES[r[0]]});
+const ART_COMP_CLUES = {
+'Red':"Think of the colour of grass, or a traffic light telling you to go.",
+'Green':"Think of the colour of a ripe strawberry, or a stop sign.",
+'Blue':"Think of the colour of a satsuma, or a pumpkin at Halloween.",
+'Orange':"Think of the colour of a clear daytime sky, or the sea on a sunny day.",
+'Yellow':"Think of the colour of a ripe aubergine, or a bunch of grapes.",
+'Purple':"Think of the colour of a ripe banana, or the sun in a child's drawing.",
+};
 const ART_COMP = rowsOf(`Red|Green|c
 Green|Red|c
 Blue|Orange|c
 Orange|Blue|c
 Yellow|Purple|c
 Purple|Yellow|c`);
-pairGen('art','Complementary colours','🌈 Opposite colours','Colour theory',ART_COMP,{fwd:r=>'Which colour is opposite '+r[0].toLowerCase()+' on the colour wheel (its complementary colour)?', exp:r=>r[1]+' is opposite '+r[0].toLowerCase()+' on the colour wheel.', hint:'Complementary colours sit opposite each other.'});
+pairGen('art','Complementary colours','🌈 Opposite colours','Colour theory',ART_COMP,{fwd:r=>'Which colour is opposite '+r[0].toLowerCase()+' on the colour wheel (its complementary colour)?', exp:r=>r[1]+' is opposite '+r[0].toLowerCase()+' on the colour wheel.', hint:r=>ART_COMP_CLUES[r[0]]});
+const ART_ARTISTS_CLUES = {
+'Vincent van Gogh':"This swirling night scene shows thick, curling brushstrokes, a bright crescent moon, and glowing stars over a sleepy village below.",
+'Leonardo da Vinci':"This famous portrait shows a woman with a famously mysterious, barely-there smile, painted in Renaissance Italy and now kept behind glass in a Paris museum.",
+'Claude Monet':"This series of paintings shows floating flowers on the surface of a calm garden pond, painted again and again in changing light.",
+'Pablo Picasso':"This huge black-and-white painting shows the chaos of a bombed town, with twisted figures, a distressed horse, and a bull.",
+'Salvador Dalí':"This dreamlike desert scene shows several clocks that look as if they are melting and drooping over rocks and branches.",
+'Andy Warhol':"This pop-art piece repeats the same ordinary supermarket tin, over and over, in a grid of identical rows.",
+'Edvard Munch':"This painting shows a wide-eyed figure on a bridge, gripped by panic, under a sky swirling with orange and red.",
+'Georges Seurat':"This huge painting shows people relaxing by a river on a sunny afternoon, built up entirely from thousands of tiny dots of colour.",
+'Hokusai':"This Japanese woodblock print shows a huge, curling swell about to crash over three small boats, with a distant snow-capped mountain behind.",
+'Michelangelo':"This vast religious painting, high above a chapel in Rome, shows scenes from the Bible, including two hands almost touching at the moment of creation.",
+'Johannes Vermeer':"This portrait shows a young woman glancing back over her shoulder, wearing an exotic blue-and-gold turban and a single, glowing drop earring.",
+'Frida Kahlo':"This double self-portrait shows two versions of the same woman sitting side by side, holding hands, their hearts connected by a thin vein.",
+};
 const ART_ARTISTS = rowsOf(`Vincent van Gogh|The Starry Night|w
 Leonardo da Vinci|Mona Lisa|w
 Claude Monet|Water Lilies|w
@@ -7157,7 +7256,16 @@ Hokusai|The Great Wave off Kanagawa|w
 Michelangelo|The Sistine Chapel ceiling|w
 Johannes Vermeer|Girl with a Pearl Earring|w
 Frida Kahlo|The Two Fridas|w`);
-pairGen('art','Artists and their work','🖼️ Artists and their work','Artists',ART_ARTISTS,{fwd:r=>'Which artwork is by '+r[0]+'?', rev:r=>'Who created “'+r[1]+'”?', exp:r=>r[0]+' created '+r[1]+'.', hint:'Picture the artwork and the style.'});
+pairGen('art','Artists and their work','🖼️ Artists and their work','Artists',ART_ARTISTS,{fwd:r=>'Which artwork is by '+r[0]+'?', rev:r=>'Who created “'+r[1]+'”?', exp:r=>r[0]+' created '+r[1]+'.', hint:r=>ART_ARTISTS_CLUES[r[0]]});
+const ART_MOVES_CLUES = {
+'Claude Monet':"This way of painting uses quick, visible dabs of colour to capture a fleeting moment of light, rather than sharp outlines or fine detail.",
+'Pablo Picasso':"This way of painting breaks a subject apart into angular, geometric shapes and shows several sides of it at once, as if seen from more than one angle at the same time.",
+'Salvador Dalí':"This way of painting shows dreamlike, impossible scenes that don't obey the normal rules of the real world.",
+'Andy Warhol':"This way of making art borrows bold, bright images from advertising and everyday shopping, often repeated like a printed pattern.",
+'Georges Seurat':"This way of painting builds up a whole picture from thousands of tiny, separate dots of pure colour, rather than blended brushstrokes.",
+'Edvard Munch':"This way of painting twists and distorts colour and shape on purpose, to show a strong feeling rather than how something really looks.",
+'Vincent van Gogh':"This way of painting uses bold colour and thick, swirling, very visible brushstrokes to express emotion, going further than just capturing a passing moment of light.",
+};
 const ART_MOVES = rowsOf(`Claude Monet|Impressionism|m
 Pablo Picasso|Cubism|m
 Salvador Dalí|Surrealism|m
@@ -7165,7 +7273,26 @@ Andy Warhol|Pop Art|m
 Georges Seurat|Pointillism|m
 Edvard Munch|Expressionism|m
 Vincent van Gogh|Post-Impressionism|m`);
-pairGen('art','Art movements','🧑‍🎨 Art movements','Artists',ART_MOVES,{fwd:r=>'Which art movement is '+r[0]+' linked with?', rev:r=>'Which artist is linked with '+r[1]+'?', exp:r=>r[0]+' is linked with '+r[1]+'.', hint:'Think about the look of their paintings.'});
+pairGen('art','Art movements','🧑‍🎨 Art movements','Artists',ART_MOVES,{fwd:r=>'Which art movement is '+r[0]+' linked with?', rev:r=>'Which artist is linked with '+r[1]+'?', exp:r=>r[0]+' is linked with '+r[1]+'.', hint:r=>ART_MOVES_CLUES[r[0]]});
+const ART_TERMS_CLUES = {
+'Hatching':"Picture a set of neat, even pencil strokes all running in the same direction, packed closer together wherever the artist wants a darker patch.",
+'Cross-hatching':"Picture one set of neat pencil strokes, then a second set drawn right over the top at a steeper angle, so they overlap like a mesh.",
+'Stippling':"Picture a drawing made entirely of tiny dots, packed densely in the darker areas and more spread out in the lighter ones.",
+'Blending':"Picture a finger, a tissue, or a soft tool dragged gently across a drawing so you can no longer see where one pencil stroke ends and the next begins.",
+'Collage':"Think of an image made from torn magazine pages, fabric scraps, or other bits and pieces, glued down rather than drawn or painted.",
+'Wash':"Picture a brush loaded with colour that's been thinned right down with water, swept across the paper in one smooth, see-through coat.",
+'Tone':"Picture the same red apple drawn in pencil, with one side left almost white and the other side pressed hard and dark.",
+'Texture':"Picture running your fingers over tree bark versus a smooth pane of glass -- very different, even with your eyes shut.",
+'Perspective':"Picture a straight road in a drawing that looks like it's shrinking away into the distance, even though the paper itself is completely flat.",
+'Vanishing point':"Picture the far end of that same shrinking road, the single spot on the horizon where the two edges appear to join together.",
+'Still life':"Imagine a bowl of fruit, a vase of flowers, or a few bottles arranged on a table, none of them capable of moving a muscle.",
+'Portrait':"Think of a framed artwork hanging on a wall, showing just one face looking back out at you.",
+'Landscape':"Imagine standing on a hilltop looking out over fields, hills or a river, with barely a building or a face in sight.",
+'Abstract':"Picture a canvas of shapes, colours and lines that don't try to look like any real object at all.",
+'Silhouette':"Picture a bird standing on a wire at sunset, seen only as a flat black outline in front of a glowing orange sky.",
+'Tint':"Picture red paint turning pale pink as more and more of one particular colour gets stirred in.",
+'Shade':"Picture the same red paint instead turning a deep, dark brick colour as more and more of a different particular colour gets stirred in.",
+};
 const ART_TERMS = rowsOf(`Hatching|Drawing close parallel lines to show tone|t
 Cross-hatching|Layering lines in different directions|t
 Stippling|Building tone with small dots|t
@@ -7183,7 +7310,7 @@ Abstract|Art that does not show things realistically|t
 Silhouette|A solid dark shape against a light background|t
 Tint|A colour with white added|t
 Shade|A colour with black added|t`);
-pairGen('art','Art words','✏️ Art words','Techniques',ART_TERMS,{fwd:r=>'What does “'+r[0]+'” mean in art?', rev:r=>'Which art word means: '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'?', hint:'Think about how it looks on the page.'});
+pairGen('art','Art words','✏️ Art words','Techniques',ART_TERMS,{fwd:r=>'What does “'+r[0]+'” mean in art?', rev:r=>'Which art word means: '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'?', hint:r=>ART_TERMS_CLUES[r[0]]});
 /* ---------------- MUSIC ---------------- */
 const MU_NOTES = rowsOf(`Semibreve|4 beats|n
 Minim|2 beats|n
@@ -7335,6 +7462,32 @@ Again and again and again, the waves crashed.|Repetition|d
 Run, run, run!|Repetition|d
 We fight, we fight, we never give up.|Repetition|d`);
 pairGen('literature','Spot the technique','🔍 Spot the technique','Poetry techniques',LIT_DEV,{fwd:r=>'Which technique is used in this sentence? “'+r[0]+'”', exp:r=>'“'+r[0]+'” is an example of '+r[1].toLowerCase()+'.', hint:'Look for comparisons, human actions, sounds, exaggeration or repeated sounds.'});
+/* per-row clues for Literature's eight 'todo' hint types (item 11a, the Literature sub-chunk, straight after Art): LIT_CHAR pairs a character with the play they're in -- both askable (pairGen fwd/rev)
+   and every row shares one tag, so a clue must never name ANY of the 20 characters or any of the 4 play titles (the RE_ROWS treatment, solved the same way RE solved it for religions: describe the
+   character's role/actions in the plot using no proper nouns at all, which is trivially safe against every check at once). LIT_FORMS and LIT_TERMS are ordinary term+definition vocabulary (the RE_WORDS/
+   DT_WORDS recipe). Checked in flow_lithints.js. */
+const LIT_CHAR_CLUES = {
+'Romeo':"This love-struck young man falls for his family's enemy's daughter at a party and secretly marries her the very next day.",
+'Juliet':"This young woman falls in love with a boy from her family's sworn enemies, and later fakes her own death with a potion to try to be with him.",
+'Tybalt':"This hot-tempered young man is furious that his family's enemy has turned up to a party uninvited, and is later killed in a sword fight in the street.",
+'Mercutio':"This witty, joking best friend of the hero curses both feuding families with his dying breath after being fatally wounded in a street fight.",
+'Friar Laurence':"This well-meaning holy man secretly marries two young lovers, and later gives the heroine a potion to fake her own death.",
+'Macbeth':"This ambitious soldier is told by three witches that he will become king, and murders the king himself to make it come true.",
+'Lady Macbeth':"This ruthlessly ambitious woman pushes her husband to murder the king, then is haunted by guilt and imagines she cannot wash blood from her hands.",
+'Banquo':"This loyal soldier is told by the same three witches that his own descendants will become kings, and is later murdered by his former friend out of jealousy.",
+'Macduff':"This nobleman's wife and children are murdered on the orders of the new king, and he returns from England to take his revenge.",
+'King Duncan':"This trusting king is murdered in his sleep by a nobleman he has just promoted and rewarded.",
+'Puck':"This mischievous fairy sprinkles a magic potion on the wrong sleeping people, causing chaos and confused romances in the forest.",
+'Oberon':"This king of the fairies plays a trick on his own wife using a magic flower, making her fall in love with a man wearing a donkey's head.",
+'Titania':"This queen of the fairies is tricked by her husband into falling in love with a man who has been given a donkey's head.",
+'Bottom':"This over-confident amateur actor is magically given a donkey's head and becomes the object of the fairy queen's sudden affection.",
+'Hermia':"This young woman runs away into the forest with the man she loves, rather than marry the man her father has chosen for her.",
+'Prospero':"This exiled duke uses magic to raise a storm, shipwrecking his old enemies on the island where he now lives.",
+'Miranda':"This young woman has grown up alone on a magical island with her father, and falls in love with the first young man she has ever seen other than him.",
+'Ariel':"This magical spirit serves a powerful magician on an island, carrying out his orders using illusions and music.",
+'Caliban':"This island-born servant resents the magician who rules over him, and feels his own island home has been stolen.",
+'Ferdinand':"This shipwrecked prince falls in love with the first young woman he meets on the island, and is made to carry heavy logs as a test by her father.",
+};
 const LIT_CHAR = rowsOf(`Romeo|Romeo and Juliet|c
 Juliet|Romeo and Juliet|c
 Tybalt|Romeo and Juliet|c
@@ -7355,7 +7508,19 @@ Miranda|The Tempest|c
 Ariel|The Tempest|c
 Caliban|The Tempest|c
 Ferdinand|The Tempest|c`);
-pairGen('literature','Characters and plays','🎭 Characters and plays','Shakespeare basics',LIT_CHAR,{fwd:r=>'Which Shakespeare play is '+r[0]+' in?', rev:r=>'Which of these characters is in '+r[1]+'?', exp:r=>r[0]+' is a character in '+r[1]+'.', hint:'Think about the plot of each play.'});
+pairGen('literature','Characters and plays','🎭 Characters and plays','Shakespeare basics',LIT_CHAR,{fwd:r=>'Which Shakespeare play is '+r[0]+' in?', rev:r=>'Which of these characters is in '+r[1]+'?', exp:r=>r[0]+' is a character in '+r[1]+'.', hint:r=>LIT_CHAR_CLUES[r[0]]});
+const LIT_FORMS_CLUES = {
+'Sonnet':"Think of a traditional love poem exactly the length Shakespeare always used, ending with a short rhyming pair.",
+'Haiku':"Think of a short, traditional Japanese nature poem with a very strict counted pattern in each line.",
+'Limerick':"Think of a silly poem about a man from Nantucket, built for a joke rather than deep meaning.",
+'Couplet':"Think of a pair of neighbouring lines that sound satisfying together because their endings chime.",
+'Quatrain':"Think of a single verse of a poem or song built from exactly four lines before it moves on.",
+'Acrostic':"Think of a poem where reading straight down the left-hand edge spells out a hidden word.",
+'Ballad':"Think of an old folk song, often sad or dramatic, that tells a whole tale across several brief verses.",
+'Free verse':"Think of a modern poem that can look however the poet wants, with no set pattern to follow.",
+'Stanza':"Think of one paragraph-like block of a poem, separated from the next by a blank line.",
+'Rhyme scheme':"Think of labelling each line's own ending with a letter (A, B, A, B...) to show which lines chime with which.",
+};
 const LIT_FORMS = rowsOf(`Sonnet|A poem of 14 lines|f
 Haiku|A three-line poem of 5, 7 and 5 syllables|f
 Limerick|A funny five-line poem with an AABBA rhyme|f
@@ -7366,7 +7531,22 @@ Ballad|A poem that tells a story in short verses|f
 Free verse|A poem with no fixed rhyme or rhythm|f
 Stanza|A group of lines in a poem, like a verse|f
 Rhyme scheme|The pattern of rhymes at the ends of lines|f`);
-pairGen('literature','Poetry forms','📝 Poetry forms','Poetry forms',LIT_FORMS,{fwd:r=>'What is a '+r[0].toLowerCase()+'?', rev:r=>'Which poetry word means: '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'?', hint:'Think about the shape and sound of the poem.'});
+pairGen('literature','Poetry forms','📝 Poetry forms','Poetry forms',LIT_FORMS,{fwd:r=>'What is a '+r[0].toLowerCase()+'?', rev:r=>'Which poetry word means: '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'?', hint:r=>LIT_FORMS_CLUES[r[0]]});
+const LIT_TERMS_CLUES = {
+'Protagonist':"Think of the character the whole story is really about, the one you follow from beginning to end.",
+'Antagonist':"Think of the character working against the hero, causing the trouble that needs to be overcome.",
+'Setting':"Think of the backdrop of a story -- a castle in medieval times, or a spaceship in the future.",
+'Plot':"Think of what actually happens in a story, if you had to summarise it start to finish in a few sentences.",
+'Theme':"Think of the deeper point a story is really trying to make, like courage or friendship, underneath the events.",
+'Climax':"Think of the point in a story where the tension peaks, right before everything is resolved.",
+'Narrator':"Think of whoever is doing the telling, even if they never appear as a character themselves.",
+'Flashback':"Think of a film suddenly cutting to show something that happened years earlier, then cutting back to now.",
+'Foreshadowing':"Think of a small, easy-to-miss detail early on that only makes sense once you know how things turn out.",
+'Cliffhanger':"Think of a TV episode that stops right at the worst possible moment, forcing you to watch the next one.",
+'Dialogue':"Think of the quotation marks in a book, showing exactly what someone is saying out loud.",
+'First-person narrative':"Think of a diary entry, written entirely from inside one person's own head.",
+'Third-person narrative':"Think of a camera floating above the action, watching and describing everyone from the outside.",
+};
 const LIT_TERMS = rowsOf(`Protagonist|The main character|t
 Antagonist|The character who opposes the main character|t
 Setting|Where and when a story takes place|t
@@ -7380,7 +7560,7 @@ Cliffhanger|An ending that leaves you in suspense|t
 Dialogue|The words characters say to each other|t
 First-person narrative|A story told by “I”|t
 Third-person narrative|A story told by an outside narrator using he, she or they|t`);
-pairGen('literature','Story words','📖 Story words','Story and novel study',LIT_TERMS,{fwd:r=>'What does “'+r[0]+'” mean in a story?', rev:r=>'Which story word means: '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'?', hint:'Think of a story you know well.'});
+pairGen('literature','Story words','📖 Story words','Story and novel study',LIT_TERMS,{fwd:r=>'What does “'+r[0]+'” mean in a story?', rev:r=>'Which story word means: '+r[1].charAt(0).toLowerCase()+r[1].slice(1)+'?', hint:r=>LIT_TERMS_CLUES[r[0]]});
 /* ---------------- SPANISH: verbs and articles ---------------- */
 const ES_VERBS = {ar:['hablar|speak','cantar|sing','bailar|dance','comprar|buy','estudiar|study','trabajar|work','escuchar|listen to','mirar|look at','nadar|swim','tomar|take','necesitar|need','viajar|travel'], er:['comer|eat','beber|drink','correr|run','leer|read','aprender|learn','vender|sell'], ir:['vivir|live','escribir|write','abrir|open','compartir|share','decidir|decide']};
 const ES_END = {ar:['o','as','a','amos','áis','an'], er:['o','es','e','emos','éis','en'], ir:['o','es','e','imos','ís','en']};
@@ -7561,6 +7741,39 @@ Mallet|Hitting a chisel without damaging it|tool
 File|Smoothing the edges of metal|tool
 Soldering iron|Joining electronic components with solder|tool
 Wire strippers|Removing the plastic covering from wire|tool`));
+/* clues for these seven extra DT_TOOLS rows (pushed in here, separately from the first fourteen in gens2.js, so DT_TOOLS_CLUES gets the matching seven added
+   here too, right next to the data they belong to) -- same recipe as DT_TOOLS_CLUES in gens2.js: never name the tool itself, never restate its own short
+   definition verbatim, never closely paraphrase it. */
+Object.assign(DT_TOOLS_CLUES, {
+'Spirit level':"This has a little bubble trapped in liquid inside a clear tube -- centre the bubble between the lines and you know you're exactly straight.",
+'Mitre saw':"This swivels to any angle you set it at before it cuts, so two pieces can meet neatly at a corner.",
+'Chisel':"You tap the end of this with a mallet, and its sharp edge pares a thin sliver away with each tap.",
+'Mallet':"This has a solid, heavy head, usually made from wood or rubber, giving a firm strike that won't leave a dent or a bruise on the tool it's used on.",
+'File':"This has a rough, ridged metal surface, and you rub it back and forth by hand until the rough spot disappears.",
+'Soldering iron':"This plugs in and gets hot enough to melt a thin silvery wire of metal onto a circuit board.",
+'Wire strippers':"This looks like a pair of pliers with a notch cut into the jaws, sized to nip through a covering without nicking what's underneath.",
+});
+/* per-row clues for D&T's remaining three 'todo' hint types (item 11a, D&T sub-chunk -- see the longer design note above DT_PROPS_CLUES in gens2.js). DT_USES
+   groups ALL 16 rows under one shared tag, so each clue avoids naming its own material AND closely restating its own use-phrase; DT_WORDS and DT_MECH are plain
+   term+definition pairs, so each clue avoids naming its own term AND closely paraphrasing its own definition. Checked in flow_dthints.js. */
+const DT_USES_CLUES = {
+'Copper':"This metal conducts electricity excellently and doesn't rust, which is exactly why it ends up hidden inside your walls and under your floors.",
+'Aluminium':"This metal is so light that it makes sense to fly it through the sky, or crush it flat once you've finished your drink.",
+'Steel':"This metal's strength is why it can hold up the sheer weight of a vehicle, or span a huge gap with nothing underneath.",
+'Oak':"This wood's strength and good looks are why it ends up as something you'll be sitting on or walking across for decades.",
+'Pine':"This wood's low cost and light weight are why it's the wood of choice behind the walls, holding the structure together where nobody sees it.",
+'MDF':"This board has no visible grain and a flawlessly smooth, even surface all the way through, which is why it's a popular choice when something needs to be cut and finished perfectly flat.",
+'Plywood':"This board's layered strength means it can be bent into a curved hull and still hold together at sea.",
+'Acrylic':"This plastic can be moulded into bright letters and panels that still let light shine through them, like something lit up outside a cinema at night.",
+'Polystyrene':"This plastic is mostly trapped air, so it protects a fragile item in transit without adding much weight at all.",
+'PVC':"This plastic doesn't rot or rust, which is exactly why it carries water underground and seals out the weather around a glass pane.",
+'Nylon':"This fibre barely stretches or frays, which is why it ends up holding a climber's weight or a sprinter's kit together.",
+'Cotton':"This soft, breathable fibre is why it ends up against your skin on a hot day or drying you off after a shower.",
+'Wool':"This fibre traps air between its curly strands, which is why sheep stay comfortable outdoors through a freezing winter, and why we borrow it for our own cold-weather clothes.",
+'Glass':"This material lets you see straight through it and is easy to clean out and use again and again.",
+'Concrete':"This material sets rock-hard once it's poured, which is why whole buildings and roads rest on it without sinking.",
+'Rubber':"This material grips the road and stretches without tearing, which is why your hands and your car both rely on it.",
+};
 const DT_USES = rowsOf(`Copper|Electrical wires and pipes|u
 Aluminium|Drinks cans and aircraft|u
 Steel|Car bodies and bridges|u
@@ -7577,7 +7790,25 @@ Wool|Warm jumpers and blankets|u
 Glass|Bottles and jars|u
 Concrete|Foundations and pavements|u
 Rubber|Tyres and gloves|u`);
-pairGen('dt','Materials and their uses','🏗️ What is it used for?','Materials',DT_USES,{fwd:r=>'What is '+r[0]+' commonly used for?', rev:r=>'Which material is commonly used for '+lc(r[1])+'?', hint:'Think about the properties that make it right for the job.'});
+pairGen('dt','Materials and their uses','🏗️ What is it used for?','Materials',DT_USES,{fwd:r=>'What is '+r[0]+' commonly used for?', rev:r=>'Which material is commonly used for '+lc(r[1])+'?', hint:r=>DT_USES_CLUES[r[0]]});
+const DT_WORDS_CLUES = {
+'Specification':"Before anyone builds anything, this is written down and ticked off against at every stage, like a checklist the finished thing has to pass.",
+'Prototype':"This usually looks rough and unfinished on purpose -- it only has to prove the idea works, not look pretty yet.",
+'Ergonomics':"A chair shaped to fit your back, or a handle shaped to fit your grip, both come from thinking about this.",
+'Aesthetics':"Two products that do exactly the same job can still score completely differently here, just because of their colour or shape.",
+'Function':"Strip away the colour, the brand and the price tag, and this is simply the job the thing has to do.",
+'Iteration':"Version one is rarely the final version -- a designer keeps tweaking and testing until it's right.",
+'Client':"Before drawing a single line, a designer needs to know exactly who is paying for this and what they actually want.",
+'Target market':"A toy designer and a mobility-aid designer are picturing two very different kinds of people.",
+'Annotation':"Without these, a drawing just shows what something looks like, not what it's made of or how big it is.",
+'Isometric drawing':"This makes a box look like a box, with its edges still running at a believable slant, not flattened into one straight-on face.",
+'Orthographic drawing':"A single real object needs three of these laid out flat before a workshop can actually build it from the page.",
+'Mood board':"Before deciding on a single colour or shape, a designer might pin up a wall of pictures that just feel right.",
+'Evaluation':"Once it's built, the last honest question to ask is simply: did it actually work?",
+'Quality control':"On a factory line, a sample gets pulled off and checked, over and over, to make sure nothing faulty slips through.",
+'CAD':"A designer drags, clicks and rotates a shape on screen, long before anything physical gets cut or printed.",
+'CAM':"Feed a design into this and a machine does the cutting or shaping itself, with no hand on the tool.",
+};
 const DT_WORDS = rowsOf(`Specification|A list of what a design must do|w
 Prototype|A first model used to test a design|w
 Ergonomics|Designing for comfort and ease of use|w
@@ -7594,7 +7825,19 @@ Evaluation|Judging how well a design works|w
 Quality control|Checking that products meet the standard|w
 CAD|Designing on a computer|w
 CAM|Making products using computer-controlled machines|w`);
-pairGen('dt','Design words','📐 Design words','Design process',DT_WORDS,{fwd:r=>'What does “'+r[0]+'” mean in design?', rev:r=>'Which design word means: '+lc(r[1])+'?', hint:'Think about the stages of designing and making.'});
+pairGen('dt','Design words','📐 Design words','Design process',DT_WORDS,{fwd:r=>'What does “'+r[0]+'” mean in design?', rev:r=>'Which design word means: '+lc(r[1])+'?', hint:r=>DT_WORDS_CLUES[r[0]]});
+const DT_MECH_CLUES = {
+'Lever':"A see-saw and a wheelbarrow handle both use this same simple idea -- push down gently at one end, lift something heavy at the other.",
+'Gear':"Picture two toothed wheels meshed together -- turn one and the other is forced to turn too, often at a different speed.",
+'Pulley':"A bucket on a rope looped over a wheel at the top of a well -- pull down here, and the bucket rises.",
+'Cam':"An egg-shaped wheel spins steadily round and round, while whatever is resting on its edge keeps bobbing up and down.",
+'Linkage':"Think of a pair of pliers, or a nutcracker -- bars joined at a pivot, so pushing one end moves the other in a different way.",
+'Ratchet':"A socket wrench clicks as you turn it one way, but won't budge if you try turning it back the other way.",
+'Bevel gear':"Two toothed wheels meet at an angle, like the gears inside an old-fashioned hand-cranked egg whisk, so the drive comes out sideways.",
+'Rack and pinion':"A toothed wheel rolls along a toothed straight bar, the way a car's steering wheel turns the front wheels left and right.",
+'Belt drive':"Two wheels, set apart, with a stretchy loop wrapped around both -- turn one, and friction drags the loop, and the other wheel, round with it, the way the drum of a washing machine gets turned.",
+'Spring':"Squash it, stretch it or twist it, and the moment you let go, it snaps right back to the shape it started in.",
+};
 const DT_MECH = rowsOf(`Lever|Turns a small force into a larger one using a pivot|m
 Gear|Passes on and changes turning motion|m
 Pulley|Lifts loads using a wheel and rope|m
@@ -7605,7 +7848,7 @@ Bevel gear|Changes the direction of turning by 90 degrees|m
 Rack and pinion|Changes turning motion into straight-line motion|m
 Belt drive|Passes turning motion between pulleys using a belt|m
 Spring|Stores energy and returns to its shape|m`);
-pairGen('dt','Mechanisms and their jobs','⚙️ Mechanisms','Mechanisms',DT_MECH,{fwd:r=>'What does a '+r[0].toLowerCase()+' do?', rev:r=>'Which mechanism '+lc(r[1]).replace(/^./,c=>c)+'?', exp:r=>'A '+r[0].toLowerCase()+': '+lc(r[1])+'.', hint:'Picture the mechanism moving.'});
+pairGen('dt','Mechanisms and their jobs','⚙️ Mechanisms','Mechanisms',DT_MECH,{fwd:r=>'What does a '+r[0].toLowerCase()+' do?', rev:r=>'Which mechanism '+lc(r[1]).replace(/^./,c=>c)+'?', exp:r=>'A '+r[0].toLowerCase()+': '+lc(r[1])+'.', hint:r=>DT_MECH_CLUES[r[0]]});
 /* ---- Art ---- */
 ART_ARTISTS.push(...rowsOf(`L. S. Lowry|Going to the Match|w
 Jackson Pollock|Autumn Rhythm|w
@@ -7615,10 +7858,52 @@ Piet Mondrian|Composition with Red, Blue and Yellow|w
 Georgia O'Keeffe|Black Iris|w
 Rembrandt|The Night Watch|w
 Paul Gauguin|Where Do We Come From? What Are We? Where Are We Going?|w`));
+/* these 8 rows were already in the table from an earlier session -- the clue-writing pass above (ART_ARTISTS_CLUES in gens2.js) missed them because it only
+   looked at gens2.js's original 12-row table, the same gap previously caught for DT_TOOLS. Extended here, right after the real table, the same way DT_TOOLS was. */
+Object.assign(ART_ARTISTS_CLUES,{
+'L. S. Lowry':"This busy industrial scene shows a crowd of tiny, spindly figures streaming across open ground towards a football ground, with tall factory chimneys smoking in the background.",
+'Jackson Pollock':"This huge abstract canvas is covered edge to edge in looping, dripped and flicked lines of paint, built up in layers with no recognisable shapes at all.",
+'Wassily Kandinsky':"This large, swirling abstract painting explodes with bold colour, curved lines and geometric shapes, with nothing in it meant to look like a real object.",
+'Henri Matisse':"This large wall-sized artwork is made from bold, flat-coloured paper shapes, cut out and arranged in a loose spiral, rather than painted with a brush.",
+'Piet Mondrian':"This painting reduces its whole canvas to a grid of thick black horizontal and vertical lines, dividing it into blocks that are mostly left white with a few filled in using a handful of bold primary colours.",
+"Georgia O'Keeffe":"This extreme close-up painting zooms so far into a single flower that its petals fill the whole canvas, curving and overlapping until the shapes almost become abstract.",
+'Rembrandt':"This large, dramatic group portrait shows a civic militia company bursting into motion, picked out by a strong beam of light against a dark, shadowy background.",
+'Paul Gauguin':"This wide, mural-sized painting shows figures in a tropical landscape painted in bold, flat, unrealistic colour, arranged almost like a timeline of a human life, from a baby at one end to an old woman at the other.",
+});
 ART_MOVES.push(...rowsOf(`Wassily Kandinsky|Abstract art|m
 Henri Matisse|Fauvism|m
 Jackson Pollock|Abstract Expressionism|m
 Piet Mondrian|De Stijl|m`));
+/* these 4 rows were already in the table too -- same gap, fixed the same way. */
+Object.assign(ART_MOVES_CLUES,{
+'Wassily Kandinsky':"This way of painting uses colour, shape and line for their own sake, without showing anything that looks like a real object, person or place.",
+'Henri Matisse':"This way of painting uses wild, deliberately unnatural colours straight from the tube, bold and loud rather than true to life.",
+'Jackson Pollock':"This way of making art involves dripping, flicking and pouring paint straight onto a huge canvas laid flat on the floor, rather than using a brush in the usual way.",
+'Piet Mondrian':"This way of painting reduces a picture down to a simple grid of straight black lines and flat blocks of a few primary colours.",
+});
+/* per-row clues for Art's sixth 'todo' hint type (item 11a, the Art sub-chunk -- see the longer design note above ART_MIX_CLUES in gens2.js). ART_MORE is
+   ordinary term+definition vocabulary, the RE_WORDS/DT_WORDS recipe. Checked in flow_arthints.js. */
+const ART_MORE_CLUES = {
+'Composition':"Think about WHERE an artist chooses to place each object or person on the page, not what any of them actually is.",
+'Foreground':"Think about the person or object drawn biggest and placed right at the bottom of the page, nearest to you.",
+'Background':"Think about the faint hills or sky drawn smallest, right at the top of the page, as distant as the scene gets.",
+'Focal point':"Think about the one spot in a busy scene that your eye keeps being pulled back to, again and again.",
+'Contrast':"Think about a single bright white shape standing out sharply against a page that's almost entirely black.",
+'Warm colours':"Think about the colours of a crackling fire or a setting sun.",
+'Cool colours':"Think about the colours of the sea, a forest, or a clear evening sky.",
+'Monochrome':"Think about an old black-and-white photograph, or a drawing done entirely in different shades of a single pen.",
+'Palette':"Think about the wooden board an artist dabs and mixes their paint on before it ever touches the canvas.",
+'Proportion':"Think about a drawing where the head has accidentally come out far too big for the rest of the body.",
+'Medium':"Think about whether someone reaches for a paintbrush, a graphite pencil, or a lump of clay to make their work.",
+'Charcoal':"Think about a stick that started life as a piece of wood, until it was scorched black in a fire.",
+'Pastel':"Think about a stick that looks a bit like a fat crayon, but smudges and blends under your finger like powder.",
+'Watercolour':"Think about a paint that goes on see-through and needs a wet brush to spread it across the page.",
+'Acrylic paint':"Think about a paint that comes out of a tube thick and bright, and is completely dry and hard within the hour.",
+'Sculpture':"Think about a work of art you could walk all the way around and see from every single side.",
+'Printmaking':"Think about pressing something inked onto paper, over and over, to get several identical versions of the same picture.",
+'Mosaic':"Think about a floor or a wall built up out of hundreds of tiny broken fragments of pottery, stone or coloured glass.",
+'Symmetry':"Think about folding an image exactly in half down the middle and finding that the two halves line up perfectly.",
+};
 const ART_MORE = rowsOf(`Composition|How the parts of a picture are arranged|a
 Foreground|The part of a picture closest to the viewer|a
 Background|The part of a picture furthest from the viewer|a
@@ -7638,7 +7923,7 @@ Sculpture|Art made in three dimensions|a
 Printmaking|Making copies of an image using a block or plate|a
 Mosaic|A picture made from small pieces of tile or glass|a
 Symmetry|When both sides of a picture are the same|a`);
-pairGen('art','More art words','🖌️ More art words','Visual elements',ART_MORE,{fwd:r=>'What does “'+r[0]+'” mean in art?', rev:r=>'Which art word means: '+lc(r[1])+'?', hint:'Think about how artists use it.'});
+pairGen('art','More art words','🖌️ More art words','Visual elements',ART_MORE,{fwd:r=>'What does “'+r[0]+'” mean in art?', rev:r=>'Which art word means: '+lc(r[1])+'?', hint:r=>ART_MORE_CLUES[r[0]]});
 /* ---- Music ---- */
 MU_INST.push(...rowsOf(`Cor anglais|Woodwind|i
 Saxophone|Woodwind|i
@@ -7702,6 +7987,21 @@ NHS non-emergency medical advice|111|n
 Childline, the free helpline for children|0800 1111|n`);
 pairGen('pshe','Useful numbers','📞 Useful numbers',null,PS_NUMS,{fwd:r=>'Which number do you call for: '+lc(r[0])+'?', rev:r=>'What does the number '+r[1]+' connect you to?', exp:r=>r[0]+': '+r[1]+'.', hint:'999 is only for emergencies.'});
 /* ---- Literature ---- */
+/* per-row clues for Literature's remaining 'todo' hint types in this file (see the longer design note above LIT_CHAR_CLUES in gens2.js): LIT_QUOTES is fwd-only (who said it), so the only thing a
+   clue must never do is name the speaker -- checked against its own speaker and all 8 distinct speakers in the table, describing the dramatic moment/emotion behind the line instead. LIT_WORDS is
+   ordinary term+definition vocabulary (the RE_WORDS/DT_WORDS recipe). Checked in flow_lithints.js. */
+const LIT_QUOTES_CLUES = {
+'Out, damned spot!':"This line is cried out by someone desperately trying to scrub an invisible, imagined stain from their own hands, driven half-mad by guilt.",
+'Is this a dagger which I see before me?':"This line is spoken by someone staring at a weapon that may or may not really be floating in front of them, working up the nerve to commit a murder.",
+'Double, double toil and trouble':"This line is chanted together by a sinister trio stirring a bubbling cauldron and casting a spell.",
+'But soft, what light through yonder window breaks?':"This line is spoken by a young man gazing up adoringly at a balcony, comparing the person standing on it to the sunrise.",
+'Wherefore art thou Romeo?':"This line is spoken by a young woman on a balcony at night, wondering aloud why the boy she loves has to belong to her family's enemies.",
+"A plague o' both your houses!":"This line is shouted by someone who has just been fatally wounded in a street fight, cursing the two feuding families he blames for his own death.",
+'Lord, what fools these mortals be!':"This line is said with amusement by a mischievous forest spirit, laughing at the humans whose love lives he has just magically scrambled.",
+'Full fathom five thy father lies':"This magical, musical line is sung to a grieving young man to make him believe, wrongly, that his father has drowned.",
+'Fair is foul, and foul is fair':"This eerie, riddling line is chanted together by the same sinister trio from the cauldron scene, right at the very start of the play.",
+"What's in a name?":"This line is spoken by a young woman on her balcony, wishing her lover's surname could simply be cast aside so their families' feud wouldn't matter.",
+};
 const LIT_QUOTES = rowsOf(`Out, damned spot!|Lady Macbeth|q
 Is this a dagger which I see before me?|Macbeth|q
 Double, double toil and trouble|The Witches|q
@@ -7712,7 +8012,27 @@ Lord, what fools these mortals be!|Puck|q
 Full fathom five thy father lies|Ariel|q
 Fair is foul, and foul is fair|The Witches|q
 What's in a name?|Juliet|q`);
-pairGen('literature','Who said it?','💬 Who said it?','Shakespeare basics',LIT_QUOTES,{fwd:r=>'Who says this in Shakespeare? “'+r[0]+'”', exp:r=>'“'+r[0]+'” is said by '+r[1]+'.', hint:'Think about which play and which character.'});
+pairGen('literature','Who said it?','💬 Who said it?','Shakespeare basics',LIT_QUOTES,{fwd:r=>'Who says this in Shakespeare? “'+r[0]+'”', exp:r=>'“'+r[0]+'” is said by '+r[1]+'.', hint:r=>LIT_QUOTES_CLUES[r[0]]});
+const LIT_WORDS_CLUES = {
+'Imagery':"Think of a sentence so vivid you can practically see, smell or feel the scene it describes.",
+'Mood':"Think of walking into a dark, candle-lit room versus a bright, sunny one -- the same idea, but for how a piece of writing feels to read.",
+'Tone':"Think of the same sentence said sarcastically versus said sincerely -- the words are identical, but the attitude behind them is completely different.",
+'Irony':"Think of a fire station burning down, or a 'Do not litter' sign lying in a pile of rubbish.",
+'Soliloquy':"Think of a character stepping to the front of the stage, alone, to think out loud for the audience while everyone else freezes.",
+'Aside':"Think of a character turning briefly to the audience to share a sly comment, while the other characters on stage carry on as if they heard nothing.",
+'Prologue':"Think of a narrator stepping out before the action properly begins, to set the scene for what's about to happen.",
+'Tragedy':"Think of a story where the hero's own flaw leads them to a downfall, and most of the main characters are dead by the final curtain.",
+'Comedy':"Think of mistaken identities and silly misunderstandings that all get sorted out, usually finishing with a wedding or two.",
+'Motif':"Think of a particular colour, object or phrase that the writer deliberately brings back again and again throughout the whole piece.",
+'Symbol':"Think of a dove representing peace, or a skull representing death -- a thing that means more than just itself.",
+'Enjambment':"Think of a poem where you're forced to read straight on to the next line without pausing, because the sentence simply hasn't finished yet.",
+'Genre':"Think of the shelf in a bookshop a story would sit on -- horror, romance, science fiction and so on.",
+'Fable':"Think of a tale with talking animals, ending in a tidy lesson like 'slow and steady wins the race.'",
+'Myth':"Think of a tale explaining why the seasons change, often starring gods or supernatural beings, passed down since ancient times.",
+'Legend':"Think of a tale about a real or semi-real figure from the past, like a daring outlaw or a sword-wielding king, that's grown more dramatic with each retelling.",
+'Anthology':"Think of a single book on the shelf that's actually a bundle of separate stories or poems, each one written by somebody different.",
+'Climate fiction':"Think of a story imagining how the world might look after sea levels rise or the climate keeps changing.",
+};
 const LIT_WORDS = rowsOf(`Imagery|Descriptive language that paints a picture in the mind|w
 Mood|The feeling a text creates in the reader|w
 Tone|The writer's attitude to the subject|w
@@ -7731,8 +8051,34 @@ Myth|An ancient story that explains the world|w
 Legend|A traditional story about a hero|w
 Anthology|A collection of writing by different authors|w
 Climate fiction|Stories about climate change and the future of the planet|w`);
-pairGen('literature','Literary words','📚 Literary words','Story and novel study',LIT_WORDS,{fwd:r=>'What does “'+r[0]+'” mean?', rev:r=>'Which literary word means: '+lc(r[1])+'?', hint:'Think about a story or play where you have seen it.'});
+pairGen('literature','Literary words','📚 Literary words','Story and novel study',LIT_WORDS,{fwd:r=>'What does “'+r[0]+'” mean?', rev:r=>'Which literary word means: '+lc(r[1])+'?', hint:r=>LIT_WORDS_CLUES[r[0]]});
 /* ---- Science ---- */
+/* per-row clues for Science's 11 'todo' hint types (item 11a, the Science sub-chunk, straight after Literature). SC_ORGANS/SC_CELL/SC_PLANT/SC_PLANETS/SC_ENERGY/SC_LAB/SC_SEP/SC_STATE/SC_FOOD are ordinary
+   term+definition vocabulary (the RE_WORDS/DT_WORDS recipe: never name the term, never closely paraphrase the own definition) -- several of these tables have unusually SHORT definitions (2-4 words,
+   e.g. SC_STATE's "Solid to liquid", SC_LAB's "Measuring temperature"), so those clues were written to avoid the short phrase entirely rather than lightly reword it. SC_RENEW is fwd-only in effect
+   (only o.rev is given) and only the specific energy source name is ever an askable answer -- the Renewable/Non-renewable label is always given in the question itself -- so it only needs the
+   single-column-risk treatment (checked against its own source name and all 9 other distinct source names, the LIT_QUOTES shape). SC_UNITS pairs a quantity with its own unit, both proper-noun-like
+   and both askable in either direction with one shared tag, so it gets the full RE_ROWS treatment (checked against all 8 quantities and all 8 units at once) -- entirely descriptive, no quantity or
+   unit name used anywhere. Checked in flow_scihints.js. */
+const SC_ORGANS_CLUES = {
+'Heart':"This fist-sized organ in your chest squeezes again and again, sending a vital red fluid on a constant journey from head to toe, keeping every other organ supplied.",
+'Lungs':"This pair of spongy organs in your chest fills with air every time you breathe in, letting your blood swap one gas for another.",
+'Brain':"This organ sits inside your skull and is in charge of everything else, from your thoughts to every message your body sends and receives.",
+'Stomach':"This stretchy, muscular bag in your tummy churns your last meal around, mixing it with a powerful acid to start breaking it down.",
+'Small intestine':"This long, coiled tube comes straight after the stomach, and its job is to let the useful parts of your last meal pass into your bloodstream.",
+'Large intestine':"This wider tube comes after its narrower neighbour, and pulls the last of the liquid back out of whatever your body doesn't need.",
+'Liver':"This large organ sits just under your ribs on the right, filtering harmful substances out of your blood and producing a greenish fluid that helps digest fat.",
+'Kidneys':"This pair of bean-shaped organs in your lower back constantly clean your blood, turning what they remove into the liquid you later pass out as waste.",
+'Skin':"This is the largest organ you have, covering you from head to toe, and does far more than just keep your insides in -- it also helps keep you at the right temperature.",
+'Oesophagus':"This muscular tube runs down through your neck and chest, squeezing whatever you've just swallowed down towards your stomach.",
+'Trachea':"This stiff, ringed tube in your neck branches in two lower down, guiding every breath you take down towards your chest.",
+'Skull':"This hard, rounded case of bone sits right at the top of your body, built to shield the delicate organ inside it from knocks and bumps.",
+'Ribs':"This curved cage of bones wraps around your upper chest, forming a protective shell around two of your most important organs.",
+'Spine':"This long column of connected bones runs down the centre of your back, holding you upright while shielding a thick bundle of nerves that runs through its middle.",
+'Muscles':"These stretchy tissues shorten and pull on command, letting your skeleton bend, lift and carry you through everything you do, working in pairs across each joint.",
+'Tendons':"These tough, cord-like tissues anchor your muscles firmly onto your skeleton, so a pull in one place becomes movement somewhere else.",
+'Ligaments':"These strong, stretchy bands hold your skeleton together at every joint, stopping your bones from slipping out of place.",
+};
 const SC_ORGANS = rowsOf(`Heart|Pumps blood around the body|o
 Lungs|Take in oxygen and remove carbon dioxide|o
 Brain|Controls the body and processes information|o
@@ -7750,7 +8096,16 @@ Spine|Supports the body and protects the spinal cord|o
 Muscles|Contract to move the body|o
 Tendons|Attach muscles to bones|o
 Ligaments|Join bones together at joints|o`);
-pairGen('science','Organs and their jobs','🫀 Organs and their jobs','Body systems',SC_ORGANS,{fwd:r=>'What is the job of the '+r[0].toLowerCase()+'?', rev:r=>'Which part of the body '+lc(r[1]).replace(/^(\w+)/,(m)=>m)+'?', exp:r=>'The '+r[0].toLowerCase()+' '+lc(r[1])+'.', hint:'Think about the body system it belongs to.'});
+pairGen('science','Organs and their jobs','🫀 Organs and their jobs','Body systems',SC_ORGANS,{fwd:r=>'What is the job of the '+r[0].toLowerCase()+'?', rev:r=>'Which part of the body '+lc(r[1]).replace(/^(\w+)/,(m)=>m)+'?', exp:r=>'The '+r[0].toLowerCase()+' '+lc(r[1])+'.', hint:r=>SC_ORGANS_CLUES[r[0]]});
+const SC_CELL_CLUES = {
+'Nucleus':"This round structure sits near the middle of the cell, acting like its command centre and holding all of its genetic instructions.",
+'Cytoplasm':"This thick, gel-like substance fills most of the inside of the cell, and is where many of its everyday chemical processes actually take place.",
+'Cell membrane':"This thin, flexible layer wraps all the way around the cell, deciding exactly what is allowed to pass in or out.",
+'Mitochondria':"These tiny, sausage-shaped structures act as the cell's power stations, breaking down nutrients to generate the power it needs to keep working.",
+'Cell wall':"This rigid outer layer is found only in plant cells, giving each one a fixed shape and helping it stay upright.",
+'Chloroplast':"This green structure, found only in plant cells, traps sunlight and uses it to make the plant's own food.",
+'Vacuole':"This large, fluid-filled space inside a plant cell gives the whole structure its rigid, plumped-up shape, like water filling a balloon.",
+};
 const SC_CELL = rowsOf(`Nucleus|Controls the cell and contains the DNA|c
 Cytoplasm|Jelly where chemical reactions happen|c
 Cell membrane|Controls what enters and leaves the cell|c
@@ -7758,7 +8113,21 @@ Mitochondria|Release energy from food (respiration)|c
 Cell wall|Gives a plant cell strength and shape|c
 Chloroplast|Contains chlorophyll to make food by photosynthesis|c
 Vacuole|Stores cell sap and keeps the cell firm|c`);
-pairGen('science','Cell parts','🔬 Cell parts','Cells',SC_CELL,{fwd:r=>'What is the job of the '+r[0].toLowerCase()+' in a cell?', rev:r=>'Which part of a cell: '+lc(r[1])+'?', exp:r=>'The '+r[0].toLowerCase()+': '+lc(r[1])+'.', hint:'Think of a cell as a tiny factory.'});
+pairGen('science','Cell parts','🔬 Cell parts','Cells',SC_CELL,{fwd:r=>'What is the job of the '+r[0].toLowerCase()+' in a cell?', rev:r=>'Which part of a cell: '+lc(r[1])+'?', exp:r=>'The '+r[0].toLowerCase()+': '+lc(r[1])+'.', hint:r=>SC_CELL_CLUES[r[0]]});
+const SC_PLANT_CLUES = {
+'Roots':"These spread out underground, anchoring the plant firmly in place while drawing up everything it needs from the soil around them.",
+'Stem':"This upright structure holds the whole plant up towards the light, while carrying water and food between the parts below ground and the parts above it.",
+'Leaf':"This flat, green structure spreads itself out to catch as much sunlight as possible, using it to build the plant's own food.",
+'Flower':"This colourful structure is where a plant's reproduction happens, holding everything needed to eventually produce its seeds.",
+'Petal':"These brightly coloured, often scented structures surround the centre of the bloom, acting like a signpost for passing pollinators.",
+'Stigma':"This sticky, often feathery tip sits at the very top of the flower's female part, perfectly placed to trap something drifting through the air or carried in by a visiting insect.",
+'Anther':"This small structure sits at the tip of the flower's male part, producing the fine, powdery grains that get carried away to start a new plant.",
+'Ovary':"This part sits at the base of the flower's female structure, and will swell and ripen into the fruit once its contents have been fertilised.",
+'Sepal':"This small, leaf-like structure wraps around the outside of the bloom before it opens, keeping the delicate inner parts safe.",
+'Stomata':"These microscopic pores, found mostly on the underside of a plant's green blades, open and close whenever it needs to exchange air with its surroundings.",
+'Xylem':"This tissue forms tube-like channels running from the base all the way up to the topmost green parts, drawing moisture from below and carrying it skyward.",
+'Phloem':"This tissue forms a separate set of tubes running through the plant, moving the food it has made out to wherever it is needed.",
+};
 const SC_PLANT = rowsOf(`Roots|Take in water and minerals and hold the plant in the ground|p
 Stem|Supports the plant and carries water and food|p
 Leaf|Makes food by photosynthesis|p
@@ -7771,7 +8140,17 @@ Sepal|Protects the flower bud|p
 Stomata|Tiny holes that let gases in and out of the leaf|p
 Xylem|Carries water up the plant|p
 Phloem|Carries sugars around the plant|p`);
-pairGen('science','Plant parts','🌿 Plant parts','Plants',SC_PLANT,{fwd:r=>'What is the job of the '+r[0].toLowerCase()+' of a plant?', rev:r=>'Which part of a plant: '+lc(r[1])+'?', exp:r=>r[0]+': '+lc(r[1])+'.', hint:'Follow the plant from its roots to its flower.'});
+pairGen('science','Plant parts','🌿 Plant parts','Plants',SC_PLANT,{fwd:r=>'What is the job of the '+r[0].toLowerCase()+' of a plant?', rev:r=>'Which part of a plant: '+lc(r[1])+'?', exp:r=>r[0]+': '+lc(r[1])+'.', hint:r=>SC_PLANT_CLUES[r[0]]});
+const SC_PLANETS_CLUES = {
+'Mercury':"This small, rocky world races around our star faster than any neighbour, finishing a full loop in less time than it takes Earth to manage one season.",
+'Venus':"This planet is wrapped in such a thick, heat-trapping layer of cloud that its surface actually beats every other planet for scorching temperatures, even though it isn't the one nearest the Sun.",
+'Earth':"This world is the only one we know of anywhere that has ever supported living things, with vast oceans of liquid water covering most of its surface.",
+'Mars':"This world is covered in a fine, rust-coloured dust that gives its entire surface a distinctive, warm colour when seen from space.",
+'Jupiter':"This gas giant dwarfs every other planet in the solar system, so enormous that well over a thousand Earths could fit inside it.",
+'Saturn':"This gas giant is circled by a dazzling, wide system of icy rings, made from countless chunks of ice and rock in orbit around it.",
+'Uranus':"This gas giant is tilted so far over that it essentially rolls around the Sun on its side rather than spinning upright like most other planets.",
+'Neptune':"This icy, deep-blue world orbits further out than any neighbour, taking well over a century to complete just one journey around our star.",
+};
 const SC_PLANETS = rowsOf(`Mercury|The closest planet to the Sun|pl
 Venus|The hottest planet|pl
 Earth|The only planet known to have life|pl
@@ -7780,7 +8159,18 @@ Jupiter|The largest planet|pl
 Saturn|The planet best known for its bright rings|pl
 Uranus|The planet that spins on its side|pl
 Neptune|The planet furthest from the Sun|pl`);
-pairGen('science','Planets','🪐 Planets','Space',SC_PLANETS,{fwd:r=>'What is special about '+r[0]+'?', rev:r=>'Which planet is '+lc(r[1])+'?', exp:r=>r[0]+' is '+lc(r[1])+'.', hint:'Think about the order of the planets from the Sun.'});
+pairGen('science','Planets','🪐 Planets','Space',SC_PLANETS,{fwd:r=>'What is special about '+r[0]+'?', rev:r=>'Which planet is '+lc(r[1])+'?', exp:r=>r[0]+' is '+lc(r[1])+'.', hint:r=>SC_PLANETS_CLUES[r[0]]});
+const SC_ENERGY_CLUES = {
+'Kinetic energy':"This is held by absolutely anything currently in motion, and the faster or heavier that thing is, the more of it there is.",
+'Gravitational potential energy':"This kind of energy builds up in anything lifted up against gravity, ready to be released the moment it starts to fall.",
+'Chemical energy':"This is locked away inside the bonds of things we burn or eat for power, waiting to be let loose when they react.",
+'Thermal energy':"This kind of energy comes from how fast the tiny particles inside a substance are jiggling about, and it's what makes something feel warm to the touch.",
+'Elastic energy':"This builds up in anything that has been squashed, bent or pulled out of its normal shape, like a bow pulled taut or a rubber band pulled apart.",
+'Electrical energy':"This kind of energy flows through wires whenever tiny charged particles are pushed along a circuit.",
+'Light energy':"This kind of energy travels incredibly fast in waves, letting your eyes see the world around you.",
+'Sound energy':"This kind of energy travels as a wobble passing through the air, or through water or a solid, until it reaches your ear.",
+'Nuclear energy':"This kind of energy is held deep inside the very centre of an atom, and releasing even a little of it can produce an enormous amount of power.",
+};
 const SC_ENERGY = rowsOf(`Kinetic energy|The energy of a moving object|e
 Gravitational potential energy|The energy stored in a raised object|e
 Chemical energy|The energy stored in food and fuel|e
@@ -7790,7 +8180,19 @@ Electrical energy|The energy carried by an electric current|e
 Light energy|The energy carried by light|e
 Sound energy|The energy carried by vibrations|e
 Nuclear energy|The energy stored inside the nucleus of atoms|e`);
-pairGen('science','Energy types','🔋 Energy types','Energy',SC_ENERGY,{fwd:r=>'What is '+r[0].toLowerCase()+'?', rev:r=>'Which type of energy is '+lc(r[1])+'?', exp:r=>r[0]+' is '+lc(r[1])+'.', hint:'Think of an example of each energy in everyday life.'});
+pairGen('science','Energy types','🔋 Energy types','Energy',SC_ENERGY,{fwd:r=>'What is '+r[0].toLowerCase()+'?', rev:r=>'Which type of energy is '+lc(r[1])+'?', exp:r=>r[0]+' is '+lc(r[1])+'.', hint:r=>SC_ENERGY_CLUES[r[0]]});
+const SC_RENEW_CLUES = {
+'Solar':"This source captures energy raining down from our nearest star, using panels to turn it directly into electricity.",
+'Wind':"This source captures the power of moving air, spinning huge blades mounted high up on a turbine.",
+'Hydroelectric':"This source captures the force of falling or flowing water, usually held back behind a dam before being released through turbines.",
+'Geothermal':"This source taps into natural heat stored deep underground, using it to generate power or warm buildings directly.",
+'Biomass':"This source burns plant material or waste, such as wood chips or crop leftovers, to release the energy that was originally stored by photosynthesis.",
+'Tidal':"This source captures the regular rise and fall of the sea caused by the Moon's pull, turning that motion through underwater turbines.",
+'Coal':"This source is a black, solid rock dug out of the ground, formed from the remains of ancient swamp forests over millions of years.",
+'Oil':"This source is a thick, dark liquid pumped up from deep underground, formed from the remains of ancient sea creatures over millions of years.",
+'Natural gas':"This source is an invisible, flammable gas that seeps up from underground, often burned directly in boilers and cookers to release its stored energy.",
+'Nuclear fuel (uranium)':"This source is a heavy, naturally radioactive metal dug out of the ground, split apart inside a reactor to release a huge amount of energy.",
+};
 const SC_RENEW = rowsOf(`Solar|Renewable|e
 Wind|Renewable|e
 Hydroelectric|Renewable|e
@@ -7801,7 +8203,17 @@ Coal|Non-renewable|e
 Oil|Non-renewable|e
 Natural gas|Non-renewable|e
 Nuclear fuel (uranium)|Non-renewable|e`);
-pairGen('science','Renewable or not?','♻️ Renewable or not?','Energy',SC_RENEW,{rev:r=>'Which of these is a '+r[1].toLowerCase()+' energy source?', exp:r=>r[0]+' is a '+r[1].toLowerCase()+' energy source.', hint:'Renewable sources will not run out. Fossil fuels will.'});
+pairGen('science','Renewable or not?','♻️ Renewable or not?','Energy',SC_RENEW,{rev:r=>'Which of these is a '+r[1].toLowerCase()+' energy source?', exp:r=>r[0]+' is a '+r[1].toLowerCase()+' energy source.', hint:r=>SC_RENEW_CLUES[r[0]]});
+const SC_UNITS_CLUES = {
+'Force':"This describes any push or pull strong enough to start, stop, or change the direction of something moving.",
+'Mass':"This describes exactly how much matter makes up an object, measured in a way that stays the same wherever in the universe you take it.",
+'Speed':"This describes how quickly something covers distance, found by working out how far it travels in a set period.",
+'Energy':"This describes the capacity something has to make things happen, whether that's lifting, heating, moving or lighting something up.",
+'Frequency':"This describes how many times something repeats in a single stretch, like a wave bobbing up and down over and over.",
+'Temperature':"This describes how hot or cold something feels, based on how much the tiny particles inside it are jiggling about.",
+'Time':"This describes how long something takes, ticking steadily onward whether or not anything is actually happening.",
+'Length':"This describes how far it is from one end of something to the other, whether that's tiny or enormous.",
+};
 const SC_UNITS = rowsOf(`Force|Newton (N)|u
 Mass|Kilogram (kg)|u
 Speed|Metres per second (m/s)|u
@@ -7810,7 +8222,23 @@ Frequency|Hertz (Hz)|u
 Temperature|Degrees Celsius (°C)|u
 Time|Second (s)|u
 Length|Metre (m)|u`);
-pairGen('science','Science units','📏 Science units',null,SC_UNITS,{fwd:r=>'Which unit is used to measure '+r[0].toLowerCase()+'?', rev:r=>'What does '+r[1]+' measure?', exp:r=>r[0]+' is measured in '+r[1]+'.', hint:'Learn each quantity with its unit.'});
+pairGen('science','Science units','📏 Science units',null,SC_UNITS,{fwd:r=>'Which unit is used to measure '+r[0].toLowerCase()+'?', rev:r=>'What does '+r[1]+' measure?', exp:r=>r[0]+' is measured in '+r[1]+'.', hint:r=>SC_UNITS_CLUES[r[0]]});
+const SC_LAB_CLUES = {
+'Bunsen burner':"This piece of equipment burns gas through a narrow nozzle to produce a controllable, adjustable flame for warming things up in the lab.",
+'Beaker':"This straight-sided glass or plastic container is handy for mixing, pouring and warming liquids, though it's not meant for measuring an exact amount.",
+'Measuring cylinder':"This tall, narrow container is marked with a scale up its side, letting you read off a precise amount of liquid.",
+'Test tube':"This small, narrow glass tube, often held in a rack or stand, is the perfect size for mixing a tiny quantity of chemicals to watch what happens.",
+'Filter paper':"This thin, porous sheet lets the runny part of a mixture pass straight through while trapping any larger bits too big to fit through its tiny gaps.",
+'Thermometer':"This long, thin instrument has a scale marked along its side, used to find out exactly how warm or cold something is.",
+'Tripod':"This three-legged metal stand is placed over a lit flame, giving something else a stable platform to sit on above the heat.",
+'Gauze':"This flat metal mesh sits on top of a stand above a flame, spreading out the flame's warmth across a wider area instead of one hot spot.",
+'Evaporating basin':"This shallow dish is left over a gentle heat until all the liquid in a solution has disappeared, leaving only solid crystals behind.",
+'Balance':"This piece of equipment has a flat pan where you place an object to find out exactly how much of it there is.",
+'Pipette':"This slim glass or plastic tube, often squeezed at one end with a bulb, lets you move a precise, tiny amount of liquid from one container to another.",
+'Stopwatch':"This handheld device starts and stops at the press of a button, counting exactly how many seconds or minutes have passed.",
+'Newton meter':"This handheld spring-based instrument stretches by a measurable amount whenever something pulls or pushes against its hook.",
+'Safety goggles':"This piece of equipment is worn tightly over both eyes before handling any chemical or flame, to keep out splashes or stray sparks.",
+};
 const SC_LAB = rowsOf(`Bunsen burner|Heating substances|l
 Beaker|Holding and heating liquids|l
 Measuring cylinder|Measuring the volume of a liquid|l
@@ -7825,7 +8253,16 @@ Pipette|Transferring small amounts of liquid|l
 Stopwatch|Measuring time|l
 Newton meter|Measuring force|l
 Safety goggles|Protecting your eyes|l`);
-pairGen('science','Lab equipment','🧪 Lab equipment',null,SC_LAB,{fwd:r=>'What is a '+r[0].toLowerCase()+' used for?', rev:r=>'Which piece of equipment is used for '+lc(r[1])+'?', exp:r=>'A '+r[0].toLowerCase()+' is used for '+lc(r[1])+'.', hint:'Picture the equipment in a lab.'});
+pairGen('science','Lab equipment','🧪 Lab equipment',null,SC_LAB,{fwd:r=>'What is a '+r[0].toLowerCase()+' used for?', rev:r=>'Which piece of equipment is used for '+lc(r[1])+'?', exp:r=>'A '+r[0].toLowerCase()+' is used for '+lc(r[1])+'.', hint:r=>SC_LAB_CLUES[r[0]]});
+const SC_SEP_CLUES = {
+'Filtration':"This method uses a sheet with microscopic holes to let a liquid pass straight through, while trapping solid bits too big to fit.",
+'Evaporation':"This method gently heats a liquid until it disappears into the air completely, leaving behind whatever solid had been dissolved inside it.",
+'Distillation':"This method heats a mixture until one substance turns to vapour before the others, then cools that vapour back into a liquid in a separate container.",
+'Chromatography':"This method lets a mixture creep up a strip of absorbent paper, with each different substance travelling a different distance so they spread out and become visible.",
+'Magnet':"This simple tool is dragged through a mixture to pull out anything in it that is attracted to it, leaving everything else behind.",
+'Sieving':"This method shakes a mixture through a mesh with holes of a certain size, letting only the smaller pieces fall through.",
+'Decanting':"This method carefully tips a container to pour away the liquid sitting on top, leaving behind whatever has settled at the bottom.",
+};
 const SC_SEP = rowsOf(`Filtration|Separating an insoluble solid from a liquid|s
 Evaporation|Getting a dissolved solid back from a solution|s
 Distillation|Separating liquids with different boiling points|s
@@ -7833,13 +8270,29 @@ Chromatography|Separating different coloured substances, such as inks|s
 Magnet|Separating magnetic materials from a mixture|s
 Sieving|Separating large pieces from small pieces|s
 Decanting|Pouring off a liquid from a settled solid|s`);
-pairGen('science','Separating mixtures','🧫 Separating mixtures','Chemistry',SC_SEP,{fwd:r=>'What is '+r[0].toLowerCase()+' used for?', rev:r=>'Which method is used for '+lc(r[1])+'?', exp:r=>r[0]+' is used for '+lc(r[1])+'.', hint:'Match the method to the kind of mixture.'});
+pairGen('science','Separating mixtures','🧫 Separating mixtures','Chemistry',SC_SEP,{fwd:r=>'What is '+r[0].toLowerCase()+' used for?', rev:r=>'Which method is used for '+lc(r[1])+'?', exp:r=>r[0]+' is used for '+lc(r[1])+'.', hint:r=>SC_SEP_CLUES[r[0]]});
+const SC_STATE_CLUES = {
+'Melting':"This change happens when something that was holding its own firm shape is warmed up until it starts to flow and takes the shape of its container instead.",
+'Freezing':"This change happens when something that could flow and take the shape of its container is cooled down until it locks into one fixed shape of its own.",
+'Evaporating':"This change happens when something that was flowing and taking the shape of its container is warmed up until it spreads out invisibly into the air.",
+'Condensing':"This change happens when something spread out invisibly in the air is cooled down until it gathers back into droplets you can see and touch.",
+'Sublimation':"This unusual change skips the usual middle step entirely, turning something straight from its firm, fixed shape into an invisible substance that simply spreads out into the air.",
+};
 const SC_STATE = rowsOf(`Melting|Solid to liquid|c
 Freezing|Liquid to solid|c
 Evaporating|Liquid to gas|c
 Condensing|Gas to liquid|c
 Sublimation|Solid straight to gas|c`);
-pairGen('science','Changes of state','💧 Changes of state','Particles',SC_STATE,{fwd:r=>'What change happens in '+r[0].toLowerCase()+'?', rev:r=>'Which change of state is this: '+r[1].toLowerCase()+'?', exp:r=>r[0]+' is '+r[1].toLowerCase()+'.', hint:'Heating and cooling move particles between states.'});
+pairGen('science','Changes of state','💧 Changes of state','Particles',SC_STATE,{fwd:r=>'What change happens in '+r[0].toLowerCase()+'?', rev:r=>'Which change of state is this: '+r[1].toLowerCase()+'?', exp:r=>r[0]+' is '+r[1].toLowerCase()+'.', hint:r=>SC_STATE_CLUES[r[0]]});
+const SC_FOOD_CLUES = {
+'Carbohydrates':"This food group is the body's main fuel, found in things like bread, pasta, rice and potatoes, giving you the power to keep going.",
+'Proteins':"This food group, found in meat, fish, eggs and beans, supplies the building blocks your body needs to grow bigger and mend itself after damage.",
+'Fats':"This food group packs more energy into a smaller amount than anything else you eat, and also forms a layer just beneath your skin that helps keep you from getting cold.",
+'Vitamins':"This food group is only needed in tiny amounts, but each different kind keeps a particular part of the body working properly.",
+'Minerals':"This food group includes things like iron, tiny amounts of specific substances your body needs for jobs ranging from a sturdy skeleton to healthy blood.",
+'Fibre':"This food group isn't actually digested at all, but its bulk keeps everything else moving steadily along on its journey through your insides.",
+'Water':"This makes up most of you and is involved in practically all of your chemical reactions, and you'd only survive a few days without it.",
+};
 const SC_FOOD = rowsOf(`Carbohydrates|Give the body energy|f
 Proteins|Help the body grow and repair|f
 Fats|Store energy and keep the body warm|f
@@ -7847,7 +8300,7 @@ Vitamins|Keep the body healthy in small amounts|f
 Minerals|Such as calcium for strong bones|f
 Fibre|Helps food move through the gut|f
 Water|Needed for every process in the body|f`);
-pairGen('science','Food groups','🥦 Food groups','Body systems',SC_FOOD,{fwd:r=>'What do '+r[0].toLowerCase()+' do for the body?', rev:r=>'Which part of a healthy diet '+lc(r[1]).replace(/^(\w+)/,(m)=>m)+'?', exp:r=>r[0]+' '+lc(r[1])+'.', hint:'A balanced diet has all seven.'});
+pairGen('science','Food groups','🥦 Food groups','Body systems',SC_FOOD,{fwd:r=>'What do '+r[0].toLowerCase()+' do for the body?', rev:r=>'Which part of a healthy diet '+lc(r[1]).replace(/^(\w+)/,(m)=>m)+'?', exp:r=>r[0]+' '+lc(r[1])+'.', hint:r=>SC_FOOD_CLUES[r[0]]});
 /* ---- Geography ---- */
 const GE_WORDS = rowsOf(`Erosion|Wearing away of the land by water, ice or wind|g
 Deposition|Dropping of material that has been carried|g
@@ -8353,6 +8806,34 @@ const MCACTIONS = {
 };
 
 /* Future Hopes games: built from the verified story list (FH_STORIES) and glossary. */
+/* per-row clues for Literature's last three 'todo' hint types (item 11a, the Literature sub-chunk -- see the longer design note above LIT_CHAR_CLUES in gens2.js). "Who wrote it?" pairs a real story
+   title with its real author (both askable via pairGen fwd/rev), so needs the full RE_ROWS treatment: never name the title OR the author, checked against every other row's title and author too.
+   "Story ideas" pairs a title with its own short idea-phrase (also askable in either direction), so needs the RE_ROWS treatment on BOTH columns as well: never name the title, and never just restate
+   the idea-phrase, checked against every other row's title and idea-phrase too -- solved by drawing on the richer plot detail already in FH_STORIES' own idea field (character situations, what
+   reviews say) rather than repeating the terse idea-phrase itself. Both describe only the real, already-approved factual premise of each story (the same thing FH_STORIES' own idea field already
+   does), never any of the actual prose. "Future Hopes words" is ordinary term+definition vocabulary (the RE_WORDS/DT_WORDS recipe). Checked in flow_lithints.js. */
+const FH_WTOI_CLUES = {
+'Eyeballs, Tentacles and Teeth':"This story features plastic-eating bacteria and a geoengineering plan with unexpected results -- reviews mention a small island and a giant squid.",
+'Saving Olumide':"This story follows food grown on a rooftop hydroponic farm on an apartment building, with reviews comparing it to a famous wartime growing campaign.",
+'Float':"This story imagines a world where augmented reality is everywhere, with reviews saying the hero and his friends long for simple pleasures and plan to escape the constant monitoring.",
+"The Lighthouse Keeper's Garden":"This story is set in a coastal Australian town after floods and fires, where the whole community works together for nature, with a garden standing as a symbol of hope.",
+'Dump Devil':"This story follows a teenager sent to a retention centre to repay a 'carbon debt' after an accidental house fire, in what reviews call a clever twist on dystopian stories.",
+'The Invisible Girl and the Impossible Otter':"This story is about otters being brought back to a loch to balance the ecosystem, while a friendship between two people is put to the test.",
+'They Came Back':"This story is a playful comic strip about rewilding and learning to appreciate what we already have.",
+"The Drongo's Call":"This story is set on traditional farms in India, dealing with the problem of too much fertiliser and intercropping as an alternative.",
+'Food of the Future':"This story is a school tale about sustainable food, where two friends take part in a competition with ideas like eating insects and growing food in new ways.",
+};
+const FH_IDEAS_CLUES = {
+'Eyeballs, Tentacles and Teeth':"This one's reviews mention a small island and a giant squid, and a scientific plan that doesn't go quite as expected.",
+'Saving Olumide':"This one's reviews compare its community growing scheme, run together with family and neighbours, to a famous wartime campaign.",
+'Float':"This one's reviews say its hero and his friends long for simple pleasures and want to escape constant monitoring.",
+"The Lighthouse Keeper's Garden":"This one is set in a town recovering from disaster, where a hopeful green patch grows while neighbours pull together.",
+'Dump Devil':"This one follows a teenager sent away after an accidental fire, in what reviews call a clever twist on dystopian stories.",
+'The Invisible Girl and the Impossible Otter':"This one is about restoring a particular species to a Scottish stretch of water, while a friendship between two people is put to the test.",
+'They Came Back':"This one is a playful, illustrated strip about appreciating what we already have in nature.",
+"The Drongo's Call":"This one is set on struggling farms overseas, exploring a smarter, more varied way to grow crops side by side.",
+'Food of the Future':"This one is a lighthearted tale about two friends entering a competition with ideas like eating insects and growing food in new ways.",
+};
 const FH_IDEAS = [
  ['Eyeballs, Tentacles and Teeth','Plastic-eating bacteria and geoengineering','s'],
  ['Saving Olumide','A rooftop hydroponic farm','s'],
@@ -8363,8 +8844,21 @@ const FH_IDEAS = [
  ['They Came Back','A comic strip about rewilding','s'],
  ['The Drongo\'s Call','Over-fertilised farms in India and intercropping','s'],
  ['Food of the Future','Sustainable food at school','s']];
-pairGen('literature','Future Hopes: who wrote it?','📗 Who wrote it?','Future Hopes',FH_STORIES.map(s=>[s.t,s.a,'s']),{fwd:r=>'Who wrote “'+r[0]+'” in Future Hopes?', rev:r=>'Which story in Future Hopes is by '+r[1]+'?', exp:r=>'“'+r[0]+'” is by '+r[1]+'.', hint:'Think about the book\'s contents page.'});
-pairGen('literature','Future Hopes: story ideas','🌱 What is the story about?','Future Hopes',FH_IDEAS,{fwd:r=>'What is “'+r[0]+'” mostly about?', rev:r=>'Which story in Future Hopes is about this? '+r[1]+'.', exp:r=>'“'+r[0]+'”: '+lc(r[1])+'.', hint:'Think about the real-world idea behind each story.'});
+pairGen('literature','Future Hopes: who wrote it?','📗 Who wrote it?','Future Hopes',FH_STORIES.map(s=>[s.t,s.a,'s']),{fwd:r=>'Who wrote “'+r[0]+'” in Future Hopes?', rev:r=>'Which story in Future Hopes is by '+r[1]+'?', exp:r=>'“'+r[0]+'” is by '+r[1]+'.', hint:r=>FH_WTOI_CLUES[r[0]]});
+pairGen('literature','Future Hopes: story ideas','🌱 What is the story about?','Future Hopes',FH_IDEAS,{fwd:r=>'What is “'+r[0]+'” mostly about?', rev:r=>'Which story in Future Hopes is about this? '+r[1]+'.', exp:r=>'“'+r[0]+'”: '+lc(r[1])+'.', hint:r=>FH_IDEAS_CLUES[r[0]]});
+const FH_WORDS_CLUES = {
+'rewilding':"Think of deliberately letting an area go wild again, maybe even releasing animals that used to live there long ago.",
+'hydroponics':"Think of a greenhouse full of plants with their roots sitting directly in nutrient-rich water, no soil in sight.",
+'intercropping':"Think of planting more than a single crop type in the very same patch of ground, each kind helping the other grow better.",
+'geoengineering':"Think of deliberately altering something on a massive, planet-wide scale, like the clouds or the oceans, to try to cool the Earth down.",
+'biodiversity':"Think of a rainforest bursting with thousands of different species, compared with a single field of just one crop.",
+'augmented reality':"Think of holding up a phone and seeing a cartoon creature appear on the screen, layered over the real street in front of you.",
+'foreword':"Think of a short piece tucked in right at the front of a book, penned by whoever is introducing it, somebody different from the person who actually wrote the whole thing.",
+'afterword':"Think of a brief note tucked in right at the back of a book, after the story itself has already finished.",
+'anthology':"Think of one single book that's actually lots of different people's short stories bundled together between the same two covers.",
+'climate fiction':"Think of a made-up tale imagining what towns, schools or daily life might look like as the planet keeps warming.",
+'sustainable':"Think of a way of doing something that could, in theory, carry on being done forever without ever running out or wrecking anything.",
+};
 const FH_WORDS = rowsOf(`rewilding|Bringing back wild plants and animals so nature can recover|w
 hydroponics|Growing plants in water with added nutrients instead of soil|w
 intercropping|Growing two or more different crops together in one field|w
@@ -8376,7 +8870,7 @@ afterword|A short section at the end of a book|w
 anthology|A collection of writing by different authors|w
 climate fiction|Stories about climate change and the future of the planet|w
 sustainable|Able to carry on without using up resources or harming the environment|w`);
-pairGen('literature','Future Hopes words','🌍 Future Hopes words','Future Hopes',FH_WORDS,{fwd:r=>'What does “'+r[0]+'” mean?', rev:r=>'Which word from Future Hopes means: '+lc(r[1])+'?', hint:'Think about which story uses the idea.'});
+pairGen('literature','Future Hopes words','🌍 Future Hopes words','Future Hopes',FH_WORDS,{fwd:r=>'What does “'+r[0]+'” mean?', rev:r=>'Which word from Future Hopes means: '+lc(r[1])+'?', hint:r=>FH_WORDS_CLUES[r[0]]});
 
 /* =====================================================================
    GRID REFERENCES: a drawn map grid with symbols, and endless practice.
@@ -11180,9 +11674,11 @@ const HINT_STATUS = {
 'science|Chemical symbols':'fact',
 'science|Periodic table':'fact',
 /* ---- science: skill/method or already-fact-like (per-organism/per-part) strategy hints, checked ---- */
-'science|Acid or alkali?':'skill','science|Speed, distance and time':'skill','science|Organs and their jobs':'todo','science|Cell parts':'todo','science|Plant parts':'todo',
-'science|Planets':'todo','science|Energy types':'todo','science|Renewable or not?':'todo','science|Science units':'todo','science|Lab equipment':'todo',
-'science|Separating mixtures':'todo','science|Changes of state':'todo','science|Food groups':'todo',
+'science|Acid or alkali?':'skill','science|Speed, distance and time':'skill',
+/* ---- science: fixed straight after literature (item 11a) with SC_ORGANS_CLUES/SC_CELL_CLUES/SC_PLANT_CLUES/SC_PLANETS_CLUES/SC_ENERGY_CLUES/SC_RENEW_CLUES/SC_UNITS_CLUES/SC_LAB_CLUES/SC_SEP_CLUES/SC_STATE_CLUES/SC_FOOD_CLUES, a clue per row for all eleven tables ---- */
+'science|Organs and their jobs':'fact','science|Cell parts':'fact','science|Plant parts':'fact',
+'science|Planets':'fact','science|Energy types':'fact','science|Renewable or not?':'fact','science|Science units':'fact','science|Lab equipment':'fact',
+'science|Separating mixtures':'fact','science|Changes of state':'fact','science|Food groups':'fact',
 /* ---- computing: all checked, all already have a genuinely specific method hint (e.g. "Write the place values (128, 64, 32...) under the digits") ---- */
 'computing|Binary to decimal':'skill','computing|Decimal to binary':'skill','computing|Logic gates':'skill','computing|Bits and bytes':'skill','computing|Trace the code':'skill',
 'computing|Data units':'todo','computing|Computing words':'todo',
@@ -11202,12 +11698,15 @@ const HINT_STATUS = {
 'pshe|What should you do?':'skill','pshe|Money sums':'skill','pshe|PSHE words':'todo','pshe|Useful numbers':'todo',
 /* ---- history ---- */
 'history|Which came first?':'skill','history|When did it happen?':'fact','history|Who was who?':'fact','history|History words':'fact',
-/* ---- re: fixed in v159 (item 11a) with RE_FACT_CLUES/RE_WORD_CLUES, a clue per row for both tables -- dt, art, literature still pending below ---- */
+/* ---- re: fixed in v159 (item 11a) with RE_FACT_CLUES/RE_WORD_CLUES, a clue per row for both tables ---- */
 're|Religion facts':'fact','re|Religion words':'fact',
-'dt|Material properties':'todo','dt|Tools and jobs':'todo','dt|Types of material':'todo','dt|Staying safe in D&T':'todo','dt|Materials and their uses':'todo','dt|Design words':'todo','dt|Mechanisms and their jobs':'todo',
-'art|Mixing colours':'todo','art|Complementary colours':'todo','art|Artists and their work':'todo','art|Art movements':'todo','art|Art words':'todo','art|More art words':'todo',
-'literature|Spot the technique':'skill','literature|Characters and plays':'todo','literature|Poetry forms':'todo','literature|Story words':'todo','literature|Who said it?':'todo',
-'literature|Literary words':'todo','literature|Future Hopes: who wrote it?':'todo','literature|Future Hopes: story ideas':'todo','literature|Future Hopes words':'todo',
+/* ---- dt: fixed in v168 (item 11a) with DT_PROPS_CLUES/DT_TOOLS_CLUES/DT_MATS_CLUES/DT_SAFE_CLUES/DT_USES_CLUES/DT_WORDS_CLUES/DT_MECH_CLUES, a clue per row for all seven tables ---- */
+'dt|Material properties':'fact','dt|Tools and jobs':'fact','dt|Types of material':'fact','dt|Staying safe in D&T':'fact','dt|Materials and their uses':'fact','dt|Design words':'fact','dt|Mechanisms and their jobs':'fact',
+/* ---- art: fixed in v170 (item 11a) with ART_MIX_CLUES/ART_COMP_CLUES/ART_ARTISTS_CLUES/ART_MOVES_CLUES/ART_TERMS_CLUES/ART_MORE_CLUES, a clue per row for all six tables ---- */
+'art|Mixing colours':'fact','art|Complementary colours':'fact','art|Artists and their work':'fact','art|Art movements':'fact','art|Art words':'fact','art|More art words':'fact',
+/* ---- literature: fixed straight after art (item 11a) with LIT_CHAR_CLUES/LIT_FORMS_CLUES/LIT_TERMS_CLUES/LIT_QUOTES_CLUES/LIT_WORDS_CLUES/FH_WTOI_CLUES/FH_IDEAS_CLUES/FH_WORDS_CLUES, a clue per row for all eight tables -- 'Spot the technique' was already 'skill' and is untouched ---- */
+'literature|Spot the technique':'skill','literature|Characters and plays':'fact','literature|Poetry forms':'fact','literature|Story words':'fact','literature|Who said it?':'fact',
+'literature|Literary words':'fact','literature|Future Hopes: who wrote it?':'fact','literature|Future Hopes: story ideas':'fact','literature|Future Hopes words':'fact',
 };
 
 /* =====================================================================
