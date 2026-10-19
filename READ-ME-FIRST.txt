@@ -1,8 +1,8 @@
 THE ANNALIESCE ACADEMY: NEW VERSION
 =====================================
-THIS VERSION: Academy version 172, built 19 Oct 2026, 13:35.
+THIS VERSION: Academy version 174, built 19 Oct 2026, 15:13.
 After you upload, open the site and scroll to the very bottom of the HOME page.
-It should say:  "Academy version 172 . built 19 Oct 2026, 13:35".
+It should say:  "Academy version 174 . built 19 Oct 2026, 15:13".
 If it says something older, or nothing, the new upload has not reached the site yet
 (see "If the site ever looks unchanged" below).
 
@@ -62,8 +62,33 @@ total. Most describe what the thing does or looks like without naming it (a hear
 about pumping, not "heart"). Science units needed extra care since a unit's own name (like
 "Newton" or "Kilogram") had to be kept out of every OTHER unit's clue too, including just the
 bare word on its own without its short form in brackets -- found and fixed by testing, not
-guessed at in advance. NEXT UP: the remaining word-list types -- Maths (5), Geography words and
-UK facts (2), Computing (2) and PSHE (2) -- 11 question types left after this one.
+guessed at in advance.
+
+MATHS -- SMARTER HINTS (THE SIXTH CHUNK, STRAIGHT AFTER SCIENCE)
+Same clean-up again, continuing straight on. All five remaining Maths quiz types -- Polygons,
+Formulae, Angle facts, Conversions, and Maths words -- used to give the same one hint for every
+question in that type. Each now gets its own genuine clue per item -- 55 in total. Four of the
+five (Polygons, Formulae, Angle facts, Conversions) are pure number facts, so I deliberately
+avoided giving away the number itself in the hint, even in a roundabout way -- every clue
+instead uses something real and visual (a stop sign, a honeycomb, a UK coin, a square picture
+frame's corner, a bag of sugar, a double lesson period) so it genuinely narrows things down
+without just handing over the answer in different words. Maths words is ordinary vocabulary,
+the same recipe as before. Testing this one turned up a real gap in the TEST, not the clues: a
+clue like "This is 90 degrees" was short enough, and ended in a symbol, in a way that let it
+slip past the usual check undetected -- found and fixed properly rather than ignored.
+
+GEOGRAPHY -- SMARTER HINTS (THE SEVENTH AND LAST WORD-LIST CHUNK, STRAIGHT AFTER MATHS)
+Same clean-up again, continuing straight on. The last two remaining Geography quiz types --
+Geography words and UK facts -- used to give the same one hint for every question in that type.
+Each now gets its own genuine clue per item -- 37 in total. Geography words is ordinary
+vocabulary, the same recipe as before. UK facts works a bit differently from most of the tables
+I've done: the question ALWAYS gives you the category ("the highest mountain in the UK") and
+asks you to name the actual place, never the other way round, so only the place name itself
+ever needed protecting -- each clue describes a real, well-known fact about that place (where it
+is, what it's known for) without ever naming it or any of the other 11 places in the table.
+6 deliberate mistakes tried during testing, all 6 caught cleanly -- no gaps found in the test
+itself this time, unlike the last couple of chunks. NEXT UP: the remaining word-list types --
+Computing (2) and PSHE (2) -- 4 question types left after this one.
 
 SPANISH AND MANDARIN -- RECAP SESSIONS (VERSION 158, LAST TIME'S FEATURE -- THE LAST PART OF YOUR LANGUAGE PRACTICE IDEA)
 This finishes off the Duolingo-style language practice section -- part "f", the last one. You
@@ -403,9 +428,9 @@ WHAT IS STILL OPEN
    me, plus a version that works even with speech checking off). I have not built it yet: tell me if you want it built
    next, or kept in the queue where it is.
  - Tell me if Anna gets stuck on any specific question, in any subject, and I will fix that hint next.
- - 11 question types still give a general hint (Maths 5, Geography words and UK facts 2,
-   Computing 2, PSHE 2) -- Religious Studies' 2, Design and Technology's 7, Art's 6,
-   Literature's 8 and Science's 11 are now done, starting with Maths next.
+ - 4 question types still give a general hint (Computing 2, PSHE 2) -- Religious Studies' 2,
+   Design and Technology's 7, Art's 6, Literature's 8, Science's 11, Maths's 5 and Geography's
+   2 (words and UK facts) are now done, starting with Computing next.
  - About 53 of the Geography and Map symbols hints still show a blank where the answer was ("??? is a service...").
    That is how the app normally builds hints for hand-written questions and it is safe, but proper clues would be
    better.

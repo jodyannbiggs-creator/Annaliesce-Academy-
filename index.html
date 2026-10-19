@@ -426,7 +426,7 @@ textarea.slin{width:100%;font:inherit;padding:10px;border:2px solid var(--line);
 <div id="toast" role="status" aria-live="polite" hidden></div>
 <input type="file" id="impfile" accept="application/json,.json" hidden>
 <script>
-const BUILD_INFO={n:172,at:'19 Oct 2026, 13:35'};
+const BUILD_INFO={n:174,at:'19 Oct 2026, 15:13'};
 /* =====================================================================
    THE ANNALIESCE ACADEMY
    ---------------------------------------------------------------------
@@ -8302,6 +8302,34 @@ Fibre|Helps food move through the gut|f
 Water|Needed for every process in the body|f`);
 pairGen('science','Food groups','🥦 Food groups','Body systems',SC_FOOD,{fwd:r=>'What do '+r[0].toLowerCase()+' do for the body?', rev:r=>'Which part of a healthy diet '+lc(r[1]).replace(/^(\w+)/,(m)=>m)+'?', exp:r=>r[0]+' '+lc(r[1])+'.', hint:r=>SC_FOOD_CLUES[r[0]]});
 /* ---- Geography ---- */
+/* ---- geography: fixed straight after maths (item 11a), a clue per row for the last two remaining 'todo' types ---- */
+const GE_WORDS_CLUES = {
+ 'Erosion':"This is the gradual process of land being broken down and carried away, grain by grain, especially where waves, rivers or currents of air batter against rock or soil over time.",
+ 'Deposition':"This happens when whatever a river, glacier or the wind was transporting finally gets left behind and settles in a new spot, often building up new land over time.",
+ 'Source':"This is the very start of a river, often high up in hills or mountains, such as a spring or a melting glacier.",
+ 'Mouth':"This is the far end of a river's whole journey -- the spot it finally empties into, often widening noticeably just beforehand.",
+ 'Tributary':"This is a lesser waterway that flows into, and merges with, a much larger one somewhere along its course.",
+ 'Meander':"This describes the lazy, winding curve a waterway's path often develops as it crosses flatter ground.",
+ 'Confluence':"This is the exact spot at which two separate flowing waterways come together and merge into one.",
+ 'Floodplain':"This is the level ground alongside a winding waterway that regularly gets covered in water after heavy rain, enriching the soil.",
+ 'Delta':"This is new, fertile ground that gradually builds up from sediment as a river slows down and spreads out before reaching open water.",
+ 'Estuary':"This is the broad, salty-fresh mixing zone where a waterway widens dramatically just before it joins the open sea.",
+ 'Precipitation':"This is the general name for any water that falls from clouds down to the ground, in whichever form it happens to take.",
+ 'Condensation':"This is what happens when invisible moisture in the air cools down enough to change back into visible droplets you can actually see, like on a cold window or drink can.",
+ 'Climate':"This describes the typical atmospheric conditions a region experiences overall, built up from a long historical record, rather than just how it happens to feel outside today.",
+ 'Latitude':"This tells you how high up or low down a location sits on the globe, measured from the imaginary line that circles the middle of the Earth.",
+ 'Longitude':"This tells you how many degrees round the globe, side to side, a location sits, measured from the imaginary line that runs through Greenwich in London.",
+ 'Migration':"This describes the act of leaving one place behind to go and settle somewhere else entirely, whether that's people, whole communities, or even animals each year.",
+ 'Urbanisation':"This describes the ongoing shift of more and more people moving away from the countryside and into built-up areas, causing towns to expand and new ones to spring up.",
+ 'Population density':"This measures how tightly packed or spread out the residents of a given area actually are, usually worked out by comparing their total headcount against the amount of space they occupy.",
+ 'Settlement':"This is any community-sized spot on the map, from a tiny hamlet to a sprawling city, that folk have chosen to put down roots and build homes in for the long term.",
+ 'Rural':"This describes anywhere away from busy towns and cities, surrounded by fields, farms or open natural land.",
+ 'Urban':"This describes anywhere built up with lots of streets, shops, offices and housing packed closely together.",
+ 'Deforestation':"This is the deliberate stripping out of huge tracts of trees, usually to make room for farms, roads or buildings.",
+ 'Epicentre':"This is the precise spot straight up from wherever underground shaking first breaks loose.",
+ 'Glacier':"This is a huge, extremely gradual-creeping river of compacted, ancient frozen water that forms high in mountains or near the poles over thousands of years.",
+ 'Tsunami':"This is an enormous, fast-moving surge of ocean water triggered by a sudden shift beneath the ocean bed, capable of devastating coastlines."
+};
 const GE_WORDS = rowsOf(`Erosion|Wearing away of the land by water, ice or wind|g
 Deposition|Dropping of material that has been carried|g
 Source|Where a river begins|g
@@ -8327,7 +8355,21 @@ Deforestation|Clearing large areas of forest|g
 Epicentre|The point on the surface above where an earthquake starts|g
 Glacier|A slow-moving mass of ice|g
 Tsunami|A giant sea wave caused by an earthquake or volcano|g`);
-pairGen('geography','Geography words','🌍 Geography words',null,GE_WORDS,{fwd:r=>'What does “'+r[0]+'” mean in geography?', rev:r=>'Which geography word means: '+lc(r[1])+'?', hint:'Picture it on a map or in a landscape.'});
+pairGen('geography','Geography words','🌍 Geography words',null,GE_WORDS,{fwd:r=>'What does “'+r[0]+'” mean in geography?', rev:r=>'Which geography word means: '+lc(r[1])+'?', hint:r=>GE_WORDS_CLUES[r[0]]});
+const GE_UK_CLUES = {
+ 'the highest mountain in the UK':"This sits in the Scottish Highlands, in the Grampian mountain range, and is a hugely popular (if strenuous) charity challenge climb.",
+ 'the highest mountain in England':"This is found in the Lake District National Park, in Cumbria, and is one of the \"three peaks\" often climbed together with its Scottish and Welsh counterparts in one long charity challenge.",
+ 'the highest mountain in Wales':"This is the tallest peak in Snowdonia National Park, and even has a little mountain railway you can ride most of the way up.",
+ 'the longest river in the UK':"This begins in the Welsh mountains and flows all the way down through Shropshire, Worcestershire and Gloucestershire before reaching the sea near Bristol.",
+ 'the river that flows through London':"This flows right past the Houses of Parliament, the London Eye and Tower Bridge on its long journey out toward the coast.",
+ 'the largest lake in the UK':"This is found in Northern Ireland and is by far the biggest stretch of fresh water anywhere in the UK.",
+ 'the capital city of Scotland':"This historic city is home to a famous castle perched on an extinct volcano, and hosts a world-famous arts festival every August.",
+ 'the capital city of Wales':"This coastal city is home to the Principality Stadium (also used for rugby) and a historic castle right in the city centre.",
+ 'the capital city of Northern Ireland':"This city's shipyards built the Titanic, and it now has a major museum dedicated to that very ship.",
+ 'the sea to the east of England':"This stretch of water separates Great Britain from countries like Norway and the Netherlands, and has long been important for fishing and oil rigs.",
+ 'the sea between England and France':"This narrow stretch of water is famous for being swum across by endurance athletes, and also has a tunnel running beneath it that trains use.",
+ 'the sea between Great Britain and Ireland':"This stretch of water has a ferry route linking Holyhead in Wales with Dublin, and includes the Isle of Man roughly in the middle."
+};
 const GE_UK = rowsOf(`the highest mountain in the UK|Ben Nevis|m
 the highest mountain in England|Scafell Pike|m
 the highest mountain in Wales|Snowdon|m
@@ -8340,8 +8382,19 @@ the capital city of Northern Ireland|Belfast|c
 the sea to the east of England|The North Sea|s
 the sea between England and France|The English Channel|s
 the sea between Great Britain and Ireland|The Irish Sea|s`);
-pairGen('geography','UK facts','🇬🇧 UK facts','UK geography',GE_UK,{fwd:r=>'What is '+r[0]+'?', exp:r=>'The answer is '+r[1]+': '+r[0]+'.', hint:'Picture the UK map.'});
+pairGen('geography','UK facts','🇬🇧 UK facts','UK geography',GE_UK,{fwd:r=>'What is '+r[0]+'?', exp:r=>'The answer is '+r[1]+': '+r[0]+'.', hint:r=>GE_UK_CLUES[r[0]]});
 /* ---- Maths ---- */
+/* ---- maths: fixed straight after science (item 11a), a clue per row for all five remaining 'todo' types ---- */
+const MA_SHAPES_CLUES = {
+ 'Triangle':"The simplest shape that can close up and still be flat -- think of a classic road-warning sign's outline, or a slice cut from a round pizza.",
+ 'Quadrilateral':"Squares, rectangles and kites all belong to this general family of shapes.",
+ 'Pentagon':"A baseball home plate has this shape -- a square with a pointed roof on top.",
+ 'Hexagon':"A honeycomb's cells and a snowflake's basic outline are shaped like this.",
+ 'Heptagon':"The UK's 50 pence and 20 pence coins are famously this shape (though their curved edges make it tricky to spot at a glance).",
+ 'Octagon':"Stop signs around the world are shaped like this.",
+ 'Nonagon':"This shape has one more corner than a stop sign and one fewer than the shape with the most sides here.",
+ 'Decagon':"This shape has more straight edges than any other one in this set -- picture a shape almost round enough to pass for a circle, but still clearly made of flat edges."
+};
 const MA_SHAPES = rowsOf(`Triangle|3 sides|s
 Quadrilateral|4 sides|s
 Pentagon|5 sides|s
@@ -8350,7 +8403,19 @@ Heptagon|7 sides|s
 Octagon|8 sides|s
 Nonagon|9 sides|s
 Decagon|10 sides|s`);
-pairGen('maths','Polygons','⬡ Polygons','Geometry',MA_SHAPES,{fwd:r=>'How many sides does a '+r[0].toLowerCase()+' have?', rev:r=>'Which shape has '+r[1]+'?', exp:r=>'A '+r[0].toLowerCase()+' has '+r[1]+'.', hint:'Penta is 5, hexa is 6, octa is 8.'});
+pairGen('maths','Polygons','⬡ Polygons','Geometry',MA_SHAPES,{fwd:r=>'How many sides does a '+r[0].toLowerCase()+' have?', rev:r=>'Which shape has '+r[1]+'?', exp:r=>'A '+r[0].toLowerCase()+' has '+r[1]+'.', hint:r=>MA_SHAPES_CLUES[r[0]]});
+const MA_FORM_CLUES = {
+ 'the area of a rectangle':"To work this out for a rectangle, you multiply two of its straight edges together -- the one running along the top and the one running up the side.",
+ 'the area of a triangle':"For this triangle measurement, take the flat bottom edge, multiply it by the straight-up height from that edge to the opposite corner, then halve the result.",
+ 'the area of a parallelogram':"Like several area formulas, this multiplies a base edge by the straight-up height to that base -- but here there's no halving step.",
+ 'the area of a circle':"This uses the special circle number pi, multiplied by the distance from the centre to the edge, squared.",
+ 'the circumference of a circle':"This also uses pi, but multiplies it by the full width of the circle measured straight across through the middle.",
+ 'the perimeter of a rectangle':"To go all the way around a rectangle's outside edge, you add the long and short sides together, then double that total.",
+ 'the volume of a cuboid':"This tells you how much space fits inside a box shape, by multiplying all three of its different straight edges together.",
+ 'speed':"This tells you how fast something is travelling, by dividing how far it went by how long the journey took.",
+ 'the mean':"This is one way to find a typical number from a list, by adding everything up and sharing the total equally among however many numbers you started with.",
+ 'probability':"This tells you how likely something is, worked out by comparing how many ways it COULD happen against every possible way things could turn out."
+};
 const MA_FORM = rowsOf(`the area of a rectangle|length × width|f
 the area of a triangle|½ × base × height|f
 the area of a parallelogram|base × height|f
@@ -8361,7 +8426,17 @@ the volume of a cuboid|length × width × height|f
 speed|distance ÷ time|f
 the mean|total ÷ number of values|f
 probability|number of successful outcomes ÷ total number of outcomes|f`);
-pairGen('maths','Formulae','📐 Formulae','Geometry',MA_FORM,{fwd:r=>'What is the formula for '+r[0]+'?', rev:r=>'What does the formula “'+r[1]+'” give you?', exp:r=>'The formula for '+r[0]+' is '+r[1]+'.', hint:'Write the formula down, then put in the numbers.'});
+pairGen('maths','Formulae','📐 Formulae','Geometry',MA_FORM,{fwd:r=>'What is the formula for '+r[0]+'?', rev:r=>'What does the formula “'+r[1]+'” give you?', exp:r=>'The formula for '+r[0]+' is '+r[1]+'.', hint:r=>MA_FORM_CLUES[r[0]]});
+const MA_ANG_CLUES = {
+ 'the angles in a triangle':"Add up all three corners of ANY triangle, no matter how it's drawn, and the total never changes -- it's one of the most famous fixed totals in geometry.",
+ 'the angles on a straight line':"Any angles that sit side by side along one completely flat, uninterrupted line will always add up to this same fixed amount, whatever angle you split it into.",
+ 'the angles in a quadrilateral':"Any four-sided flat shape, even a wonky one, has its four inside corners always adding up to one same fixed total, however it's drawn.",
+ 'the angles around a point':"If you stand in one spot and spin all the way around until you're facing the exact same way you started, you've swept through this same fixed total -- a complete, full turn.",
+ 'a right angle':"This is the angle you see at each corner of a square picture frame, a book's corner, or where two perpendicular walls meet.",
+ 'an acute angle':"This describes any angle that looks sharp and narrow -- tighter and more pointed than the corner of a square picture frame.",
+ 'an obtuse angle':"This describes any angle that's wider and more open than a square picture frame's corner, but still not so wide that it folds all the way back into a flat, straight line.",
+ 'a reflex angle':"This describes any angle so wide and open that it's gone past folding flat into a straight line, and has started to open out past that point, toward becoming a full turn."
+};
 const MA_ANG = rowsOf(`the angles in a triangle|180°|a
 the angles on a straight line|180°|a
 the angles in a quadrilateral|360°|a
@@ -8370,7 +8445,19 @@ a right angle|90°|a
 an acute angle|less than 90°|a
 an obtuse angle|between 90° and 180°|a
 a reflex angle|more than 180°|a`);
-pairGen('maths','Angle facts','📐 Angle facts','Geometry',MA_ANG,{fwd:r=>'What is the size of '+r[0]+'?', rev:r=>'Which of these is '+r[1]+'?', exp:r=>r[0].charAt(0).toUpperCase()+r[0].slice(1)+': '+r[1]+'.', hint:'Straight line 180, full turn 360, right angle 90.'});
+pairGen('maths','Angle facts','📐 Angle facts','Geometry',MA_ANG,{fwd:r=>'What is the size of '+r[0]+'?', rev:r=>'Which of these is '+r[1]+'?', exp:r=>r[0].charAt(0).toUpperCase()+r[0].slice(1)+': '+r[1]+'.', hint:r=>MA_ANG_CLUES[r[0]]});
+const MA_CONV_CLUES = {
+ '1 kilometre':"This is roughly the distance of a lap and a bit around a standard outdoor athletics track, or about a 12-15 minute walk at a normal pace.",
+ '1 metre':"This is roughly the height of a kitchen counter from the floor, or about one long adult stride.",
+ '1 centimetre':"This is about as wide as your little fingernail.",
+ '1 kilogram':"This is roughly the weight of a standard bag of sugar you'd find in a supermarket, or a small bag of flour.",
+ '1 tonne':"This is roughly the weight of a small family car.",
+ '1 litre':"This is the amount of liquid in a standard supermarket carton of milk or juice.",
+ '1 hour':"This is the length of a typical lesson double-period at school, or about the time it takes to watch one episode of a normal TV drama.",
+ '1 minute':"This is roughly the time it takes to brush your teeth properly, or to boil a kettle partway.",
+ '1 day':"This is the time from one midnight to the very next midnight -- a single full spin of the Earth on its axis.",
+ '1 week':"This is the time from one Monday to the following Monday, covering a full school timetable cycle from start to finish again."
+};
 const MA_CONV = rowsOf(`1 kilometre|1000 metres|c
 1 metre|100 centimetres|c
 1 centimetre|10 millimetres|c
@@ -8381,7 +8468,28 @@ const MA_CONV = rowsOf(`1 kilometre|1000 metres|c
 1 minute|60 seconds|c
 1 day|24 hours|c
 1 week|7 days|c`);
-pairGen('maths','Conversions','🔁 Conversions','Units and measures',MA_CONV,{fwd:r=>'What is '+r[0]+' equal to?', rev:r=>'Which of these is equal to '+r[1]+'?', exp:r=>r[0]+' = '+r[1]+'.', hint:'Learn the key conversions by heart.'});
+pairGen('maths','Conversions','🔁 Conversions','Units and measures',MA_CONV,{fwd:r=>'What is '+r[0]+' equal to?', rev:r=>'Which of these is equal to '+r[1]+'?', exp:r=>r[0]+' = '+r[1]+'.', hint:r=>MA_CONV_CLUES[r[0]]});
+const MA_WORDS_CLUES = {
+ 'Prime number':"This kind of number can only be split evenly by itself and by 1 -- nothing else goes into it cleanly. 2, 3, 5 and 7 are small examples.",
+ 'Factor':"This is any number that fits into a bigger number a whole number of times, with nothing left over -- for example, both 3 and 4 do this to 12.",
+ 'Multiple':"Count up in steps of a number and everything you land on is one of these for that number -- like 5, 10, 15, 20 when counting in fives.",
+ 'Square number':"You get one of these by taking a whole number and using it twice over in one multiplication sum -- 1, 4, 9 and 16 are the first few.",
+ 'Cube number':"This family of numbers comes from building a little stack: start with a whole number, then use three identical copies of it in one multiplication sum together -- 1, 8 and 27 are the first few.",
+ 'Integer':"This includes all the counting numbers, zero, and every one of their negative opposites too -- but never a fraction or a decimal part.",
+ 'Numerator':"In a fraction, this is the part written above the dividing line.",
+ 'Denominator':"In a fraction, this is the part written below the dividing line.",
+ 'Equivalent fractions':"Even though they're written with completely different digits, these fractions all represent exactly the same amount of a whole -- like one half and two quarters.",
+ 'Ratio':"This shows how much of one thing there is compared to another, usually written with a colon between the two amounts, like 2:1.",
+ 'Variable':"In algebra, this symbol (usually a single letter like x or y) stands in for a value that hasn't been pinned down yet.",
+ 'Expression':"This is a string of numbers and symbols worked out together, like 3x + 2 -- but crucially, it never has an equals sign anywhere in it.",
+ 'Equation':"This is written with two sides that are declared to have the exact same value as each other, such as 2x = 10.",
+ 'Term':"This is just one single piece of a longer mathematical list or pattern -- for example, in 3, 7, 11, 15, each separate number counts as one of these, and in 2x + 5, each separate chunk does too.",
+ 'Vertex':"This is the sharp point where two or more straight edges of a shape meet each other.",
+ 'Perpendicular':"Two lines described this way cross each other to form four identical square-cornered angles, like the lines on a sheet of graph paper.",
+ 'Parallel':"These are like two long, straight railway tracks or the ruled lines in an exercise book -- always side by side, keeping the exact same gap, forever heading the same way without crossing.",
+ 'Congruent':"Two shapes described this way could be placed exactly on top of one another with nothing sticking out and nothing missing -- like two copies cut from the same cardboard template.",
+ 'Inverse':"This is whatever step completely reverses a previous one, taking you right back to where things started -- like how unlocking reverses locking, or subtracting 5 reverses adding 5."
+};
 const MA_WORDS = rowsOf(`Prime number|A number with exactly two factors|w
 Factor|A number that divides exactly into another number|w
 Multiple|A number in a times table|w
@@ -8401,7 +8509,7 @@ Perpendicular|At right angles|w
 Parallel|Lines that stay the same distance apart and never meet|w
 Congruent|Exactly the same shape and size|w
 Inverse|The operation that undoes another|w`);
-pairGen('maths','Maths words','🔢 Maths words',null,MA_WORDS,{fwd:r=>'What does “'+r[0]+'” mean in maths?', rev:r=>'Which maths word means: '+lc(r[1])+'?', hint:'Think of a small example.'});
+pairGen('maths','Maths words','🔢 Maths words',null,MA_WORDS,{fwd:r=>'What does “'+r[0]+'” mean in maths?', rev:r=>'Which maths word means: '+lc(r[1])+'?', hint:r=>MA_WORDS_CLUES[r[0]]});
 /* ---- Computing ---- */
 const CO_UNITS = rowsOf(`Bit|A single 0 or 1|u
 Nibble|4 bits|u
@@ -11657,15 +11765,16 @@ const HINT_STATUS = {
 'maths|Units and measures':'dynamic','maths|Probability':'dynamic','maths|Simplifying and expanding':'dynamic','maths|Ratio and proportion':'dynamic',
 'maths|Ordering and temperature':'dynamic','maths|Mean puzzles':'dynamic','maths|Polygons and shapes':'dynamic','maths|Written methods':'dynamic','maths|nth term problems':'dynamic',
 'maths|Circles':'dynamic','maths|Straight-line graphs':'dynamic','maths|Sequences':'dynamic',
-/* ---- maths: 5 more found in gens3.js during the v58 review, using pairGen's per-title strategy hint (checked, good) ---- */
-'maths|Polygons':'todo','maths|Formulae':'todo','maths|Angle facts':'todo','maths|Conversions':'todo','maths|Maths words':'todo',
+/* ---- maths: fixed straight after science (item 11a) with MA_SHAPES_CLUES/MA_FORM_CLUES/MA_ANG_CLUES/MA_CONV_CLUES/MA_WORDS_CLUES, a clue per row for all five tables ---- */
+'maths|Polygons':'fact','maths|Formulae':'fact','maths|Angle facts':'fact','maths|Conversions':'fact','maths|Maths words':'fact',
 /* ---- geography: fact-based, fixed in v57-58 with CAP_CLUES/UK_CITY_CLUES/UK_MT_CLUES ---- */
 'geography|Capital cities':'fact','geography|Capital: country to city':'fact','geography|Capital: city to country':'fact','geography|Find the country':'fact',
 'geography|UK nations':'fact','geography|UK cities':'fact','geography|UK mountains':'fact',
 /* ---- geography: skill/method questions, checked and left as they were ---- */
 'geography|Which continent?':'skill','geography|Which ocean?':'skill','geography|Grid references':'skill',
 'geography|Six-figure references: easy':'skill','geography|Six-figure references: medium':'skill','geography|Six-figure references: hard':'skill',
-'geography|Geography words':'todo','geography|UK facts':'todo',
+/* ---- geography: fixed straight after maths (item 11a) with GE_WORDS_CLUES/GE_UK_CLUES, a clue per row for both remaining tables ---- */
+'geography|Geography words':'fact','geography|UK facts':'fact',
 /* ---- geography: flags (v62): Pick the flag describes the flag (FLAG_CLUES in caps.js, checked against the flag drawings' real colours); Name the flag uses the landmark clue (CAP_CLUES) ---- */
 'geography|Name the flag':'fact','geography|Pick the flag':'fact',
 /* ---- geography: map symbols (v63): a clue per symbol (MAP_SYMS in mapsym.js), checked so no clue names its own symbol ---- */
